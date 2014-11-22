@@ -69,5 +69,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
-var a = '1';
