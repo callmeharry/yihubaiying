@@ -1,10 +1,14 @@
 /**
  * Created by steve on 14-11-23.
+ * Modified by Megas on 14-11-29.
+ * Todo:未加索引
  */
 /** 医呼百应 订单模型 */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+var config = require('../config');
 
 var OrderSchema = new Schema({
     order_time:{type:Date},
