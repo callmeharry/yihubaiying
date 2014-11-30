@@ -14,7 +14,10 @@ var config = {
 
     //mongodb配置
     db: 'mongodb://127.0.0.1/yihubaiying',
-    db_name: 'yihubaiying'
+    db_name: 'yihubaiying',
+
+    // 程序运行的端口
+    port: 3000
 };
 
-mondule.exports = config;
+module.exports = config;

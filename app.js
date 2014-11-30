@@ -1,3 +1,5 @@
+var config = require('../config');
+
 var newRelic = require('newrelic');
 
 var express = require('express');
@@ -67,5 +69,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.listen(config.port, function () {
+    console.log("NodeClub listening on port %d in %s mode", config.port, app.settings.env);
+});
 
 module.exports = app;
