@@ -17,7 +17,7 @@ var config = {
     db_name: 'yihubaiying',
 
     // 程序运行的端口
-    port: 3000
+    port: 23333
 };
 
 module.exports = config;
