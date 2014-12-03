@@ -1,0 +1,37 @@
+#login-a
+{
+	text-decoration:none;
+	color: #0066ff;
+}
+#login-a:hover
+{
+	text-decoration:underline;
+}
+.labelText
+{
+	height:34px;
+	line-height:32px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.welcome-a
+{
+	font-size:auto;
+	color:#00F;
+	text-align:center;
+}
+.welcome-register
+{
+	height:52px;
+	line-height:52px;
+	background-color:#f8f8f8;
+	border:1px solid;
+	border-color: #e7e7e7;
+	border-radius: 4px;
+}
+.welcome-register-text
+{
+	font-size:30px;
+	text-align:center;
+	color:blue;
+}
