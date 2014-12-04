@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+		<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		<title>AdminLogin</title>
+		<script type="text/javascript">
+ 			$(document).ready(init);
+ 	
+ 			function init() {
+ 				$("btnLogin").on("click", function1);
+ 			}
+ 	
+ 			function function1() {
+ 				// test
+ 				$("form").attr("action", "#");
+ 				$("form").submit();
+ 			}
+ 		</script>
+		
+</head>
+<body>
+	<form class="form-horizontal" method="post">
+		<div class="col-md-offset-1">
+	  		<span class="text-left text-primary"> <h1>医呼百应<small>管理员登录页面</small> </h1></span>
+	  	</div>
+	  	<div class="col-md-offset-4 col-md-4" style="margin-top:150px">
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="name"> 用户名 </label>
+				<div class="col-sm-7">
+					<input type="text" name="name" id="name" class="form-control" placeholder="请输入用户名"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="password"> 密码 </label>
+				<div class="col-sm-7">
+					<input type="password" name="password" id="password" class="form-control" placeholder="请输入密码"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-7 col-sm-2">
+					<button name="btnLogin" id="btnLogin" class="btn btn-primary"> 登录 </button>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
