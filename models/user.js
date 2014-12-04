@@ -11,7 +11,7 @@ var ObjectId = Schema.ObjectId;
 var config = require('../config');
 
 var UserSchema = new Schema({
-    user_id: { type: ObjectId },
+    _id: { type: ObjectId },
     username: { type: String },
     password: { type: String },
     real_name: { type: String },
@@ -22,6 +22,7 @@ var UserSchema = new Schema({
     phone_number: { type: String },
     credit_level: { type: Number },
     register_time: { type: Date, default: Date.now },
+    is_active: { type: Boolean, default: true },
     favourite_hospital: [{ type: String }],
     favourite_dept: [{ type: String }],
     favourite_doctor: [
@@ -49,7 +50,7 @@ var UserSchema = new Schema({
     ]
 });
 
-UserSchema.index({social_number: 1}, {unique: true});
+UserSchema.index({phone_number: 1}, {unique: true});
 UserSchema.index({password: 1}, {unique: true});
 
 mongoose.model('User', UserSchema);

@@ -16,6 +16,8 @@ var config = {
     db: 'mongodb://127.0.0.1/yihubaiying',
     db_name: 'yihubaiying',
 
+    auth_cookie_name: 'yihubaiying',
+
     // 程序运行的端口
     port: 23333
 };
