@@ -1,0 +1,23 @@
+#DatePickerTitle h1{
+	font-family: "微软雅黑";
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #0066FF;
+}
+.isAppointment{
+	font-weight: bold;
+	float: right;
+}
+#DatePickerTitle{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+}
+.dateWindow span{color: white;font-size: 1em;font-family: "微软雅黑";font-weight: bold;}
+.dateWindow{
+	text-align: center;
+}
+.canBeOrdered{height: 100px;background-image: url('../images/canBeOrdered.jpg');}
+.cannotBeOrdered{height:100px;background-image: url('../images/cannotBeOrdered.jpg');}
+.row .mobile-two{width: 50% !important; float: left;}
+.row .mobile-two:last-child{width: 50% !important; float: right;}

@@ -1,0 +1,43 @@
+＃booking{
+	height:400px;
+	width:300px;
+	margin-top:30px;
+	text-align:center;
+	background-color:#000000;
+	font-color:#F7F7F7;
+	}
+
+#personal_information{
+	margin-top:30px;
+	text-align:center;
+	height:400px;
+	width:300px;
+	background-color:#0078d8;
+	font-color:#F7F7F7;
+	
+	}
+
+#collection{
+	padding:2px;
+	margin-top:30px;
+	text-align:center;
+	height:400px;
+	width:300px;
+	background-color:#0078d8;
+	font-color:#F7F7F7;
+	}
+	
+#question{
+	margin-top:30px;
+	text-align:center;
+	height:400px;
+	width:300px;
+	background-color:#0078d8;
+	font-color:#F7F7F7;
+	
+	}
+	
+.sub_title{
+	color:#F7F7F7;
+	margin-top:20px;
+	}	

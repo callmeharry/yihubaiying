@@ -1,0 +1,36 @@
+
+#topText{
+	color:#0078d8;
+	font-size:30px;
+	text-align:center;
+	}
+.headText{
+	color:#0078d8;
+	font-weight:bold;
+}
+.box{ text-align:center;
+	  margin-top:20px;
+	}
+.inputText{border-color:#0078d8;
+	border-radius:1px;
+	width:300px;
+	height:40px;
+	
+
+	}
+#check_number{
+	border-radius:5px;
+	height:30px;
+	width:60px;
+	background-color:#0078d8;
+	text-color:#F8F2F2;
+	align-content:center;
+}	  
+#commit{
+	border-radius:5px;
+	height:30px;
+	width:60px;
+	background-color:#0078d8;
+	text-color:#F8F2F2;
+}
+	
