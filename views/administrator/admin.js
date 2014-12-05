@@ -12,3 +12,6 @@ function btfunc(btn) {
 	else
 		btn.innerHTML = "禁用";
 }
+$(function ()
+{ $("#logout").popover({html: true});
+});
