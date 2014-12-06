@@ -10,7 +10,18 @@ var com = require('./test/com');
 var getpost = require('./test/getpost')
 var router = express.Router();
 
+
+//get controllers
+var index = require('./test/index');
+var user = require('./test/users');
+
+//Home page
+router.get('/', index);
+router.get('/', user);
+
 router.get('/sms-test',sms_test.registerVerity);
 router.get('/com',com.do);
 router.post('/pay',getpost.do);
+
+
 module.exports = router;
