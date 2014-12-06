@@ -5,8 +5,9 @@
 
 
 var express = require('express');
-var sms_test = require('./test/sms_test');
+var smsTest = require('./test/sms_test');
 var getpost = require('./test/getpost');
+var mobileRegister = require('./controllers/register');
 var router = express.Router();
 
 
@@ -18,7 +19,13 @@ var user = require('./test/users');
 router.get('/', index);
 router.get('/', user);
 
-router.get('/sms-test',sms_test.registerVerity);
+//Mobile register page
+router.get('/mobile_register', mobileRegister.showRegister);
+router.post('/mobile_generate_auth_code', mobileRegister.generateAuthCode);
+router.post('/mobile_register', mobileRegister.doRegister);
+
+//Test page
+router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay',getpost.do);
 
 

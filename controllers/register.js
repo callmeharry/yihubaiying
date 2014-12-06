@@ -1,38 +1,46 @@
 /**
  * Created by steve on 14-12-4.
+ * yihubaiying register page
  */
 
-var validator = require('validator');
+var user = require('../proxy/user')
 var randomNum;
 exports.showRegister = function (req, res){
     console.log('mobile_register');
-    randomNum="";
-    for(var i=0;i<6;i++)
-    {
-        randomNum+=Math.floor(Math.random()*10);
-    }
-    console.log(randomNum);
     res.render('mobile/mRegister');
 }
 
+exports.generateAuthCode = function () {
+    randomNum = "";
+    for (var i = 0; i < 6; i++) {
+        randomNum += Math.floor(Math.random() * 10);
+    }
+    console.log(randomNum);
+}
 exports.doRegister = function(req, res, next) {
-    var mobileNumber = validator.trim(req.body.mobile);
-    var socialNumber = validator.trim(req.body.social_number);
-    var password = validator.trim(req.body.password);
-    var city = validator.trim(req.body.city);
-    var name = validator.trim(req.body.name);
-    var authCode = validator.trim(req.body.auth_code);
-    console.log(mobileNumber);
-    console.log(socialNumber);
-    console.log(password);
-    console.log(city);
-    console.log(name);
-    console.log(authCode);
-    if(!authCode === randomNum){
-        res.send('error');
+    var phoneNumber = req.body.mobile;
+    var socialNumber = req.body.social_number;
+    var password = req.body.password;
+    var city = req.body.city;
+    var name = req.body.name;
+    var authCode = req.body.auth_code;
+    if (!(authCode == randomNum)) {
+        res.send('error_auth_code');
+        return;
     }
-    else{
-        res.send('success');
-    }
+    user.getUsersByPhoneNumber(phoneNumber, function (err, users) {
+        if (users != null) {
+            res.send('Used phone number.');
+            return;
+        }
+        user.newAndSave(phoneNumber, socialNumber, password, city, name, function (err) {
+            if (err) {
+                res.send(err.message);
+                return;
+            }
+            // 发送激活邮件
+            res.send('register success');
+        });
+    });
 }
 

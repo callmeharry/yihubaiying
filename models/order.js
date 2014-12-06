@@ -26,4 +26,4 @@ var OrderSchema = new Schema({
     }
 });
 
-mongoose.model('order',OrderSchema);
+mongoose.model('Order', OrderSchema);

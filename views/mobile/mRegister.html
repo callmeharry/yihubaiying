@@ -15,38 +15,38 @@
     <form action="/mobile_register" method="post" id="register_form">
     <div class="row" align="center" style="margin-top:30px;" >
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="身份证号" id="social_number" />
+            <input type="text" placeholder="身份证号" name="social_number"/>
 		</div>
    </div>
 
    <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="姓名" id="name" />
+            <input type="text" placeholder="姓名" name="name"/>
 		</div>
    </div>
  
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="密码" id="password"/>
+            <input type="text" placeholder="密码" name="password"/>
 		</div>
    </div>
     
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="现居城市" id="city"/>
+            <input type="text" placeholder="现居城市" name="city"/>
 		</div>
    </div>
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="手机号" id="mobile"/>
+            <input type="text" placeholder="手机号" name="mobile"/>
 		</div>
    </div>
     <div class="row"  >
       
       <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
-            <input type="text" placeholder="验证码" id="auth_code">
+          <input type="text" placeholder="验证码" name="auth_code">
       </div>
-			<button type="button" class="small button"  style="margin-top:20px;">获取验证码</button>
+        <button type="button" class="small button" style="margin-top:20px;" onclick="requestAuthCode()">获取验证码</button>
 	</div>
     
     <div class="large-12 columns" align="center" style="margin-top:40px;">       
@@ -59,7 +59,40 @@
     <script>
       $(document).foundation();
     </script>
-    
+    <script>
+        var xmlHttp;
+        function requestAuthCode() {
+            xmlHttp = GetXmlHttpObject();
+            if (xmlHttp == null) {
+                alert('您的浏览器不支持AJAX！');
+                return;
+            }
+            var url = "http://localhost:3000/mobile_generate_auth_code";
+            xmlhttp.open("POST", url, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+            xmlHttp.onreadystatechange = getOkPost;//发送事件后，收到信息了调用函数
+        }
+        function GetXmlHttpObject() {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+        function getOkPost() {
+            if (xmlHttp.readyState == 1 || xmlHttp.readyState == 2 || xmlHttp.readyState == 3) {
+                // 本地提示：加载中/处理中
+
+            }
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                var d = xmlHttp.responseText; // 返回值
+                // 处理返回值
+            }
+        }
+    </script>
 
 </body>
 </html>

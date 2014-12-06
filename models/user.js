@@ -7,7 +7,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
+var ObjectId = Schema.Types.ObjectId;
 var config = require('../config');
 
 var UserSchema = new Schema({
@@ -18,7 +18,7 @@ var UserSchema = new Schema({
     social_number: { type: String },
     address: { type: String },
     email: { type: String },
-    user_state: { type: Number },
+    user_state: {type: String},
     phone_number: { type: String },
     credit_level: { type: Number },
     register_time: { type: Date, default: Date.now },
