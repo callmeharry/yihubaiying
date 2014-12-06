@@ -12,45 +12,45 @@
 	<div  align="center">
 		<span id="topText">注册</span>
 	</div>
-    <form>
-    <div class="row" align="center" style="margin-top:30px;">
+    <form action="/mobile_register" method="post" id="register_form">
+    <div class="row" align="center" style="margin-top:30px;" >
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="身份证号" />
+			<input type="text" placeholder="身份证号" id="social_number" />
 		</div>
    </div>
 
    <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="姓名" />
+			<input type="text" placeholder="姓名" id="name" />
 		</div>
    </div>
  
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="密码" />
+			<input type="text" placeholder="密码" id="password"/>
 		</div>
    </div>
     
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="现居城市" />
+			<input type="text" placeholder="现居城市" id="city"/>
 		</div>
    </div>
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-			<input type="text" placeholder="手机号" />
+			<input type="text" placeholder="手机号" id="mobile"/>
 		</div>
    </div>
     <div class="row"  >
       
       <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
-            <input type="text" placeholder="验证码"> 
+            <input type="text" placeholder="验证码" id="auth_code">
       </div>
 			<button type="button" class="small button"  style="margin-top:20px;">获取验证码</button>
 	</div>
     
     <div class="large-12 columns" align="center" style="margin-top:40px;">       
-         <button type="button" class="small radius button"  >提交</button>
+         <input type="submit" class="small radius button">提交</button>
     </div>
     
     </form> 

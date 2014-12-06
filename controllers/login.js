@@ -6,9 +6,9 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var config = require('../config');
-var User = require('../proxy').User;
+var User = require('../proxy/user');
 var utility = require('utility');
-var authMiddleWare = require('../middleware/auth');
+var authMiddleWare = require('../middlewares/auth');
 
 /**
  * 显示用户登录页面

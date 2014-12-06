@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var UserModel = mongoose.model('User');
 var config = require('../config');
 var eventproxy = require('eventproxy');
-var UserProxy = require('../proxy').User;
+var UserProxy = require('../proxy/user');
 
 /**
  * 需要用户登录
