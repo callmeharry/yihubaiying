@@ -38,8 +38,8 @@ article h2{
 }
 .hr0{ height:1px;border:none;border-top:1px dashed #0066CC;}
 
-a{color: gray;}
-a:link {color:gray; text-decoration: none;}
-a:visited {color:gray;}	
-a:hover {text-decoration:none; color:gray;}
+table a{color: gray;}
+table a:link {color:gray; text-decoration: none;}
+table a:visited {color:gray;}	
+table a:hover {text-decoration:none; color:gray;}
 

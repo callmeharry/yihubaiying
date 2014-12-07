@@ -442,8 +442,8 @@ box-shadow: none; margin-bottom: 5px; }
 .o-buttons { padding:5px 10px; font-size:12px; color:#fff !important; margin:3px; text-decoration:none !important; display:inline-block;}
 .o-buttons.b-big { padding: 14px 20px; font-size: 18px; }
 .o-buttons:hover { text-decoration:none; }
-.o-buttons.blue { background: #587eac; }
-.o-buttons.blue:hover { background: #325D91; }
+.o-buttons.blue { background: #587fff; }
+.o-buttons.blue:hover { background: #0066FF; }
 
 .o-buttons.red { background: #ea2424; }
 .o-buttons.red:hover { background: #c1272d; }
