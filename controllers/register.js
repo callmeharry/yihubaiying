@@ -28,7 +28,7 @@ exports.doRegister = function(req, res, next) {
         res.send('error_auth_code');
         return;
     }
-    user.getUsersByPhoneNumber(phoneNumber, function (err, users) {
+    user.getOneUserByPhoneNumber(phoneNumber, function (err, users) {
         if (users != null) {
             res.send('Used phone number.');
             return;

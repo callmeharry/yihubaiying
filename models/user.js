@@ -11,7 +11,6 @@ var ObjectId = Schema.Types.ObjectId;
 var config = require('../config');
 
 var UserSchema = new Schema({
-    _id: { type: ObjectId },
     username: { type: String },
     password: { type: String },
     real_name: { type: String },
