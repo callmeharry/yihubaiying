@@ -11,7 +11,6 @@ var ObjectId = Schema.ObjectId;
 var config = require('../config');
 
 var DoctorSchema = new Schema({
-    doctor_id: { type: ObjectId },
     doctor_name: { type: String },
     doctor_intro: { type: String },
     doctor_advanced_disease: [{ type: String }],
