@@ -1,0 +1,43 @@
+.th-label{
+	margin-top: 20px;
+	font-weight: normal;
+}
+
+.identify-button{
+	margin-top: 20px;
+	color: #ffffff;
+	background-color: #f9a821;
+}
+
+.button-center{
+	margin-left: 300px;
+	margin-bottom: 30px;
+	font-size: 16px;
+	padding-right: 60px;
+	padding-left: 60px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.feedback-table{
+	margin-left: 90px;
+	font-size: 16px;
+	font-family:  "微软雅黑","宋体",Arial,Verdana,sans-serif;
+}
+
+.advice-input{
+	margin-top: 5px;
+	width: 550px;
+	height: 250px;
+}
+.th-right{
+	width: 160px;
+	padding-right: 5px;
+}
+
+.advice-textarea{
+	width: 500px;
+	height: 200px;
+	border-radius: 5px;
+	font-weight: normal;
+}
