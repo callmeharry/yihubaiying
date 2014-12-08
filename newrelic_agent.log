@@ -535,3 +535,95 @@
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":8588,"time":"2014-12-07T16:39:25.611Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":8588,"time":"2014-12-07T16:39:25.615Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1480914944.","component":"collector_api"}
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":11004,"time":"2014-12-08T08:15:58.587Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6729,"time":"2014-12-08T08:49:54.890Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6729,"time":"2014-12-08T08:50:00.603Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6729,"time":"2014-12-08T08:50:00.605Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483676694.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6783,"time":"2014-12-08T08:51:06.482Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6783,"time":"2014-12-08T08:51:10.102Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6783,"time":"2014-12-08T08:51:10.103Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483682281.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6837,"time":"2014-12-08T08:52:05.366Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6837,"time":"2014-12-08T08:52:09.087Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6837,"time":"2014-12-08T08:52:09.088Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483684861.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6867,"time":"2014-12-08T08:53:37.061Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6867,"time":"2014-12-08T08:53:40.712Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6867,"time":"2014-12-08T08:53:40.714Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483688389.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6951,"time":"2014-12-08T08:57:22.727Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6951,"time":"2014-12-08T08:57:27.522Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":6951,"time":"2014-12-08T08:57:27.524Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483698970.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7199,"time":"2014-12-08T09:15:02.355Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7199,"time":"2014-12-08T09:15:05.836Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7199,"time":"2014-12-08T09:15:05.838Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483748577.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7229,"time":"2014-12-08T09:16:08.150Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7229,"time":"2014-12-08T09:16:12.863Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7229,"time":"2014-12-08T09:16:12.864Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483752211.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7251,"time":"2014-12-08T09:16:53.457Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7251,"time":"2014-12-08T09:16:56.989Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7251,"time":"2014-12-08T09:16:56.991Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483753769.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7283,"time":"2014-12-08T09:17:49.220Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7283,"time":"2014-12-08T09:17:52.771Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7283,"time":"2014-12-08T09:17:52.773Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483755658.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7304,"time":"2014-12-08T09:18:15.914Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7304,"time":"2014-12-08T09:18:19.449Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7304,"time":"2014-12-08T09:18:19.450Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483757649.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7496,"time":"2014-12-08T09:32:15.740Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7496,"time":"2014-12-08T09:32:19.252Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7496,"time":"2014-12-08T09:32:19.254Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483795938.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7514,"time":"2014-12-08T09:32:35.045Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7514,"time":"2014-12-08T09:32:38.619Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7514,"time":"2014-12-08T09:32:38.620Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483796595.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7537,"time":"2014-12-08T09:32:52.654Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7537,"time":"2014-12-08T09:32:56.251Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7537,"time":"2014-12-08T09:32:56.253Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483797126.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7558,"time":"2014-12-08T09:33:28.366Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7558,"time":"2014-12-08T09:33:31.879Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7558,"time":"2014-12-08T09:33:31.880Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483798387.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7596,"time":"2014-12-08T09:37:08.408Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7596,"time":"2014-12-08T09:37:12.042Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7596,"time":"2014-12-08T09:37:12.044Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483808190.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7615,"time":"2014-12-08T09:37:24.262Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7615,"time":"2014-12-08T09:37:27.762Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7615,"time":"2014-12-08T09:37:27.764Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483808683.","component":"collector_api"}
+{"v":0,"level":50,"name":"newrelic","hostname":"ubuntu","pid":7615,"time":"2014-12-08T09:45:13.953Z","msg":"Calling metric_data on New Relic failed unexpectedly. Data will be held until it can be submitted:","component":"collector_api","syscall":"read","errno":"ECONNRESET","code":"ECONNRESET"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":7615,"time":"2014-12-08T09:45:13.953Z","msg":"Error on submission to New Relic (data held for redelivery):","syscall":"read","errno":"ECONNRESET","code":"ECONNRESET"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8174,"time":"2014-12-08T10:12:30.148Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8174,"time":"2014-12-08T10:12:33.680Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8174,"time":"2014-12-08T10:12:33.681Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483906981.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8201,"time":"2014-12-08T10:13:40.043Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8201,"time":"2014-12-08T10:13:43.654Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8201,"time":"2014-12-08T10:13:43.656Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483909057.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8257,"time":"2014-12-08T10:16:06.011Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8257,"time":"2014-12-08T10:16:09.597Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8257,"time":"2014-12-08T10:16:09.599Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483915993.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8540,"time":"2014-12-08T10:36:33.562Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8540,"time":"2014-12-08T10:36:37.457Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8540,"time":"2014-12-08T10:36:37.459Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483972166.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8566,"time":"2014-12-08T10:37:03.871Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8566,"time":"2014-12-08T10:37:07.590Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8566,"time":"2014-12-08T10:37:07.592Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483973342.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8688,"time":"2014-12-08T10:46:45.498Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8688,"time":"2014-12-08T10:46:49.161Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8688,"time":"2014-12-08T10:46:49.163Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1483999883.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8707,"time":"2014-12-08T10:47:22.411Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8707,"time":"2014-12-08T10:47:26.127Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8707,"time":"2014-12-08T10:47:26.128Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484001387.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8742,"time":"2014-12-08T10:49:14.644Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8742,"time":"2014-12-08T10:49:18.406Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8742,"time":"2014-12-08T10:49:18.408Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484006228.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8777,"time":"2014-12-08T10:50:22.970Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8777,"time":"2014-12-08T10:50:28.703Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8777,"time":"2014-12-08T10:50:28.706Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484011413.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8797,"time":"2014-12-08T10:50:55.914Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8797,"time":"2014-12-08T10:50:59.541Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8797,"time":"2014-12-08T10:50:59.542Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484012913.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8818,"time":"2014-12-08T10:51:17.959Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8818,"time":"2014-12-08T10:51:21.575Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8818,"time":"2014-12-08T10:51:21.576Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484014067.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8839,"time":"2014-12-08T10:51:46.097Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8839,"time":"2014-12-08T10:51:50.006Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8839,"time":"2014-12-08T10:51:50.008Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484015129.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8859,"time":"2014-12-08T10:52:11.288Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8859,"time":"2014-12-08T10:52:14.982Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8859,"time":"2014-12-08T10:52:14.984Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484016864.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:43.435Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:47.383Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:47.385Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484020085.","component":"collector_api"}

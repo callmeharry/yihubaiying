@@ -4,18 +4,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 		<title>选择医院</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+		<link type="text/css" rel="stylesheet" href="/javascripts/foundation/foundation.css">
 
-		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/jquery.mmenu.all.css" />
-		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/style.css" />
-		<link rel="stylesheet" href="../../public/javascripts/foundation/foundation.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/HospitalSelect.css">
 
-		<link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-		<link rel="stylesheet" type="text/css" href="../../public/stylesheets/HospitalSelect.css">
-		
-		<script type="text/javascript" src="../../public/javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="../../public/javascripts/jquery.easy-pie-chart.js"></script>
-		<script type="text/javascript" src="../../public/javascripts/o-script.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
+		<script type="text/javascript" src="/javascripts/o-script.js"></script>
 	</head>
 
 	<body class="o-page p-blog">
@@ -24,9 +23,9 @@
 			<%- include mUserHeader.html %>
 
 			<div id="content">
-				<% for(var i = 0; i < hospitals.length; i++) { %>
+				<% for(var i = 0; i < hospital.length; i++) { %>
 				<article>
-					<a href="departments/<%= hospital[i]._id %>">
+					<a href="departments?hospitalid=<%= hospital[i]._id %>">
 						<div>
 							<img class="hospitalPic" src="<%= hospital[i].imgsrc %>">
 						</div>

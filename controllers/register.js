@@ -4,9 +4,9 @@
  */
 
 var user = require('../proxy/user');
-var randomNum;
+var randomNum;// auth code
 exports.showRegister = function (req, res){
-    console.log('mobile_register');
+    console.log('mobile register');
     res.render('mobile/mRegister');
 };
 
@@ -18,7 +18,7 @@ exports.generateAuthCode = function () {
     console.log(randomNum);
 };
 
-exports.doRegister = function(req, res, next) {
+exports.handleRegister = function (req, res, next) {
     var phoneNumber = req.body.mobile;
     var socialNumber = req.body.social_number;
     var password = req.body.password;
@@ -39,7 +39,6 @@ exports.doRegister = function(req, res, next) {
                 res.send(err.message);
                 return;
             }
-            // 发送激活邮件
             res.send('register success');
         });
     });
