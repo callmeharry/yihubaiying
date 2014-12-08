@@ -25,12 +25,13 @@ router.get('/mobile', mobileIndex.showIndex);//show mobile index page
 
 //Mobile register page
 router.get('/mobile/register', mobileRegister.showRegister);//show mobile register page
-router.post('/mobile/generateAuthCode', mobileRegister.generateAuthCode);//generate a 6-digit auth code
+router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
 router.post('/mobile/register', mobileRegister.handleRegister);//handle register info
 
 //Mobile login page
-router.get('/mobile_login', mobileLogin.showLogin);
-router.post('/mobile_login', mobileLogin.handleLogin);
+router.get('/mobile/login', mobileLogin.showLogin);
+router.post('/mobile/generateAuthCode', mobileLogin.getAuthCode);
+router.post('/mobile/login', mobileLogin.handleLogin);
 
 //Book page
 router.get('/mobile/book/hospitals', mobileBook.showHospital);

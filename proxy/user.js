@@ -13,15 +13,17 @@ var utility = require('utility');
  * @param {Function} callback 回调函数
  * @returns {*}
  */
-exports.getUsersByPhoneNumber = function (phoneNumber, callback) {
-    if (phoneNumber.length === 0) {
-        return callback(null, []);
-    }
-    User.find({ phone_number: { $in: phoneNumber }}, callback);
-};
+//exports.getUsersByPhoneNumber = function (phoneNumber, callback) {
+//    if (phoneNumber.length === 0) {
+//        return callback(null, []);
+//    }
+//    User.find({ phone_number: { $in: phoneNumber }}, callback);
+//};
+
 exports.getOneUserByPhoneNumber = function (phoneNumber, callback) {
     User.findOne({phone_number: phoneNumber}, callback);
 };
+
 exports.newAndSave = function (mobileNumber, socialNumber, password, city, name, callback) {
     var user = new User();
     user.phone_number = mobileNumber;
@@ -30,4 +32,8 @@ exports.newAndSave = function (mobileNumber, socialNumber, password, city, name,
     user.user_state = city;
     user.real_name = name;
     user.save(callback);
+};
+
+exports.getOneUserByPhoneNumberAndPassword = function (phoneNumber, password, callback) {
+    User.findOne({phone_number: phoneNumber, password: password}, callback);
 };

@@ -40,37 +40,17 @@ exports.GenSession = function GenSession(user, res) {
         {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30, signed: true, httpOnly: true});
 };
 
-exports.AuthUser = function (req, res, next) {
-    var ep = new eventproxy();
-    ep.fail();
-
-    if (config.debug && req.cookies['mock_user']) {
-        var mockUser = JSON.parse(req.cookies['mock_user']);
-        req.session.user = new UserModel(mockUser);
-        return next();
+/**
+ * 生成六位验证码
+ * @constructor
+ */
+exports.genAuthCode = function GenerateAuthCode() {
+    var randomNum = "";
+    for (var i = 0; i < 6; ++i) {
+        randomNum += Math.floor(Math.random() * 10);
     }
-
-    ep.all('get_user', function (user) {
-        if (!user) {
-            return next();
-        }
-        user = res.locals.current_user = req.session.user = new UserModel(user);
-    });
-
-    if (req.session.user) {
-        ep.emit('get_user', req.session.user);
-    } else {
-        var authToken = req.signedCookies[config.auth_cookie_name];
-        if (!authToken) {
-            return next();
-        }
-
-        var auth = authToken.split('$$$$');
-        var userPhoneNumber = auth[0];
-        UserProxy.getUsersByPhoneNumber(userPhoneNumber, ep.done('get_user'));
-    }
+    console.log(randomNum);
 };
-
 
 
 

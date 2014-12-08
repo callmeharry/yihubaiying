@@ -10,12 +10,11 @@ exports.showRegister = function (req, res){
     res.render('mobile/mRegister');
 };
 
-exports.generateAuthCode = function () {
-    randomNum = "";
-    for (var i = 0; i < 6; i++) {
-        randomNum += Math.floor(Math.random() * 10);
-    }
-    console.log(randomNum);
+/**
+ * 获取验证码
+ */
+exports.getAuthCode = function (req, res) {
+    authMiddleWare.genAuthCode();
 };
 
 exports.handleRegister = function (req, res, next) {
