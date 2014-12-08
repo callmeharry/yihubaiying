@@ -23,11 +23,17 @@
 		
 </head>
 <body>
-<form class="form-horizontal" action="admin_login" method="post">
+	<form class="form-horizontal" method="post">
 		<div class="col-md-offset-1">
 	  		<span class="text-left text-primary"> <h1>医呼百应<small>管理员登录页面</small> </h1></span>
 	  	</div>
 	  	<div class="col-md-offset-4 col-md-4" style="margin-top:150px">
+			<% if (typeof(error) !== 'undefined' && error) { %>
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<strong><%= error %></strong>
+			</div>
+			<% } %>
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="name"> 用户名 </label>
 				<div class="col-sm-7">
@@ -42,7 +48,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-7 col-sm-2">
-					<input type="submit" name="Login" id="id_btnLogin" value="登录" class="btn btn-primary"/>
+					<button name="btnLogin" id="btnLogin" class="btn btn-primary"> 登录 </button>
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<script src="admin.js"></script>
+	<script src="/javascripts/admin.js"></script>
 	<style type="text/css">
 		.navbar-default{margin:0px;}
 		.subpanel{display:none;}
@@ -14,45 +14,7 @@
 	<title>AdminSys</title>
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-default" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header">
-		    <a class="navbar-brand" href="#">医呼百应<small>系统管理系统</small></a>
-		  </div>
-
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    <ul class="nav navbar-nav ">
-		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">信息管理<b class="caret"></b></a>
-		        <ul class="dropdown-menu">
-		          <li role="presentation"><a href="hosInfo.html">医院信息管理</a></li>
-		          <li class="divider"></li>
-		          <li role="presentation"><a href="userInfo.html">用户信息管理</a></li>
-		        </ul>
-		      </li>
-		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">反馈信息<b class="caret"></b></a>
-		        <ul class="dropdown-menu">
-		          <li role="presentation"><a href="hosFeedback.html">医院反馈信息</a></li>
-		          <li class="divider"></li>
-		          <li role="presentation"><a href="userFeedback.html">用户反馈信息</a></li>
-		        </ul>
-		      </li>
-		      <li role="presentation"><a href="exceptionManage.html">异常管理</a></li>
-		    </ul>
-		    <form class="navbar-form navbar-left" role="search">
-		      <div class="form-group">
-		        <input type="text" class="form-control" placeholder="Search">
-		      </div>
-		      <button type="submit" class="btn btn-default">搜索</button>
-		    </form>
-			<p class="navbar-text navbar-right">欢迎，管理员 <a id="logout" href="javascript:void(0)" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" data-content='<a href="adminLogin.html">退出</a>'>Admin</a></p>
-		  </div><!-- /.navbar-collapse -->  
-		</nav>
-	</header>
-	
+	<%- include header.html%>
 	<div class="panel panel-default" id="hosInfoManage">
 	  	<div class="panel-heading">
 	    	<h2 class="panel-title">医院信息管理</h2>
