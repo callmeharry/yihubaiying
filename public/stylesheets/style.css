@@ -365,7 +365,6 @@ article p.posts-summary { height: 69px; overflow:hidden; padding-right: 5px; }
 article div.a-meta {text-align: left; background-color: #f4f3f2; margin-top: 5px;padding-right: 10px;height: auto;}
 article div.a-meta.a-meta-left { text-align: left; margin-left:0px; padding: 5px; }
 article div.a-meta > a { text-decoration:none; }
-article div.a-meta > span { float:right; }
 article .article-img-pane { width:120px; height:120px; text-align:center; position:relative; float:left; margin-right:10px; overflow:hidden; }
 article .article-img-pane img { height:100%; max-width: inherit; }
 

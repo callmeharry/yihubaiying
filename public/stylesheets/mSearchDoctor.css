@@ -1,0 +1,17 @@
+form input{	
+	float: left;
+	width: 75% !important;
+}
+
+button{
+	text-align: center;
+	float: right;
+}
+
+div h1{
+	font-family: "微软雅黑";
+	font-size: 2em;
+	font-weight: bold;
+	color: #0066ff !important;
+	text-align: center;
+}
