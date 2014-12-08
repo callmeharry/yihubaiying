@@ -3,6 +3,7 @@
  * 医呼百应 医生模型
  * 根据14-05-数据库设计说明书v1.1.0完成
  * Todo：未加索引
+ * what happened??
  */
 
 var mongoose = require('mongoose');
