@@ -28,5 +28,7 @@ router.post('/mobile_register', mobileRegister.doRegister);
 router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay',getpost.do);
 
+//Book page
+router.get('/mobile_book_hospitalselect', book.)
 
 module.exports = router;
