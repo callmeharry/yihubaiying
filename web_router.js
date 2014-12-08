@@ -35,7 +35,8 @@ router.post('/mobile/login', mobileLogin.handleLogin);
 
 //Book page
 router.get('/mobile/book/hospitals', mobileBook.showHospital);
-router.get('/mobile/book/hospitals/departments', mobileBook.showDepartment);
+router.get('/mobile/book/departments', mobileBook.showDepartment);
+router.get('/mobile/book/doctors', mobileBook.showDoctor);
 
 //Test page
 router.get('/sms-test', smsTest.registerVerity);

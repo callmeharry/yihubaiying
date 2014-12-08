@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<title>医院科室</title>
+		<title>选择科室</title>
 
 		<link type="text/css" rel="stylesheet" href="/javascripts/jquery.mmenu.all.css"/>
 		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
@@ -25,10 +25,10 @@
 			<div id="content">
 				<article>
 					<div class="bigPic">
-						<img src="images/hospital2.jpg"/>
+						<img src="<%= hospital.imgsrc %>"/>
 					</div>
 					<div class="hospitalName">
-						<h2>北京市大兴区精神病医院</h2>
+						<h2><%= hospital.name %></h2>
 					</div>
 					
 					<div class="hospitalInfo">
@@ -36,11 +36,11 @@
 						<col width="25%"><col width="75%">
 							<tr>
 								<td><strong>地址：</strong></td>
-								<td><span>北京市大兴区黄村镇黄良路口北侧</span></td>
+								<td><span><%= hospital.address %></span></td>
 							</tr>
 							<tr>
 								<td><strong>电话：</strong></td>
-								<td><span>010-84265830</span></td>
+								<td><span><%= hospital.phoneNumber %></span></td>
 							</tr>
 							<tr>
 								<td><strong>预约周期:</strong></td>
@@ -54,48 +54,35 @@
 								<td><strong>停挂时间：</strong></td>
 								<td><span>下午15:00停止次日预约挂号 (周五15:00后停挂至下周一)</span></td>
 							</tr>
+							<tr>
+								<td><strong>成功预约数</strong></td>
+								<td><span><%= hospital.orderCount %></span></td>
+							</tr>
+
 						</table>
 					</div>
 				</article>
 
 				<div class="o-team">
 					<div class="o-team-person">
-						<h3>神经科</h3>
+						<% for(var i = 0; i < hospital.middleDepartments.length; i++) { %>
+						<h3><%= hospital.middleDepartments[i].name %></h3>
 						<table>
 							<tr>
-								<td><a href="#">神经科</a></td>
-								<td><a href="#">心理咨询</a></td>
-								<td></td>
+								<% for(var j = 0; j< hospital.middleDepartments[i].smallDepartments.length; j++) { %>
+								<td>
+									<a href="/mobile/book/doctors?departmentid=<%= hospital.middleDepartments[i].smallDepartments[j]._id %>"><%=
+										hospital.middleDepartments[i].smallDepartments[j].name %></a></td>
+								<% if( (j+1) % 3 == 0 || j == hospital.middleDepartments[i].smallDepartments.length - 1)
+								{ %>
 							</tr>
+							<% if( j < hospital.middleDepartments[i].smallDepartments.length - 1) { %>
+							<tr>
+								<% } %>
+								<% } %>
+								<% } %>
 						</table>
-						<h3>内科</h3>
-						<table>
-							<tr>
-								<td><a href="#">特需普通内科门诊(西院)</a></td>
-								<td><a href="#">肿瘤内科门诊内分泌科门诊(西院)</a></td>
-								<td><a href="#">心内科门诊(西院)</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">神经内科癫痫门诊</a></td>
-								<td><a href="#">普通内科门诊</a></td>
-								<td><a href="#">脑血管病专科门诊</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">头疼专科门诊</a></td>
-								<td><a href="#">特需肿瘤内科门诊</a></td>
-								<td><a href="#">特需神经科门诊</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">特需内分泌科门诊</a></td>
-								<td><a href="#">肾内科门诊(西院)</a></td>
-								<td><a href="#">血友病门诊(西院)</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">普通内科门诊(西院)</a></td>
-								<td><a href="#">特需肿瘤内科门诊(西院)</a></td>
-								<td></td>
-							</tr>
-						</table>
+						<% } %>
 					</div>
 				</div>
 			</div>
