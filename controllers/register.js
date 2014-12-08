@@ -14,7 +14,12 @@ exports.showRegister = function (req, res){
  * 获取验证码
  */
 exports.getAuthCode = function (req, res) {
-    authMiddleWare.genAuthCode();
+    //authMiddleWare.genAuthCode();
+    var randomNum = "";
+    for (var i = 0; i < 6; ++i) {
+        randomNum += Math.floor(Math.random() * 10);
+    }
+    console.log(randomNum);
 };
 
 exports.handleRegister = function (req, res, next) {

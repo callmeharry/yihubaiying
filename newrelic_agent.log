@@ -627,3 +627,31 @@
 {"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:43.435Z","msg":"Starting New Relic for Node.js connection process."}
 {"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:47.383Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
 {"v":0,"level":30,"name":"newrelic","hostname":"ubuntu","pid":8897,"time":"2014-12-08T10:53:47.385Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484020085.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15688,"time":"2014-12-08T14:20:26.100Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13796,"time":"2014-12-08T14:21:44.420Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13796,"time":"2014-12-08T14:21:56.213Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13796,"time":"2014-12-08T14:21:56.216Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484613084.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15728,"time":"2014-12-08T14:24:37.141Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15728,"time":"2014-12-08T14:24:44.818Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15728,"time":"2014-12-08T14:24:44.820Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484621841.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":5800,"time":"2014-12-08T14:27:50.840Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":5800,"time":"2014-12-08T14:27:58.544Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":5800,"time":"2014-12-08T14:27:58.546Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484631299.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15236,"time":"2014-12-08T14:31:10.567Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15236,"time":"2014-12-08T14:31:16.713Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15236,"time":"2014-12-08T14:31:16.715Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484643559.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":16352,"time":"2014-12-08T14:47:25.836Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":16352,"time":"2014-12-08T14:47:34.750Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":16352,"time":"2014-12-08T14:47:34.752Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484695236.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":14636,"time":"2014-12-08T14:51:33.621Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":14636,"time":"2014-12-08T14:51:43.602Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":14636,"time":"2014-12-08T14:51:43.604Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484708610.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":9204,"time":"2014-12-08T14:52:51.625Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":9204,"time":"2014-12-08T14:52:57.401Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":9204,"time":"2014-12-08T14:52:57.403Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484712435.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15016,"time":"2014-12-08T14:53:33.339Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15016,"time":"2014-12-08T14:53:40.186Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15016,"time":"2014-12-08T14:53:40.189Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484713863.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13324,"time":"2014-12-08T15:01:43.100Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13324,"time":"2014-12-08T15:01:52.406Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":13324,"time":"2014-12-08T15:01:52.408Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1484739602.","component":"collector_api"}

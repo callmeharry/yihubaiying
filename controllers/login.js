@@ -8,6 +8,7 @@ var config = require('../config');
 var user = require('../proxy/user');
 var utility = require('utility');
 var authMiddleWare = require('../middlewares/auth');
+var randomNum; // auth code
 
 /**
  * 显示用户登录页面
@@ -23,7 +24,12 @@ exports.showLogin = function (req, res) {
  * 获取验证码
  */
 exports.getAuthCode = function (req, res) {
-    authMiddleWare.genAuthCode();
+    //authMiddleWare.genAuthCode();
+    var randomNum = "";
+    for (var i = 0; i < 6; ++i) {
+        randomNum += Math.floor(Math.random() * 10);
+    }
+    console.log(randomNum);
 };
 
 /**
@@ -61,6 +67,8 @@ exports.handleLogin = function (req, res, next) {
                 res.send(err.message);
                 return;
             }
+            console.log('login success');
+            res.render('mobile');
         });
     });
 };
