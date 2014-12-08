@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<title选择医院</title>
+		<title>选择医院</title>
 
 		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/jquery.mmenu.all.css" />
 		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/style.css" />
@@ -20,35 +20,26 @@
 
 	<body class="o-page p-blog">
 		<div id="page">
-			<div id="userInfo">
-				<div class="small-4 columns">
-					<span id="userName" class="userInfoSytle">Ma Bingying</span>
-				</div>
-				<!--<div class="small-3 columns icon">o</div>-->
-				<div class="small-3 small-offset-3 columns">
-					<span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
-				</div>
-				<div class="small-2 columns">
-					<span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
-				</div>
-			</div>
+
+			<%- include mUserHeader.html %>
 
 			<div id="content">
+				<% for(var i = 0; i < hospitals.length; i++) { %>
 				<article>
-					<a href="Departments.html">
+					<a href="departments/<%= hospital[i]._id %>">
 						<div>
-							<img class="hospitalPic" src="images/hospital2.jpg">
+							<img class="hospitalPic" src="<%= hospital[i].imgsrc %>">
 						</div>
-						<h2>北京市大兴区精神病医院</h2>
+						<h2><%= hospital[i].name %></h2>
 						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-							地址：北京市大兴区黄村镇黄良路口北侧
+							地址：<%= hospital[i].address %>
 						</div>
 						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-							电话：010-84265830
+							电话：<%= hospital[i].address %>
 						</div>
 					</a>
 				</article>
-
+				<% } %>
 				<article>
 					<a href="Departments.html">
 						<div>
