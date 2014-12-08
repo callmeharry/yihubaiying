@@ -1,6 +1,6 @@
 /**
  * Created by Megas on 2014/12/2.
- * 用户登录
+ * yihubaiying login page
  */
 
 var validator = require('validator');
@@ -13,7 +13,7 @@ var authMiddleWare = require('../middlewares/auth');
 /**
  * 显示用户登录页面
  * @param {HttpRequest} req
- * @param {HttpRespomse} res
+ * @param {HttpResponse} res
  */
 exports.showLogin = function (req, res) {
     req.session._loginReferer = req.headers.referer;
@@ -35,7 +35,7 @@ exports.showLogin = function (req, res) {
  * @param {Function} next
  * @returns {*|String}
  */
-exports.login = function (req, res, next) {
+exports.handleLogin = function (req, res, next) {
     // ?
     var phoneNumber = validator.trim(req.body.name).toLowerCase();
     var password = validator.trim(req.body.password);

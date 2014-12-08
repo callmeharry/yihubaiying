@@ -11,7 +11,6 @@ var ObjectId = Schema.ObjectId;
 var config = require('../config');
 
 var HospitalSchema = new Schema({
-    hospital_id: { type: ObjectId },
     hospital_name: { type: String },
     hospital_intro: { type: String },
     hospital_is_validated: { type: Boolean, default: false },

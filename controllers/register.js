@@ -3,12 +3,12 @@
  * yihubaiying register page
  */
 
-var user = require('../proxy/user')
+var user = require('../proxy/user');
 var randomNum;
 exports.showRegister = function (req, res){
     console.log('mobile_register');
     res.render('mobile/mRegister');
-}
+};
 
 exports.generateAuthCode = function () {
     randomNum = "";
@@ -16,7 +16,8 @@ exports.generateAuthCode = function () {
         randomNum += Math.floor(Math.random() * 10);
     }
     console.log(randomNum);
-}
+};
+
 exports.doRegister = function(req, res, next) {
     var phoneNumber = req.body.mobile;
     var socialNumber = req.body.social_number;
@@ -42,5 +43,5 @@ exports.doRegister = function(req, res, next) {
             res.send('register success');
         });
     });
-}
+};
 

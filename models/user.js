@@ -26,14 +26,12 @@ var UserSchema = new Schema({
     favourite_dept: [{ type: String }],
     favourite_doctor: [
         {
-            favourite_doctor_id: { type: ObjectId },
             name: { type: String },
             hospital: { type: String }
         }
     ],
     feedback: [
         {
-            feedback_id: { type: ObjectId },
             content: { type: String },
             ifcheck: { type: Boolean, default: false },
             check_message: { type: String },
@@ -42,7 +40,6 @@ var UserSchema = new Schema({
     ],
     system_message: [
         {
-            system_message_id: { type: ObjectId },
             content: { type: String },
             date: { type: Date, default: Date.now }
         }
