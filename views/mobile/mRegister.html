@@ -3,10 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/foundation.css"/>
-    <!--<link rel="stylesheet" type="text/css" href="../../public/stylesheets/pc/register.css">-->
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mRegister.css"/>
+    
     <script src="javascripts/vendor/modernizr.js"></script>
+
+<link rel="stylesheet" href="../../public/stylesheets/foundation.css" />
+<link rel="stylesheet" type="text/css" href="../../public/stylesheets/mRegister.css">
+<script src="js/vendor/modernizr.js"></script>
+<script type="text/javascript">
+function showWarning()
+{
+element=document.getElementById('id_passWord').value;
+if (element.length>20 || element.length<6)
+  {
+  	//alert(document.getElementById("id_warning").innerHTML);
+		document.getElementById('id_warning').style.display="";
+  }
+else
+  {
+	  document.getElementById('id_warning').style.display="none";
+  }
+}
+
+function showWarning1()
+{
+element=document.getElementById('id_repeat_passWord').value;
+element1=document.getElementById('id_passWord').value;
+
+if (element!=element1)
+  {
+  	//alert(document.getElementById("id_warning").innerHTML);
+		document.getElementById('id_repeat_warning').style.display="";
+  }
+else
+  {
+	  document.getElementById('id_repeat_warning').style.display="none";
+  }
+}
+
+function showWarning2()
+{
+element=document.getElementById('id_phoneNumber').value;
+l=element.length;
+
+if (l!=11)
+  {
+  	//alert(document.getElementById("id_warning").innerHTML);
+		document.getElementById('id_phone_warning').style.display="";
+  }
+else
+  {
+	  document.getElementById('id_phone_warning').style.display="none";
+  }
+}
+
+
+</script>
 <title>注册</title>
 </head>
 <body>
@@ -16,7 +67,7 @@
     <form action="/mobile/register" method="post" id="register_form">
     <div class="row" align="center" style="margin-top:30px;" >
 		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="身份证号" name="social_number"/>
+			<input id="id_idNumber" name="social_number" type="text" placeholder="身份证号" />
 		</div>
    </div>
 
@@ -26,20 +77,48 @@
 		</div>
    </div>
  
-    <div class="row" align="center" style="margin-top:20px;">
-		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="密码" name="password"/>
+ 
+    <div class="row"  style="margin-top:20px;">
+		<div class="large-12 columns" >
+			<input id="id_passWord" name="password" type="password" onBlur="showWarning()" placeholder="密码" />
+            <span id="id_warning" name="warning" style="display:none; color:#DD2427;">密码长度在6-20位之间</span>
+		</div>
+   </div>
+   
+   <div class="row"  style="margin-top:20px;">
+		<div class="large-12 columns" >
+			<input id="id_repeat_passWord" name="repeat_passWord" type="password" onBlur="showWarning1()" placeholder="重复密码" />
+            <span id="id_repeat_warning" name="repeat_warning" style="display:none; color:#DD2427;">两次输入密码不一致</span>
 		</div>
    </div>
     
     <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="现居城市" name="city"/>
+            
+				<select name="city"> 
+                	<option value="0" selected>现居城市</option>
+					<option value="1">北京</option> 
+					<option value="2">天津</option> 
+					<option value="3">上海</option> 
+					<option value="4">广州</option> 
+                    <option value="5">淮安</option> 
+					<option value="6">徐州</option> 
+					<option value="7">无锡</option> 
+					<option value="8">太原</option> 
+                    <option value="9">长沙</option> 
+					<option value="10">青岛</option> 
+					<option value="11">西安</option> 
+					<option value="12">武汉</option> 
+				</select> 
+			 
 		</div>
    </div>
-    <div class="row" align="center" style="margin-top:20px;">
-		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="手机号" name="mobile"/>
+   
+   
+    <div class="row"  style="margin-top:20px;">
+		<div class="large-12 columns" >
+			<input id="id_phoneNumber" name="phoneNumber" onBlur="showWarning2()" type="text" placeholder="手机号" />
+            <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">手机输入有误</span>
 		</div>
    </div>
     <div class="row"  >
@@ -51,8 +130,8 @@
         </button>
 	</div>
     
-    <div class="large-12 columns" align="center" style="margin-top:40px;">
-        <input type="submit" class="small radius button"></button>
+    <div class="large-12 columns" align="center" style="margin-top:40px;">       
+		 <input type="submit" name="post" value="提交" class="small radius button" >
     </div>
     
     </form> 
