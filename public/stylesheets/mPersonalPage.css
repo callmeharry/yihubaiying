@@ -38,6 +38,20 @@
 	}
 	
 .sub_title{
-	color:#F7F7F7;
+	color:#000000;
 	margin-top:20px;
 	}	
+#userInfo{
+	background-color: #0066FF;
+	float: top;
+	height: 50px;
+	line-height: 50px;
+
+}
+.userInfoSytle{
+	text-align: center;
+	color: white;
+	font-size: 1.2em;
+	font-family:"微软雅黑";
+}
+	
