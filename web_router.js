@@ -7,13 +7,13 @@ var smsTest = require('./test/sms_test');
 var getpost = require('./test/getpost');
 var mobileRegister = require('./controllers/register');
 var admin = require('./controllers/admin');
+var mobileLogin = require('./controllers/login');
 var router = express.Router();
 
 
 //get controllers
 var index = require('./test/index');
 var user = require('./test/users');
-
 
 //Home page
 router.get('/', index);
@@ -22,6 +22,10 @@ router.get('/', index);
 router.get('/mobile_register', mobileRegister.showRegister);
 router.post('/mobile_generate_auth_code', mobileRegister.generateAuthCode);
 router.post('/mobile_register', mobileRegister.doRegister);
+
+//Mobile login page
+router.get('/mobile_login', mobileLogin.showLogin);
+router.post('/mobile_login', mobileLogin.handleLogin);
 
 //Test page
 router.get('/sms-test', smsTest.registerVerity);
