@@ -18,8 +18,8 @@ var IllnessSchema = new Schema({
     ill_theory: { type: String },
     ill_check: { type: String },
     ill_secure_method: { type: String },
-    recommend_doc: [{ type: ObjectId }],
-    recommend_hos: [{ type: ObjectId }]
+    recommend_doc: [{type: ObjectId}],
+    recommend_hos: [{type: ObjectId}]
 });
 
 mongoose.model('Illness', IllnessSchema);
