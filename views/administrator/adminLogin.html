@@ -27,9 +27,10 @@
 		<div class="col-md-offset-1">
 	  		<span class="text-left text-primary"> <h1>医呼百应<small>管理员登录页面</small> </h1></span>
 	  	</div>
+
 	  	<div class="col-md-offset-4 col-md-4" style="margin-top:150px">
 			<% if (typeof(error) !== 'undefined' && error) { %>
-			<div class="alert alert-error">
+			<div class="alert alert-warning col-md-offset-4" role="alert">
 				<a class="close" data-dismiss="alert" href="#">&times;</a>
 				<strong><%= error %></strong>
 			</div>
