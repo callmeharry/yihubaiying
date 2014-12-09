@@ -1,11 +1,10 @@
 /**
  * Created by Megas on 2014/12/2.
- * 与user model对应,用于和数据库交互
+ * 与user model对应,用于提供数据
  */
 
 var models = require('../models');
 var User = models.User;
-var utility = require('utility');
 
 /**
  * 根据用户名列表查找用户列表

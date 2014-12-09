@@ -13,6 +13,9 @@ var config = require('../config');
 var HospitalSchema = new Schema({
     hospital_name: { type: String },
     hospital_intro: { type: String },
+    hospital_city: { type: String },
+    hospital_location: { type: String },
+    hospital_tel: { type: String },
     hospital_is_validated: { type: Boolean, default: false },
     hospital_dept: [
         {
