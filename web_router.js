@@ -49,7 +49,29 @@ router.post('/pay',getpost.do);
 
 router.get('/admin_login', admin.showAdminLogin);
 router.post('/admin_login', admin.adminLogin);
-router.get('/admin/index', admin.adminIndex);
-router.get('/');
+
+//医院信息
+router.get('/admin/hosInfo', admin.hosInfo);
+//医院反馈
+router.get('/admin/hosFeedback', admin.hosFeedback);
+//医院添加
+router.get('/admin/hosAdd', admin.addHos);
+//医院端修改
+router.get('/admin/hosAlter', admin.changeHosInfo);
+
+//科室信息
+router.get('/admin/deptInfo', admin.deptInfo);
+//医生信息
+router.get('/admin/docInfo', admin.docInfo);
+//出诊信息
+router.get('/admin/callInfo', admin.callInfo);
+//用户反馈
+router.get('/admin/userFeedback', admin.userFeedback);
+//用户信息
+router.get('/admin/userInfo', admin.userInfo);
+
+//异常信息
+router.get('/admin/exceptionManage', admin.exceptionManage);
+
 
 module.exports = router;

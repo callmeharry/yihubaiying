@@ -61,7 +61,72 @@ exports.adminLogin = function (req, res, next) {
 
 };
 
-exports.adminIndex = function (req, res) {
+/**
+ * show hospital info
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.hosInfo = function (req, res, next) {
 
-    res.render('administrator/callInfo');
+    res.render('administrator/hosInfo');
 };
+
+/**
+ * add hospital
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.addHos = function (req, res, next) {
+    res.render('administrator/hosAdd');
+};
+
+/**
+ * change hospitalinfo
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.changeHosInfo = function (req, res, next) {
+
+    res.render('administrator/hosAlter');
+};
+
+exports.deptInfo = function (req, res, next) {
+    res.render('administrator/deptInfo');
+};
+
+
+exports.docInfo = function (req, res, next) {
+    res.render('administrator/docInfo');
+};
+
+exports.callInfo = function (req, res, next) {
+    res.render('administrator/callInfo');
+
+};
+
+exports.userInfo = function (req, res, next) {
+    res.render('administrator/userInfo');
+};
+
+exports.exceptionManage = function (req, res, next) {
+
+    res.render('administrator/exceptionManage');
+};
+
+exports.hosFeedback = function (req, res, next) {
+
+    res.render('administrator/hosFeedback.html');
+};
+
+exports.userFeedback = function (req, res, next) {
+    res.render('administrator/userFeedback.html');
+};
+
+
+
+
+
+
