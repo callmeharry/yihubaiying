@@ -50,6 +50,6 @@ router.post('/pay',getpost.do);
 router.get('/admin_login', admin.showAdminLogin);
 router.post('/admin_login', admin.adminLogin);
 router.get('/admin/index', admin.adminIndex);
-
+router.get('/');
 
 module.exports = router;

@@ -22,7 +22,7 @@ var UserSchema = new Schema({
     credit_level: { type: Number },
     register_time: { type: Date, default: Date.now },
     is_active: { type: Boolean, default: true },
-    favourite_hospital: [{ type: String }],
+    favourite_hospital: [{type: String}],
     favourite_dept: [{ type: String }],
     favourite_doctor: [
         {

@@ -4,6 +4,7 @@
 
 var validator = require('validator');
 var eventproxy = require('eventproxy');
+var Hospital = require('../proxy').Hospital;
 /**
  * show Admin Login info
  * @param req
@@ -32,13 +33,31 @@ exports.adminLogin = function (req, res, next) {
     });
 
     if (!name || !password) {
-        ep.emit('login_err', '')
+        ep.emit('login_err', 'name or password is too short!');
         return;
     }
 
     if (name === 'admin' && password === '123') {
+
+
+        /**
+         Hospital.newHospital("beijingshi shenjingbing yiyuan","hehe shenjingbingyuan!",function(err){
+            if(err){
+                return next(err);
+            }
+
+            console.log("success! save in the Mongo");
+
+        });
+         **/
+
+
         res.redirect('/admin/index');
+    } else {
+        ep.emit('login_err', "username or password is wrong!");
+        return;
     }
+
 
 };
 
