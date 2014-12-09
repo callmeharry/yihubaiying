@@ -11,6 +11,7 @@ mongoose.connect(config.db, function (err) {
         console.error('connect to %s error: ', config.db, err.message);
         process.exit(1);
     }
+    console.log("mongo server has started");
 });
 
 require('./user');

@@ -10,7 +10,7 @@ var debug = true;
 
 var config = {
     //debug为true时，用于本地测试
-    debug: debug,
+    debug: true,
 
     //mongodb配置
     db: 'mongodb://127.0.0.1/yihubaiying',
@@ -19,7 +19,7 @@ var config = {
     auth_cookie_name: 'yihubaiying',
 
     // 程序运行的端口
-    port: 23333
+    port: 3000
 };
 
 module.exports = config;
