@@ -4,7 +4,7 @@
  */
 
 var user = require('../proxy/user');
-var randomNum;// 验证码
+var randomNum = "";// 验证码
 
 /**
  * 显示注册页面
@@ -21,7 +21,6 @@ exports.showRegister = function (req, res){
  */
 exports.getAuthCode = function (req, res) {
     //authMiddleWare.genAuthCode();
-    var randomNum = "";
     for (var i = 0; i < 6; ++i) {
         randomNum += Math.floor(Math.random() * 10);
     }
