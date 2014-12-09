@@ -30,7 +30,7 @@ router.post('/mobile/register', mobileRegister.handleRegister);//handle register
 
 //Mobile login page
 router.get('/mobile/login', mobileLogin.showLogin);
-router.post('/mobile/generateAuthCode', mobileLogin.getAuthCode);
+router.post('/mobile/generateAuthCodeL', mobileLogin.getAuthCode);
 router.post('/mobile/login', mobileLogin.handleLogin);
 
 //Book page

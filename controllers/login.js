@@ -3,12 +3,10 @@
  * yihubaiying login page
  */
 
-var eventproxy = require('eventproxy');
 var config = require('../config');
 var user = require('../proxy/user');
-var utility = require('utility');
 var authMiddleWare = require('../middlewares/auth');
-var randomNum; // auth code
+var randomNumLogin  = ""; // auth code
 
 /**
  * 显示用户登录页面
@@ -25,28 +23,27 @@ exports.showLogin = function (req, res) {
  */
 exports.getAuthCode = function (req, res) {
     //authMiddleWare.genAuthCode();
-    var randomNum = "";
     for (var i = 0; i < 6; ++i) {
-        randomNum += Math.floor(Math.random() * 10);
+        randomNumLogin += Math.floor(Math.random() * 10);
     }
-    console.log(randomNum);
+    console.log(randomNumLogin);
 };
 
 /**
  * 处理用户登录
  *
  * @param {HttpRequest} req
- * @param {HttpResponse} res
- * @param {Function} next
- * @returns {*|String}
- */
+* @param {HttpResponse} res
+* @param {Function} next
+* @returns {*|String}
+*/
 exports.handleLogin = function (req, res, next) {
-
-    var phoneNumber = req.body.mobile;
-    var password = req.body.password;
+    var phoneNumber = req.body.phoneNumber;
+    var password = req.body.passWord;
     var authCode = req.body.auth_code;
+    console.log(phoneNumber+" "+password+" "+authCode+" "+randomNumLogin);
 
-    if (!(authCode === randomNum)) {
+    if (authCode != randomNumLogin) {
         res.send('error_auth_code');
         return;
     }
@@ -57,8 +54,8 @@ exports.handleLogin = function (req, res, next) {
     //    return res.render('mobile/mLogin', {error: '手机号或密码不能为空'});
     //}
 
-    user.getOneUserByPhoneNumber(phoneNumber, function (err, user) {
-        if ( user == null ) {
+    user.getOneUserByPhoneNumber(phoneNumber, function (err, userl) {
+        if ( userl == null ) {
             res.send('user does not exist.');
             return;
         }
@@ -68,7 +65,7 @@ exports.handleLogin = function (req, res, next) {
                 return;
             }
             console.log('login success');
-            res.render('mobile');
+            return res.redirect('/mobile');
         });
     });
 };
