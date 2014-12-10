@@ -5,19 +5,19 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 		<title>日期选择</title>
 
-		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/jquery.mmenu.all.css" />
-		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/style.css" />
-		<link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css" />
+		<link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
 
-		<link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-		<link rel="stylesheet" type="text/css" href="../../public/stylesheets/DatePicker.css">
-			
-		<script type="text/javascript" src="./../public/javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="./../public/javascripts/photoswipe/klass.min.js"></script>
-		<script type="text/javascript" src="./../public/javascripts/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="./../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
-		<script type="text/javascript" src="./../public/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-		<script type="text/javascript" src="./../public/javascripts/o-script.js"></script>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/DatePicker.css">
+
+		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+		<script type="text/javascript" src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+		<script type="text/javascript" src="/javascripts/o-script.js"></script>
 	</head>
 	<body class="o-page">
 		<div id="page">
@@ -44,69 +44,23 @@
 					<div class="gallery-row">
 						<div id="PGalleryTwoC" class="row">
 							<div class="mobile-two">
+								<% for(var i = 0; i < time.length; i++) { %>
 								<div class="gallery-item dateItem">
-									<a href="#">
-										<div class="dateWindow canBeOrdered">
-											<span>2014-11-29</span>
+									<a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= time[i].date %>&time=<%= time[i].time %>">
+										<div class="dateWindow <%= time[i].canBeOrdered %>">
+											<span><%= time[i].date %></span>
+											<span><%= time[i].weekOfDay %></span>
 											<br/>
-											<span>星期六</span>
+											<span><%= time[i].time %></span>
 											<br/>
+											<span><%= time[i].source %></span>
 											<br/>
-											<span>可预约</span>
-											<br/>
 										</div>
 									</a>
 								</div>
-								<div class="gallery-item">
-									<a href="#">
-										<div class="dateWindow cannotBeOrdered">
-											<span>2014-11-30</span>
-											<span>星期日</span>
-											<span>不可预约</span>
-										</div>
-									</a>
-								</div>
-								<div class="gallery-item">
-									<a href="#">
-										<div class="dateWindow canBeOrdered">
-											<span>2014-12-01</span>
-											<span>星期一</span>
-											<span>可预约</span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="mobile-two">
-								<div class="gallery-item">
-									<a href="#">
-										<div class="dateWindow canBeOrdered">
-											<span>2014-12-02</span>
-											<span>星期二</span>
-											<span>可预约</span>
-										</div>
-									</a>
-								</div>
-								<div class="gallery-item">
-									<a href="#">
-										<div class="dateWindow cannotBeOrdered">
-											<span>2014-12-03</span>
-											<span>星期三</span>
-											<span>不可预约</span>
-										</div>
-									</a>
-								</div>
-								<div class="gallery-item">
-									<a href="#">
-										<div class="dateWindow canBeOrdered">
-											<span>2014-12-01</span>
-											<span>星期一</span>
-											<span>可预约</span>
-										</div>
-									</a>
-								</div>
+								<% } %>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>

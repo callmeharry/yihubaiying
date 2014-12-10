@@ -48,7 +48,7 @@ exports.handleRegister = function (req, res, next) {
                 res.send(err.message);
                 return;
             }
-            res.send('register success');
+            return res.redirect('/mobile');
         });
     });
 };

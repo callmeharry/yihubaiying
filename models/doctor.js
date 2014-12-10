@@ -17,7 +17,7 @@ var DoctorSchema = new Schema({
     doctor_advanced_disease: [{ type: String }],
     doctor_visit: [
         {
-            visit_period: { type: Number, default: 0},
+            //visit_period: { type: Number, default: 0},弃用该属性
             visit_time: { type: Number }, //时间类型
             is_on_duty: { type: Boolean, default:false },
             totalSource: { type: Number },

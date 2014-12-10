@@ -37,10 +37,9 @@ router.post('/mobile/login', mobileLogin.handleLogin);
 router.get('/mobile/book/hospitals', mobileBook.showHospital);
 router.get('/mobile/book/departments', mobileBook.showDepartment);
 router.get('/mobile/book/doctors', mobileBook.showDoctor);
+router.get('/mobile/book/time', mobileBook.showTime);
+router.get('/mobile/book/finishbook', mobileBook.finishBook);
 
-//Test page
-router.get('/sms-test', smsTest.registerVerity);
-router.post('/pay',getpost.do);
 
 
 /**
@@ -72,6 +71,11 @@ router.get('/admin/userInfo', admin.userInfo);
 
 //异常信息
 router.get('/admin/exceptionManage', admin.exceptionManage);
+
+
+//Test page
+router.get('/sms-test', smsTest.registerVerity);
+router.post('/pay', getpost.do);
 
 
 module.exports = router;
