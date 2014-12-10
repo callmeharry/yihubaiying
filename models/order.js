@@ -11,10 +11,13 @@ var ObjectId = Schema.ObjectId;
 var config = require('../config');
 
 var OrderSchema = new Schema({
+    order_date: { type: Date },
     order_time:{type:Date},
     order_see_time:{type:Date},
-    doctor:{type:ObjectId},
-    user:{type:ObjectId},
+    hospital_id: { type: ObjectId },
+    dept_id: { type: ObjectId },
+    doctor_id: { type : ObjectId },
+    user_id: { type : ObjectId },
     order_if_active:{type:Boolean, default: false},
     order_if_pay:{type:Boolean, default: false},
     order_if_print:{type:Boolean, default: false},

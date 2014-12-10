@@ -16,6 +16,9 @@ var HospitalSchema = new Schema({
     hospital_city: { type: String },
     hospital_location: { type: String },
     hospital_tel: { type: String },
+    hospital_weight: { type: Number},
+    hospital_order_count: { type: Number, default: 0 }, // 医院已有订单总量
+    hospital_imgsrc: { type: String }, // 医院图片路径
     hospital_is_validated: { type: Boolean, default: false },
     hospital_dept: [
         {
@@ -27,3 +30,5 @@ var HospitalSchema = new Schema({
 });
 
 mongoose.model('Hospital', HospitalSchema);
+
+

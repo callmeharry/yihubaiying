@@ -4,15 +4,14 @@
  */
 
 var eventproxy = require('eventproxy');
+var Hospital = require('../proxy/Hospital');
+var Order = require('../proxy/Order');
 
 /**
  * 显示医院列表
  * @param req
  * @param res
  * @param next
- * TODO:通过city(城市名)获取该城市的所有医院信息,依照热门程度降序排列
- * TODO:医院的科室属性中应该加上科室所含医生的数组,因为这里需要加上查找有号源的医院的功能.
- * TODO:imgsrc是图片的路径
  */
 exports.showHospital = function (req, res, next) {
     var city = req.query.city;
@@ -20,19 +19,24 @@ exports.showHospital = function (req, res, next) {
     var user = {_id: 123, name: 1234};
     var hospital = new Array();
     var eventProxy = new eventproxy();
-    //下面的数据要替换成数据库中的信息
-    hospital[0] = {name: 'name', address: 'add', phoneNumber: 'phone', _id: 'noid', orderCount: '333', imgsrc: null};
-    hospital[1] = {
-        name: 'name2',
-        address: 'add2',
-        phoneNumber: 'phone2',
-        _id: 'noid2',
-        orderCount: '3333',
-        imgsrc: null
-    };
-    //替换结束
-    return res.render('mobile/mHospitalSelect', {user: user, hospital: hospital});
-}
+
+    //Hospital.newHospital('hospital', 'hospitalIntro', '北京', function (err) {
+    //    if (err) {
+    //        console.log(err);
+    //    } else {
+    //        console.log('hospital existed');
+    //    }
+    //});
+
+    Hospital.getTenHospitalsByCity(city, function (err, hospitals) {
+        if (err) {
+            res.send("error happened during get ten hospitals by city.");
+        } else {
+            hospital = hospitals;
+            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospital});
+        }
+    });
+};
 
 /**
  * 显示科室列表
@@ -69,7 +73,7 @@ exports.showDepartment = function (req, res, next) {
     };
     //替换结束
     return res.render('mobile/mDepartments', {user: user, hospital: hospital});
-}
+};
 
 /**
  * 显示科室的医生列表
@@ -112,7 +116,7 @@ exports.showDoctor = function (req, res, next) {
         };
     }
     return res.render('mobile/mDoctors', {doctor: doctor, departmentid: departmentId, hospitalid: hospitalId});
-}
+};
 
 /**
  * 显示可预约时间
@@ -144,21 +148,28 @@ exports.showTime = function (req, res, next) {
         hospitalid: hospitalId,
         doctorid: doctorId
     });
-}
+};
 
 /**
  * 完成订单
  * @param req
  * @param res
  * @param next
- * TODO:将下面所有新建变量 以及session中的用户信息,加在一起 生成一份订单.
  */
 exports.finishBook = function (req, res, next) {
     var hospitalId = req.query.hospitalid;
     var departmentId = req.query.departmentid;
     var doctorId = req.query.doctorid;
+    var userId = req.session.user_id;
     var date = req.query.date;
     var time = req.query.time;
-    res.send('department:' + departmentId + ' hospital:' + hospitalId + ' doctor:' + doctorId + ' date:' + date + ' time:' + time);
 
-}
+    order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, date, time, function (err) {
+        if (err) {
+            res.send(err.message);
+            return;
+        }
+    });
+    res.send('department:' + departmentId + ' hospital:' + hospitalId + ' doctor:' + doctorId + 'user:' + userId + ' date:' + date + ' time:' + time);
+
+};

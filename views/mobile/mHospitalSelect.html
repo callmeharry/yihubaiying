@@ -23,21 +23,21 @@
 			<%- include mUserHeader.html %>
 
 			<div id="content">
-				<% for(var i = 0; i < hospital.length; i++) { %>
+				<% for(var i = 0, l = hospital.length; i < l; i++) { %>
 				<article>
 					<a href="/mobile/book/departments?hospitalid=<%= hospital[i]._id %>">
 						<div>
-							<img class="hospitalPic" src="<%= hospital[i].imgsrc %>">
+							<img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">
 						</div>
-						<h2><%= hospital[i].name %></h2>
+						<h2><%= hospital[i].hospital_name %></h2>
 						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-							地址：<%= hospital[i].address %>
-						</div>
-						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-							电话：<%= hospital[i].phoneNumber %>
+							地址：<%= hospital[i].hospital_location %>
 						</div>
 						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-							成功预约量：<%= hospital[i].orderCount %>
+							电话：<%= hospital[i].hospital_tel %>
+						</div>
+						<div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+							成功预约量：<%= hospital[i].hospital_order_count %>
 						</div>
 					</a>
 				</article>

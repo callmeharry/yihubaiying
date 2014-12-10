@@ -10,4 +10,4 @@
  */
 exports.showIndex = function (req, res) {
     res.render('mobile/mIndex');
-}
+};
