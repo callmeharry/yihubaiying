@@ -17,7 +17,6 @@ exports.showHospital = function (req, res, next) {
     var city = req.query.city;
     console.log(city);
     var user = {_id: 123, name: 1234};
-    var hospital = new Array();
     var eventProxy = new eventproxy();
 
     //Hospital.newHospital('hospital', 'hospitalIntro', '北京', function (err) {
@@ -32,8 +31,7 @@ exports.showHospital = function (req, res, next) {
         if (err) {
             res.send("error happened during get ten hospitals by city.");
         } else {
-            hospital = hospitals;
-            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospital});
+            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospitals});
         }
     });
 };

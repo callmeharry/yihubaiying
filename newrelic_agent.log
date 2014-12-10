@@ -1203,3 +1203,13 @@
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":8368,"time":"2014-12-10T19:00:21.866Z","msg":"Starting New Relic for Node.js connection process."}
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":8368,"time":"2014-12-10T19:00:29.284Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
 {"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":8368,"time":"2014-12-10T19:00:29.289Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1494101845.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15324,"time":"2014-12-10T19:03:08.239Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15324,"time":"2014-12-10T19:03:16.178Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15324,"time":"2014-12-10T19:03:16.180Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1494110335.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":22236,"time":"2014-12-10T19:03:30.027Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15872,"time":"2014-12-10T19:03:48.671Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15872,"time":"2014-12-10T19:03:55.497Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15872,"time":"2014-12-10T19:03:55.499Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1494111901.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15384,"time":"2014-12-10T19:04:16.652Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15384,"time":"2014-12-10T19:04:36.135Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/825969/applications/5532949","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Erythro","pid":15384,"time":"2014-12-10T19:04:36.136Z","msg":"Connected to collector-118.newrelic.com:443 with agent run ID 1494114556.","component":"collector_api"}
