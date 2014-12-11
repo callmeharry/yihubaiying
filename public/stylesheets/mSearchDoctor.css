@@ -1,12 +1,6 @@
-form input{	
-	float: left;
-	width: 75% !important;
-}
+form input{	float: left;}
 
-button{
-	text-align: center;
-	float: right;
-}
+button{float: right !important;}
 
 div h1{
 	font-family: "微软雅黑";
