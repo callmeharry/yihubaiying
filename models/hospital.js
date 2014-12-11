@@ -22,9 +22,14 @@ var HospitalSchema = new Schema({
     hospital_is_validated: { type: Boolean, default: false },
     hospital_dept: [
         {
-            hospital_dept_id: { type: ObjectId },
             hospital_dept_name: { type: String },
-            hospital_dept_doc: [{ type: ObjectId }]
+            hospital_subdept: [
+                {
+                    hospital_subdept_name: { type: String },
+                    hospital_subdept_doc: [{ type: ObjectId }]
+                }
+            ]
+
         }
     ]
 });

@@ -41,7 +41,6 @@ exports.showHospital = function (req, res, next) {
  * @param req
  * @param res
  * @param next
- * TODO:通过hospitalId查找医院的信息(基本信息,和科室信息,见下面的hospital对象)
  */
 exports.showDepartment = function (req, res, next) {
     var user = {_id: 123, name: 1234};
@@ -160,14 +159,14 @@ exports.finishBook = function (req, res, next) {
     var doctorId = req.query.doctorid;
     var userId = req.session.user_id;
     var date = req.query.date;
-    var time = req.query.time;
+    // var time = req.query.time;
 
-    order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, date, time, function (err) {
+    order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, date, function (err) {
         if (err) {
             res.send(err.message);
             return;
         }
     });
-    res.send('department:' + departmentId + ' hospital:' + hospitalId + ' doctor:' + doctorId + 'user:' + userId + ' date:' + date + ' time:' + time);
+    res.send('department:' + departmentId + ' hospital:' + hospitalId + ' doctor:' + doctorId + 'user:' + userId + ' date:' + date);
 
 };

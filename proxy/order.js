@@ -13,6 +13,5 @@ exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, 
     order.doctor_id = doctorId;
     order.user_id = userId;
     order.order_date = date;
-    order.order_time = time;
     order.save(callback);
 };

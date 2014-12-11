@@ -21,6 +21,7 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, callb
     hospital.hospital_location = 'hospital_location';
     hospital.hospital_tel = '00000000';
     hospital.hospital_is_validated = true;
+    hospital.hospital_dept.hospital_dept_name = "dept"
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };
@@ -35,6 +36,11 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, callb
 //    hospital.save(callback);
 //
 //};
+//todo:middleDepartments是什么？？
+exports.getHospitalsByHospitalId = function (id, callback) {
+    Hospital.findOne({_id: id},
+        {hospital_name: 1, hospital_location: 1, hospital_tel: 1,hospital_order_count: 1, hospital_imgsrc: 1})
+};
 
 /**
  * 通过city(城市名)获取该城市的所有医院信息,依照热门程度(hospital_weight)降序排列
@@ -45,8 +51,17 @@ exports.getTenHospitalsByCity = function (city, callback) {
     Hospital.find({hospital_city: city},
         {hospital_name: 1, hospital_location: 1, hospital_tel: 1,hospital_order_count: 1, hospital_imgsrc: 1},
         {sort: 'hospital_weight', limit: 10}, callback);
-    //Hospital.find({hospital_city: city}, null,
-    //    {sort: 'hospital_weight', limit: 10}, callback
-    //    );
+};
+
+/**
+ * 通过hospitalId查找医院的信息(基本信息,和科室信息)
+ * @param hospitalId
+ * @param departmentId
+ * @param callback
+ */
+exports.getDocsByHospitalIdAndDepartmentId = function (hospitalId, departmentId, callback) {
+    Hospital.findOne({hospital_id: hospitalId, "hospital_dept.hospital_subdept._id": departmentId},
+        {hospital_name: 1, hospital_location: 1, hospital_tel: 1,hospital_order_count: 1, hospital_imgsrc: 1},
+        {sort: 'hospital_dept.hospital_subdept._id', limit: 10}, callback);
 };
 
