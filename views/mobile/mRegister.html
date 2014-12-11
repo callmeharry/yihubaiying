@@ -56,6 +56,19 @@ else
   }
 }
 
+function commit()
+{
+	element1=document.getElementById('id_idNumber').value;
+	l1=element1.length;
+	if(l==0){document.getElementById('id_idNumber_warning').style.display="";}
+	else{
+		element2=document.getElementById('id_name').value;
+		l2=element2.length;
+		if(l==0){document.getElementById('id_name_warning').style.display="";}
+		
+		}
+  
+}
 
 </script>
 <title>注册</title>
@@ -65,15 +78,17 @@ else
 		<span id="topText">注册</span>
 	</div>
     <form action="/mobile/register" method="post" id="register_form">
-    <div class="row" align="center" style="margin-top:30px;" >
-		<div class="large-12 columns" align="center">
+    <div class="row"  style="margin-top:30px;" >
+		<div class="large-12 columns" >
 			<input id="id_idNumber" name="social_number" type="text" placeholder="身份证号" />
+            <span id="id_idNumber_warning" name="warning" style="display:none; color:#DD2427;">身份证号为空</span>
 		</div>
    </div>
 
    <div class="row" align="center" style="margin-top:20px;">
 		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="姓名" name="name"/>
+            <input type="text" placeholder="姓名" id="id_name" name="name"/>
+            <span id="id_name_warning" name="name_warning" style="display:none; color:#DD2427;">身份证号为空</span>
 		</div>
    </div>
  
@@ -131,7 +146,7 @@ else
 	</div>
     
     <div class="large-12 columns" align="center" style="margin-top:40px;">       
-		 <input type="submit" name="post" value="提交" class="small radius button" >
+		 <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button" >
     </div>
     
     </form> 
@@ -190,7 +205,7 @@ else
                 // 处理返回值
             }
         }
-    </script>
+  </script>
 
 </body>
 </html>
