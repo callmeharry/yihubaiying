@@ -14,12 +14,13 @@ var config = require('../config');
 var DoctorSchema = new Schema({
     doctor_name: { type: String },
     doctor_intro: { type: String },
-    doctor_advanced_disease: [{ type: String }],
+    doctor_advanced_illness_name: [{ type: String }],
+    doctor_good_reputation: { type: Number, default: 0},
     doctor_visit: [
         {
             //visit_period: { type: Number, default: 0},弃用该属性
-            visit_time: { type: Number }, //时间类型
-            is_on_duty: { type: Boolean, default:false },
+            visit_start_time: { type: Date },
+            visit_end_time: { type: Date },
             totalSource: { type: Number },
             leftSource: { type: Number }
         }

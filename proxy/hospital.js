@@ -12,18 +12,33 @@ var Hospital = models.Hospital;
  * @param hospitalIntro
  * @param callback
  */
-exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, callback) {
+exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, i, callback) {
 
-    var hospital = new Hospital();
-    hospital.hospital_name = hospitalName;
-    hospital.hospital_intro = hospitalIntro;
-    hospital.hospital_city = hospitalCity;
-    hospital.hospital_location = 'hospital_location';
-    hospital.hospital_tel = '00000000';
-    hospital.hospital_is_validated = true;
-    hospital.hospital_dept.hospital_dept_name = "dept"
+    var hospital = new Hospital({
+        hospital_name: hospitalName,
+        hospital_intro : hospitalIntro,
+        hospital_city : hospitalCity,
+        hospital_location : "hospitalLocation" + i,
+        hospital_tel : i + "0000000",
+        hospital_is_validated : true
+
+    });
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
+};
+
+exports.newDepartment = function (deptName, i, callback) {
+    var department = new Array({
+        hospital_dept_name: deptName + i,
+
+    })
+};
+
+exports.newSubDept = function (subDeptName, i, callback) {
+    var subDeptName = new Array({
+        hospital_subdept_name: subDeptName + i,
+
+    })
 };
 // 加入权重的函数
 //exports.newHospital = function (hospitalName, hospitalIntro, hospitalWeight, callback) {

@@ -18,7 +18,7 @@ var UserProxy = require('../proxy/user');
  * @constructor
  */
 exports.UserRequired = function (req, res, next) {
-    if (!req.session || !req.sessionID.user) {
+    if (!req.session || !req.session.user_id) {
         return res.status(403).send('您还未登录');
     }
     next();
