@@ -25,6 +25,20 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };
+
+exports.newDepartment = function (deptName, i, callback) {
+    var department = new Array({
+        hospital_dept_name: deptName + i,
+
+    })
+};
+
+exports.newSubDept = function (subDeptName, i, callback) {
+    var subDeptName = new Array({
+        hospital_subdept_name: subDeptName + i,
+
+    })
+};
 // 加入权重的函数
 //exports.newHospital = function (hospitalName, hospitalIntro, hospitalWeight, callback) {
 //
