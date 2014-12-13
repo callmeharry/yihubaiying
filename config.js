@@ -19,7 +19,9 @@ var config = {
     auth_cookie_name: 'yihubaiying',
 
     // 程序运行的端口
-    port: 3000
+    port: 3000,
+
+    page_limit: 20
 };
 
 module.exports = config;

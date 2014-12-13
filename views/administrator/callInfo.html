@@ -29,9 +29,9 @@
 		</nav>
 
 		<ol class="breadcrumb">
-		 <li><a href="deptInfo.html">xxx医院</a></li>
-		 <li><a href="docInfo.html">xxx科室</a></li>
-		 <li class="active"><a href="callInfo.html">xxx医生</a></li>
+			<li><a href="/admin/deptInfo">xxx医院</a></li>
+			<li><a href="/admin/docInfo">xxx科室</a></li>
+			<li class="active"><a href="/admin/callInfo">xxx医生</a></li>
 		</ol>
 
 	  	<div class="subpanel" id="callInfo">
@@ -60,40 +60,76 @@
 						</td>
 						<!-- Modal -->
 						<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title" id="myModalLabel">出诊信息</h4>
-						      </div>
-						      <div class="modal-body">
-						        <form class="input-group">
-								  <div class="input-group">
-									  <span class="input-group-addon">出诊时间段</span>
-									  <input type="text" class="form-control" placeholder="出诊时间段">
-								  </div>
-								  <div class="input-group">
-									  <span class="input-group-addon">具体时间</span>
-									  <input type="text" class="form-control" placeholder="具体时间">
-								  </div>
-								  <div class="input-group">
-									  <span class="input-group-addon">是否出诊</span>
-									  <input type="text" class="form-control" placeholder="是否出诊">
-								  </div>
-								  <div class="input-group">
-									  <span class="input-group-addon">号源总量</span>
-									  <input type="text" class="form-control" placeholder="号源总量">
-								  </div>
-								  <div class="input-group">
-									  <span class="input-group-addon">剩余号源数量</span>
-									  <input type="text" class="form-control" placeholder="剩余号源数量">
-								  </div>
-								  <button type="submit" class="btn btn-default">修改</button>
-								  <button type="reset" class="btn btn-primary">重置</button>
-								</form>
-						      </div>
-						    </div><!-- /.modal-content -->
-						  </div><!-- /.modal-dialog -->
+							<div class="modal-dialog">
+								<div class="modal-content col-md-8">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">出诊信息</h4>
+									</div>
+									<div class="modal-body">
+										<form class="input-group">
+											<div class="input-group">
+												<span class="input-group-addon">出诊时间段</span>
+
+												<div class="form-control">
+													<input type="time" id="starttime">至<input type="time" id="endtime">
+												</div>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon">具体时间</span>
+												<input type="time" class="form-control" placeholder="具体时间"
+													   id="specifictime">
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon">是否出诊</span>
+												<select class="form-control">
+													<option value="1">是</option>
+													<option value="2">否</option>
+												</select>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon">号源总量</span>
+												<select class="form-control">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+												</select>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon">剩余号源数量</span>
+												<select class="form-control">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+												</select>
+											</div>
+											<button type="submit" class="btn btn-default">修改</button>
+											<button type="reset" class="btn btn-primary">重置</button>
+										</form>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
 						</div><!-- /.modal -->
 					</tr>
 				</tbody>

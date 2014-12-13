@@ -12,16 +12,16 @@ var Hospital = models.Hospital;
  * @param hospitalIntro
  * @param callback
  */
-exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, callback) {
+exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospitalLocation,
+                                hospitalTel, hospitalWeight, callback) {
 
     var hospital = new Hospital();
     hospital.hospital_name = hospitalName;
     hospital.hospital_intro = hospitalIntro;
     hospital.hospital_city = hospitalCity;
-    hospital.hospital_location = 'hospital_location';
-    hospital.hospital_tel = '00000000';
+    hospital.hospital_location = hospitalLocation;
+    hospital.hospital_tel = hospitalTel;
     hospital.hospital_is_validated = true;
-    hospital.hospital_dept.hospital_dept_name = "dept"
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };
@@ -64,4 +64,20 @@ exports.getDocsByHospitalIdAndDepartmentId = function (hospitalId, departmentId,
         {hospital_name: 1, hospital_location: 1, hospital_tel: 1,hospital_order_count: 1, hospital_imgsrc: 1},
         {sort: 'hospital_dept.hospital_subdept._id', limit: 10}, callback);
 };
+
+/**
+ * get total number of hospital
+ * @param query
+ * @param callback
+ */
+exports.getCountByQuery = function (query, callback) {
+    Hospital.count(query, callback);
+};
+
+
+exports.getHospitalsByQuery = function (query, opt, callback) {
+    Hospital.find(query, '', opt, callback);
+};
+
+
 

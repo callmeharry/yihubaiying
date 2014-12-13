@@ -36,3 +36,13 @@ exports.newAndSave = function (mobileNumber, socialNumber, password, city, name,
 exports.getOneUserByPhoneNumberAndPassword = function (phoneNumber, password, callback) {
     User.findOne({phone_number: phoneNumber, password: password}, callback);
 };
+
+
+exports.getUserByQuery = function (query, opt, callback) {
+    User.find(query, '', opt, callback);
+};
+
+exports.getCountByQuery = function (query, callback) {
+    User.count(query, callback);
+
+}

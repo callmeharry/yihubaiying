@@ -54,7 +54,9 @@ router.get('/admin/hosInfo', admin.hosInfo);
 //医院反馈
 router.get('/admin/hosFeedback', admin.hosFeedback);
 //医院添加
-router.get('/admin/hosAdd', admin.addHos);
+router.get('/admin/hosAdd', admin.showAddHos);
+router.post('admin/hostAdd', admin.addHos);
+
 //医院端修改
 router.get('/admin/hosAlter', admin.changeHosInfo);
 

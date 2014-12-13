@@ -4,8 +4,8 @@
  */
 
 var eventproxy = require('eventproxy');
-var Hospital = require('../proxy/Hospital');
-var Order = require('../proxy/Order');
+var Hospital = require('../proxy/hospital');
+var Order = require('../proxy/order');
 
 /**
  * 显示医院列表

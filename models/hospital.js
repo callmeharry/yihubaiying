@@ -17,6 +17,7 @@ var HospitalSchema = new Schema({
     hospital_location: { type: String },
     hospital_tel: { type: String },
     hospital_weight: { type: Number},
+    create_at: {type: Date, default: Date.now},
     hospital_order_count: { type: Number, default: 0 }, // 医院已有订单总量
     hospital_imgsrc: { type: String }, // 医院图片路径
     hospital_is_validated: { type: Boolean, default: false },

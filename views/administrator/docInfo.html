@@ -15,41 +15,48 @@
 <body>
 	<%- include header.html%>
 	<div class="panel panel-default" id="hosInfoManage">
-	  	<div class="panel-heading">
-	    	<h2 class="panel-title">医院信息管理</h2>
-	  	</div>
-		
-		<nav class="navbar navbar-default" role="navigation">
-		  	<!-- Collect the nav links, forms, and other content for toggling -->
-			<ul class="nav nav-pills">
-				<li class="active"><a href="/admin/hosInfo">查看医院</a></li>
-				<li><a href="/admin/hosAdd">新增医院</a></li>
-				<li><a href="/admin/hosAlter">医院端修改</a></li>
-			</ul>
-		</nav>
+		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-		 <li><a href="deptInfo.html">xxx医院</a></li>
-		 <li class="active"><a href="docInfo.html">xxx科室</a></li>
+			<li><a href="/admin/hosInfo">xxx医院</a></li>
+			<li class="active"><a href="/admin/docInfo">xxx科室</a></li>
 		</ol>
 
+		<button type="button" class="btn btn-default btn-info" data-toggle="modal" data-target="#docAddModal">新增医生
+		</button>
+		<div class="modal fade" id="docAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			 aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="">新增医生</h4>
+					</div>
+					<div class="modal-body">
+						<form class="input-group col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">医生姓名</span>
+								<input type="text" class="form-control" placeholder="医生姓名">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">医生简介</span>
+								<textarea class="form-control" name="医生简介" id="" cols="30" rows="10"></textarea>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">擅长项目</span>
+								<input type="text" class="form-control" placeholder="擅长项目">
+							</div>
+							<button type="submit" class="btn btn-default">新增</button>
+							<button type="reset" class="btn btn-primary">重置</button>
+						</form>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
 	  	<div class="panel-body subpanel" id="docInfo">
-			<form class="col-md-8">
-			  <div class="input-group">
-				  <span class="input-group-addon">新增医生姓名</span>
-				  <input type="text" class="form-control" placeholder="姓名">
-			  </div>
-			  <div class="input-group">
-				  <span class="input-group-addon">新增医生简介</span>
-				  <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-			  </div>
-			  <div class="input-group">
-				  <span class="input-group-addon">医生擅长项目</span>
-				  <input type="text" class="form-control" placeholder="擅长项目">
-			  </div>
-			  <button type="submit" class="btn btn-default">新增</button>
-			  <button type="reset" class="btn btn-primary">重置</button>
-			</form>
 	    	<table class="table table-hover">
 				<thead>
 					<tr>
