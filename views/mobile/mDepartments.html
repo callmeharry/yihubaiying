@@ -1,91 +1,92 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<title>选择科室</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>选择科室</title>
 
-		<link type="text/css" rel="stylesheet" href="/javascripts/jquery.mmenu.all.css"/>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
-		<link rel="stylesheet" href="/javascripts/foundation/foundation.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/javascripts/foundation/foundation.css">
 
-		<link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
-		<link rel="stylesheet" type="text/css" href="/stylesheets/Departments.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Departments.css">
 
-		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
-		<script type="text/javascript" src="/javascripts/o-script.js"></script>
-	</head>
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
+    <script type="text/javascript" src="/javascripts/o-script.js"></script>
+</head>
 
-	<body class="o-page p-blog">
-		<div id="page">
-			<%- include mUserHeader.html %>
+<body class="o-page p-blog">
+<div id="page">
+    <%- include mUserHeader.html %>
 
-			<div id="content">
-				<article>
-					<div class="bigPic">
-						<img src="<%= hospital.imgsrc %>"/>
-					</div>
-					<div class="hospitalName">
-						<h2><%= hospital.name %></h2>
-					</div>
-					
-					<div class="hospitalInfo">
-						<table>
-						<col width="25%"><col width="75%">
-							<tr>
-								<td><strong>地址：</strong></td>
-								<td><span><%= hospital.address %></span></td>
-							</tr>
-							<tr>
-								<td><strong>电话：</strong></td>
-								<td><span><%= hospital.phoneNumber %></span></td>
-							</tr>
-							<tr>
-								<td><strong>预约周期:</strong></td>
-								<td><span>9天</span></td>
-							</tr>
-							<tr>
-								<td><strong>放号时间：</strong></td>
-								<td><span>16:00</span></td>
-							</tr>
-							<tr>
-								<td><strong>停挂时间：</strong></td>
-								<td><span>下午15:00停止次日预约挂号 (周五15:00后停挂至下周一)</span></td>
-							</tr>
-							<tr>
-								<td><strong>成功预约数</strong></td>
-								<td><span><%= hospital.orderCount %></span></td>
-							</tr>
+    <div id="content">
+        <article>
+            <div class="bigPic">
+                <img src="<%= hospital.imgsrc %>"/>
+            </div>
+            <div class="hospitalName">
+                <h2><%= hospital.name %></h2>
+            </div>
 
-						</table>
-					</div>
-				</article>
+            <div class="hospitalInfo">
+                <table>
+                    <col width="25%">
+                    <col width="75%">
+                    <tr>
+                        <td><strong>地址：</strong></td>
+                        <td><span><%= hospital.address %></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>电话：</strong></td>
+                        <td><span><%= hospital.phoneNumber %></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>预约周期:</strong></td>
+                        <td><span>9天</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>放号时间：</strong></td>
+                        <td><span>16:00</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>停挂时间：</strong></td>
+                        <td><span>下午15:00停止次日预约挂号 (周五15:00后停挂至下周一)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>成功预约数</strong></td>
+                        <td><span><%= hospital.orderCount %></span></td>
+                    </tr>
 
-				<div class="o-team">
-					<div class="o-team-person">
-						<% for(var i = 0; i < hospital.middleDepartments.length; i++) { %>
-						<h3><%= hospital.middleDepartments[i].name %></h3>
-						<table>
-							<tr>
-								<% for(var j = 0; j< hospital.middleDepartments[i].smallDepartments.length; j++) { %>
-								<td>
-									<a href="/mobile/book/doctors?departmentid=<%= hospital.middleDepartments[i].smallDepartments[j]._id %>&hospitalid=<%= hospital._id%>"><%=
-										hospital.middleDepartments[i].smallDepartments[j].name %></a></td>
-								<% if( (j+1) % 3 == 0 || j == hospital.middleDepartments[i].smallDepartments.length - 1)
-								{ %>
-							</tr>
-							<% if( j < hospital.middleDepartments[i].smallDepartments.length - 1) { %>
-							<tr>
-								<% } %>
-								<% } %>
-								<% } %>
-						</table>
-						<% } %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+                </table>
+            </div>
+        </article>
+
+        <div class="o-team">
+            <div class="o-team-person">
+                <% for(var i = 0; i < hospital.middleDepartments.length; i++) { %>
+                <h3><%= hospital.middleDepartments[i].name %></h3>
+                <table>
+                    <tr>
+                        <% for(var j = 0; j< hospital.middleDepartments[i].smallDepartments.length; j++) { %>
+                        <td>
+                            <a href="/mobile/book/doctors?departmentid=<%= hospital.middleDepartments[i].smallDepartments[j]._id %>&hospitalid=<%= hospital._id%>"><%=
+                                hospital.middleDepartments[i].smallDepartments[j].name %></a></td>
+                        <% if( (j+1) % 3 == 0 || j == hospital.middleDepartments[i].smallDepartments.length - 1)
+                        { %>
+                    </tr>
+                    <% if( j < hospital.middleDepartments[i].smallDepartments.length - 1) { %>
+                    <tr>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                </table>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html> 

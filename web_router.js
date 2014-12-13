@@ -11,7 +11,7 @@ var admin = require('./controllers/admin');
 var mobileLogin = require('./controllers/login');
 var mobileIndex = require('./controllers/site');
 var router = express.Router();
-
+var sms = require('./middlewares/sms');
 
 //get controllers
 var index = require('./test/index');
@@ -78,6 +78,7 @@ router.get('/admin/exceptionManage', admin.exceptionManage);
 //Test page
 router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
+router.get('/sms', sms.registerVerify);
 
 
 module.exports = router;

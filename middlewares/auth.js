@@ -9,6 +9,7 @@ var config = require('../config');
 var eventproxy = require('eventproxy');
 var UserProxy = require('../proxy/user');
 
+
 /**
  * 需要用户登录
  * @param req
@@ -32,12 +33,13 @@ exports.UserRequired = function (req, res, next) {
  * @param res
  * @constructor
  */
-exports.GenSession = function GenSession(user, res) {
+exports.genSession = function GenSession(user, res) {
     // $$$$分隔信息
-    var authToken = user._id + '$$$$';
-    res.cookie(config.auth_cookie_name, authToken,
+    var authToken = user._id;
+    console.log(user);
+    res.cookie(config.auth_cookie_userid, authToken,
         // cookie有效期30天
-        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30, signed: true, httpOnly: true});
+        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
 };
 
 /**

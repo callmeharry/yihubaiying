@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<title>日期选择</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>日期选择</title>
 
-		<link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
 
-		<link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
-		<link rel="stylesheet" type="text/css" href="/stylesheets/DatePicker.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/DatePicker.css">
 
-		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
-		<script type="text/javascript" src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-		<script type="text/javascript" src="/javascripts/o-script.js"></script>
-	</head>
-	<body class="o-page">
-		<div id="page">
-			<div id="userInfo">
-				<div class="small-4 columns">
-					<span id="userName" class="userInfoSytle">Ma Bingying</span>
-				</div>
-				<!--<div class="small-3 columns icon">o</div>-->
-				<div class="small-3 small-offset-3 columns">
-					<span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
-				</div>
-				<div class="small-2 columns">
-					<span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
-				</div>
-			</div>
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/o-script.js"></script>
+</head>
+<body class="o-page">
+<div id="page">
+    <div id="userInfo">
+        <div class="small-4 columns">
+            <span id="userName" class="userInfoSytle">Ma Bingying</span>
+        </div>
+        <!--<div class="small-3 columns icon">o</div>-->
+        <div class="small-3 small-offset-3 columns">
+            <span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
+        </div>
+        <div class="small-2 columns">
+            <span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
+        </div>
+    </div>
 
-			<div class="content">
-				<div id="Gallery">
-					<div id="DatePickerTitle">
-						<h1 class="subheader">时间选择</h1>
-						<hr class="hr3" />
-					</div>
-					
-					<div class="gallery-row">
-						<div id="PGalleryTwoC" class="row">
-							<div class="mobile-two">
-								<% for(var i = 0; i < time.length; i++) { %>
-								<div class="gallery-item dateItem">
-									<a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= time[i].date %>&time=<%= time[i].time %>">
-										<div class="dateWindow <%= time[i].canBeOrdered %>">
-											<span><%= time[i].date %></span>
-											<span><%= time[i].weekOfDay %></span>
-											<br/>
-											<span><%= time[i].time %></span>
-											<br/>
-											<span><%= time[i].source %></span>
-											<br/>
-										</div>
-									</a>
-								</div>
-								<% } %>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="content">
+        <div id="Gallery">
+            <div id="DatePickerTitle">
+                <h1 class="subheader">时间选择</h1>
+                <hr class="hr3"/>
+            </div>
 
-		</div>
-	</body>
+            <div class="gallery-row">
+                <div id="PGalleryTwoC" class="row">
+                    <div class="mobile-two">
+                        <% for(var i = 0; i < time.length; i++) { %>
+                        <div class="gallery-item dateItem">
+                            <a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= time[i].date %>&time=<%= time[i].time %>">
+                                <div class="dateWindow <%= time[i].canBeOrdered %>">
+                                    <span><%= time[i].date %></span>
+                                    <span><%= time[i].weekOfDay %></span>
+                                    <br/>
+                                    <span><%= time[i].time %></span>
+                                    <br/>
+                                    <span><%= time[i].source %></span>
+                                    <br/>
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
 </html> 
