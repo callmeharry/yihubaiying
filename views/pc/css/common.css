@@ -145,29 +145,28 @@ select{
 	display: block;
 }
 
-.divFound
-{
-	border:solid 1px;
-	border-color:#eee;
+.divFound {
+	border: solid 1px;
+	border-color: #eee;
 }
-table td
-{
-	padding:5px;
+
+table td {
+	padding: 5px;
 }
-h3
-{
-	color:blue;
-	font-weight:bold;
+
+h3 {
+	color: blue;
+	font-weight: bold;
 }
-.aNoChange
-{
-	
+
+.aNoChange {
+
 }
-a:hover
-{
-	text-decoration:none;
+
+a:hover {
+	text-decoration: none;
 }
-.navArea
-{
+
+.navArea {
 	background-color:;
 }
