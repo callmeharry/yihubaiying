@@ -6,7 +6,7 @@
 var config = require('../config');
 var User = require('../proxy/user');
 var authMiddleWare = require('../middlewares/auth');
-var randomNumLogin  = ""; // auth code
+var randomNumLogin = ""; // auth code
 
 /**
  * 显示用户登录页面
@@ -37,16 +37,16 @@ exports.getAuthCode = function (req, res) {
  * 处理用户登录
  *
  * @param {HttpRequest} req
-* @param {HttpResponse} res
-* @param {Function} next
-* @returns {*|String}
-*/
+ * @param {HttpResponse} res
+ * @param {Function} next
+ * @returns {*|String}
+ */
 exports.handleLogin = function (req, res, next) {
 
     var phoneNumber = req.body.phoneNumber;
     var password = req.body.passWord;
     var authCode = req.body.auth_code;
-    console.log(phoneNumber+" "+password+" "+authCode+" "+randomNumLogin);
+    console.log(phoneNumber + " " + password + " " + authCode + " " + randomNumLogin);
 
     if (authCode != randomNumLogin) {
         res.send('error_auth_code');
@@ -64,7 +64,7 @@ exports.handleLogin = function (req, res, next) {
             return;
         }
         User.getOneUserByPhoneNumberAndPassword(phoneNumber, password, function (err, verifiedUser) {
-            if(err) {
+            if (err) {
                 res.send(err.message);
                 return;
             }

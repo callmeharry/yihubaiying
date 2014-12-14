@@ -9,73 +9,118 @@
 	<title>AdminSys</title>
 </head>
 <body>
-	<%- include header.html%>
-	<div class="panel panel-default" id="userInfoManage">
-	  	<div class="panel-heading">
-	    	<h2 class="panel-title">用户信息管理</h2>
-	  	</div>
-	 	<div class="panel-body">
-	    	<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>用户ID</th>
-						<th>姓名</th>
-						<th>联系电话</th>
-						<th>城市</th>
-						<th>信用额度</th>
-						<th>年龄</th>
-						<th>编辑</th>
-						<th>删除</th>
-						<th>启用/禁用</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>XXX</td>
-						<td>陈XX</td>
-						<td>10086</td>
-						<td>北京</td>
-						<td>10</td>
-						<td>24</td>
-						<td><a href="#">编辑</a></td>
-						<td><!-- Button trigger modal -->
-							<a href="#" data-toggle="modal" data-target="#myModal">
-							  删除
-							</a>
-						</td>
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						      </div>
-						      <div class="modal-body">
-						        <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除吗？</h4>
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						        <button type="button" class="btn btn-primary">删除</button>
-						      </div>
-						    </div><!-- /.modal-content -->
-						  </div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
-						<td><a href="#" onclick="btfunc(this)">启用</a></td>
-					</tr>
-				</tbody>
-			</table>
-			<nav class="col-md-offset-5">
-			  	<ul class="pagination">
-				    <li><a href="#">&laquo;</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">&raquo;</a></li>
-			  	</ul>
-			</nav>
-	  	</div>
+<%- include header.html%>
+<div class="panel panel-default" id="userInfoManage">
+	<div class="panel-heading">
+		<h2 class="panel-title">用户信息管理</h2>
 	</div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>用户名</th>
+				<th>真实姓名</th>
+				<th>身份证号</th>
+				<th>联系电话</th>
+				<th>住址</th>
+				<th>邮箱</th>
+				<th>信用额度</th>
+				<th>注册时间</th>
+				<th>用户状态</th>
+				<th>编辑</th>
+				<th>删除</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% for(var i=0; i<users.length; i++){%>
+			<tr>
+				<td><%= users[i].username%></td>
+				<td><%= users[i].real_name%></td>
+				<td><%= users[i].social_number%></td>
+				<td><%= users[i].phone_number%></td>
+				<td><%= users[i].address%></td>
+				<td><%= users[i].email%></td>
+				<td><%= users[i].credit_level%></td>
+				<td><%= users[i].register_time%></td>
+				<td>
+					<% if (users[i].user_status === 0) { %>
+					未通过
+					<% }else if(users[i].user_status === 1){ %>
+					审核通过
+					<% }else{ %>
+					被查封
+					<% } %>
+				</td>
+				<td><a href="#" data-toggle="modal" data-target="#userModal">编辑</a></td>
+				<!-- Modal -->
+				<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="userEditLabel">修改用户信息</h4>
+							</div>
+							<div class="modal-body">
+								<form class="input-group">
+									<div class="input-group">
+										<span class="input-group-addon">用户名</span>
+										<span class="form-control"><%= users[i].username%></span>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">真实姓名</span>
+										<span class="form-control"><%= users[i].real_name%></span>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">信用额度</span>
+										<input type="text" class="form-control" placeholder="信用额度">
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">用户状态</span>
+										<select class="form-control">
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">被查封</option>
+										</select>
+									</div>
+									<button type="submit" class="btn btn-default">修改</button>
+									<button type="reset" class="btn btn-primary">重置</button>
+								</form>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<td><!-- Button trigger modal -->
+					<a href="#" data-toggle="modal" data-target="#myModal">
+						删除
+					</a>
+				</td>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除吗？</h4>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-primary">删除</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+			</tr>
+			<% } %>
+			</tbody>
+		</table>
+		<%- partial('list', {
+		pages: pages,
+		page: page,
+		base: '/admin/userInfo/'
+		}) %>
+	</div>
+</div>
 </body>
 </html>

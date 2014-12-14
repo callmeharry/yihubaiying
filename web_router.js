@@ -17,9 +17,6 @@ var sms = require('./middlewares/sms');
 var index = require('./test/index');
 var user = require('./test/users');
 
-//Home page
-router.get('/', index);
-
 //Mobile home page
 router.get('/mobile', mobileIndex.showIndex);//show mobile index page
 
@@ -33,14 +30,15 @@ router.get('/mobile/login', mobileLogin.showLogin);
 router.post('/mobile/generateAuthCodeL', mobileLogin.getAuthCode);
 router.post('/mobile/login', mobileLogin.handleLogin);
 
-//Book page
+//Mobile Book page
 router.get('/mobile/book/hospitals', mobileBook.showHospital);
 router.get('/mobile/book/departments', mobileBook.showDepartment);
 router.get('/mobile/book/doctors', mobileBook.showDoctor);
 router.get('/mobile/book/time', mobileBook.showTime);
 router.get('/mobile/book/finishbook', mobileBook.finishBook);
 
-
+//PC Home page
+router.get('/', mobileIndex.showIndex);
 
 /**
  * Administrator pages

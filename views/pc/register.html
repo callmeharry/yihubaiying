@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>医呼百应网上预约挂号平台</title>
 		<!-- 引入 Bootstrap -->
 		<link href="../../public/stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -55,51 +56,76 @@
       <div class="col-sm-4 col-sm-offset-4">
          <br/>
          <br/>
-         <form class="form-horizontal" method="post" onsubmit="checkSubmit()">
+         <form class="form-horizontal" method="post" onsubmit="return checkSubmit()">
+            <div class="form-group">
+               <label for="id_idNumber" class="col-sm-3 control-label">身份证号：</label>
+               <div class="col-sm-8">
+                  <input type="text" id="id_idNumber" name="social_number" class="form-control" required>
+               </div>
+            </div>
             <div class="form-group">
                <label for="register-Name" class="col-sm-3 control-label">姓名：</label>
                <div class="col-sm-8">
-                  <input type="text" id="register-Name" name="register-Name" class="form-control" required>
+                  <input type="text" id="register_Name" name="Name" class="form-control" required>
                </div>
             </div>
             <div class="form-group">
-               <label for="register-IDnumber" class="col-sm-3 control-label">身份证号：</label>
+               <label for="id_passWord" class="col-sm-3 control-label">密码：</label>
                <div class="col-sm-8">
-                  <input type="text" id="register-IDnumber" name="register-IDnumber" class="form-control" required>
+                  <input type="password" id="id_passWord" name="password" class="form-control" onblur="showPasswordLengthWarning()" required>
+               	  <span id="id_warning" name="warning" style="display:none; color:#DD2427;">密码长度在6-20位之间</span>
                </div>
             </div>
             <div class="form-group">
-               <label for="register-Password" class="col-sm-3 control-label">密码：</label>
+               <label for="id_repeat_passWord" class="col-sm-3 control-label">确认密码：</label>
                <div class="col-sm-8">
-                  <input type="password" id="register-Password" name="register-Password" class="form-control" required>
+                  <input type="password" id="id_repeat_passWord" name="repeat_passWord" class="form-control" onblur="showRepeatPasswordWarning()" required>
+               	  <span id="id_repeat_warning" name="repeat_warning" style="display:none; color:#DD2427;">两次输入密码不一致</span>
                </div>
             </div>
             <div class="form-group">
-               <label for="register-confirmPassword" class="col-sm-3 control-label">确认密码：</label>
+				<label for="id_city" class="col-sm-3 control-label">现居城市：</label>
+				<div class="col-sm-8">
+					<select id="id_city" class="form-control" name="city">
+						<option value="0" selected>现居城市</option>
+						<option value="1">北京</option>
+						<option value="2">天津</option>
+						<option value="3">上海</option>
+						<option value="4">广州</option>
+						<option value="5">淮安</option>
+						<option value="6">徐州</option>
+						<option value="7">无锡</option>
+						<option value="8">太原</option>
+						<option value="9">长沙</option>
+						<option value="10">青岛</option>
+						<option value="11">西安</option>
+						<option value="12">武汉</option>
+					</select>
+				</div>
+            </div>
+            <div class="form-group">
+               <label for="id_phoneNumber" class="col-sm-3 control-label">手机号：</label>
                <div class="col-sm-8">
-                  <input type="password" id="register-confirmPassword" name="register-confirmPassword" class="form-control" required>
+                  <input type="text" id="id_phoneNumber" name="phoneNumber" class="form-control" onblur="showPhoneWarning()" required>
+               	  <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">请输入正确格式的手机号</span>
                </div>
             </div>
             <div class="form-group">
-               <label for="register-City" class="col-sm-3 control-label">现居城市：</label>
-               <div class="col-sm-8">
-                  <input type="text" id="register-City" name="register-City" class="form-control" required>
-               </div>
+            	<label for="auth-code" class="control-label col-sm-3">验证码：</label>
+        		<div class="col-sm-4">
+        			<input type="text" id="auth_code" name="auth_code" class="col-sm-4 form-control" value="" placeholder="请输入验证码">
+        		</div>
+        		<button class="btn btn-primary" type="button" onclick="">获取验证码</button>
             </div>
+            <br/>
             <div class="form-group">
-               <label for="register-Phone" class="col-sm-3 control-label">手机号：</label>
-               <div class="col-sm-8">
-                  <input type="text" id="register-Phone" name="register-Phone" class="form-control" required>
-               </div>
-            </div><br/>
-            <div class="form-group">
-               <label for="register-Agree" class="col-sm-4 col-sm-offset-2">
-                  <input type="checkbox" id="register-Agree" name="register-Agree" onclick="checkAgree()">我同意注册
+               <label for="register_Agree" class="col-sm-4 col-sm-offset-2">
+                  <input type="checkbox" id="register_Agree" name="register_Agree" onclick="checkAgree()">我同意注册
                </label>
             </div>
             <br/>
             <div class="form-group">
-               <input id="register-submit" type="submit" class="btn btn-success col-sm-8 col-sm-offset-2" value="提交注册" disabled="disabled"/>
+               <input id="register_submit" name="post" type="submit" class="btn btn-success col-sm-8 col-sm-offset-2" value="提交注册" disabled="disabled"/>
             </div>
 
          </form>
