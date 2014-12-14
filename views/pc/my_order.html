@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>医呼百应网上预约挂号平台</title>
+      <!-- 引入 Bootstrap -->
+      <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/common.css" rel="stylesheet">
+      <script src="dist/scripts/jquery.min.js"></script>
+      <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <!-- 移动设备优先 -->
+      <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+   </head>
+   
+
+   <body>
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="dist/js/bootstrap.min.js"></script>
+
+      <!--网页头部-->
+      <table class="head-table">
+         <tr>
+            <th class="logo-th">
+               <!--Logo-->
+               <div class="logo">
+                  <h1>医呼百应网上预约挂号平台</h1>
+               </div>
+            </th>
+            <th>
+               <!--搜索框-->
+               <div class="input-group">
+                  <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
+                  <span class="input-group-btn">
+                     <button class="btn search-button" type="button">
+                     &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
+                     </button>
+                  </span>
+               </div><!-- /input-group -->
+            </th>
+         </tr>
+      </table>
+      <!--导航栏-->
+      <nav class="navbar navbar-default head-navbar" role="navigation">
+         <div>
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="#">按医院找</a></li>
+               <li><a href="#">按科室找</a></li>
+               <li><a href="#">按疾病找</a></li>
+            </ul>
+         </div>
+      </nav>
+
+      <!--中间部分-->
+      <!--左侧导航栏面板-->
+      <div class="panel panel-info panel-left">
+         <div class="panel-heading">
+            &nbsp;&nbsp;&nbsp;<a href="#" class="panel-title">用户名</a>，您好！
+         </div>
+         <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+               <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+               <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+               <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+               <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+            </ul>
+            <button class="btn btn-default logout-button" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+         </div>
+      </div>
+
+      <!--右侧面板--> 
+         <div class="panel panel-info panel-right">
+            <div class="panel-heading panel-head-center">
+               <!--上方名字-->
+              我的订单
+            </div>
+            <div class="panel-body panel-body-center">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <td>订单编号</td>
+                        <td>医院</td>
+                        <td>挂号科室</td>
+                        <td>就诊医师</td>
+                        <td>就诊日期</td>
+                        <td>就诊号</td>
+                        <td>操作</td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>201411223657</td>
+                        <td>北京市第三人民医院</td>
+                        <td>神经科</td>
+                        <td>李旭</td>
+                        <td>2014年11月25日下午</td>
+                        <td>14号</td>
+                        <td>
+                           <button type="button" class="btn btn-default btn-xs">打印</button>
+                           <button type="button" class="btn btn-default btn-xs">评价</button>
+                           <button type="button" class="btn btn-default btn-xs">删除</button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>201411223657</td>
+                        <td>北京市第三人民医院</td>
+                        <td>神经科</td>
+                        <td>李旭</td>
+                        <td>2014年11月25日下午</td>
+                        <td>14号</td>
+                        <td>
+                           <button type="button" class="btn btn-default btn-xs">打印</button>
+                           <button type="button" class="btn btn-default btn-xs">评价</button>
+                           <button type="button" class="btn btn-default btn-xs">删除</button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>201411223657</td>
+                        <td>北京市第三人民医院</td>
+                        <td>神经科</td>
+                        <td>李旭</td>
+                        <td>2014年11月25日下午</td>
+                        <td>14号</td>
+                        <td>
+                           <button type="button" class="btn btn-default btn-xs">打印</button>
+                           <button type="button" class="btn btn-default btn-xs">评价</button>
+                           <button type="button" class="btn btn-default btn-xs">删除</button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               
+            </div>
+         </div>
+
+   </body>
+</html>
