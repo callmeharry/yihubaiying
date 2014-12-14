@@ -34,10 +34,9 @@ exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback
 exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
     Hospital.update({'_id': hospitalId, 'hospital_dept._id': deptId}, {'push': {'hospital_dept.dept_doc': docId}}, callback);
 };
-//todo:middleDepartments是什么？？
+
 exports.getHospitalsByHospitalId = function (id, callback) {
-    Hospital.findOne({_id: id},
-        {hospital_name: 1, hospital_location: 1, hospital_tel: 1,hospital_order_count: 1, hospital_imgsrc: 1})
+    Hospital.findOne({_id: id}, callback);
 };
 
 /**

@@ -21,6 +21,7 @@ exports.showRegister = function (req, res) {
  */
 exports.getAuthCode = function (req, res) {
     //authMiddleWare.genAuthCode();
+    randomNum = '';
     for (var i = 0; i < 6; ++i) {
         randomNum += Math.floor(Math.random() * 10);
     }
@@ -28,17 +29,19 @@ exports.getAuthCode = function (req, res) {
 };
 
 exports.handleRegister = function (req, res, next) {
-    var phoneNumber = req.body.mobile;
+    var phoneNumber = req.body.phoneNumber;
     var socialNumber = req.body.social_number;
     var password = req.body.password;
     var city = req.body.city;
     var name = req.body.name;
     var authCode = req.body.auth_code;
+    console.log(phoneNumber);
     if (!(authCode == randomNum)) {
         res.send('error_auth_code');
         return;
     }
     user.getOneUserByPhoneNumber(phoneNumber, function (err, users) {
+        console.log(users);
         if (users != null) {
             res.send('Used phone number.');
             return;
