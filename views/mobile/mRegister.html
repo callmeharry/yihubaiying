@@ -21,7 +21,7 @@
             }
         }
 
-<<<<<<< HEAD
+
 function commit()
 {
 	element1=document.getElementById('id_idNumber').value;
@@ -35,11 +35,11 @@ function commit()
 		}
   
 }
-=======
+
         function showWarning1() {
             element = document.getElementById('id_repeat_passWord').value;
             element1 = document.getElementById('id_passWord').value;
->>>>>>> FETCH_HEAD
+
 
             if (element != element1) {
                 //alert(document.getElementById("id_warning").innerHTML);
@@ -68,30 +68,8 @@ function commit()
     <title>注册</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<div  align="center">
-		<span id="topText">注册</span>
-	</div>
-    <form action="/mobile/register" method="post" id="register_form">
-    <div class="row"  style="margin-top:30px;" >
-		<div class="large-12 columns" >
-			<input id="id_idNumber" name="social_number" type="text" placeholder="身份证号" />
-            <span id="id_idNumber_warning" name="warning" style="display:none; color:#DD2427;">身份证号为空</span>
-		</div>
-   </div>
 
-   <div class="row" align="center" style="margin-top:20px;">
-		<div class="large-12 columns" align="center">
-            <input type="text" placeholder="姓名" id="id_name" name="name"/>
-            <span id="id_name_warning" name="name_warning" style="display:none; color:#DD2427;">身份证号为空</span>
-		</div>
-   </div>
- 
- 
-    <div class="row"  style="margin-top:20px;">
-		<div class="large-12 columns" >
-			<input id="id_passWord" name="password" type="password" onBlur="showWarning()" placeholder="密码" />
-=======
+  
 <div align="center">
     <span id="topText">注册</span>
 </div>
@@ -112,7 +90,7 @@ function commit()
     <div class="row" style="margin-top:20px;">
         <div class="large-12 columns">
             <input id="id_passWord" name="password" type="password" onBlur="showWarning()" placeholder="密码"/>
->>>>>>> FETCH_HEAD
+
             <span id="id_warning" name="warning" style="display:none; color:#DD2427;">密码长度在6-20位之间</span>
         </div>
     </div>
@@ -159,19 +137,19 @@ function commit()
         <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
             <input type="text" placeholder="验证码" name="auth_code">
         </div>
-        <button type="button" class="small button" style="margin-top:20px;" onclick="requestAuthCode(this)">获取验证码
+         <button type="button" class="small radius button" onclick="requestAuthCode(this)" style="background-color:#587eac; margin-top:18px;"  >获取验证码
         </button>
-<<<<<<< HEAD
+       
 	</div>
     
-    <div class="large-12 columns" align="center" style="margin-top:40px;">       
-		 <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button" >
-=======
->>>>>>> FETCH_HEAD
-    </div>
+    
 
-    <div class="large-12 columns" align="center" style="margin-top:40px;">
-        <input type="submit" name="post" value="提交" class="small radius button">
+   
+    
+    <div class="large-12 columns" align="center" style="margin-top:40px;">       
+		 <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button" style="background-color:#587eac"  >
+		
+
     </div>
 
 </form>
@@ -225,16 +203,15 @@ function commit()
             // 本地提示：加载中/处理中
 
         }
-<<<<<<< HEAD
   </script>
-=======
+<script>
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             var d = xmlHttp.responseText; // 返回值
             // 处理返回值
         }
     }
 </script>
->>>>>>> FETCH_HEAD
+
 
 </body>
 </html>

@@ -2,292 +2,168 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>医呼百应挂号网</title>
-    <link rel="stylesheet" href="/stylesheets/foundation.css"/>
+	<link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
+	<link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
 
-    <script src="js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <script type="text/javascript"
+            src="../../public/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <!--<script src="js/vendor/modernizr.js"></script>-->
+    
 </head>
 <body>
+<nav id="menu">
+            <ul>
+                <li class="Selected">
+                    <a href="mIndex.html">
+                        <i class="i-home i-small"></i>预约主页
+                    </a>
+                </li>
+                <li>
+                    <a href="mAbout.html">
+                        <i class="i-about i-small"></i>个人信息
+                    </a>
+                </li>
+                <li>
+                    <a href="mBlog.html">
+                        <i class="i-blog i-small"></i>订单管理
+                    </a>
+                </li>
+                <li>
+                    <a href="mGallery.html">
+                        <i class="i-gallery i-small"></i>收藏夹
+                    </a>
+                </li>
+                <li>
+                    <a href="mShortCodes.html">
+                        <i class="i-shortcodes i-small"></i>问题反馈
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-<div class="row">
-    <div class="large-12 columns" align="center">
-        <h1>欢迎来到医呼百应挂号网</h1>
+<div id="header">
+        <a href="#menu"></a>
+        <span> 医呼百应 预约主页 </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
     </div>
-<<<<<<< HEAD
-    <form>
-    <div class="row"  >
-      <div class="large-12 columns" align="right" >
-       	<div class="callout panel" align="right" >
-			<a href="mRegister.html">
-            	<button type="button" class="small radius button" >注册</button>
-            </a>
-            <a href="mLogIn.html">
- 			<button type="button" class="small radius button" >登录</button>
-            </a>
-		</div>
-      </div>
-	</div>
+    <div class="block">
+   				 <a href="mRegister.html">
+				<button type="button"  style="background-color:#587eac;">注册
+        </button> 
+        </a>
+         <a href="mLogin.html">
+        <button type="button"   style="background-color:#587eac;">登录
+        </button> 
+        </a>
+			</div>
     
-                  
-                   <div class="row" align="center">
-				    <div class="large-12 columns" align="center">
-				      <select>
-				        <option value="1">医院</option>
-				        <option value="2">科室</option>
-				        <option value="3">疾病</option>
-				      </select>
-				    </div>
-				  </div>
-                  
-                  
-				  <div class="row" align="center">
-				    <div class="large-12 columns" align="center">
-				      <input type="text" placeholder="请输入要查询的内容" />
-				    </div>
-                    </div>
-                    <div  class="large-12 columns" align="center" >
-                  <button type="button" class="small button"  >查询</button>
-                  </div>
-                  
-				   
-				</form>
-    
-=======
-</div>
-<form>
->>>>>>> FETCH_HEAD
-    <div class="row">
-        <div class="large-12 columns" align="right">
-            <div class="callout panel" align="right">
-                <a href="/mobile/register">
-                    <button type="button" class="small radius button">注册</button>
-                </a>
-                <a href="/mobile/login?previouspage=/mobile">
-                    <button type="button" class="small radius button">登录</button>
-                </a>
-            </div>
+        <div class="block">
+				快速预约挂号
+			</div>
+			
+			<div class="exploreSiteFullPane">
+				
+				<a href="#" class="explorePane active">
+					<span class="i-pane i-blue">
+						<i class="i-home"></i>
+					</span>
+					<h4>选择医院</h4>
+				</a>
+				<a href="about.html" class="explorePane middle">
+					<span class="i-pane i-blue">
+						<i class="i-about"></i>
+					</span>
+					<h4>选择科室</h4>
+				</a>
+				<a href="blog.html" class="explorePane">
+					<span class="i-pane i-blue">
+						<i class="i-blog"></i>
+					</span>
+					<h4>选择疾病</h4>
+				</a>
+				
+			</div>
+          
+
+<div class="article-comments">
+						<hr>
+						<span>附近的医院</span>
+                        <hr>
+						
+						<ul>
+							<li>
+								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
+								<p class="c-a-name"><strong>协和医院</strong></p>
+								<p class="comment-date">三级甲等</p>
+								<p class="desc">
+									北京市海淀区花园北路49号中央党校院区]区大有庄100号
+								</p>
+							</li>
+							<li>
+								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
+								<p class="c-a-name"><strong>北医三院</strong></p>
+								<p class="comment-date">三级甲等</p>
+								<p class="desc">
+									[东院]北京市东城区帅府园一号 [西院]北京市西城区大木仓胡同41号 
+								</p>
+								
+							</li>
+                            <li>
+								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
+								<p class="c-a-name"><strong>积水潭医院</strong></p>
+								<p class="comment-date">三级甲等</p>
+								<p class="desc">
+									北京大兴区兴丰大街三段（56号）；庄向北100米路东。 
+所属地区：大兴区
+								</p>
+								
+							</li>
+                            <li>
+								<img  src="../../public/images/hospital3.jpg" />
+								<p class="c-a-name"><strong>武警三医院</strong></p>
+								<p class="comment-date">三级甲等</p>
+								<p class="desc">
+									北京市大兴区黄村镇黄良路口北侧 
+								</p>
+								
+							</li>
+                            <li>
+								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
+								<p class="c-a-name"><strong>北京大学医院</strong></p>
+								<p class="comment-date">三级甲等</p>
+								<p class="desc">
+									北京大兴区兴丰大街三段（56号）分院]路亦庄出口向北100米路东。 
+
+								</p>
+								
+							</li>
+							
+						</ul>
+					</div>
+                    <div align="center">
+                  <button type="button"   style="background-color:#587eac;">更多
+        </button> 
         </div>
-    </div>
+				
 
-
-    <div class="row" align="center">
-        <div class="large-12 columns" align="center">
-            <select>
-                <option value="1">医院</option>
-                <option value="2">科室</option>
-                <option value="3">疾病</option>
-            </select>
-        </div>
-    </div>
-
-
-    <div class="row" align="center">
-        <div class="large-12 columns" align="center">
-            <input type="text" placeholder="请输入要查询的内容"/>
-        </div>
-    </div>
-    <div class="large-12 columns" align="center">
-        <button type="button" class="small button">查询</button>
-    </div>
-
-
-</form>
-
-<div class="row">
-    <div class="large-12 columns">
-        <div class="callout panel " align="center">
-            <a href="/mobile/book/hospitals?city=北京" type="button" class="small radius button">选择医院</a>
-        </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="large-12 columns">
-        <div class="callout panel" align="center">
-            <a href="" type="button" class="small radius button">选择科室</a>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="large-12 columns">
-        <div class="callout panel" align="center">
-            <button type="button" class="small radius button">选择疾病</button>
-
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-
-    <h5>附近的医院:</h5>
-    <!-- Grid Example -->
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>北医三院</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>北医六院</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>积水潭医院</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>协和医院</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>天坛医院</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="large-12 columns" align="center">
-            <div class="callout panel">
-                <p>更多</p>
-            </div>
-        </div>
-    </div>
-    <!-- <div class="row">
-       <div class="large-6 medium-6 columns">
-         <div class="callout panel">
-           <p>Six columns</p>
-         </div>
-       </div>
-       <div class="large-6 medium-6 columns">
-         <div class="callout panel">
-           <p>Six columns</p>
-         </div>
-       </div>
-     </div>
-     -->
-    <!-- <div class="row">
-       <div class="large-4 medium-4 small-4 columns">
-         <div class="callout panel">
-           <p>Four columns</p>
-         </div>
-       </div>
-       <div class="large-4 medium-4 small-4 columns">
-         <div class="callout panel">
-           <p>Four columns</p>
-         </div>
-       </div>
-       <div class="large-4 medium-4 small-4 columns">
-         <div class="callout panel">
-           <p>Four columns</p>
-         </div>
-       </div>
-     </div>
-     -->
-
-    <hr/>
-
-    <!-- <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-     <form>
-               <div class="row">
-                 <div class="large-12 columns">
-                   <label>Input Label</label>
-                   <input type="text" placeholder="large-12.columns" />
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="large-4 medium-4 columns">
-                   <label>Input Label</label>
-                   <input type="text" placeholder="large-4.columns" />
-                 </div>
-                 <div class="large-4 medium-4 columns">
-                   <label>Input Label</label>
-                   <input type="text" placeholder="large-4.columns" />
-                 </div>
-                 <div class="large-4 medium-4 columns">
-                   <div class="row collapse">
-                     <label>Input Label</label>
-                     <div class="small-9 columns">
-                       <input type="text" placeholder="small-9.columns" />
-                     </div>
-                     <div class="small-3 columns">
-                       <span class="postfix">.com</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="large-12 columns">
-                   <label>Select Box</label>
-                   <select>
-                     <option value="husker">Husker</option>
-                     <option value="starbuck">Starbuck</option>
-                     <option value="hotdog">Hot Dog</option>
-                     <option value="apollo">Apollo</option>
-                   </select>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="large-6 medium-6 columns">
-                   <label>Choose Your Favorite</label>
-                   <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-                   <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-                 </div>
-                 <div class="large-6 medium-6 columns">
-                   <label>Check these out</label>
-                   <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-                   <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="large-12 columns">
-                   <label>Textarea Label</label>
-                   <textarea placeholder="small-12.columns"></textarea>
-                 </div>
-               </div>
-             </form>-->
-
-
-    <!-- <div class="large-4 medium-4 columns">
-             <h5>Try one of these buttons:</h5>
-             <p><a href="#" class="small button">Simple Button</a><br/>
-       <a href="#" class="small radius button" >Radius Button</a><br/>
-       <a href="#" class="small round button">Round Button</a><br/>
-       <a href="#" class="medium success button">Success Btn</a><br/>
-       <a href="#" class="medium alert button">Alert Btn</a><br/>
-       <a href="#" class="medium secondary button">Secondary Btn</a></p>
-               <div class="panel">
-           <h5>So many components, girl!</h5>
-           <p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
-           <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>
-       </div>
-     </div>-->
-</div>
-
-<script src="js/vendor/jquery.js"></script>
+<!--<script src="js/vendor/jquery.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
     $(document).foundation();
-</script>
+</script>-->
 </body>
 </html>
