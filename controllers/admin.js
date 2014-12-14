@@ -215,25 +215,17 @@ exports.exceptionManage = function (req, res, next) {
 };
 
 exports.hosFeedback = function (req, res, next) {
-    /**
-     User.newAndSave('15652954818','42220119950728593X','123456','Beijing','lewiskit',function(err){
+
+    /*
+     User.newAndSave('15652954821','422201199507285d3X','12dd461','Beiding','lewidsaskit',function(err){
         if(err){
             return next(err);
         }
+        console.log("save success!");
         res.render('administrator/hosFeedback.html');
 
     });
-     **/
-
-    User.update({"real_name": 'lewiskit'}, {"$push": {"feedback": {"content": "heheahha"}}}, function (err) {
-        if (err) {
-            return next(err);
-        }
-        console.log("add success");
-        res.render('administrator/hosFeedback.html');
-
-    });
-
+    */
 };
 
 exports.userFeedback = function (req, res, next) {
