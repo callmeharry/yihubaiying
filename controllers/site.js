@@ -9,5 +9,9 @@
  * @param res
  */
 exports.showIndex = function (req, res) {
-    res.render('mobile/mIndex');
+    var url = req.url;
+    if (url.indexOf('mobile') > 0)
+        res.render('mobile/mIndex');
+    else
+        res.render('pc/index');
 };
