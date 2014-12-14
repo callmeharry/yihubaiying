@@ -46,3 +46,11 @@ exports.getCountByQuery = function (query, callback) {
     User.count(query, callback);
 
 }
+
+
+exports.update = function (query, opt, callback) {
+    User.update(query, opt, callback);
+
+};
+
+

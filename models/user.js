@@ -32,14 +32,6 @@ var UserSchema = new Schema({
             hospital: { type: String }
         }
     ],
-    feedback: [
-        {
-            content: { type: String },
-            ifcheck: { type: Boolean, default: false },
-            check_message: { type: String },
-            date: { type: Date, default: Date.now }
-        }
-    ],
     system_message: [
         {
             content: { type: String },
