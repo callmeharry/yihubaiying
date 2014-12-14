@@ -6,7 +6,7 @@
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy/').Hospital;
 var Order = require('../proxy/order');
-var currPage = require('middlewares/tools').setCurrentPage;
+var currPage = require('../middlewares/tool').setCurrentPage;
 
 /**
  * 显示医院列表
