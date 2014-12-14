@@ -28,14 +28,14 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
 
 exports.newDepartment = function (deptName, i, callback) {
     var department = new Array({
-        hospital_dept_name: deptName + i,
+        hospital_dept_name: deptName + i
 
     })
 };
 
 exports.newSubDept = function (subDeptName, i, callback) {
     var subDeptName = new Array({
-        hospital_subdept_name: subDeptName + i,
+        hospital_subdept_name: subDeptName + i
 
     })
 };
@@ -92,6 +92,4 @@ exports.getCountByQuery = function (query, callback) {
 exports.getHospitalsByQuery = function (query, opt, callback) {
     Hospital.find(query, '', opt, callback);
 };
-
-
 

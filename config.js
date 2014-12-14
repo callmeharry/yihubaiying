@@ -10,16 +10,15 @@ var debug = true;
 
 var config = {
     //debug为true时，用于本地测试
-    debug: true,
 
     //mongodb配置
     db: 'mongodb://127.0.0.1/yihubaiying',
     db_name: 'yihubaiying',
-
-    auth_cookie_name: 'yihubaiying',
+    current_page: 'current_page',
+    auth_cookie_userid: null,
 
     // 程序运行的端口
-    port: 3000,
+    port: 23333,
 
     page_limit: 5
 };

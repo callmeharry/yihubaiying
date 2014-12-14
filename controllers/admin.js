@@ -5,6 +5,7 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy').Hospital;
+var User = require('../proxy').User;
 var config = require('../config');
 /**
  * show Admin Login info
@@ -176,9 +177,36 @@ exports.callInfo = function (req, res, next) {
 };
 
 exports.userInfo = function (req, res, next) {
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+    var query = {};
+    var limit = config.page_limit;
+    var options = {skip: (page - 1) * limit, limit: limit, sort: '-create_date'};
+
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    //get user numbers
+    User.getCountByQuery(query, proxy.done(function (all_user_count) {
+        var pages = Math.ceil(all_user_count / limit);
+        proxy.emit("pages", pages);
+    }));
 
 
-    res.render('administrator/userInfo');
+    //get user infos
+    User.getUserByQuery(query, options, proxy.done('users', function (users) {
+        return users;
+    }));
+
+
+    proxy.all('users', 'pages', function (users, pages) {
+        console.log(users + " " + pages + " " + page);
+        res.render('administrator/userInfo', {
+            users: users,
+            pages: pages,
+            page: page
+        });
+    });
 };
 
 exports.exceptionManage = function (req, res, next) {
@@ -187,16 +215,27 @@ exports.exceptionManage = function (req, res, next) {
 };
 
 exports.hosFeedback = function (req, res, next) {
+    /**
+     User.newAndSave('15652954818','42220119950728593X','123456','Beijing','lewiskit',function(err){
+        if(err){
+            return next(err);
+        }
+        res.render('administrator/hosFeedback.html');
 
-    res.render('administrator/hosFeedback.html');
+    });
+     **/
+
+    User.update({"real_name": 'lewiskit'}, {"$push": {"feedback": {"content": "heheahha"}}}, function (err) {
+        if (err) {
+            return next(err);
+        }
+        console.log("add success");
+        res.render('administrator/hosFeedback.html');
+
+    });
+
 };
 
 exports.userFeedback = function (req, res, next) {
     res.render('administrator/userFeedback.html');
 };
-
-
-
-
-
-

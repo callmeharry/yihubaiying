@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<title>选择医生1</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>选择医生1</title>
 
-		<link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
-		<link rel="stylesheet" href="/javascripts/foundation/foundation.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/javascripts/foundation/foundation.css">
 
-		<link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
-		<link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
 
-		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
-		<script type="text/javascript" src="/javascripts/o-script.js"></script>
-	</head>
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
+    <script type="text/javascript" src="/javascripts/o-script.js"></script>
+</head>
 
-	<body class="o-page p-blog">
-		<div id="page">
-			<div id="userInfo">
-				<div class="small-4 columns">
-					<span id="userName" class="userInfoSytle">Ma Bingying</span>
-				</div>
-				<!--<div class="small-3 columns icon">o</div>-->
-				<div class="small-3 small-offset-3 columns">
-					<span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
-				</div>
-				<div class="small-2 columns">
-					<span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
-				</div>
-			</div>
+<body class="o-page p-blog">
+<div id="page">
+    <div id="userInfo">
+        <div class="small-4 columns">
+            <span id="userName" class="userInfoSytle">Ma Bingying</span>
+        </div>
+        <!--<div class="small-3 columns icon">o</div>-->
+        <div class="small-3 small-offset-3 columns">
+            <span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
+        </div>
+        <div class="small-2 columns">
+            <span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
+        </div>
+    </div>
 
-			<div id="content">
-				<% for(var i = 0; i < doctor.length; i++) {%>
-				<article>
-					<a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id%>">
-						<div class="PicDiv">
-							<img class="hospitalPic" src="doctor[i].imgsrc">
-						</div>
-						<div class="InfoDiv">
-							<h2 id="doctorName_id" name="doctorName"><%= doctor[i].name%></h2>
-							<div class="a-meta doctorInfoSytle">
-								<span class="doctorColumnHead">是否出诊：</span>
-								<span id="isOnDuty_id" name="isOnDuty"><%= doctor[i].isOnDuty%></span>
-							</div>
-							<div class="a-meta doctorInfoSytle">
-								<span class="doctorColumnHead">出诊时段,号源：</span>
+    <div id="content">
+        <% for(var i = 0; i < doctor.length; i++) {%>
+        <article>
+            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id%>">
+                <div class="PicDiv">
+                    <img class="hospitalPic" src="doctor[i].imgsrc">
+                </div>
+                <div class="InfoDiv">
+                    <h2 id="doctorName_id" name="doctorName"><%= doctor[i].name%></h2>
+
+                    <div class="a-meta doctorInfoSytle">
+                        <span class="doctorColumnHead">是否出诊：</span>
+                        <span id="isOnDuty_id" name="isOnDuty"><%= doctor[i].isOnDuty%></span>
+                    </div>
+                    <div class="a-meta doctorInfoSytle">
+                        <span class="doctorColumnHead">出诊时段,号源：</span>
 								<span id="visitPeriod_id" name="visitPeriod">
 									<% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
 									<%= doctor[i].timeAndSource[j].time %> &nbsp; <%= doctor[i].timeAndSource[j].source %>
 									<br/>
 									<% } %>
 								</span>
-							</div>
-							<div class="a-meta doctorInfoSytle">
-								<span class="doctorColumnHead">好评数：</span>
-								<span id="acceptedOrderNumber_id" name="acceptedOrderNumber"><%= doctor[i].goodReputation%></span>/<span
-									id="totalOrderNumber_id" name="totalOrderNumber">16</span>
-							</div>
-							<div class="a-meta doctorInfoSytle">
-								<span class="doctorColumnHead">医生简介：</span>
-								<span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].intro%></span>
-							</div>
-							<div class="a-meta doctorInfoSytle">
-								<span class="doctorColumnHead">医生专长：</span>
-								<span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
-							</div>
-						</div>
-					</a>
-				</article>
-				<% } %>
-			</div>
-		</div>
-	</body>
+                    </div>
+                    <div class="a-meta doctorInfoSytle">
+                        <span class="doctorColumnHead">好评数：</span>
+                        <span id="acceptedOrderNumber_id"
+                              name="acceptedOrderNumber"><%= doctor[i].goodReputation%></span>/<span
+                            id="totalOrderNumber_id" name="totalOrderNumber">16</span>
+                    </div>
+                    <div class="a-meta doctorInfoSytle">
+                        <span class="doctorColumnHead">医生简介：</span>
+                        <span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].intro%></span>
+                    </div>
+                    <div class="a-meta doctorInfoSytle">
+                        <span class="doctorColumnHead">医生专长：</span>
+                        <span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
+                    </div>
+                </div>
+            </a>
+        </article>
+        <% } %>
+    </div>
+</div>
+</body>
 </html> 
