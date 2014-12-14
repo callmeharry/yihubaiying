@@ -41,8 +41,8 @@ exports.adminLogin = function (req, res, next) {
     if (name === 'admin' && password === '123') {
 
 
-        /**
-         Hospital.newHospital("beijingshi shenjingbing yiyuan","hehe shenjingbingyuan!",function(err){
+        /*
+         Hospital.newHospital("北京市朝阳医院","so!",'beijing','beijing chaoyangqu shenjingbingyuan ','123','100',function(err){
             if(err){
                 return next(err);
             }
@@ -50,7 +50,7 @@ exports.adminLogin = function (req, res, next) {
             console.log("success! save in the Mongo");
 
         });
-         **/
+        */
 
 
         res.redirect('/admin/hosInfo');
