@@ -5,6 +5,7 @@
 		<!-- 引入 Bootstrap -->
 		<link href="../../public/stylesheets/bootstrap.min.css" rel="stylesheet">
 		<link href="../../public/stylesheets/pc/pcViewHead.css" rel="stylesheet">
+		<script src="../../public/javascripts/pc/login.js"></script>
 		<script src="../../public/javascripts/jquery.min.js"></script>
 		<script src="../../public/javascripts/bootstrap.min.js"></script>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -57,17 +58,24 @@
          <br/>
          <br/>
          <div class="form-group">
-            <label for="login_Phone" class="col-sm-3 control-label">手机号：</label>
+            <label for="id_phoneNumber" class="col-sm-3 control-label">手机号：</label>
             <div class="col-sm-9">
-               <input type="text" id="login_Phone" class="form-control" name="login_Phone" required="required"/>
+               <input type="text" id="id_phoneNumber" class="form-control" name="phoneNumber" required="required"/>
             </div>
          </div>
          <br/>
          <div class="form-group">
-            <label for="login_Password" class="col-sm-3 control-label">密码：</label>
+            <label for="id_passWord" class="col-sm-3 control-label">密码：</label>
             <div class="col-sm-9">
-               <input type="password" id="login_Password" class="form-control" name="login_Password" required="required"/>
+               <input type="password" id="id_passWord" class="form-control" name="passWord" required="required"/>
             </div>
+         </div><br/>
+         <div class="form-group">
+         	<label for="auth_code" class="col-sm-3 control-label">验证码：</label>
+         	<div class="col-sm-4">
+         		<input type="text" class="form-control" id="auth_code" name="auth_code" value="" placeholder="">
+         	</div>
+         	<button class="col-sm-3 col-sm-offset-2 btn btn-primary" onclick="requestAuthCode(this)">获取注册码</button>
          </div>
          <br/><br/>
          <div class="form-group">
