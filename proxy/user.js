@@ -45,12 +45,16 @@ exports.getUserByQuery = function (query, opt, callback) {
 exports.getCountByQuery = function (query, callback) {
     User.count(query, callback);
 
-}
+};
 
 
 exports.update = function (query, opt, callback) {
     User.update(query, opt, callback);
 
+};
+
+exports.getUserById = function (id, callback) {
+    User.findOne({_id: id}, callback);
 };
 
 

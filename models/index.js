@@ -19,10 +19,11 @@ require('./doctor');
 require('./order');
 require('./hospital');
 require('./illness');
+require('./feedback');
 
 exports.User = mongoose.model('User');
 exports.Doctor = mongoose.model('Doctor');
 exports.Order = mongoose.model('Order');
 exports.Hospital = mongoose.model('Hospital');
 exports.Illness = mongoose.model('Illness');
-
+exports.Feedback = mongoose.model('Feedback');

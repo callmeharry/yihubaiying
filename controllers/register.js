@@ -11,7 +11,7 @@ var randomNum = "";// 验证码
  * @param req
  * @param res
  */
-exports.showRegister = function (req, res){
+exports.showRegister = function (req, res) {
     console.log('mobile register');
     res.render('mobile/mRegister');
 };

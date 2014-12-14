@@ -21,4 +21,4 @@ var FeedbackSchema = new Schema({
 
 FeedbackSchema.index({sender_id: 1, date: -1});
 
-mongoose.model('Reply', FeedbackSchema);
+mongoose.model('Feedback', FeedbackSchema);

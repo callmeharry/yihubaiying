@@ -6,6 +6,7 @@ var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy').Hospital;
 var User = require('../proxy').User;
+var Feedback = require('../proxy').Feedback;
 var config = require('../config');
 /**
  * show Admin Login info
@@ -44,14 +45,14 @@ exports.adminLogin = function (req, res, next) {
 
         /*
          Hospital.newHospital("北京市朝阳医院","so!",'beijing','beijing chaoyangqu shenjingbingyuan ','123','100',function(err){
-            if(err){
-                return next(err);
-            }
+         if(err){
+         return next(err);
+         }
 
-            console.log("success! save in the Mongo");
+         console.log("success! save in the Mongo");
 
-        });
-        */
+         });
+         */
 
 
         res.redirect('/admin/hosInfo');
@@ -215,19 +216,63 @@ exports.exceptionManage = function (req, res, next) {
 };
 
 exports.hosFeedback = function (req, res, next) {
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+    var limit = config.page_limit;
+    var query = {fdType: 2};
+    var options = {skip: (page - 1) * limit, limit: limit, sort: "date"};
 
-    /*
-     User.newAndSave('15652954821','422201199507285d3X','12dd461','Beiding','lewidsaskit',function(err){
-        if(err){
-            return next(err);
-        }
-        console.log("save success!");
-        res.render('administrator/hosFeedback.html');
+    var proxy = new eventproxy();
+    proxy.fail(next);
+    //get pages count
+    Feedback.getCountByQuery(query, proxy.done(function (all_hosFeedback_count) {
+        var pages = Math.ceil(all_hosFeedback_count / limit);
+        proxy.emit('pages', pages);
+    }));
 
+    //get hosFeedback
+    Feedback.getFeedbackByQuery(query, options, proxy.done('hosFeedback', function (err, hosFeedback) {
+        if (err) next(err);
+
+        return hosFeedback;
+    }));
+
+    proxy.all('pages', 'hosFeedback', function (pages, hosFeedback) {
+        console.log('hehe');
+        res.render('administrator/hosFeedback');
     });
-    */
+
 };
 
 exports.userFeedback = function (req, res, next) {
-    res.render('administrator/userFeedback.html');
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+    var query = {fdType: 1};
+    var limit = config.page_limit
+    var options = {skip: (page - 1) * limit, limit: limit, sort: "date"};
+
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    //get page count
+    Feedback.getCountByQuery(query, proxy.done(function (all_userFeedback_count) {
+        var pages = Math.ceil(all_userFeedback_count / limit);
+        proxy.emit('pages', pages);
+    }));
+
+    //get userFeedback infos
+    Feedback.getFeedbackByQuery(query, options, proxy.done('userFeedback', function (err, userFeedback) {
+        if (err) next(err);
+
+        return userFeedback;
+    }));
+
+    proxy.all('pages', 'userFeedback', function (pages, userFeedback) {
+        res.render('administrator/userFeedback', {
+            page: page,
+            pages: pages,
+            userFeedback: userFeedback
+        });
+    });
+
 };
