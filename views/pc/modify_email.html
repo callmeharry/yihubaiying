@@ -5,6 +5,7 @@
       <!-- 引入 Bootstrap -->
       <link href="dist/css/bootstrap.min.css" rel="stylesheet">
       <link href="css/common.css" rel="stylesheet">
+      <link href="css/modify_phonenumber.css" rel="stylesheet">
       <script src="dist/scripts/jquery.min.js"></script>
       <script src="dist/bootstrap/js/bootstrap.min.js"></script>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -73,50 +74,21 @@
 
       <!--右侧面板--> 
          <div class="panel panel-info panel-right">
-            <div class="panel-heading panel-head-center">
-               <!--上方名字-->
-               个人信息
+            <div class="panel-heading panel-head-personalinfo">
+               <!--上方导航栏-->
+               <ol class="breadcrumb my-bread">
+                 <li><a href="personal_info.html">个人信息</a></li>
+                 <li class="active">修改邮箱</li>
+               </ol>
             </div>
-            <div class="panel-body panel-body-center">
-               <table class="body-table">
-                  <tr>
-                     <th class="th-left">用户名：</th>
-                     <th class="th-right">当前用户名</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">密码：</th>
-                     <th class="th-right">*********&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_password.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">真实姓名：</th>
-                     <th class="th-right">李小爽</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">身份证号：</th>
-                     <th class="th-right">120***********0029</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">现居住城市：</th>
-                     <th class="th-right">北京&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">邮箱：</th>
-                     <th class="th-right">18811399327@163.com&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_email.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">手机号：</th>
-                     <th class="th-right">18811399327&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_phonenumber.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">信用等级：</th>
-                     <th class="th-right">3</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">注册时间：</th>
-                     <th class="th-right">2014-11-19</th>
-                  </tr>
-               </table>
+            <div>
+               <form class="form-center">
+                        <label>新邮箱：</label>
+                        <input type="email" class="form-control" placeholder="请输入新邮箱">
+                        <button class="btn identify-button">获取验证邮件</button>
+               </form>
             </div>
+
          </div>
 
    </body>

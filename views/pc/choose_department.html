@@ -14,6 +14,7 @@
       <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">     
    </head>
+   
 
    <body>
       <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
@@ -47,7 +48,7 @@
       <nav class="navbar navbar-default head-navbar" role="navigation">
          <div>
             <ul class="nav navbar-nav">
-               <li><a href="#">按医院找</a></li>
+               <li class="active"><a href="#">按医院找</a></li>
                <li><a href="#">按科室找</a></li>
                <li><a href="#">按疾病找</a></li>
             </ul>
@@ -75,46 +76,59 @@
          <div class="panel panel-info panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方名字-->
-               个人信息
+              选择科室
             </div>
             <div class="panel-body panel-body-center">
-               <table class="body-table">
-                  <tr>
-                     <th class="th-left">用户名：</th>
-                     <th class="th-right">当前用户名</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">密码：</th>
-                     <th class="th-right">*********&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_password.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">真实姓名：</th>
-                     <th class="th-right">李小爽</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">身份证号：</th>
-                     <th class="th-right">120***********0029</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">现居住城市：</th>
-                     <th class="th-right">北京&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">邮箱：</th>
-                     <th class="th-right">18811399327@163.com&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_email.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">手机号：</th>
-                     <th class="th-right">18811399327&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_phonenumber.html">修改</a></th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">信用等级：</th>
-                     <th class="th-right">3</th>
-                  </tr>
-                  <tr>
-                     <th class="th-left">注册时间：</th>
-                     <th class="th-right">2014-11-19</th>
-                  </tr>
+               <div class="row text-left" style="margin-left:2px">
+                  <h3>北京市大兴区精神病医院</h3>
+               </div>
+               <br>
+               <div class="row">
+                  <div class="col-md-4">
+                     <img src="img/hos_picture.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-8" style="text-align:left">
+                     <p class="text-muted">医院地址：北京市大兴区黄村镇黄良路口北侧</p>
+                     <p class="text-muted">联系方式：010-61216048</p>
+                     <p class="text-muted">预约周期：91天</p>
+                     <p class="text-muted">放号时间：9:45</p>
+                     <p class="text-muted">停挂时间：下午15:00停止次日预约挂号 (周五15:00后停挂至下周一)</p>
+                     <p class="text-muted">退号时间：就诊前一工作日15:00前取消</p>
+                  </div>
+               </div>
+               <br>
+               <div class="row text-left" style="margin-left:2px">
+                  <h4>开放预约科室</h4>                  
+               </div>
+               <table class="table table-bordered table-striped">
+                  <tbody>
+                     <tr>
+                        <td rowspan="2">内科</td>
+                        <td><a href="#">过敏反应科</a></td>
+                        <td>干一科</td>
+                        <td>呼吸内科</td>
+                        <td>内分泌科</td>
+                     </tr>
+                     <tr>
+                        <td>神经科</td>
+                        <td>肾脏科</td>
+                        <td></td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td rowspan="2">外科</td>
+                        <td>肛肠科</td>
+                        <td>泌尿科</td>
+                        <td>乳腺科</td>
+                        <td>细胞移植科</td>
+                     </tr>
+                     <tr>
+                        <td>神经创伤科</td>
+                        <td>普通外科</td>
+                        <td>胸外科</td>
+                        <td>烧伤整形科</td>
+                     </tr>
+                  </tbody>
                </table>
             </div>
          </div>
