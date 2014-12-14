@@ -15,21 +15,10 @@
 <body>
 	<%- include header.html%>
 	<div class="panel panel-default" id="hosInfoManage">
-	  	<div class="panel-heading">
-	    	<h2 class="panel-title">医院信息管理</h2>
-	  	</div>
-		
-		<nav class="navbar navbar-default" role="navigation">
-		  	<!-- Collect the nav links, forms, and other content for toggling -->
-			<ul class="nav nav-pills">
-				<li class="active"><a href="/admin/hosInfo">查看医院</a></li>
-				<li><a href="/admin/hosAdd">新增医院</a></li>
-				<li><a href="/admin/hosAlter">医院端修改</a></li>
-			</ul>
-		</nav>
+		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-		 <li class="active"><a href="deptInfo.html">xxx医院</a></li>
+			<li class="active"><a href="/admin/deptInfo">xxx医院</a></li>
 		</ol>
 
 	  	<div class="panel-body subpanel" id="deptInfo">
@@ -57,7 +46,7 @@
 						<td>XXX</td>
 						<td>XXX</td>
 						<td>XXX</td>
-						<td><a href="docInfo.html">查看</a></td>
+						<td><a href="/admin/docInfo">查看</a></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#editModal">
 							  编辑

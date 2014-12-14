@@ -20,18 +20,44 @@
  				$("form").submit();
  			}
  		</script>
-		
+	<style type="text/css">
+		body {
+			background: url("/images/bg_adminlogin.jpg") no-repeat;
+			background-size: 100%;
+		}
+
+		.box {
+			width: 394px;
+			padding: 40px 20px 20px 10px;
+			border: 1px solid #BFBFBF;
+			background-color: #f5f5f5;
+			/* Add box-shadow */
+			box-shadow: 2px 2px 3px #aaaaaa;
+			border-radius: 20px;
+			margin-top: 150px;
+		}
+
+		.warn {
+			width: 393px;
+			position: absolute;
+			color: red;
+			top: -75px;
+			left: -1px;
+		}
+
+	</style>
 </head>
 <body>
-	<form class="form-horizontal" method="post">
+<form class="form-horizontal" method="post" action="/admin_login">
 		<div class="col-md-offset-1">
 	  		<span class="text-left text-primary"> <h1>医呼百应<small>管理员登录页面</small> </h1></span>
 	  	</div>
 
-	  	<div class="col-md-offset-4 col-md-4" style="margin-top:150px">
+	<div class="col-md-offset-4 col-md-4 box">
 			<% if (typeof(error) !== 'undefined' && error) { %>
-			<div class="alert alert-warning col-md-offset-4" role="alert">
-				<a class="close" data-dismiss="alert" href="#">&times;</a>
+		<div class="alert alert-warning alert-dismissible warn" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+					class="sr-only">Close</span></button>
 				<strong><%= error %></strong>
 			</div>
 			<% } %>
@@ -49,7 +75,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-7 col-sm-2">
-					<button name="btnLogin" id="btnLogin" class="btn btn-primary"> 登录 </button>
+					<input type="submit" name="btnLogin" id="btnLogin" class="btn btn-primary" value="login"/>
 				</div>
 			</div>
 		</div>

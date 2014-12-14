@@ -11,7 +11,7 @@ var admin = require('./controllers/admin');
 var mobileLogin = require('./controllers/login');
 var mobileIndex = require('./controllers/site');
 var router = express.Router();
-
+var sms = require('./middlewares/sms');
 
 //get controllers
 var index = require('./test/index');
@@ -54,7 +54,9 @@ router.get('/admin/hosInfo', admin.hosInfo);
 //医院反馈
 router.get('/admin/hosFeedback', admin.hosFeedback);
 //医院添加
-router.get('/admin/hosAdd', admin.addHos);
+router.get('/admin/hosAdd', admin.showAddHos);
+router.post('admin/hostAdd', admin.addHos);
+
 //医院端修改
 router.get('/admin/hosAlter', admin.changeHosInfo);
 
@@ -76,6 +78,7 @@ router.get('/admin/exceptionManage', admin.exceptionManage);
 //Test page
 router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
+router.get('/sms', sms.registerVerify);
 
 
 module.exports = router;

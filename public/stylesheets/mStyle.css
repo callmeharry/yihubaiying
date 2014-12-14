@@ -1,0 +1,47 @@
+
+@media all and (min-width: 900px) {
+	html, body {
+		height: 100%;
+	}
+	#menu {
+		/*background: #eee;*/
+	}
+	#page {
+		
+		min-height: 100%;
+	}
+	/* hide open-button */
+	a[href="#menu"]
+	{
+		/*display: none !important;*/
+	}
+}
+
+/****************************************************************************Common */
+#userInfo{
+	background-color: #0066FF;
+	float: top;
+	height: 50px;
+	line-height: 50px;
+}
+
+.userInfoSytle{
+	text-align: center;
+	color: white;
+	font-size: 1.2em;
+	font-family:"微软雅黑";
+}
+
+#header,
+.header,
+#footer
+{
+	background: #587eac;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	line-height: 51px;
+	height: 51px;
+	padding: 0 50px;
+}

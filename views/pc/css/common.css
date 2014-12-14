@@ -145,3 +145,28 @@ select{
 	display: block;
 }
 
+.divFound {
+	border: solid 1px;
+	border-color: #eee;
+}
+
+table td {
+	padding: 5px;
+}
+
+h3 {
+	color: blue;
+	font-weight: bold;
+}
+
+.aNoChange {
+
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.navArea {
+	background-color:;
+}

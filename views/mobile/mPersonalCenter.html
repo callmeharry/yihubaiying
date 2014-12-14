@@ -1,49 +1,45 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>个人中心</title>
-<link rel="stylesheet" href="../../public/stylesheets/foundation.css" />
-<link rel="stylesheet" type="text/css" href="../../public/stylesheets/mRegister.css">
-<link rel="stylesheet" type="text/css" href="../../public/stylesheets/mPersonalPage.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../../public/stylesheets/foundation.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mRegister.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mPersonalPage.css">
 </head>
 <script type="text/javascript">
-function loadXMLDoc1()
-{
-	$('#booking').show();
-	$('#personal_information').hide();
-	$('#collection').hide();
-	$('#question').hide();
-}
+    function loadXMLDoc1() {
+        $('#booking').show();
+        $('#personal_information').hide();
+        $('#collection').hide();
+        $('#question').hide();
+    }
 
-function loadXMLDoc2()
-{
-	$('#booking').hide();
-	$('#personal_information').show();
-	$('#collection').hide();
-	$('#question').hide();
-}
-function loadXMLDoc3()
-{
-	$('#booking').hide();
-	$('#personal_information').hide();
-	$('#collection').show();
-	$('#question').hide();
-}
+    function loadXMLDoc2() {
+        $('#booking').hide();
+        $('#personal_information').show();
+        $('#collection').hide();
+        $('#question').hide();
+    }
+    function loadXMLDoc3() {
+        $('#booking').hide();
+        $('#personal_information').hide();
+        $('#collection').show();
+        $('#question').hide();
+    }
 
-function loadXMLDoc4()
-{
-	$('#booking').hide();
-	$('#personal_information').hide();
-	$('#collection').hide();
-	$('#question').show();
-}
-
+    function loadXMLDoc4() {
+        $('#booking').hide();
+        $('#personal_information').hide();
+        $('#collection').hide();
+        $('#question').show();
+    }
 
 
 </script>
 <body>
+<<<<<<< HEAD
 			<div class="icon-bar small-horizontal three-up" style="background-color:#0078d8;">
   		<a class="item">
     		<label onclick="loadXMLDoc1()">MaBingYing</label>
@@ -127,9 +123,116 @@ function loadXMLDoc4()
 
 		</table>
         <button type="button" class="small radius button" style="background-color:#77B7EE; color:#FFFFFF;"  >修改</button>
+=======
+<div align="center">
+    <span id="topText">个人中心</span>
+</div>
+<div class="icon-bar small-horizontal four-up" style="background-color:#0078d8; margin-top:50px;">
+    <a class="item">
+        <label onclick="loadXMLDoc1()">操作订单</label>
+    </a>
+    <a class="item">
+        <label onclick="loadXMLDoc2()">个人信息</label>
+    </a>
+    <a class="item">
+        <label onclick="loadXMLDoc3()">收藏</label>
+    </a>
+    <a class="item">
+        <label onclick="loadXMLDoc4()">问题反馈</label>
+    </a>
+</div>
+
+<div align="center">
+    <div id="booking" style="background-color:#0078d8; width:300px; padding-bottom:10px;">
+        <span class="sub_title">操作订单</span>
+
+        <div>
+            <table frame="box" cellspacing="15" align="center" style="margin-top:20px;">
+                <tr>
+                    <td>订单号</td>
+                    <td>8282828</td>
+                </tr>
+                <tr>
+                    <td>医院</td>
+                    <td>北医三院</td>
+                </tr>
+                <tr>
+                    <td>科室</td>
+                    <td>骨科</td>
+                </tr>
+                <tr>
+                    <td>状态</td>
+                    <td>待支付</td>
+                </tr>
+                <tr>
+                    <td>评价</td>
+                    <td>暂无</td>
+                </tr>
+
+            </table>
+            <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">支付
+            </button>
+            <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">删除
+            </button>
+        </div>
+        <div>
+            <table frame="box" cellspacing="15" align="center" style="margin-top:20px;">
+                <tr>
+                    <td>订单号</td>
+                    <td>8242828</td>
+                </tr>
+                <tr>
+                    <td>医院</td>
+                    <td>北航校医院</td>
+                </tr>
+                <tr>
+                    <td>科室</td>
+                    <td>骨科</td>
+                </tr>
+                <tr>
+                    <td>状态</td>
+                    <td>待支付</td>
+                </tr>
+                <tr>
+                    <td>评价</td>
+                    <td>暂无</td>
+                </tr>
+
+            </table>
+            <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">支付
+            </button>
+            <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">删除
+            </button>
+        </div>
+    </div>
+    <div id="personal_information" style="display:none;">
+        <span class="sub_title">个人信息</span>
+
+        <table frame="box" cellspacing="15" align="center" style="margin-top:20px;">
+            <tr>
+                <td>身份证号</td>
+                <td>3828282828282828</td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td>张三</td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td>18283838282</td>
+            </tr>
+            <tr>
+                <td>现居城市</td>
+                <td>北京</td>
+            </tr>
+
+        </table>
+        <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">修改</button>
+>>>>>>> FETCH_HEAD
 
         <button type="button" class="small radius button" style="background-color:#77B7EE; color:#FFFFFF;">保存</button>
 
+<<<<<<< HEAD
         
  </div>
  
@@ -152,55 +255,94 @@ function loadXMLDoc4()
   				<td>马冰莹</td>
   				<td>北航校医院</td>
 			</tr>
-            <tr>
-  				<td>李小爽</td>
-  				<td>北大医院</td>
-			</tr>
-            <tr>
-  				<td>王洁薇</td>
-  				<td>积水潭医院</td>
-			</tr>
+=======
 
-		</table>
-        
     </div>
+
+    <div id="collection" style="display:none;">
+        <span class="sub_title">收藏</span>
+        <table frame="box" cellspacing="15" align="center" style="margin-top:20px;">
+            <tr>
+                <td>s收藏的医生</td>
+                <td>收藏的医院</td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>北医三院</td>
+            </tr>
+>>>>>>> FETCH_HEAD
+            <tr>
+                <td>李旭</td>
+                <td>协和医院</td>
+            </tr>
+            <tr>
+                <td>马冰莹</td>
+                <td>北航校医院</td>
+            </tr>
+            <tr>
+                <td>李小爽</td>
+                <td>北大医院</td>
+            </tr>
+            <tr>
+                <td>王洁薇</td>
+                <td>积水潭医院</td>
+            </tr>
+
+        </table>
+
+    </div>
+<<<<<<< HEAD
     <div id="question" style="display:none; background-color:#FFFFFF">
     	<span class="sub_title">问题反馈</span>
         <table frame="box" cellspacing="10" align="center" style="margin-top:20px; background-color:#77B7EE;" >
 			<tr>
   				<td>时间</td>
   				<td>问题</td>
-                <td>是否解决</td>
-			</tr>
-			<tr>
-  				<td>2013/2/1</td>
-  				<td>无法预约</td>
-                <td>已解决</td>
-			</tr>
-			<tr>
-  				<td>2013/3/2</td>
-  				<td>无法支付</td>
-                <td>已解决</td>
-			</tr>
+=======
+    <div id="question" style="display:none;">
+        <span class="sub_title">问题反馈</span>
+        <table frame="box" cellspacing="10" align="center" style="margin-top:20px;">
             <tr>
-  				<td>2030/3/2</td>
-  				<td>支付后无法打印</td>
+                <td>时间</td>
+                <td>问题</td>
+>>>>>>> FETCH_HEAD
+                <td>是否解决</td>
+            </tr>
+            <tr>
+                <td>2013/2/1</td>
+                <td>无法预约</td>
+                <td>已解决</td>
+            </tr>
+            <tr>
+                <td>2013/3/2</td>
+                <td>无法支付</td>
+                <td>已解决</td>
+            </tr>
+            <tr>
+                <td>2030/3/2</td>
+                <td>支付后无法打印</td>
                 <td>待解决</td>
-			</tr>
+            </tr>
 
-			<tr>
-  				<td>2030/3/4</td>
-  				<td>医院查不到预约信息</td>
+            <tr>
+                <td>2030/3/4</td>
+                <td>医院查不到预约信息</td>
                 <td>待解决</td>
+<<<<<<< HEAD
 			</tr>
 		</table>
         <button type="button" class="small radius button" style="background-color:#77B7EE; color:#FFFFFF;"  >提问</button>
+=======
+            </tr>
+        </table>
+        <button type="button" class="small radius button" style="background-color:#F7F7F7; color:#0078D8;">提问</button>
+>>>>>>> FETCH_HEAD
     </div>
-    </div>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+</div>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>
