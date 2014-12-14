@@ -22,34 +22,18 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
     hospital.hospital_location = hospitalLocation;
     hospital.hospital_tel = hospitalTel;
     hospital.hospital_is_validated = true;
+    hospital.hospital_weight = hospitalWeight;
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };
 
-exports.newDepartment = function (deptName, i, callback) {
-    var department = new Array({
-        hospital_dept_name: deptName + i
-
-    })
+exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback) {
+    Hospital.update({'_id': hospitalId}, {'push': {'hospital_dept': {'father_dept_name': fatherDeptName, 'dept_name': deptName}}}, callback);
 };
 
-exports.newSubDept = function (subDeptName, i, callback) {
-    var subDeptName = new Array({
-        hospital_subdept_name: subDeptName + i
-
-    })
+exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
+    Hospital.update({'_id': hospitalId, 'hospital_dept._id': deptId}, {'push': {'hospital_dept.dept_doc': docId}}, callback);
 };
-// 加入权重的函数
-//exports.newHospital = function (hospitalName, hospitalIntro, hospitalWeight, callback) {
-//
-//    var hospital = new Hospital();
-//    hospital.hospital_name = hospitalName;
-//    hospital.hospital_intro = hospitalIntro;
-//    hospital.weight = hospitalWeight;
-//    hospital.hospital_is_validated = true;
-//    hospital.save(callback);
-//
-//};
 //todo:middleDepartments是什么？？
 exports.getHospitalsByHospitalId = function (id, callback) {
     Hospital.findOne({_id: id},
