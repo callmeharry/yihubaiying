@@ -94,6 +94,10 @@ exports.getOneHospitalByQuery = function (query, opt, callback) {
 
 };
 
+exports.getDeptByHospitalId = function (hosId, callback) {
+
+};
+
 
 exports.getDeptDotctors = function (dept_id, callback) {
     var query = {"hospital_dept._id": dept_id};
