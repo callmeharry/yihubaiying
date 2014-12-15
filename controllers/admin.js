@@ -63,7 +63,12 @@ exports.adminLogin = function (req, res, next) {
         //
         //});
 
-        res.redirect('/admin/hosInfo');
+        //Hospital.addDepartment("548ee6df7e901dae494e699b","shenjingke","ertongshenjing",function(err){
+        //    if(err){next(err)};
+        //    console.log("success");
+        //    res.redirect('/admin/hosInfo');
+        //});
+
     } else {
         ep.emit('login_err', "username or password is wrong!");
         return;
@@ -102,7 +107,6 @@ exports.hosInfo = function (req, res, next) {
     proxy.all('pages', 'hospitals', function (pages, hospitals) {
 
         console.log(hospitals);
-        console.log(pages + " " + page);
         res.render('administrator/hosInfo', {
             page: page,
             pages: pages,
@@ -122,7 +126,7 @@ exports.showAddHos = function (req, res, next) {
     res.render('administrator/hosAdd');
 };
 /**
- *  //todo not test yet no redirect page
+ *  add hospital
  * @param req
  * @param res
  * @param next
@@ -134,9 +138,10 @@ exports.addHos = function (req, res, next) {
     var hos_location = validator.trim(req.body.hos_location);
     var hos_tel = validator.trim(req.body.hos_tel);
     var hos_weight = validator.trim(req.body.hos_weight);
-
+    console.log(hos_name + " " + hos_intro + " " + hos_city + " " + hos_location + " hehe");
 
     var ep = new eventproxy();
+    ep.fail(next);
     ep.on('post_err', function (msg) {
         res.status(422);
         res.render('administrator/hosAdd', {error: msg});
@@ -153,7 +158,7 @@ exports.addHos = function (req, res, next) {
             if (err)
                 return next(err);
             console.log("save hospital successfully");
-            res.redirect('admin/save_success');
+            res.redirect('/admin/hosInfo');
         });
 
 }
@@ -178,30 +183,78 @@ exports.changeHosInfo = function (req, res, next) {
  * @param next
  */
 exports.deptInfo = function (req, res, next) {
-    var hos_id = validator.trim(req.query.hos_id);
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+    //hos_id
+
+    var hos_id = validator.trim(req.query.hos_id) || req.session.hosId || '';
+    req.session.hosId = hos_id;
+
+    console.log(hos_id);
+
+    var query = {_id: hos_id};
+    var limit = config.page_limit;
+    var options = {"hospital_dept": {"$slice": [(page - 1) * limit, limit]}};
+
     var proxy = new eventproxy();
+    proxy.fail(next);
 
-    Hospital.getHospitalsByHospitalId(hos_id, function (err, hos) {
-        if (err) {
-            next(err);
-        }
-        if (hos) {
-            var hosDeptInfo = {};
-            hosDeptInfo.hospital_name = hos.hospital_name;
-            hosDeptInfo.dept = hos.hospital_dept;
-            res.render('administrator/deptInfo', hosDeptInfo);
-        } else {
-            next(err);
-        }
+    //get fill hospital and dept
+    Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
+        return hospital;
+    }));
+
+    //get pages; you should optimize the function to let it faster
+    Hospital.getOneHospitalByQuery(query, {}, proxy.done(function (hospital) {
+        var pages = Math.ceil(hospital.hospital_dept.length / limit);
+        proxy.emit("pages", pages);
+    }));
+
+    proxy.all("pages", "hospital", function (pages, hospital) {
+        console.log(pages + " " + hospital);
+        res.render("administrator/deptInfo", {
+            pages: pages,
+            page: page,
+            hospital: hospital
+        });
+
     });
-
-
 
 };
 
 
 exports.docInfo = function (req, res, next) {
-    res.render('administrator/docInfo');
+    var page = validator.trim(req.query.page);
+    page = page > 0 ? page : 1;
+
+    //dept_id
+    var dept_id = validator.trim(req.query.dept_id) || req.session.dept_id || '';
+    req.session.dept_id = dept_id;
+    console.log(dept_id);
+
+    var query = {"hospital_dept._id": dept_id};
+    var limit = config.page_limit;
+    var options = {"hospital_dept.$": 1};
+
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
+
+        return hospital;
+    }));
+
+    proxy.all("hospital", function (hospital) {
+
+        //var length = hospital.hospital_dept.length;
+        //var pages =  Math.ceil(length / limit);
+        console.log(hospital + " test!!");
+        res.render('administrator/docInfo');
+    });
+
+
+
+
 };
 
 exports.callInfo = function (req, res, next) {
@@ -310,3 +363,4 @@ exports.userFeedback = function (req, res, next) {
     });
 
 };
+

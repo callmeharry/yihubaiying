@@ -23,7 +23,6 @@ var HospitalSchema = new Schema({
     hospital_is_validated: { type: Boolean, default: false },
     hospital_dept: [
         {
-            _id: { type: String },
             father_dept_name: { type: String },
             dept_name: { type: String },
             dept_doc: [{ type: ObjectId }]

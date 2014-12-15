@@ -17,6 +17,8 @@ var config = {
     current_page: 'current_page',
     auth_cookie_userid: null,
 
+    session_secret: 'node_club_secret', //must change
+
     // 程序运行的端口
     port: 23333,
 
