@@ -90,4 +90,4 @@ exports.getHospitalsByQuery = function (query, opt, callback) {
 exports.getOneHospitalByQuery = function (query, opt, callback) {
     Hospital.findOne(query, opt, callback);
 
-}
+};
