@@ -3,6 +3,7 @@
  * Tool file
  */
 var moment = require('moment');
+var config = require('../config');
 moment.locale('zh-cn'); // 使用中文
 
 

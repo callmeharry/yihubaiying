@@ -41,7 +41,6 @@ exports.handleRegister = function (req, res, next) {
         return;
     }
     user.getOneUserByPhoneNumber(phoneNumber, function (err, users) {
-        console.log(users);
         if (users != null) {
             res.send('Used phone number.');
             return;

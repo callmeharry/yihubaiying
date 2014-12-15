@@ -17,10 +17,14 @@
     <script type="text/javascript" src="/javascripts/o-script.js"></script>
 </head>
 
-<body class="o-page p-blog">
+<body>
 <div id="page">
 
-    <%- include mUserHeader.html %>
+    <% if(username == 'undefined') { %>
+    <%- include mNotLoggedIn.html %>
+    <% } else {%>
+    <%- include mLoggedIn.html %>
+    <% } %>
 
     <div id="content">
         <% for(var i = 0, l = hospital.length; i < l; i++) { %>
@@ -29,16 +33,29 @@
                 <div>
                     <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">
                 </div>
-                <h2><%= hospital[i].hospital_name %></h2>
+                <div>
+                    <h2><%= hospital[i].name %></h2>
 
-                <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                    地址：<%= hospital[i].hospital_location %>
-                </div>
-                <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                    电话：<%= hospital[i].hospital_tel %>
-                </div>
-                <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                    成功预约量：<%= hospital[i].hospital_order_count %>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        地址：<%= hospital[i].address %>
+                    </div>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        电话：<%= hospital[i].phoneNumber %>
+                    </div>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        成功预约量：<%= hospital[i].orderCount %>
+                    </div>
+                    <h2><%= hospital[i].hospital_name %></h2>
+
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        地址：<%= hospital[i].hospital_location %>
+                    </div>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        电话：<%= hospital[i].hospital_tel %>
+                    </div>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        成功预约量：<%= hospital[i].hospital_order_count %>
+                    </div>
                 </div>
             </a>
         </article>

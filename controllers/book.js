@@ -7,7 +7,7 @@ var eventproxy = require('eventproxy');
 var Hospital = require('../proxy/').Hospital;
 var Order = require('../proxy/order');
 var currPage = require('../middlewares/tool').setCurrentPage;
-
+var config = require('../config');
 /**
  * 显示医院列表
  * @param req
@@ -15,11 +15,9 @@ var currPage = require('../middlewares/tool').setCurrentPage;
  * @param next
  */
 exports.showHospital = function (req, res, next) {
-    var city = req.query.city;
-    var userId = req.cookies.user_id;
+    var city = req.cookies.city;
+    var username = req.cookies.username;
     console.log(city);
-    console.log(userId);
-    var user = {_id: 123, name: 1234};
     var eventProxy = new eventproxy();
 
     //Hospital.newHospital('hospital', 'hospitalIntro', '北京', function (err) {
@@ -35,7 +33,7 @@ exports.showHospital = function (req, res, next) {
             res.send("error happened during get ten hospitals by city.");
         } else {
             currPage(req, res);
-            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospitals});
+            return res.render('mobile/mHospitalSelect', {username: username, hospital: hospitals});
         }
     });
 };

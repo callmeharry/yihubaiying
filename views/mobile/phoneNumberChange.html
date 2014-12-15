@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>修改手机号码</title>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mRegister.css">
+    <script src="js/vendor/modernizr.js"></script>
+
+</head>
+
+<body>
+<form action="/mobile/login" method="post" id="login_form">
+    <div style="margin-left:10px; margin-top:50px;" align="center">
+        <span>＊新手机号码</span>
+    </div>
+    <div class="row" align="center">
+        <div class="large-12 columns" align="center">
+            <input id="id_new_phone" name="new_phone" type="text" placeholder="新手机号码"/>
+        </div>
+    </div>
+    <div class="large-12 columns" align="center" style="margin-top:40px;">
+        <input type="hidden" name="previousUrl" value="<%= previousurl %>">
+        <button type="submit" class="small radius button" name="post" value="true" style="background-color:#587eac">保存
+        </button>
+    </div>
+
+</form>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

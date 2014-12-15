@@ -10,8 +10,12 @@
  */
 exports.showIndex = function (req, res) {
     var url = req.url;
+    var username = req.cookies.username;
+    if (username == null)
+        username = "undefined";
+    console.log("logged " + req.cookies.username);
     if (url.indexOf('mobile') > 0)
-        res.render('mobile/mIndex');
+        res.render('mobile/mIndex', {username: username});
     else
-        res.render('pc/index');
+        res.render('pc/index', {username: username});
 };
