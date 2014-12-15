@@ -40,15 +40,12 @@
 }
 
 .panel-left{
-	float: left;
 	width: 170px;
-	margin-left: 230px;
+	margin-left: 40px;
 }
 
 .panel-right{
-	float: right;
 	width: 700px;
-	margin-right: 230px;
 }
 
 .btn-group{
