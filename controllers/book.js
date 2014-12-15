@@ -24,17 +24,11 @@ exports.showHospital = function (req, res, next) {
         if (err) {
             console.log(err);
         } else {
-            //console.log('hospital existed');
-            //console.log('newHospital: '+hospital);
-            //console.log('hospitalId in newHospital '+hospital._id);
-            Hospital.addDepartment(hospital._id, 'fatherDeptName','deptId', 'deptName', function (err) {
-                //console.log('hospitalId ' + hospital._id);
-                //console.log('hospitalId in addDepartment '+hospital._id);
+            Hospital.addDepartment(hospital._id, 'fatherDeptName', 'deptName', function (err) {
                 if (err) {
                     console.log(err);
                 } else {
                     console.log('hospital in addDepartment: '+hospital);
-                    //console.log(Hospital.hospital_dept.dept_name);
                     Hospital.addDeptDoc(hospital._id, 'deptId', 'docId', function (err, hospitalAdded) {
                         if(err) {
                             console.log(err);
