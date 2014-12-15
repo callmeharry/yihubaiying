@@ -41,7 +41,10 @@ exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback
 };
 
 exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
-    Hospital.update({_id: hospitalId, 'hospital_dept._id': deptId}, {$push: {'hospital_dept.dept_doc': docId}}, callback);
+    Hospital.update({
+        _id: hospitalId,
+        'hospital_dept._id': deptId
+    }, {$push: {'hospital_dept.dept_doc': docId}}, callback);
 };
 
 exports.getHospitalsByHospitalId = function (id, callback) {

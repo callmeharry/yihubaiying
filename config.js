@@ -15,6 +15,9 @@ var config = {
     db: 'mongodb://127.0.0.1/yihubaiying',
     db_name: 'yihubaiying',
     current_page: 'current_page',
+    auth_cookie_userid: '_id',
+    auth_cookie_username: 'username',
+    auth_cookie_city: 'city',
     auth_cookie_userid: null,
 
     session_secret: 'node_club_secret', //must change

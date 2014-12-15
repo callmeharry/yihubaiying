@@ -85,4 +85,9 @@ exports.handleLogin = function (req, res, next) {
 };
 
 
-
+exports.handleLogout = function (req, res) {
+    res.clearCookie(config.auth_cookie_userid, {path: '/'});
+    res.clearCookie(config.auth_cookie_username, {path: '/'});
+    res.clearCookie(config.auth_cookie_city, {path: '/'});
+    res.redirect('/mobile');
+};

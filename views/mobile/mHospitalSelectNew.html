@@ -4,42 +4,67 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>选择医院</title>
-    <link type="text/css" rel="stylesheet" href="../../public/stylesheets/jquery.mmenu.all.css"/>
+<!--    <link type="text/css" rel="stylesheet" href="../../public/stylesheets/jquery.mmenu.all.css"/>
+    
     <link type="text/css" rel="stylesheet" href="../../public/stylesheets/style.css"/>
+    
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/foundation/foundation.css">
 
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">-->
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/HospitalSelect.css">
 
-    <script type="text/javascript" src="../../public/javascripts/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/DatePicker.css">
+
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <!--<script type="text/javascript" src="../../public/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="../../public/javascripts/jquery.easy-pie-chart.js"></script>
     <script type="text/javascript" src="../../public/javascripts/o-script.js"></script>
+-->
+<!-- new script -->
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page p-blog">
 <div id="page">
-
+<!-- -->
+    <!--
     <%- include mUserHeader.html %>
+    -->
+
+    <div id="header">
+        <a href="#menu"></a>
+        <span> 医呼百应 选择医院 </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
 
     <div id="content">
+
+        <!-- 
         <% for(var i = 0, l = hospital.length; i < l; i++) { %>
+        -->
         <article>
             <a href="/mobile/book/departments?hospitalid=<%= hospital[i]._id %>">
                 <div>
-                    <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">
+                    <!-- <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">-->
+                    <img class="hospitalPic" src="../../public/images/hospital1.png">
                 </div>
                 <div>
-                    <h2><%= hospital[i].name %></h2>
+                    <h2>医院名称<!-- <%= hospital[i].name %>--></h2>
 
-                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                        地址：<%= hospital[i].address %>
+                    <div class="hospitalInfoSytle">
+                        地址：医院地址<!-- <%= hospital[i].address %>-->
+                    </div>
+                    <div class="hospitalInfoSytle">
+                        电话：68976593847<!-- <%= hospital[i].phoneNumber %>-->
                     </div>
                     <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                        电话：<%= hospital[i].phoneNumber %>
-                    </div>
-                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                        成功预约量：<%= hospital[i].orderCount %>
+                        成功预约量：230 <!-- <%= hospital[i].orderCount %>-->
                     </div>
                     <h2><%= hospital[i].hospital_name %></h2>
 
@@ -52,10 +77,47 @@
                     <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
                         成功预约量：<%= hospital[i].hospital_order_count %>
                     </div>
+                </div>
             </a>
         </article>
-        <% } %>
+        <!-- <% } %>-->
     </div>
+
+            <!-- Menu navigation -->
+        <nav id="menu">
+            <ul>
+                <li class="Selected">
+                    <a href="mIndex.html">
+                        <i class="i-home i-small"></i>预约主页
+                    </a>
+                </li>
+                <li>
+                    <a href="mPersonalCenter.html">
+                        <i class="i-about i-small"></i>个人信息
+                    </a>
+                </li>
+                <li>
+                    <a href="blog.html">
+                        <i class="i-blog i-small"></i>订单管理
+                    </a>
+                </li>
+                <li>
+                    <a href="gallery.html">
+                        <i class="i-gallery i-small"></i>收藏夹
+                    </a>
+                </li>
+                <li>
+                    <a href="shortcodes.html">
+                        <i class="i-shortcodes i-small"></i>问题反馈
+                    </a>
+                </li>
+                <li>
+                    <a href="mLogin.html">
+                        <i class="i-contact i-small"></i>账户登陆
+                    </a>
+                </li>
+            </ul>
+        </nav>
 </div>
 </body>
 </html> 

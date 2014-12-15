@@ -8,7 +8,7 @@
 	margin-top: 55px;
 	margin-right: 100px;
 	margin-left: 120px;
-	color: #0066ff;
+	color: #5bc0de;
 }
 
 .logo-th{
@@ -144,7 +144,7 @@ select{
 
 .divFound {
 	border: solid 1px;
-	border-color: #eee;
+	border-color: #bce8f1;
 }
 
 table td {
@@ -166,4 +166,8 @@ a:hover {
 
 .navArea {
 	background-color:;
+}
+
+.myhr{
+	border-top: 1px solid  #bce8f1;
 }

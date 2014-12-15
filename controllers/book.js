@@ -15,12 +15,9 @@ var currPage = require('../middlewares/tool').setCurrentPage;
  * @param next
  */
 exports.showHospital = function (req, res, next) {
-    var city = req.query.city;
-    //var userId = req.cookies.user_id;
-    //console.log('city'+city);
-    //console.log('before userId');
-    //console.log('userId:'+userId);
-    var user = {_id: 123, name: 1234};
+    var city = req.cookies.city;
+    var username = req.cookies.username;
+    console.log(city);
     var eventProxy = new eventproxy();
 
     Hospital.newHospital('hospital', 'hospitalIntro', '北京', 'hospitalLocation', '0000000', '1', function (err, hospital) {
@@ -55,7 +52,7 @@ exports.showHospital = function (req, res, next) {
             res.send("error happened during get ten hospitals by city.");
         } else {
             currPage(req, res);
-            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospitals});
+            return res.render('mobile/mHospitalSelect', {username: username, hospital: hospitals});
         }
     });
 };

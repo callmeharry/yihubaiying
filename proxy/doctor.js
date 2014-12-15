@@ -15,15 +15,19 @@ exports.newAndSaveDoctor = function (docName, docIntro, callback) {
 };
 
 exports.addDoctorVisit = function (docId, startTime, endTime, totalSource, leftSource, callback) {
-    Doctor.update({_id: docId}, {$push: {doctor_visit: {
+    Doctor.update({_id: docId}, {
+        $push: {
+            doctor_visit: {
         visit_start_time: startTime,
         visit_end_time: endTime,
         totalSource: totalSource,
         leftSource: leftSource
-    }}}, callback);
+            }
+        }
+    }, callback);
 };
 
-exports.addDocAdvancedIllnessName = function(docId, illName, callback) {
+exports.addDocAdvancedIllnessName = function (docId, illName, callback) {
     Doctor.update({_id: docId}, {$push: {doctor_advanced_illness_name: illName}}, callback);
 };
 

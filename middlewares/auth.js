@@ -35,9 +35,17 @@ exports.UserRequired = function (req, res, next) {
  */
 exports.genSession = function GenSession(user, res) {
     // $$$$分隔信息
-    var authToken = user._id;
+    var _id = user._id;
+    var username = user.real_name;
+    console.log(username);
     console.log(user);
-    res.cookie(config.auth_cookie_userid, authToken,
+    res.cookie(config.auth_cookie_userid, _id,
+        // cookie有效期30天
+        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
+    res.cookie(config.auth_cookie_username, username,
+        // cookie有效期30天
+        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
+    res.cookie(config.auth_cookie_city, username,
         // cookie有效期30天
         {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
 };
