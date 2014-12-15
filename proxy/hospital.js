@@ -37,6 +37,7 @@ exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
 
 exports.getHospitalsByHospitalId = function (id, callback) {
     Hospital.findOne({_id: id}, callback);
+
 };
 
 /**

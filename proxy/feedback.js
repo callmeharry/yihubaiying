@@ -9,6 +9,15 @@ var eventproxy = require('eventproxy');
 var User = require('./user');
 var Hospital = require('./hospital');
 
+exports.newAndSave = function (content, fdType, sender_id, callback) {
+    var feedback = new Feedback();
+    feedback.content = content;
+    feedback.fdType = fdType;
+    feedback.sender_id = sender_id;
+    feedback.save(callback);
+};
+
+
 exports.getFeedbackByQuery = function (query, opt, callback) {
     Feedback.find(query, '', opt, function (err, feedback) {
         if (err) {
@@ -16,8 +25,10 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
         }
 
         var proxy = new eventproxy();
+        var feedbacks = new Array();
         proxy.after('update', feedback.length, function () {
-            callback(null, feedback);
+
+            callback(null, feedbacks);
         });
 
         if (query.fdType === 1) {
@@ -28,8 +39,13 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
                     User.getUserById(user_id, function (err, user) {
                         if (err) callback(err);
 
-                        feedback[i].name = user.real_name;
-                        feedback[i].date = tools.formatDate(feedback.date, true);
+                        feedbacks.push({
+                            name: user.real_name, date: tools.formatDate(feedback[i].date, true),
+                            content: feedback[i].content, _id: feedback[i]._id, if_check: feedback[i].if_check,
+                            check_message: feedback[i].check_message ? feedback[i].check_message : ''
+                        });
+
+                        console.log(feedbacks[i]);
                         return proxy.emit('update');
                     });
                 })(j);
@@ -43,9 +59,13 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
                     Hospital.getHospitalsByHospitalId(hos_id, function (err, hos) {
                         if (err) callback(err);
 
-                        feedback[i].name = hos.hospital_name;
-                        feedback[i].date = tools.formatDate(feedback.date, true);
-                        proxy.emit('update');
+                        feedbacks.push({
+                            name: user.real_name, date: tools.formatDate(feedback[i].date, true),
+                            content: feedback[i].content, _id: feedback[i]._id, if_check: feedback[i].if_check,
+                            check_message: feedback[i].check_message ? feedback[i].check_message : ''
+                        });
+
+                        return proxy.emit('update');
                     });
                 })(j);
             }

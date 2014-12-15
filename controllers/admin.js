@@ -53,7 +53,15 @@ exports.adminLogin = function (req, res, next) {
 
          });
          */
-
+        //
+        //Feedback.newAndSave("da wangewqao shangew",1,"548e793995eabe4d1fe99f38",function(err){
+        //    if(err){
+        //        next(err);
+        //    }
+        //    console.log("success!");
+        //    res.redirect('/admin/hosInfo');
+        //
+        //});
 
         res.redirect('/admin/hosInfo');
     } else {
@@ -163,8 +171,32 @@ exports.changeHosInfo = function (req, res, next) {
     res.render('administrator/hosAlter');
 };
 
+/**
+ * redirect from hosInfo and show the detail dept Info
+ * @param req
+ * @param res
+ * @param next
+ */
 exports.deptInfo = function (req, res, next) {
-    res.render('administrator/deptInfo');
+    var hos_id = validator.trim(req.query.hos_id);
+    var proxy = new eventproxy();
+
+    Hospital.getHospitalsByHospitalId(hos_id, function (err, hos) {
+        if (err) {
+            next(err);
+        }
+        if (hos) {
+            var hosDeptInfo = {};
+            hosDeptInfo.hospital_name = hos.hospital_name;
+            hosDeptInfo.dept = hos.hospital_dept;
+            res.render('administrator/deptInfo', hosDeptInfo);
+        } else {
+            next(err);
+        }
+    });
+
+
+
 };
 
 
@@ -231,15 +263,18 @@ exports.hosFeedback = function (req, res, next) {
     }));
 
     //get hosFeedback
-    Feedback.getFeedbackByQuery(query, options, proxy.done('hosFeedback', function (err, hosFeedback) {
-        if (err) next(err);
+    Feedback.getFeedbackByQuery(query, options, proxy.done('hosFeedback', function (hosFeedback) {
 
         return hosFeedback;
     }));
 
     proxy.all('pages', 'hosFeedback', function (pages, hosFeedback) {
-        console.log('hehe');
-        res.render('administrator/hosFeedback');
+
+        res.render('administrator/hosFeedback', {
+            pages: pages,
+            page: page,
+            feedbacks: hosFeedback
+        });
     });
 
 };
@@ -261,17 +296,16 @@ exports.userFeedback = function (req, res, next) {
     }));
 
     //get userFeedback infos
-    Feedback.getFeedbackByQuery(query, options, proxy.done('userFeedback', function (err, userFeedback) {
-        if (err) next(err);
-
+    Feedback.getFeedbackByQuery(query, options, proxy.done('userFeedback', function (userFeedback) {
         return userFeedback;
     }));
 
     proxy.all('pages', 'userFeedback', function (pages, userFeedback) {
+
         res.render('administrator/userFeedback', {
             page: page,
             pages: pages,
-            userFeedback: userFeedback
+            feedbacks: userFeedback
         });
     });
 
