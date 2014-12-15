@@ -28,15 +28,23 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
 };
 
 exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback) {
-    Hospital.update({'_id': hospitalId}, {'push': {'hospital_dept': {'father_dept_name': fatherDeptName, 'dept_name': deptName}}}, callback);
+    Hospital.update({'_id': hospitalId}, {
+        '$push': {
+            'hospital_dept': {
+                'father_dept_name': fatherDeptName,
+                'dept_name': deptName
+            }
+        }
+    }, callback);
 };
 
 exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
-    Hospital.update({'_id': hospitalId, 'hospital_dept._id': deptId}, {'push': {'hospital_dept.dept_doc': docId}}, callback);
+    Hospital.update({_id: hospitalId, 'hospital_dept._id': deptId}, {$push: {'hospital_dept.dept_doc': docId}}, callback);
 };
 
 exports.getHospitalsByHospitalId = function (id, callback) {
     Hospital.findOne({_id: id}, callback);
+
 };
 
 /**
@@ -76,3 +84,7 @@ exports.getHospitalsByQuery = function (query, opt, callback) {
     Hospital.find(query, '', opt, callback);
 };
 
+exports.getOneHospitalByQuery = function (query, opt, callback) {
+    Hospital.findOne(query, opt, callback);
+
+}

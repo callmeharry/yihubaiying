@@ -18,7 +18,7 @@
 			<div class="list-group">
 				<% for(var i=0; i<feedbacks.length; i++) {%>
 				<li href="#" class="list-group-item active">
-					<span class="list-group-item-heading">用户：<%= feedbacks[i].username%></span>
+					<span class="list-group-item-heading">用户：<%= feedbacks[i].name%></span>
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					<button type="button" data-toggle="modal" data-target="#replyModal1">回复</button>
 					<p class="list-group-item-text"><b>反馈内容：</b><%= feedbacks[i].content%>
@@ -39,7 +39,7 @@
 									<form class="input-group form-control">
 										<div class="input-group">
 											<span class="input-group-addon">用户名称</span>
-											<span class="form-control"><%= feedbacks[i].username%></span>
+											<span class="form-control"><%= feedbacks[i].name%></span>
 										</div>
 										<div class="input-group">
 											<span class="input-group-addon">回复内容</span>

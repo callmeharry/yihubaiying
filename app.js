@@ -17,6 +17,7 @@ var csurf = require('csurf');
 var compression = require('compression');
 var busboy = require('connect-busboy');
 var errorhandler = require('errorhandler');
+var MongoStore = require('connect-mongo')(session);
 var cors = require('cors');
 
 var users = require('./test/users');
@@ -30,6 +31,18 @@ app.engine('html', require('ejs-mate'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
+//session
+app.use(session({
+    secret: config.session_secret,
+    store: new MongoStore({
+        url: config.db
+    }),
+    resave: true,
+    saveUninitialized: true
+}));
+
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

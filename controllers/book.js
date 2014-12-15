@@ -7,7 +7,7 @@ var eventproxy = require('eventproxy');
 var Hospital = require('../proxy/').Hospital;
 var Order = require('../proxy/order');
 var currPage = require('../middlewares/tool').setCurrentPage;
-var config = require('../config');
+
 /**
  * 显示医院列表
  * @param req
@@ -20,13 +20,32 @@ exports.showHospital = function (req, res, next) {
     console.log(city);
     var eventProxy = new eventproxy();
 
-    //Hospital.newHospital('hospital', 'hospitalIntro', '北京', function (err) {
-    //    if (err) {
-    //        console.log(err);
-    //    } else {
-    //        console.log('hospital existed');
-    //    }
-    //});
+    Hospital.newHospital('hospital', 'hospitalIntro', '北京', 'hospitalLocation', '0000000', '1', function (err, hospital) {
+        if (err) {
+            console.log(err);
+        } else {
+            //console.log('hospital existed');
+            //console.log('newHospital: '+hospital);
+            //console.log('hospitalId in newHospital '+hospital._id);
+            Hospital.addDepartment(hospital._id, 'fatherDeptName','deptId', 'deptName', function (err) {
+                //console.log('hospitalId ' + hospital._id);
+                //console.log('hospitalId in addDepartment '+hospital._id);
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('hospital in addDepartment: '+hospital);
+                    //console.log(Hospital.hospital_dept.dept_name);
+                    Hospital.addDeptDoc(hospital._id, 'deptId', 'docId', function (err, hospitalAdded) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            console.log(hospitalAdded.hospital_dept);
+                        }
+                    });
+                }
+            });
+        }
+    });
 
     Hospital.getTenHospitalsByCity(city, function (err, hospitals) {
         if (err) {

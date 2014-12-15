@@ -18,10 +18,9 @@
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-			<% var url = '/admin/deptInfo/?hos_id='+hospital_id; %>
-			<li class="active"><a href="<%= url %>"><%= hospital_name%></a></li>
+			<% var url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
+			<li class="active"><a href="<%= url %>"><%= hospital.hospital_name%></a></li>
 		</ol>
-
 	  	<div class="panel-body subpanel" id="deptInfo">
 			<form class="input-group">
 			  <span class="input-group-addon">新增科室</span>
@@ -43,12 +42,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% for(var i=0; i<depts.length; i++) {%>
+				<% for(var i=0; i
+				<hospital.hospital_dept.length
+						; i++) {%>
 					<tr>
-						<td><%= depts[i]._id%></td>
-						<td><%= depts[i].dept_name%></td>
-						<td><%= hospital_name%></td>
-						<% var url = '/admin/docInfo/?dept_id='+i; %>
+						<td><%= hospital.hospital_dept[i]._id%></td>
+						<td><%= hospital.hospital_dept[i].dept_name%></td>
+						<td><%= hospital.hospital_name%></td>
+						<% var url = '/admin/docInfo/?dept_id='+hospital.hospital_dept[i]._id; %>
 						<td><a href='<%= url %>'>查看</a></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#editModal">

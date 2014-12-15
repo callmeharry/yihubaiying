@@ -4,23 +4,26 @@
  */
 
 var models = require('../models');
-var DoctorModel = models.Doctor;
+var Doctor = models.Doctor;
 
 exports.newAndSaveDoctor = function (docName, docIntro, callback) {
-    var doctorEntity = new DoctorModel({
+    var doctor = new DoctorModel({
         doctor_name: docName,
         doctor_intro: docIntro
     });
-    doctorEntity.save(callback);
+    doctor.save(callback);
 };
 
-exports.newDoctorVisit = function (startTime, endTime, totalSource, leftSource, callback) {
-    var doctorVisit = new Array({
+exports.addDoctorVisit = function (docId, startTime, endTime, totalSource, leftSource, callback) {
+    Doctor.update({_id: docId}, {$push: {doctor_visit: {
         visit_start_time: startTime,
         visit_end_time: endTime,
         totalSource: totalSource,
         leftSource: leftSource
-    });
-    doctorVisit.save(callback);
+    }}}, callback);
+};
+
+exports.addDocAdvancedIllnessName = function(docId, illName, callback) {
+    Doctor.update({_id: docId}, {$push: {doctor_advanced_illness_name: illName}}, callback);
 };
 

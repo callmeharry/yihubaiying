@@ -25,7 +25,7 @@ var HospitalSchema = new Schema({
         {
             father_dept_name: { type: String },
             dept_name: { type: String },
-            fept_doc: [{ type: ObjectId }]
+            dept_doc: [{ type: ObjectId }]
         }
     ]
 });
