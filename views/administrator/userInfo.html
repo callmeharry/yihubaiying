@@ -41,7 +41,7 @@
 				<td><%= users[i].address%></td>
 				<td><%= users[i].email%></td>
 				<td><%= users[i].credit_level%></td>
-				<td><%= users[i].register_time%></td>
+				<td name="register_time"><%= users[i].register_time%></td>
 				<td>
 					<% if (users[i].user_status === 0) { %>
 					未通过
@@ -122,5 +122,18 @@
 		}) %>
 	</div>
 </div>
+<script type="text/javascript">
+	var td = document.getElementsByTagName("td");
+	for(var i = 0;i < td.length; i++){
+		if(td[i].innerHTML=="undefined"){
+			td[i].innerHTML=null;
+		}
+	}
+	var rt=document.getElementsByName("register_time");
+	var rl=rt.length;
+	for(var i = 0;i < rl; i++){
+		rt[i].innerHTML = rt[i].innerHTML.substr(0,15);
+	}
+</script>
 </body>
 </html>

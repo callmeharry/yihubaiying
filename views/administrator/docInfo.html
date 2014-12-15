@@ -70,12 +70,14 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% for(var i=0; i<doctors.length; i++) {%>
 					<tr>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td><a href="callInfo.html">查看</a></td>
+						<td><%= doctors[i]._id %></td>
+						<td><%= doctors[i].doctor_name %></td>
+						<td><%= doctors[i].doctor_info %></td>
+						<td><%= doctors[i].doctor_strength%></td>
+						<% var url = '/admin/callInfo/?doc_id='+doctors[i]._id; %>
+						<td><a href='<%= url %>'>查看</a></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#infoModal">
 							  编辑
@@ -87,7 +89,7 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title" id="myModalLabel">XXX医生</h4>
+						        <h4 class="modal-title" id="myModalLabel"><%= doctors[i].doctor_name %></h4>
 						      </div>
 						      <div class="modal-body">
 						        <form class="input-group">
@@ -133,19 +135,14 @@
 						  </div><!-- /.modal-dialog -->
 						</div><!-- /.modal -->
 					</tr>
+					<% } %>
 				</tbody>
 			</table>
-			<nav class="col-md-offset-5">
-			  	<ul class="pagination">
-				    <li><a href="#">&laquo;</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">&raquo;</a></li>
-			  	</ul>
-			</nav>
+			<%- partial('list', {
+			pages: pages,
+			page: page,
+			base: '/admin/docInfo/'
+			}) %>
 	  	</div>
 	</div>
 </body>
