@@ -18,9 +18,13 @@ exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, 
 };
 
 exports.addComment = function (orderId, comTime, goodOrBad, content, callback) {
-   Order.update({_id: orderId}, {$push: {comment: {
-       time: comTime,
-       good_or_bad: goodOrBad,
-       content: content
-   }}}, callback);
+    Order.update({_id: orderId}, {
+        $push: {
+            comment: {
+                time: comTime,
+                good_or_bad: goodOrBad,
+                content: content
+            }
+        }
+    }, callback);
 };
