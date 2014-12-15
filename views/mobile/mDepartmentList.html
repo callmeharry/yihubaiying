@@ -8,12 +8,18 @@
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap-theme.css">
+    <script type="text/javascript" src="../../public/javascripts/bootstrap.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/npm.js"></script>
 
     <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
     <script type="text/javascript" src="../../public/javascripts/mJS.js"></script>
+
+</head>
 <body class="o-page">
 <div id="page">
 
@@ -24,14 +30,14 @@
     </div>
 
     <div class="content">
-        <div id="List">
+        <div id="List">                
             <ul>
                 <li class="Selected">
                     <a href="#">
-                        <i class="i-home i-small"></i>内科
+                        <i class="i-about i-small"></i><span id="id_departmentLevel1" name="departmentLevel1">内科</span>
                     </a>
                     <ul>
-                        <li><a href="mHospitalSelect.html">心血管内科</a></li>
+                        <li><a href="mHospitalSelect.html"><span id="id_departmentLevel2" name="departmentLevel2">心血管内科</span></a></li>
                         <li><a href="mHospitalSelect.html">神经内科</a></li>
                         <li><a href="mHospitalSelect.html">消化内科</a></li>
                         <li><a href="mHospitalSelect.html">内分泌内科</a></li>
@@ -104,6 +110,11 @@
                     <i class="i-shortcodes i-small"></i>问题反馈
                 </a>
             </li>
+            <li>
+                    <a href="mLogin.html">
+                        <i class="i-contact i-small"></i>账户登陆
+                    </a>
+                </li>
         </ul>
     </nav>
 </div>

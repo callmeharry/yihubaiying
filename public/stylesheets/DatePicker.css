@@ -21,3 +21,6 @@
 .cannotBeOrdered{height:100px;background-image: url('../images/cannotBeOrdered.jpg');}
 .row .mobile-two{width: 50% !important; float: left;}
 .row .mobile-two:last-child{width: 50% !important; float: right;}
+a{
+	text-decoration: none !important;
+}
