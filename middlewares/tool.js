@@ -4,6 +4,7 @@
  */
 var moment = require('moment');
 moment.locale('zh-cn'); // 使用中文
+var config = require('../config');
 
 
 exports.setCurrentPage = function (req, res) {

@@ -27,8 +27,11 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };
 
-exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback) {
-    Hospital.update({'_id': hospitalId}, {'push': {'hospital_dept': {'father_dept_name': fatherDeptName, 'dept_name': deptName}}}, callback);
+exports.addDepartment = function (hospitalId, fatherDeptName, deptId, deptName, callback) {
+    //Hospital.findOne({_id: hospitalId}, callback);
+    Hospital.update({_id: hospitalId}, {$push: {hospital_dept: {
+        _id: deptId, father_dept_name: fatherDeptName, dept_name: deptName
+    }}}, callback);
 };
 
 exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
