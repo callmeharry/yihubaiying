@@ -69,7 +69,7 @@ exports.adminLogin = function (req, res, next) {
         //    console.log("success");
         //    res.redirect('/admin/hosInfo');
         //});
-
+        res.redirect('/admin/hosInfo');
     } else {
         ep.emit('login_err', "username or password is wrong!");
         return;

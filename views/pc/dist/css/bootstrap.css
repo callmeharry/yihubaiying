@@ -2400,6 +2400,7 @@ textarea.form-control {
 input[type="search"] {
   -webkit-appearance: none;
 }
+
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
@@ -2407,6 +2408,7 @@ input[type="month"] {
   line-height: 34px;
   line-height: 1.42857143 \0;
 }
+
 input[type="date"].input-sm,
 input[type="time"].input-sm,
 input[type="datetime-local"].input-sm,
@@ -2414,6 +2416,7 @@ input[type="month"].input-sm {
   line-height: 30px;
   line-height: 1.5 \0;
 }
+
 input[type="date"].input-lg,
 input[type="time"].input-lg,
 input[type="datetime-local"].input-lg,
@@ -2421,6 +2424,7 @@ input[type="month"].input-lg {
   line-height: 46px;
   line-height: 1.33 \0;
 }
+
 _:-ms-fullscreen,
 :root input[type="date"],
 _:-ms-fullscreen,
@@ -2431,6 +2435,7 @@ _:-ms-fullscreen,
 :root input[type="month"] {
   line-height: 1.42857143;
 }
+
 _:-ms-fullscreen.input-sm,
 :root input[type="date"].input-sm,
 _:-ms-fullscreen.input-sm,
@@ -2441,6 +2446,7 @@ _:-ms-fullscreen.input-sm,
 :root input[type="month"].input-sm {
   line-height: 1.5;
 }
+
 _:-ms-fullscreen.input-lg,
 :root input[type="date"].input-lg,
 _:-ms-fullscreen.input-lg,
@@ -3367,6 +3373,7 @@ tbody.collapse.in {
 .btn-group-vertical > .btn.active {
   z-index: 2;
 }
+
 .btn-group > .btn:focus,
 .btn-group-vertical > .btn:focus {
   outline: 0;
@@ -4638,6 +4645,7 @@ a.badge:focus {
   text-decoration: none;
   cursor: pointer;
 }
+
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
@@ -4675,6 +4683,7 @@ a.list-group-item.active > .badge,
   .jumbotron {
     padding: 48px 0;
   }
+
   .container .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
@@ -4934,9 +4943,11 @@ a.thumbnail.active {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+
 .list-group-item > .badge {
   float: right;
 }
+
 .list-group-item > .badge + .badge {
   margin-right: 5px;
 }

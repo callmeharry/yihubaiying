@@ -191,7 +191,7 @@ if (typeof jQuery === 'undefined') {
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.3.0'
+  Button.VERSION = '3.3.0'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -282,7 +282,7 @@ if (typeof jQuery === 'undefined') {
       e.preventDefault()
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      $(e.target).closest('.btn').toggleClass('focus', e.type == 'focus')
+        $(e.target).closest('.btn').toggleClass('focus', e.type == 'focus')
     })
 
 }(jQuery);
@@ -319,7 +319,7 @@ if (typeof jQuery === 'undefined') {
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.3.0'
+  Carousel.VERSION = '3.3.0'
 
   Carousel.TRANSITION_DURATION = 600
 
@@ -557,7 +557,7 @@ if (typeof jQuery === 'undefined') {
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.0'
+  Collapse.VERSION = '3.3.0'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -933,7 +933,7 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-  Modal.VERSION  = '3.3.0'
+  Modal.VERSION = '3.3.0'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -1210,7 +1210,7 @@ if (typeof jQuery === 'undefined') {
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.0'
+  Tooltip.VERSION = '3.3.0'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -1683,7 +1683,7 @@ if (typeof jQuery === 'undefined') {
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.3.0'
+  Popover.VERSION = '3.3.0'
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
@@ -1814,7 +1814,7 @@ if (typeof jQuery === 'undefined') {
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.3.0'
+  ScrollSpy.VERSION = '3.3.0'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -2142,7 +2142,7 @@ if (typeof jQuery === 'undefined') {
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.0'
+  Affix.VERSION = '3.3.0'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
