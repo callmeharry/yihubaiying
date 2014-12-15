@@ -6,6 +6,7 @@
 var config = require('../config');
 var User = require('../proxy/user');
 var authMiddleWare = require('../middlewares/auth');
+var tool = require('../middlewares/tool');
 var randomNumLogin = ""; // auth code
 
 /**
@@ -18,7 +19,10 @@ exports.showLogin = function (req, res) {
     var url2 = req.url;
     console.log(url2);
     console.log('mobile_login');
+    if (tool.getDeviceType(req.url))
     res.render('mobile/mLogin', {previousurl: url});
+    else
+        res.render('pc/login', {previousurl: url});
 };
 
 /**
@@ -77,9 +81,15 @@ exports.handleLogin = function (req, res, next) {
             authMiddleWare.genSession(verifiedUser, res);
             //redirect the page to the previous page of the login page
             var url = req.cookies.current_page;
+            console.log(url);
+            console.log(req.url);
             if (!url)
-                url = '/mobile';
-            return res.redirect(url);
+                if (tool.getDeviceType(req.url))
+                    return res.redirect('/mobile');
+                else
+                    return res.redirect('/');
+            else
+                return res.redirect(url);
         });
     });
 };
@@ -89,5 +99,8 @@ exports.handleLogout = function (req, res) {
     res.clearCookie(config.auth_cookie_userid, {path: '/'});
     res.clearCookie(config.auth_cookie_username, {path: '/'});
     res.clearCookie(config.auth_cookie_city, {path: '/'});
-    res.redirect('/mobile');
+    if (tool.getDeviceType(req.url))
+        res.redirect('/mobile');
+    else
+        res.redirect('/');
 };

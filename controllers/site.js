@@ -8,7 +8,9 @@
  * @param req
  * @param res
  */
+var config = require('../config');
 exports.showIndex = function (req, res) {
+    res.clearCookie(config.current_page, {path: '/'});
     var url = req.url;
     var username = req.cookies.username;
     if (username == null)

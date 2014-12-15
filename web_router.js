@@ -42,6 +42,17 @@ router.get('/mobile/book/finishbook', mobileBook.finishBook);
 //PC Home page
 router.get('/', mobileIndex.showIndex);
 
+//PC register page
+router.get('/register', mobileRegister.showRegister);//show pc register page
+router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
+router.post('/register', mobileRegister.handleRegister);//handle register info
+
+//pc login logout page
+router.get('/login', mobileLoginLogout.showLogin);
+router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
+router.post('/login', mobileLoginLogout.handleLogin);
+router.get('/logout', mobileLoginLogout.handleLogout);
+
 /**
  * Administrator pages
  */
