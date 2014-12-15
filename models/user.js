@@ -41,6 +41,5 @@ var UserSchema = new Schema({
 });
 
 UserSchema.index({phone_number: 1}, {unique: true});
-UserSchema.index({password: 1}, {unique: true});
 
 mongoose.model('User', UserSchema);
