@@ -18,8 +18,8 @@
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-			<li><a href="/admin/hosInfo">xxx医院</a></li>
-			<li class="active"><a href="/admin/docInfo">xxx科室</a></li>
+			<li><a href="/admin/hosInfo"><%= hospital.hospital_name %></a></li>
+			<li class="active"><a href="/admin/docInfo"><%= hospital.dept_name %></a></li>
 		</ol>
 
 		<button type="button" class="btn btn-default btn-info" data-toggle="modal" data-target="#docAddModal">新增医生
@@ -70,13 +70,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% for(var i=0; i<doctors.length; i++) {%>
+				<% for(var i=0; i
+				<hospital.doctors.length
+						; i++) {%>
 					<tr>
-						<td><%= doctors[i]._id %></td>
-						<td><%= doctors[i].doctor_name %></td>
-						<td><%= doctors[i].doctor_info %></td>
-						<td><%= doctors[i].doctor_strength%></td>
-						<% var url = '/admin/callInfo/?doc_id='+doctors[i]._id; %>
+						<td><%= hospital.doctors[i]._id %></td>
+						<td><%= hospital.doctors[i].doc_name %></td>
+						<td><%= hospital.doctors[i].doc_intro %></td>
+						<td><%= hospital.doctors[i].good_illness%></td>
+						<% var url = '/admin/callInfo/?doc_id='+hospital.doctors[i]._id; %>
 						<td><a href='<%= url %>'>查看</a></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#infoModal">

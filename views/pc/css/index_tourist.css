@@ -1,19 +1,19 @@
-.panel-left{
+.panel-left {
 	width: 170px;
 	margin-left: 130px;
 }
 
-.middle-show{
+.middle-show {
 	margin-left: 90px;
 	margin-right: 0px;
 }
 
-.my-bar{
+.my-bar {
 	height: 12px;
 	background: #d9edf7;
 }
 
-.register-button{
+.register-button {
 	background-color: #f9a821;
 	color: #ffffff;
 	text-align: center;
@@ -22,7 +22,7 @@
 	margin-bottom: 35px;
 }
 
-.login-button{
+.login-button {
 	background-color: #5bc0de;
 	color: #ffffff;
 	text-align: center;
@@ -32,30 +32,30 @@
 	margin-bottom: 10px;
 }
 
-.usernumber-text1{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+.usernumber-text1 {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
 	font-weight: normal;
 	font-size: 16px;
 	margin-top: 15px;
 }
 
-.usernumber-text2{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+.usernumber-text2 {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
 	font-weight: normal;
 	font-size: 16px;
 	margin-left: 26px;
 	margin-bottom: 25px;
 }
 
-.usernumber{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+.usernumber {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
 	font-weight: normal;
 	font-size: 32px;
 	margin-left: 6px;
 	margin-right: 5px;
 }
 
-.book-button{
+.book-button {
 	background-color: #f9a821;
 	color: #ffffff;
 	text-align: center;
@@ -64,24 +64,24 @@
 	margin-bottom: 40px;
 }
 
-.area-div{
+.area-div {
 	margin-top: 20px;
 }
 
-.hospital-div{
+.hospital-div {
 	margin-top: 20px;
 	margin-bottom: 30px;
 }
 
-.right-panel-div{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+.right-panel-div {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
 	font-size: 16px;
 	margin-left: 5px;
 	font-weight: normal;
 }
 
-select{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+select {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
 	color: #333;
 	font-size: 15px;
 	width: 140px;
@@ -92,8 +92,12 @@ select{
 	padding-bottom: 2px;
 }
 
-
-.panel-fast{
+.panel-fast {
 	width: 180px;
 	margin-left: 0px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #5bc0de;
+	background-color: #fff;
 }

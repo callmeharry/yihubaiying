@@ -6,6 +6,7 @@ var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy').Hospital;
 var User = require('../proxy').User;
+var Doctor = require('../proxy').Doctor;
 var Feedback = require('../proxy').Feedback;
 var config = require('../config');
 /**
@@ -68,7 +69,7 @@ exports.adminLogin = function (req, res, next) {
         //    console.log("success");
         //    res.redirect('/admin/hosInfo');
         //});
-
+        res.redirect('/admin/hosInfo');
     } else {
         ep.emit('login_err', "username or password is wrong!");
         return;
@@ -231,29 +232,23 @@ exports.docInfo = function (req, res, next) {
     var dept_id = validator.trim(req.query.dept_id) || req.session.dept_id || '';
     req.session.dept_id = dept_id;
     console.log(dept_id);
-
-    var query = {"hospital_dept._id": dept_id};
     var limit = config.page_limit;
-    var options = {"hospital_dept.$": 1};
 
     var proxy = new eventproxy();
     proxy.fail(next);
 
-    Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
-
+    Hospital.getDeptDotctors(dept_id, proxy.done('hospital', function (hospital) {
         return hospital;
     }));
 
-    proxy.all("hospital", function (hospital) {
 
-        //var length = hospital.hospital_dept.length;
-        //var pages =  Math.ceil(length / limit);
-        console.log(hospital + " test!!");
-        res.render('administrator/docInfo');
+    proxy.all('hospital', function (hospital) {
+        res.render('administrator/docInfo', {
+            page: 1,
+            pages: 1,
+            hospital: hospital
+        });
     });
-
-
-
 
 };
 

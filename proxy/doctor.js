@@ -31,3 +31,12 @@ exports.addDocAdvancedIllnessName = function (docId, illName, callback) {
     Doctor.update({_id: docId}, {$push: {doctor_advanced_illness_name: illName}}, callback);
 };
 
+exports.getDoctorById = function (doc_id, callback) {
+
+    Doctor.findOne({_id: doc_id}, callback);
+};
+
+exports.getDoctorByQuery = function (query, opt, callback) {
+    Doctor.find(query, '', opt, callback);
+};
+
