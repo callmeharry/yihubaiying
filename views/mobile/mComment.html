@@ -24,11 +24,57 @@
     <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 </head>
 
-<body>
+<body class="o-page">
+<div id="page">
+<div id="header">
+    <a href="#menu"></a>
+    <span> 医呼百应 评价 </span>
+    <a class="backBtn" href="javascript:history.back();"></a>
+</div>
+
+<nav id="menu">
+    <ul>
+    	<li  class="Selected">
+               <a href="mLogin.html">
+                    <i class="i-home i-small"></i>登录
+               </a>
+        </li>
+        <li >
+               <a href="mRegister.html">
+        <i class="i-home i-small"></i>注册
+               </a>
+        </li>
+        <li>
+            <a href="mIndex.html">
+                <i class="i-home i-small"></i>预约主页
+            </a>
+        </li>
+        <li>
+            <a href="mAbout.html">
+                <i class="i-about i-small"></i>个人信息
+            </a>
+        </li>
+        <li>
+            <a href="mBlog.html">
+                <i class="i-blog i-small"></i>订单管理
+            </a>
+        </li>
+        <li>
+            <a href="mGallery.html">
+                <i class="i-gallery i-small"></i>收藏夹
+            </a>
+        </li>
+        <li>
+            <a href="mShortCodes.html">
+                <i class="i-shortcodes i-small"></i>问题反馈
+            </a>
+        </li>
+    </ul>
+</nav>
 <div align="center" style=" margin-top:100px; padding:10px;">
     <form>
 
-        <label>输入您的评价<span class="required">*</span></label>
+        <label>*输入您的评价<span class="required"></span></label>
         <textarea id="ContactMessage" name="comment" placeholder="Message"></textarea>
         <a href="mBlog.html">
             <button type="button" style="background-color:#587eac; width:70px; height:40px; color:#FFFFFF">提交</button>
