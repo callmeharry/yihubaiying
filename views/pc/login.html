@@ -54,26 +54,28 @@
 
       <!-- 登录模块 -->
       <div class="col-sm-4 col-sm-offset-4">
-         <form method="post" class="form-horizontal" action="/login" onsubmit="">
+         <form method="post" class="form-horizontal" action="/login" onsubmit="return checkSubmit()">
          <br/>
          <br/>
          <div class="form-group">
             <label for="id_phoneNumber" class="col-sm-3 control-label">手机号：</label>
             <div class="col-sm-9">
-               <input type="text" id="id_phoneNumber" class="form-control" name="phoneNumber" required="required"/>
+               <input type="text" id="id_phoneNumber" class="form-control" name="phoneNumber" onblur="showPhoneWarning()" required="required"/>
+               <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">请输入正确格式的手机号</span>
             </div>
          </div>
          <br/>
          <div class="form-group">
             <label for="id_passWord" class="col-sm-3 control-label">密码：</label>
             <div class="col-sm-9">
-               <input type="password" id="id_passWord" class="form-control" name="passWord" required="required"/>
+               <input type="password" id="id_passWord" class="form-control" name="passWord" onblur="showPasswordLengthWarning()" required="required"/>
+               <span id="id_warning" name="warning" style="display:none; color:#DD2427;">密码长度在6-20位之间</span>
             </div>
          </div><br/>
          <div class="form-group">
          	<label for="auth_code" class="col-sm-3 control-label">验证码：</label>
          	<div class="col-sm-4">
-         		<input type="text" class="form-control" id="auth_code" name="auth_code" value="" placeholder="">
+         		<input type="text" class="form-control" id="auth_code" name="auth_code" value="" placeholder="" required="required">
          	</div>
          	<button class="col-sm-3 col-sm-offset-2 btn btn-primary" onclick="requestAuthCode(this)">获取注册码</button>
          </div>
