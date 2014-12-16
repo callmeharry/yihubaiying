@@ -5,5 +5,5 @@
 
 exports.do= function(req,res){
     var c = 'mm';
-    res.render('test/test',{error:c,filename:"test_include.html"});
+    res.render('test/test', {error: c});
 }

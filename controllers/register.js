@@ -5,21 +5,24 @@
 
 var user = require('../proxy/user');
 var randomNum = "";// 验证码
-
+var tool = require('../middlewares/tool');
 /**
  * 显示注册页面
  * @param req
  * @param res
  */
 exports.showRegister = function (req, res) {
-    console.log('mobile register');
+    console.log('register');
+    if (tool.getDeviceType(req.url))
     res.render('mobile/mRegister');
+    else
+        res.render('pc/register');
 };
 
 /**
  * 获取验证码
  */
-exports.getAuthCode = function (req, res) {
+exports.getAuthCode = function () {
     //authMiddleWare.genAuthCode();
     randomNum = '';
     for (var i = 0; i < 6; ++i) {
@@ -41,7 +44,6 @@ exports.handleRegister = function (req, res, next) {
         return;
     }
     user.getOneUserByPhoneNumber(phoneNumber, function (err, users) {
-        console.log(users);
         if (users != null) {
             res.send('Used phone number.');
             return;
@@ -51,7 +53,10 @@ exports.handleRegister = function (req, res, next) {
                 res.send(err.message);
                 return;
             }
+            if (tool.getDeviceType(req.url))
             return res.redirect('/mobile');
+            else
+                return res.redirect('/');
         });
     });
 };

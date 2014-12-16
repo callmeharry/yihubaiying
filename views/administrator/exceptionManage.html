@@ -27,26 +27,22 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% for(var i=0; i<exceps.length; i++) {%>
 					<tr>
-						<td>XXX</td>
-						<td>同一IP挂号次数超过上限</td>
-						<td>202.112.136.131</td>
+						<td><%= exceps[i].username%></td>
+						<td><%= exceps[i].info%></td>
+						<td><%= exceps[i].ip%></td>
 						<td><a href="#">处理</a></td>
 						<td><a href="#">忽略</a></td>
 					</tr>
+					<% } %>
 				</tbody>
 			</table>
-			<nav class="col-md-offset-5">
-			  	<ul class="pagination">
-				    <li><a href="#">&laquo;</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">&raquo;</a></li>
-			  	</ul>
-			</nav>
+			<%- partial('list', {
+			pages: pages,
+			page: page,
+			base: '/admin/exceptionInfo/'
+			}) %>
 	  	</div>
 	</div>
 	

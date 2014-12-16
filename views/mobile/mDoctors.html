@@ -3,34 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <title>选择医生1</title>
+    <title>选择医生</title>
 
-    <link type="text/css" rel="stylesheet" href="/stylesheets/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
-    <link rel="stylesheet" href="/javascripts/foundation/foundation.css">
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Order.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mDoctor.css">
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
-
-    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.easy-pie-chart.js"></script>
-    <script type="text/javascript" src="/javascripts/o-script.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page p-blog">
 <div id="page">
-    <div id="userInfo">
-        <div class="small-4 columns">
-            <span id="userName" class="userInfoSytle">Ma Bingying</span>
-        </div>
-        <!--<div class="small-3 columns icon">o</div>-->
-        <div class="small-3 small-offset-3 columns">
-            <span id="SelfCentre" class="userInfoSytle"><a href="#">个人中心</a></span>
-        </div>
-        <div class="small-2 columns">
-            <span id="Logout" class="userInfoSytle"><a href="#">登出</a></span>
-        </div>
+
+    <div id="header">
+        <a href="#menu"></a>
+        <span> 医呼百应 生成订单 </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
     </div>
 
     <div id="content">
@@ -75,6 +68,42 @@
         </article>
         <% } %>
     </div>
+
+    <!-- Menu navigation -->
+    <nav id="menu">
+        <ul>
+            <li class="Selected">
+                <a href="mIndex.html">
+                    <i class="i-home i-small"></i>预约主页
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="i-about i-small"></i>个人信息
+                </a>
+            </li>
+            <li>
+                <a href="blog.html">
+                    <i class="i-blog i-small"></i>订单管理
+                </a>
+            </li>
+            <li>
+                <a href="gallery.html">
+                    <i class="i-gallery i-small"></i>收藏夹
+                </a>
+            </li>
+            <li>
+                <a href="shortcodes.html">
+                    <i class="i-shortcodes i-small"></i>问题反馈
+                </a>
+            </li>
+            <li>
+                <a href="mLogin.html">
+                    <i class="i-contact i-small"></i>账户登陆
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
 </html> 

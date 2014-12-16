@@ -6,6 +6,8 @@
 
 var models = require('../models');
 var Hospital = models.Hospital;
+var Doctor = models.Doctor;
+var eventproxy = require('eventproxy');
 /**
  * save a new hospital
  * @param hospitalName
@@ -28,15 +30,26 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
 };
 
 exports.addDepartment = function (hospitalId, fatherDeptName, deptName, callback) {
-    Hospital.update({'_id': hospitalId}, {'push': {'hospital_dept': {'father_dept_name': fatherDeptName, 'dept_name': deptName}}}, callback);
+    Hospital.update({'_id': hospitalId}, {
+        '$push': {
+            'hospital_dept': {
+                'father_dept_name': fatherDeptName,
+                'dept_name': deptName
+            }
+        }
+    }, callback);
 };
 
 exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
-    Hospital.update({'_id': hospitalId, 'hospital_dept._id': deptId}, {'push': {'hospital_dept.dept_doc': docId}}, callback);
+    Hospital.update({
+        _id: hospitalId,
+        'hospital_dept._id': deptId
+    }, {$push: {'hospital_dept.dept_doc': docId}}, callback);
 };
 
 exports.getHospitalsByHospitalId = function (id, callback) {
     Hospital.findOne({_id: id}, callback);
+
 };
 
 /**
@@ -76,3 +89,58 @@ exports.getHospitalsByQuery = function (query, opt, callback) {
     Hospital.find(query, '', opt, callback);
 };
 
+exports.getOneHospitalByQuery = function (query, opt, callback) {
+    Hospital.findOne(query, opt, callback);
+
+};
+
+exports.getDeptByHospitalId = function (hosId, callback) {
+
+};
+
+
+exports.getDeptDotctors = function (dept_id, callback) {
+    var query = {"hospital_dept._id": dept_id};
+    var options = {"hospital_dept": {"$slice": 1}};
+
+    Hospital.findOne(query, options, function (err, hospital) {
+        if (err) return callback(err);
+
+        if (hospital.hospital_dept.length === 0)
+            return callback(null, {});
+
+        var dept_doc = hospital.hospital_dept[0].dept_doc;
+        var doctors = new Array();
+
+        var proxy = new eventproxy();
+        proxy.after('update', dept_doc.length, function () {
+            var fit_hospital = {};
+            fit_hospital.hospital_name = hospital.hospital_name;
+            fit_hospital.dept_name = hospital.hospital_dept[0].dept_name;
+            fit_hospital.doctors = doctors;
+
+            callback(null, fit_hospital);
+        });
+
+        for (var j = 0; j < dept_doc.length; j++) {
+            (function (i) {
+                var doc_id = dept_doc[i];
+                Doctor.getDoctorById(doc_id, function (err, doctor) {
+                    if (err) return callback(err);
+
+                    doctors.push({
+                        doc_name: doctor.doctor_name, doc_intro: doctor.doctor_intro,
+                        good_illness: doctor.doctor_advanced_illness_name, _id: doc_id,
+                        doc_rep: doctor.doctor_good_reputation, doc_visit: doctor.doctor_visit
+                    });
+
+                    return proxy.emit('update');
+                });
+
+            })(j);
+        }
+
+    });
+
+
+};

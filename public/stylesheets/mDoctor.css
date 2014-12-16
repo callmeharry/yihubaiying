@@ -31,3 +31,7 @@ div span{
 .doctorColumnHead{
 	font-weight: bold;
 }
+
+a{
+	text-decoration: none !important;
+}

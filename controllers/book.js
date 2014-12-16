@@ -15,27 +15,38 @@ var currPage = require('../middlewares/tool').setCurrentPage;
  * @param next
  */
 exports.showHospital = function (req, res, next) {
-    var city = req.query.city;
-    var userId = req.cookies.user_id;
+    var city = req.cookies.city;
+    var username = req.cookies.username;
     console.log(city);
-    console.log(userId);
-    var user = {_id: 123, name: 1234};
     var eventProxy = new eventproxy();
 
-    //Hospital.newHospital('hospital', 'hospitalIntro', '北京', function (err) {
-    //    if (err) {
-    //        console.log(err);
-    //    } else {
-    //        console.log('hospital existed');
-    //    }
-    //});
+    Hospital.newHospital('hospital', 'hospitalIntro', '北京', 'hospitalLocation', '0000000', '1', function (err, hospital) {
+        if (err) {
+            console.log(err);
+        } else {
+            Hospital.addDepartment(hospital._id, 'fatherDeptName', 'deptName', function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('hospital in addDepartment: '+hospital);
+                    Hospital.addDeptDoc(hospital._id, 'deptId', 'docId', function (err, hospitalAdded) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            console.log(hospitalAdded.hospital_dept);
+                        }
+                    });
+                }
+            });
+        }
+    });
 
     Hospital.getTenHospitalsByCity(city, function (err, hospitals) {
         if (err) {
             res.send("error happened during get ten hospitals by city.");
         } else {
             currPage(req, res);
-            return res.render('mobile/mHospitalSelect', {user: user, hospital: hospitals});
+            return res.render('mobile/mHospitalSelect', {username: username, hospital: hospitals});
         }
     });
 };
@@ -51,30 +62,37 @@ exports.showDepartment = function (req, res, next) {
     var hospitalId = req.query.hospitalid;
     var eventProxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
-    var middleDepartments = new Array();
-    for (var i = 0; i < 2; i++) {
-        var smallDepartments = new Array();
-        for (var j = 0; j < 4 * i + 8; j++) {
-            var smallName = 'smallDepartments' + i + '-' + j;
-            var smallId = i + i + j + j;
-            smallDepartments[j] = {_id: smallId, name: smallName};
-        }
-
-        var middleName = 'middleDepartments' + i;
-        middleDepartments[i] = {name: middleName, smallDepartments: smallDepartments};
-    }
-    var hospital = {
-        name: 'name',
-        address: 'add',
-        phoneNumber: 'phone',
-        _id: 'noid',
-        orderCount: '333',
-        imgsrc: null,
-        middleDepartments: middleDepartments
-    };
+    //var middleDepartments = new Array();
+    //for (var i = 0; i < 2; i++) {
+    //    var smallDepartments = new Array();
+    //    for (var j = 0; j < 4 * i + 8; j++) {
+    //        var smallName = 'smallDepartments' + i + '-' + j;
+    //        var smallId = i + i + j + j;
+    //        smallDepartments[j] = {_id: smallId, name: smallName};
+    //    }
+    //
+    //    var middleName = 'middleDepartments' + i;
+    //    middleDepartments[i] = {name: middleName, smallDepartments: smallDepartments};
+    //}
+    //var hospital = {
+    //    name: 'name',
+    //    address: 'add',
+    //    phoneNumber: 'phone',
+    //    _id: 'noid',
+    //    orderCount: '333',
+    //    imgsrc: null,
+    //    middleDepartments: middleDepartments
+    //};
     //替换结束
-    currPage(req, res);
-    return res.render('mobile/mDepartments', {user: user, hospital: hospital});
+    //显示消息不成功可能是前端对应name的问题
+    Hospital.getDeptByHospitalId(hospitalId, function (err, hospital) {
+        if (err) {
+            res.send("error happened during get departments by hospitalId.");
+        } else {
+            currPage(req, res);
+            return res.render('mobile/mDepartments', {user: user, hospital: hospital});
+        }
+    });
 };
 
 /**
@@ -117,6 +135,7 @@ exports.showDoctor = function (req, res, next) {
             advancedDisease: '疾病1,疾病2(数据库里是字符串数组,在这里直接合成为一个字符串)'
         };
     }
+    //Hospital.getDocsByHospitalIdAndDepartmentId(hospitalId, departmentId, function (err))
     currPage(req, res);
     return res.render('mobile/mDoctors', {doctor: doctor, departmentid: departmentId, hospitalid: hospitalId});
 };

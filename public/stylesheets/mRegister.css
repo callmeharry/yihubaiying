@@ -1,6 +1,10 @@
 
 #topText{
+<<<<<<< HEAD
 	color:#587eac;
+=======
+	color: #587eac;
+>>>>>>> FETCH_HEAD
 	font-size:30px;
 	text-align:center;
 	}
@@ -30,7 +34,11 @@
 	border-radius:5px;
 	height:30px;
 	width:60px;
+<<<<<<< HEAD
 	background-color:#587eac;
+=======
+	background-color: #587eac;
+>>>>>>> FETCH_HEAD
 	text-color:#F8F2F2;
 }
 	

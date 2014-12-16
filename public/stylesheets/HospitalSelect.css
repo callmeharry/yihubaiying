@@ -1,18 +1,5 @@
 #page, .mm-page { height:100%; }
 
-
-body #header { 
-	width: 100%; 
-	background: #0066FF !important; 
-	background-size: 100% !important; 
-	height: 76px; 
-	position:fixed; z-index:3; 
-	-moz-transition: all 0.5s; 
-	-webkit-transition: all 0.5s; 
-	-o-transition: all 0.5s; 
-	transition: all 0.5s;
-}
-
 .hospitalPic{
 	float: left;
 	height: 30%;
@@ -24,10 +11,14 @@ article h2{
 	font-family: "微软雅黑";
 	font-size: 1.5em;
 	font-weight: bold;
-	color: #0066FF;
+	color: #587eac;
 }
 .hospitalInfoSytle{
 	font-family: "微软雅黑";
 	font-size: 1em;
 	color: black;
+}
+
+a {
+	text-decoration: none !important;
 }

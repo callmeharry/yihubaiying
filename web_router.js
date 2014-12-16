@@ -8,10 +8,11 @@ var getpost = require('./test/getpost');
 var mobileBook = require('./controllers/book');
 var mobileRegister = require('./controllers/register');
 var admin = require('./controllers/admin');
-var mobileLogin = require('./controllers/login');
+var mobileLoginLogout = require('./controllers/loginlogout');
 var mobileIndex = require('./controllers/site');
 var router = express.Router();
 var sms = require('./middlewares/sms');
+var include = require('./test/test_include');
 
 //get controllers
 var index = require('./test/index');
@@ -25,10 +26,11 @@ router.get('/mobile/register', mobileRegister.showRegister);//show mobile regist
 router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
 router.post('/mobile/register', mobileRegister.handleRegister);//handle register info
 
-//Mobile login page
-router.get('/mobile/login', mobileLogin.showLogin);
-router.post('/mobile/generateAuthCodeL', mobileLogin.getAuthCode);
-router.post('/mobile/login', mobileLogin.handleLogin);
+//Mobile login logout page
+router.get('/mobile/login', mobileLoginLogout.showLogin);
+router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
+router.post('/mobile/login', mobileLoginLogout.handleLogin);
+router.get('/mobile/logout', mobileLoginLogout.handleLogout);
 
 //Mobile Book page
 router.get('/mobile/book/hospitals', mobileBook.showHospital);
@@ -39,6 +41,17 @@ router.get('/mobile/book/finishbook', mobileBook.finishBook);
 
 //PC Home page
 router.get('/', mobileIndex.showIndex);
+
+//PC register page
+router.get('/register', mobileRegister.showRegister);//show pc register page
+router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
+router.post('/register', mobileRegister.handleRegister);//handle register info
+
+//pc login logout page
+router.get('/login', mobileLoginLogout.showLogin);
+router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
+router.post('/login', mobileLoginLogout.handleLogin);
+router.get('/logout', mobileLoginLogout.handleLogout);
 
 /**
  * Administrator pages
@@ -53,7 +66,7 @@ router.get('/admin/hosInfo', admin.hosInfo);
 router.get('/admin/hosFeedback', admin.hosFeedback);
 //医院添加
 router.get('/admin/hosAdd', admin.showAddHos);
-router.post('admin/hostAdd', admin.addHos);
+router.post('/admin/hosAdd', admin.addHos);
 
 //医院端修改
 router.get('/admin/hosAlter', admin.changeHosInfo);
@@ -77,6 +90,6 @@ router.get('/admin/exceptionManage', admin.exceptionManage);
 router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
 router.get('/sms', sms.registerVerify);
-
+router.get('/include-test', include.do);
 
 module.exports = router;

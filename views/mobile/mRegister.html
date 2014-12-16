@@ -2,13 +2,14 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <script src="javascripts/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/modernizr.js"></script>
 
-    <link rel="stylesheet" href="../../public/stylesheets/foundation.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mRegister.css">
-    <script src="js/vendor/modernizr.js"></script>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/foundation.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/mRegister.css">
+    <script type="text/javascript" src="/js/vendor/modernizr.js"></script>
     <script type="text/javascript">
         function showWarning() {
             element = document.getElementById('id_passWord').value;
@@ -22,6 +23,7 @@
         }
 
 
+<<<<<<< HEAD
 function commit()
 {
 	element1=document.getElementById('id_idNumber').value;
@@ -35,6 +37,24 @@ function commit()
 		}
   
 }
+=======
+        function commit() {
+            element1 = document.getElementById('id_idNumber').value;
+            l1 = element1.length;
+            if (l == 0) {
+                document.getElementById('id_idNumber_warning').style.display = "";
+            }
+            else {
+                element2 = document.getElementById('id_name').value;
+                l2 = element2.length;
+                if (l == 0) {
+                    document.getElementById('id_name_warning').style.display = "";
+                }
+
+            }
+
+        }
+>>>>>>> FETCH_HEAD
 
         function showWarning1() {
             element = document.getElementById('id_repeat_passWord').value;
@@ -69,7 +89,11 @@ function commit()
 </head>
 <body>
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> FETCH_HEAD
 <div align="center">
     <span id="topText">注册</span>
 </div>
@@ -137,6 +161,7 @@ function commit()
         <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
             <input type="text" placeholder="验证码" name="auth_code">
         </div>
+<<<<<<< HEAD
          <button type="button" class="small radius button" onclick="requestAuthCode(this)" style="background-color:#587eac; margin-top:18px;"  >获取验证码
         </button>
        
@@ -150,6 +175,20 @@ function commit()
 		 <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button" style="background-color:#587eac"  >
 		
 
+=======
+        <button type="button" class="small radius button" onclick="requestAuthCode(this)"
+                style="background-color:#587eac; margin-top:18px;">获取验证码
+        </button>
+
+    </div>
+
+
+    <div class="large-12 columns" align="center" style="margin-top:40px;">
+        <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button"
+               style="background-color:#587eac">
+
+
+>>>>>>> FETCH_HEAD
     </div>
 
 </form>
@@ -203,12 +242,15 @@ function commit()
             // 本地提示：加载中/处理中
 
         }
+<<<<<<< HEAD
   </script>
 <script>
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             var d = xmlHttp.responseText; // 返回值
             // 处理返回值
         }
+=======
+>>>>>>> FETCH_HEAD
     }
 </script>
 

@@ -47,6 +47,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% for(var i=0; i<calls.length; i++) {%>
 					<tr>
 						<td>XXX</td>
 						<td>XXX</td>
@@ -132,19 +133,14 @@
 							<!-- /.modal-dialog -->
 						</div><!-- /.modal -->
 					</tr>
+					<% } %>
 				</tbody>
 			</table>
-			<nav class="col-md-offset-5">
-			  	<ul class="pagination">
-				    <li><a href="#">&laquo;</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">&raquo;</a></li>
-			  	</ul>
-			</nav>
+			<%- partial('list', {
+			pages: pages,
+			page: page,
+			base: '/admin/callInfo/'
+			}) %>
 	  	</div>
 	</div>
 </body>

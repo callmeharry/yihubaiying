@@ -18,9 +18,9 @@
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-			<li class="active"><a href="/admin/deptInfo">xxx医院</a></li>
+			<% var url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
+			<li class="active"><a href="<%= url %>"><%= hospital.hospital_name%></a></li>
 		</ol>
-
 	  	<div class="panel-body subpanel" id="deptInfo">
 			<form class="input-group">
 			  <span class="input-group-addon">新增科室</span>
@@ -42,11 +42,15 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% for(var i=0; i
+				<hospital.hospital_dept.length
+						; i++) {%>
 					<tr>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td><a href="/admin/docInfo">查看</a></td>
+						<td><%= hospital.hospital_dept[i]._id%></td>
+						<td><%= hospital.hospital_dept[i].dept_name%></td>
+						<td><%= hospital.hospital_name%></td>
+						<% var url = '/admin/docInfo/?dept_id='+hospital.hospital_dept[i]._id; %>
+						<td><a href='<%= url %>'>查看</a></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#editModal">
 							  编辑
@@ -95,19 +99,14 @@
 						  </div><!-- /.modal-dialog -->
 						</div><!-- /.modal -->
 					</tr>
+					<% } %>
 				</tbody>
 			</table>
-			<nav class="col-md-offset-5">
-			  	<ul class="pagination">
-				    <li><a href="#">&laquo;</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">&raquo;</a></li>
-			  	</ul>
-			</nav>
+			<%- partial('list', {
+			pages: pages,
+			page: page,
+			base: '/admin/deptInfo/'
+			}) %>
 	  	</div>
 	</div>
 </body>
