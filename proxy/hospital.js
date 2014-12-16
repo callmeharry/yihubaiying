@@ -1,7 +1,6 @@
 /**
  * Created by Megas on 2014/12/9.
  * 与hospital model交互，用于提供数据
- * Todo: 新建医院时加入权重参数
  */
 
 var models = require('../models');
@@ -47,9 +46,8 @@ exports.addDeptDoc = function (hospitalId, deptId, docId, callback) {
     }, {$push: {'hospital_dept.dept_doc': docId}}, callback);
 };
 
-exports.getHospitalsByHospitalId = function (id, callback) {
+exports.getHospitalByHospitalId = function (id, callback) {
     Hospital.findOne({_id: id}, callback);
-
 };
 
 /**
@@ -91,13 +89,7 @@ exports.getHospitalsByQuery = function (query, opt, callback) {
 
 exports.getOneHospitalByQuery = function (query, opt, callback) {
     Hospital.findOne(query, opt, callback);
-
 };
-
-exports.getDeptByHospitalId = function (hosId, callback) {
-
-};
-
 
 exports.getDeptDotctors = function (dept_id, callback) {
     var query = {"hospital_dept._id": dept_id};
@@ -129,9 +121,12 @@ exports.getDeptDotctors = function (dept_id, callback) {
                     if (err) return callback(err);
 
                     doctors.push({
-                        doc_name: doctor.doctor_name, doc_intro: doctor.doctor_intro,
-                        good_illness: doctor.doctor_advanced_illness_name, _id: doc_id,
-                        doc_rep: doctor.doctor_good_reputation, doc_visit: doctor.doctor_visit
+                        doc_name: doctor.doctor_name,
+                        doc_intro: doctor.doctor_intro,
+                        good_illness: doctor.doctor_advanced_illness_name,
+                        _id: doc_id,
+                        doc_rep: doctor.doctor_good_reputation,
+                        doc_visit: doctor.doctor_visit
                     });
 
                     return proxy.emit('update');
