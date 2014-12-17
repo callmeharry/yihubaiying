@@ -12,7 +12,7 @@ var config = require('../config');
 
 var OrderSchema = new Schema({
     order_time: { type: Date },
-    order_see_time:{type:Date},
+    order_see_time:{type:String},
     hospital_id: { type: ObjectId },
     dept_id: { type: ObjectId },
     doctor_id: { type : ObjectId },

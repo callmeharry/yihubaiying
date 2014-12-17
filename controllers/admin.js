@@ -1,7 +1,6 @@
 /**
  * Created by root on 14-12-8.
  */
-
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy').Hospital;
