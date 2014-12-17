@@ -18,8 +18,9 @@
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-			<li><a href="/admin/hosInfo"><%= hospital.hospital_name %></a></li>
-			<li class="active"><a href="/admin/docInfo"><%= hospital.dept_name %></a></li>
+			<% var url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
+			<li><a href="<%= var%>"><%= hospital.hospital_name %></a></li>
+			<li class="active"><a href="#"><%= hospital.dept_name %></a></li>
 		</ol>
 
 		<button type="button" class="btn btn-default btn-info" data-toggle="modal" data-target="#docAddModal">新增医生

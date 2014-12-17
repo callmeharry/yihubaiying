@@ -18,37 +18,37 @@
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
-			<% var url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
-			<li class="active"><a href="<%= url %>"><%= hospital.hospital_name%></a></li>
+			<li class="active"><a href="#"><%= hospital.hospital_name%></a></li>
 		</ol>
 	  	<div class="panel-body subpanel" id="deptInfo">
-			<form class="input-group">
-			  <span class="input-group-addon">新增科室</span>
-			  <div class="col-md-4">
-			    <input type="text" class="form-control" placeholder="新增科室名称">
-			  </div>
-			  <button type="submit" class="btn btn-default">新增</button>
-			  <button type="reset" class="btn btn-primary">重置</button>
+			<form class="input-group" id="newDept" action="/admin/newDept">
+				<span class="input-group-addon">新增子科室</span>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="ndept_name" id="ndept_name" placeholder="新增子科室名称">
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="nfather_dept" id="nfather_dept" placeholder="所属科室名称">
+				</div>
+				<button type="submit" class="btn btn-default">新增</button>
+				<button type="reset" class="btn btn-primary">重置</button>
 			</form>
 	    	<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>科室ID</th>
-						<th>科室名称</th>
-						<th>所属医院</th>
+						<th>子科室名称</th>
+						<th>所属科室</th>
 						<th>医生信息</th>
 						<th>编辑</th>
 						<th>删除</th>
 					</tr>
 				</thead>
-				<tbody>
-				<% for(var i=0; i
-				<hospital.hospital_dept.length
-						; i++) {%>
+				<tbody id="depts">
+					<% for(var i=0; i<hospital.hospital_dept.length ; i++) {%>
 					<tr>
 						<td><%= hospital.hospital_dept[i]._id%></td>
 						<td><%= hospital.hospital_dept[i].dept_name%></td>
-						<td><%= hospital.hospital_name%></td>
+						<td><%= hospital.hospital_dept[i].father_dept_name%></td>
 						<% var url = '/admin/docInfo/?dept_id='+hospital.hospital_dept[i]._id; %>
 						<td><a href='<%= url %>'>查看</a></td>
 						<td>
@@ -109,5 +109,24 @@
 			}) %>
 	  	</div>
 	</div>
+	<script language="javascript">
+		$(document).ready(function() {
+			$('#newDept').submit(function() {
+				$.post($(this).attr('action'),$(this).serialize(),function(result) {
+					if (result.code == 0) {
+						alert('新建成功');
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json')
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>

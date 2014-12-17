@@ -359,3 +359,27 @@ exports.userFeedback = function (req, res, next) {
 
 };
 
+exports.test = function(req, res){
+
+    var name = req.body.name;
+    var result = {};
+    if (!name) {
+        result.code = 1;
+        result.msg = '账号不能为空';
+        res.send(result);
+        return;
+    }
+    var email = req.body.email;
+    if (!email) {
+        result.code = 2;
+        result.msg = '邮箱不能为空';
+        res.send(result);
+        return;
+    }
+    console.log(email+" "+name);
+    res.send({code : 0});
+};
+
+exports.showtest = function(req, res){
+    res.render('administrator/test');
+};
