@@ -10,14 +10,16 @@
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap-theme.css">
-    <script type="text/javascript" src="../../public/javascripts/bootstrap.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/npm.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mStyle.css">
 
     <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/mJS.js"></script>
+ 
+    <script type="text/javascript" src="../../public/javascripts/bootstrap.js"></script>
+ <!--   <script type="text/javascript" src="../../public/javascripts/jquery.js"></script>-->
+    <script type="text/javascript" src="../../public/javascripts/collapse.js"></script>
 
 </head>
 <body class="o-page">
@@ -30,56 +32,594 @@
     </div>
 
     <div class="content">
-        <div id="List">                
-            <ul>
-                <li class="Selected">
-                    <a href="#">
-                        <i class="i-about i-small"></i><span id="id_departmentLevel1" name="departmentLevel1">内科</span>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    内科
                     </a>
-                    <ul>
-                        <li><a href="mHospitalSelect.html"><span id="id_departmentLevel2" name="departmentLevel2">心血管内科</span></a></li>
-                        <li><a href="mHospitalSelect.html">神经内科</a></li>
-                        <li><a href="mHospitalSelect.html">消化内科</a></li>
-                        <li><a href="mHospitalSelect.html">内分泌内科</a></li>
-                        <li><a href="mHospitalSelect.html">免疫科</a></li>
-                        <li><a href="mHospitalSelect.html">呼吸科</a></li>
+                    </h4>
+                </div> 
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=心血管内科'>心血管内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=神经内科'>神经内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=消化内科'>消化内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=内分泌科'>内分泌科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=免疫科'>免疫科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=呼吸科'>呼吸科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肾病内科'>肾病内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=血液科'>血液科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=感染内科'>感染内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=过敏反应科'>过敏反应科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=老年病科'>老年病科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=普通内科'>普通内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=高压氧科'>高压氧科</a> </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="about.html">
-                        <i class="i-about i-small"></i>外科
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    外科
                     </a>
-                    <ul>
-                        <li><a href="mHospitalSelect.html">心血管外科</a></li>
-                        <li><a href="mHospitalSelect.html">神经外科</a></li>
-                        <li><a href="mHospitalSelect.html">胸外</a></li>
-                        <li><a href="mHospitalSelect.html">整形科</a></li>
-                        <li><a href="mHospitalSelect.html">脑科</a></li>
-                        <li><a href="mHospitalSelect.html">烧伤科</a></li>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=神经外科'>神经外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=功能神经外科'>功能神经外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=心血管外科'>心血管外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=胸外科'>胸外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=整形科'>整形科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=乳腺外科'>乳腺外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=泌尿外科'>泌尿外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肝胆外科'>肝胆外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肛肠科'>肛肠科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=血管外科'>血管外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=器官移植'>器官移植</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=微创外科'>微创外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=普外科'>普外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=脑外科'>脑外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=烧伤科'>烧伤科</a> </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="blog.html">
-                        <i class="i-blog i-small"></i>妇产科
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        妇产科
                     </a>
-                    <ul>
-                        <li><a href="mHospitalSelect.html">妇科</a></li>
-                        <li><a href="mHospitalSelect.html">产科</a></li>
-                        <li><a href="mHospitalSelect.html">产前检查科</a></li>
-                        <li><a href="mHospitalSelect.html">妇科内分泌</a></li>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=妇科'>妇科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=产科'>产科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=妇科内分泌'>妇科内分泌</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=妇泌尿科'>妇泌尿科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=产前检查科'>产前检查科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=遗传咨询科'>遗传咨询科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=计划生育科'>计划生育科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=妇产科'>妇产科</a> </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="gallery.html">
-                        <i class="i-gallery i-small"></i>儿科
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        生殖中心
                     </a>
-                </li>
-                <li>
-                    <a href="shortcodes.html">
-                        <i class="i-shortcodes i-small"></i>骨科
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=生殖中心'>生殖中心</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        儿科
                     </a>
-                </li>
-        </div>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=儿科'>儿科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=新生儿科'>新生儿科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿呼吸科'>小儿呼吸科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿消化科'>小儿消化科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿营养保健科'>小儿营养保健科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿神经内科'>小儿神经内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿心内科'>小儿心内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿肾内科'>小儿肾内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿内分泌科'>小儿内分泌科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿免疫科'>小儿免疫科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿皮肤科'>小儿皮肤科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿耳鼻喉'>小儿耳鼻喉</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿血液科'>小儿血液科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿感染科'>小儿感染科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿精神科'>小儿精神科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿妇科'>小儿妇科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿外科'>小儿外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿心外科'>小儿心外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿胸外科'>小儿胸外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿骨科'>小儿骨科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿泌尿科'>小儿泌尿科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿神经外科'>小儿神经外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿整形科'>小儿整形科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿康复科'>小儿康复科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿急诊科'>小儿急诊科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿普外科'>小儿普外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=儿童遗传病科'>儿童遗传病科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=儿童传染病科'>儿童传染病科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSix">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        骨外科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=骨科'>骨科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=脊柱外科'>脊柱外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=手外科'>手外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=创伤骨科'>创伤骨科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=骨关节科'>骨关节科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=矫形骨科'>矫形骨科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=骨质疏松科'>骨质疏松科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=骨伤专科'>骨伤专科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSeven">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        眼科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=眼科'>眼科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=小儿眼科'>小儿眼科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=眼底'>眼底</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=角膜科'>角膜科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=青光眼'>青光眼</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=白内障<'>白内障</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=眼外伤'>眼外伤</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=眼眶及肿瘤'>眼眶及肿瘤</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=屈光'>屈光</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=眼整形'>眼整形</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医眼科'>中医眼科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=准分子激光科'>准分子激光科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEight">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        口腔科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔科'>口腔科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=颌面外科'>颌面外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=正畸科'>正畸科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=牙体牙髓科'>牙体牙髓科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=牙周科'>牙周科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔粘膜科'>口腔粘膜科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=儿童口腔科'>儿童口腔科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔修复科'>口腔修复科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=种植科'>种植科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔预防科'>口腔预防科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔特诊科'>口腔特诊科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=口腔急诊科'>口腔急诊科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingNine">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        耳鼻咽喉头颈科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=耳鼻喉'>耳鼻喉</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=头颈外科'>头颈外科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        肿瘤科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肿瘤内科'>肿瘤内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肿瘤外科'>肿瘤外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肿瘤妇科'>肿瘤妇科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=放疗科'>放疗科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=骨肿瘤科'>骨肿瘤科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肿瘤康复科'>肿瘤康复科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肿瘤综合科'>肿瘤综合科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEleven">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapse">
+                        皮肤性病科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=皮肤科'>皮肤科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=性病科'>性病科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwelve">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                        男性学科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=男性学科'>男性学科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThirteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                        皮肤美容
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseThirteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThirteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=皮肤美容'>皮肤美容</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFourteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                        烧伤科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseFourteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=烧伤科'>烧伤科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFifteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+                        精神心理科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseFifteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=精神科'>精神科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=心理咨询科'>心理咨询科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=司法鉴定科'>司法鉴定科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=双相障碍科'>双相障碍科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=药物依赖科'>药物依赖科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSixteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+                        中医科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseSixteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSixteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医妇产科'>中医妇产科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医儿科'>中医儿科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医骨科'>中医骨科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医皮肤科'>中医皮肤科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医内分泌'>中医内分泌</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医消化科'>中医消化科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医呼吸科'>中医呼吸科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医肾病内科'>中医肾病内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医免疫内科'>中医免疫内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医心内科'>中医心内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医神经内科'>中医神经内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医肿瘤科'>中医肿瘤科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医血液科'>中医血液科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医感染内科'>中医感染内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医肝病科'>中医肝病科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医五官科'>中医五官科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医男科'>中医男科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=针灸科'>针灸科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医按摩科'>中医按摩科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医外科'>中医外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医乳腺外科'>中医乳腺外科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医肛肠科'>中医肛肠科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医老年病科'>中医老年病科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医科'>中医科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医内科'>中医内科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医脾胃科'>中医脾胃科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=膏方门诊'>膏方门诊</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中医骨伤科'>中医骨伤科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSeventeen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+                        中西医结合科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseSeventeen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeventeen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=中西医结合科'>中西医结合科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEighteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+                        传染病科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseEighteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEighteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=肝病科'>肝病科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=传染科'>传染科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=传染危重室常见疾病'>传染危重室常见疾病</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingNineteen">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
+                        结核病科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseNineteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNineteen">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=结核病科'>结核病科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwenty">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
+                        介入医学科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwenty" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwenty">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=介入医学科'>介入医学科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyOne">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyOne" aria-expanded="false" aria-controls="collapseTwentyOne">
+                        康复医学科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyOne">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=康复科'>康复科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=理疗科'>理疗科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyTwo">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyTwo" aria-expanded="false" aria-controls="collapseTwentyTwo">
+                        运动医学科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyTwo">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=运动医学科'>运动医学科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyThree">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyThree" aria-expanded="false" aria-controls="collapseTwentyThree">
+                        麻醉医学科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyThree">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=疼痛科'>疼痛科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=麻醉科'>麻醉科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyFour">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyFour" aria-expanded="false" aria-controls="collapseTwentyFour">
+                        职业病科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyFour">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=职业病科'>职业病科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyFive">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyFive" aria-expanded="false" aria-controls="collapseTwentyFive">
+                        地方病科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyFive">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=地方病科'>地方病科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentySix">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentySix" aria-expanded="false" aria-controls="collapseTwentySix">
+                        营养科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentySix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentySix">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=营养科'>营养科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentySeven">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentySeven" aria-expanded="false" aria-controls="collapseTwentySeven">
+                        医学影像学
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentySeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentySeven">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=核医学科'>核医学科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=放射科'>放射科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=超声科'>超声科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=医学影像科'>医学影像科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyEight">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyEight" aria-expanded="false" aria-controls="collapseTwentyEight">
+                        病理科
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyEight">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=病理科'>病理科</a> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwentyNine">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyNine" aria-expanded="false" aria-controls="collapseTwentyNine">
+                        其他科室
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseTwentyNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyNine">
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=急诊科'>急诊科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=特色医疗科'>特色医疗科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=干部诊疗科'>干部诊疗科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=重症监护室'>重症监护室</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=特诊科'>特诊科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=检验科'>检验科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=预防保健科'>预防保健科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=功能检查科'>功能检查科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=全科'>全科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=药剂科'>药剂科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=体检科'>体检科</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=血透中心'>血透中心</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=实验中心'>实验中心</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=碎石中心'>碎石中心</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=IMCC'>IMCC</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=护理咨询'>护理咨询</a> </li>
+                        <li class="list-group-item"><a href='/mobile/book/hospital?department=变态反应科'>变态反应科</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>      
     </div>
 
     <!-- Menu navigation -->
@@ -111,10 +651,10 @@
                 </a>
             </li>
             <li>
-                    <a href="mLogin.html">
-                        <i class="i-contact i-small"></i>账户登陆
-                    </a>
-                </li>
+                <a href="mLogin.html">
+                    <i class="i-contact i-small"></i>账户登陆
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

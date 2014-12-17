@@ -1,16 +1,9 @@
 <!doctype html>
 <html>
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<title>收藏夹</title>
-<link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
-=======
     <meta charset="UTF-8">
     <title>收藏夹</title>
     <link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
->>>>>>> FETCH_HEAD
-
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
@@ -29,84 +22,28 @@
     <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 </head>
 
-<body>
+<body class="o-page">
+<div id="page">
 <div id="header">
-<<<<<<< HEAD
-        <a href="#menu"></a>
-        <span> 医呼百应 个人信息 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
-    
-    <nav id="menu">
-            <ul>
-                <li class="Selected">
-                    <a href="mIndex.html">
-                        <i class="i-home i-small"></i>预约主页
-                    </a>
-                </li>
-                <li>
-                    <a href="mAbout.html">
-                        <i class="i-about i-small"></i>个人信息
-                    </a>
-                </li>
-                <li>
-                    <a href="mBlog.html">
-                        <i class="i-blog i-small"></i>订单管理
-                    </a>
-                </li>
-                <li>
-                    <a href="mGallery.html">
-                        <i class="i-gallery i-small"></i>收藏夹
-                    </a>
-                </li>
-                <li>
-                    <a href="mShortCodes.html">
-                        <i class="i-shortcodes i-small"></i>问题反馈
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        
-        <div id="collection" align="center">
-    
-        <table  cellspacing="30" align="center" style="margin-top:20px;" >
-			<tr>
-  				<td>s收藏的医生</td>
-  				<td>收藏的医院</td>
-			</tr>
-			<tr>
-  				<td>张三</td>
-  				<td>北医三院</td>
-			</tr>
-			<tr>
-  				<td>李旭</td>
-  				<td>协和医院</td>
-			</tr>
-			<tr>
-  				<td>马冰莹</td>
-  				<td>北航校医院</td>
-			</tr>
-            <tr>
-  				<td>李小爽</td>
-  				<td>北大医院</td>
-			</tr>
-            <tr>
-  				<td>王洁薇</td>
-  				<td>积水潭医院</td>
-			</tr>
 
-		</table>
-        
-    </div>
-=======
     <a href="#menu"></a>
-    <span> 医呼百应 个人信息 </span>
+    <span> 医呼百应 收藏夹 </span>
     <a class="backBtn" href="javascript:history.back();"></a>
 </div>
 
 <nav id="menu">
     <ul>
-        <li class="Selected">
+    	<li  class="Selected">
+               <a href="mLogin.html">
+                    <i class="i-home i-small"></i>登录
+               </a>
+        </li>
+        <li >
+               <a href="mRegister.html">
+        <i class="i-home i-small"></i>注册
+               </a>
+        </li>
+        <li>
             <a href="mIndex.html">
                 <i class="i-home i-small"></i>预约主页
             </a>
@@ -133,13 +70,18 @@
         </li>
     </ul>
 </nav>
-
+  		<div align="center">
+            <h1 class="subheader">收藏</h1>
+            <hr class="hr3"/>
+        </div>
 <div id="collection" align="center">
 
-    <table cellspacing="30" align="center" style="margin-top:20px;">
+    <table cellspacing="10" align="center" style="margin-top:20px;">
+    <col width="25%">
+                <col width="75%">
         <tr>
-            <td>s收藏的医生</td>
-            <td>收藏的医院</td>
+            <td>医生</td>
+            <td>医院</td>
         </tr>
         <tr>
             <td>张三</td>
@@ -165,6 +107,6 @@
     </table>
 
 </div>
->>>>>>> FETCH_HEAD
+</div>
 </body>
 </html>

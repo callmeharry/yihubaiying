@@ -56,7 +56,7 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
             for (var j = 0; j < feedback.length; j++) {
                 (function (i) {
                     var hos_id = feedback[i].sender_id;
-                    Hospital.getHospitalsByHospitalId(hos_id, function (err, hos) {
+                    Hospital.getHospitalByHospitalId(hos_id, function (err, hos) {
                         if (err) callback(err);
 
                         feedbacks.push({
