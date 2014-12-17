@@ -123,3 +123,30 @@ var updateHospitalInfo = function (req, res, next) {
 
 exports.updateHospitalInfo = updateHospitalInfo;
 
+var removeHospitalInfo = function(req, res, next) {
+    var hosId = req.query.ak; //post提交不可用query？
+
+    var query = req.body.qyery;
+
+    if (!(HospitalModel.findOne({_id: hosId}))) {
+        return res.send('不存在该医院的信息，无法删除');
+    }
+
+    HospitalProxy.getHospitalByHospitalId(hosId, function (err, hospital) {
+        if (err) {
+            return callback(err);
+        }
+        hospital.remove(query, function (err) {
+            if (err) {
+                res.send('删除失败');
+            } else {
+                res.send('删除成功');
+            }
+        });
+    });
+};
+
+exports.removeHospitalInfo = removeHospitalInfo;
+
+
+
