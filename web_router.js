@@ -84,8 +84,10 @@ router.get('/admin/userInfo', admin.userInfo);
 
 //异常信息
 router.get('/admin/exceptionManage', admin.exceptionManage);
-router.post('/admin/test',admin.test);
-router.get('/admin/test',admin.showtest);
+
+
+//Ajax from admin
+router.post('/admin/newDept',admin.addDeptInter);
 
 //Test page
 router.get('/sms-test', smsTest.registerVerity);
