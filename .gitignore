@@ -31,4 +31,4 @@ build/Release
 .idea
 
 #newrelic_agent
-.newrelic_agent.log
+newrelic_agent.log
