@@ -21,6 +21,7 @@ var OrderSchema = new Schema({
     order_if_pay:{type:Boolean, default: false},
     order_if_print:{type:Boolean, default: false},
     order_if_finished:{type:Boolean, default: false},
+    order_fee:{type:Number},
     comment:{
         time:{type:Date},
         good_or_bad:{type:Boolean},

@@ -18,9 +18,9 @@ var DoctorSchema = new Schema({
     doctor_good_reputation: {type: Number, default: 0},
     doctor_visit: [
         {
-            //visit_period: { type: Number, default: 0},弃用该属性
-            visit_start_time: {type: Date},
-            visit_end_time: {type: Date},
+            fee:{type:Number},
+            visit_start_time: {type:String},
+            visit_end_time: {type: String},
             totalSource: { type: Number },
             leftSource: { type: Number }
         }
