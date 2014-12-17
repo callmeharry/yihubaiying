@@ -30,4 +30,5 @@ build/Release
 # webstorm settings
 .idea
 
-newrealic_agent.log
+#newrelic_agent
+newrelic_agent.log
