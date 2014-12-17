@@ -136,6 +136,12 @@ exports.getDeptDotctors = function (dept_id, callback) {
         }
 
     });
+};
 
+exports.update = function (conditions, update, options, callback) {
+    Hospital.update(conditions, update, options, callback);
+};
 
+exports.remove = function (query, callback) {
+    Hospital.remove(query, callback);
 };

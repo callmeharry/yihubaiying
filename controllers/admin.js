@@ -162,7 +162,7 @@ exports.addHos = function (req, res, next) {
             res.redirect('/admin/hosInfo');
         });
 
-}
+};
 
 
 

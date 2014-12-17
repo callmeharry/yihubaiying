@@ -5,6 +5,10 @@
 
 var express = require('express');
 var router = express.Router();
+
+var showHospitalInfoController = require('./api/v1/hospital');
+var updateHospitalInfoController = require('./api.v1/hospital');
+
 router.get();
 
 module.exports = router;

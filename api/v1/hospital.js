@@ -9,7 +9,15 @@ var config = require('../../config');
 var eventproxy = require('eventproxy');
 var _ = require('lodash');
 
-var showHospitalIntro = function (req, res, next) {
+/**
+ * 显示医院基本信息
+ * 与用例YHBY-501对应
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
+var showHospitalInfo = function (req, res, next) {
     var hosId = req.query.ak;
 
     if (!(HospitalModel.findOne({_id: hosId}))) {
@@ -27,7 +35,6 @@ var showHospitalIntro = function (req, res, next) {
         var proxy = new eventproxy();
         proxy.after('show', hos_dept.length, function () {
             var hosIntro = {
-                hospital_name: hospital.hospital_name,
                 hospital_name: hospital.hospital_name,
                 hospital_intro: hospital.hospital_intro,
                 hospital_city: hospital.hospital_city,
@@ -66,4 +73,53 @@ var showHospitalIntro = function (req, res, next) {
     });
 };
 
-exports.showHospitalIntro = showHospitalIntro;
+exports.showHospitalInfo = showHospitalInfo;
+
+var updateHospitalInfo = function (req, res, next) {
+    var hosId = req.query.ak; //post提交不可用query？
+
+    var name = req.body.hospital_name;
+    var intro = req.body.hospital_intro;
+    var city = req.body.hospital_city;
+    var location = req.body.hospital_location;
+    var tel = req.body.hospital_tel;
+    var imgsrc = req.body.hospital_imgsrc;
+
+    if (!(HospitalModel.findOne({_id: hosId}))) {
+        return res.send('不存在该医院的信息，无法修改');
+    }
+
+    HospitalProxy.getHospitalByHospitalId(hosId, function (err, hospital) {
+        if (err) {
+            return callback(err);
+        }
+
+        var hosDept = hospital.hospital_dept;
+
+        var proxy = new eventproxy();
+        proxy.after('update', hosDept.length, function () {
+            var conditions = {_id: hosId};
+            var update = {
+                $set: {
+                    hospital_name: name,
+                    hospital_intro: intro,
+                    hospital_city: city,
+                    hospital_location: location,
+                    hospital_tel: tel,
+                    hospital_imsrc: imgsrc
+                }
+            };
+            var options = {};
+            HospitalProxy.update(conditions, update, options, function (err) {
+                if (err) {
+                    return res.send('修改出错');
+                } else {
+                    res.send({updatedHospitalIntro: hospital});
+                }
+            });
+        });
+    });
+};
+
+exports.updateHospitalInfo = updateHospitalInfo;
+
