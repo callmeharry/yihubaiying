@@ -69,7 +69,13 @@ exports.adminLogin = function (req, res, next) {
         //    console.log("success");
         //    res.redirect('/admin/hosInfo');
         //});
+
+        //Doctor.newAndSaveDoctor("548ee73b19e1d59f4a7b3ffa","hehed shenkjing","shengjinga !","shenjing/hehaa/dad/",function(err){
+        //    if(err) return next(err);
+        //
+        //});
         res.redirect('/admin/hosInfo');
+
     } else {
         ep.emit('login_err', "username or password is wrong!");
         return;
@@ -359,27 +365,187 @@ exports.userFeedback = function (req, res, next) {
 
 };
 
-exports.test = function(req, res){
 
-    var name = req.body.name;
-    var result = {};
-    if (!name) {
-        result.code = 1;
-        result.msg = '账号不能为空';
-        res.send(result);
-        return;
-    }
-    var email = req.body.email;
-    if (!email) {
-        result.code = 2;
-        result.msg = '邮箱不能为空';
-        res.send(result);
-        return;
-    }
-    console.log(email+" "+name);
-    res.send({code : 0});
+//Ajax handle function
+
+exports.modifyHosInter = function (req, res, next) {
+    var hos_id = validator.trim(req.body.hos_id);
+    var hos_name = validator.trim(req.body.hos_name) || '';
+    var hos_intro = validator.trim(req.body.hos_intro) || '';
+    var hos_city = validator.trim(req.body.hos_city) || '';
+    var hos_location = validator.trim(req.body.hos_location) || '';
+    var hos_tel = validator.trim(req.body.hos_tel) || '';
+    var hos_weight = validator.trim(req.body.hos_weight) || '';
+
+    var query = {"_id": hos_id};
+    var ups = {};
+    if (hos_name !== '')
+        ups.hospital_name = hos_name;
+    if (hos_intro !== '')
+        ups.hospital_intro = hos_intro;
+    if (hos_city !== '')
+        ups.hospital_city = hos_city;
+    if (hos_location !== '')
+        ups.hospital_location = hos_location;
+    if (hos_tel !== '')
+        ups.hospital_tel = hos_tel;
+    if (hos_weight !== '')
+        ups.hospital_weight = hos_weight;
+
+
+    hospital.updateDeptByQuery(query, {"$set": ups}, function (err) {
+        if (err) return next(err);
+
+        res.sender({status: "success"});
+    });
+
 };
 
-exports.showtest = function(req, res){
-    res.render('administrator/test');
+exports.dropHosInter = function (req, res, next) {
+    var hos_id = req.body.hos_id;
+
+    Hospital.dropHospital({"_id": hos_id}, function (err) {
+        if (err) return next(err);
+        res.send({"status": "success"});
+    });
+
 };
+
+
+/**
+ * response from Ajax
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.addDeptInter = function (req, res, next) {
+    var hos_id = validator.trim(req.body.hos_id);
+    var dept_name = validator.trim(req.body.dept_name);
+    var father_dept_name = validator.trim(req.body.father_dept_name);
+    console.log(req.body);
+    Hospital.addDepartment(hos_id, father_dept_name, dept_name, function (err) {
+        if (err) next(err);
+        console.log("success!");
+        res.send({status: 0});
+    });
+
+};
+
+/**
+ * change info of dept
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
+exports.modifyDept = function (req, res, next) {
+    var dept_id = validator.trim(req.body.dept_id);
+    var dept_name = req.body.dept_name || '';
+    var father_dept_name = req.body.father_dept_name || '';
+    dept_name = validator.trim(dept_name);
+    father_dept_name = validator.trim(father_dept_name);
+
+    var query = {"hospital_dept._id": dept_id};
+    var ups = {};
+    if (dept_name === '' && father_dept_name !== '')
+        ups = {"hospital_dept.$.father_dept_name": father_dept_name}
+
+    else if (dept_name !== '' && father_dept_name === '')
+        ups = {"hospital_dept.$.dept_name": dept_name};
+
+    else if (dept_name !== '' && father_dept_name !== '')
+        ups = {
+            "hospital_dept.$.dept_name": dept_name,
+            "hospital_dept.$.father_dept_name": father_dept_name
+        };
+
+    else
+        return res.send({status: "success"});
+
+    Hospital.updateDeptByQuery(query, ups, function (err) {
+        if (err) return next(err);
+
+        res.send({status: "success"});
+    });
+};
+/**
+ * drop dept
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.dropDept = function (req, res, next) {
+    var dept_id = validator.trim(req.body.dept_id);
+
+    var query = {"hospital_dept._id": dept_id};
+    var ups = {"$pull": {"hospital_dept._id": dept_id}};
+    Hospital.updateDeptByQuery(query, ups, function (err) {
+
+        if (err) return next(err);
+
+        res.send({status: "success!"});
+    });
+
+};
+
+//add doctorInter
+
+exports.addDoctorinter = function (req, res, next) {
+    var dept_id = req.body.dept_id;
+    var doc_name = validator.trim(req.body.doc_name);
+    var doc_intro = validator.trim(req.body.doc_intro);
+    var good_illness = validator.trim(req.body.good_illness);
+
+    Doctor.newAndSave(dept_id, doc_name, doc_intro, good_illness, function (err) {
+        if (err) return next(err);
+
+        res.send({status: "success"});
+
+    });
+
+};
+
+
+//change userInfo
+exports.changeStatus = function (req, res, next) {
+    var user_id = req.body.user_id;
+    var user_status = req.body.user_status;
+
+    var query = {"_id": user_id};
+    var ups = {"user_status": user_status};
+
+    User.update(query, ups, function (err) {
+        if (err) return next(err);
+        res.send({status: "success"});
+    })
+
+};
+
+
+exports.deleteUser = function (req, res, next) {
+    var user_id = req.body.user_id;
+    var query = {"_id": user_id};
+
+    User.dropUser(query, function (err) {
+        if (err) return next(err);
+        res.send({status: "success"});
+    });
+
+};
+
+
+// reply userFeedback
+
+exports.replyFeedbackinter = function (req, res, next) {
+    var feedback_id = req.body.feedback_id;
+    var check_message = req.body.check_message;
+
+    var query = {"_id": feedback_id};
+    var ups = {"$set": {"check_message": check_message, "if_check": true}};
+
+    Feedback.replyFeedback(query, ups, function (err) {
+        if (err) return next(err);
+        res.send({status: "success"});
+    });
+
+}

@@ -5,13 +5,28 @@
 
 var models = require('../models');
 var Doctor = models.Doctor;
+var Hospital = models.Hospital;
 
-exports.newAndSaveDoctor = function (docName, docIntro, callback) {
-    var doctor = new DoctorModel({
-        doctor_name: docName,
-        doctor_intro: docIntro
+exports.newAndSaveDoctor = function (dept_id, docName, docIntro, goods, callback) {
+    var doctor = new Doctor();
+    doctor.doctor_name = docName;
+    doctor.doctor_intro = docIntro;
+    doctor.doctor_advanced_illness_name = goods;
+
+    var query = {"hospital_dept._id": dept_id};
+    var options = {"hospital_dept.$": 1};
+    //save the objectid to dept
+    Hospital.findOne(query, options, function (err, hospital) {
+        if (err) return callback(err);
+
+        hospital.hospital_dept[0].dept_doc.push(doctor._id);
+        hospital.save(function (err) {
+            if (err) return callback(err);
+            doctor.save(callback);
+        })
     });
-    doctor.save(callback);
+
+
 };
 
 exports.addDoctorVisit = function (docId, startTime, endTime, totalSource, leftSource, callback) {

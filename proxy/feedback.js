@@ -78,3 +78,7 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
 exports.getCountByQuery = function (query, callback) {
     Feedback.count(query, callback);
 };
+
+exports.replyFeedback = function (query, ups, callback) {
+    Feedback.update(query, ups, callback);
+};

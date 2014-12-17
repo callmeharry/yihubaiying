@@ -14,7 +14,7 @@ var config = require('../config');
 var DoctorSchema = new Schema({
     doctor_name: { type: String },
     doctor_intro: { type: String },
-    doctor_advanced_illness_name: [{type: String}],
+    doctor_advanced_illness_name: {type: String},
     doctor_good_reputation: {type: Number, default: 0},
     doctor_visit: [
         {

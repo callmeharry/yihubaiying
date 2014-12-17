@@ -24,10 +24,12 @@
 			<form class="input-group" id="newDept" action="/admin/newDept">
 				<span class="input-group-addon">新增子科室</span>
 				<div class="col-md-4">
-					<input type="text" class="form-control" name="ndept_name" id="ndept_name" placeholder="新增子科室名称">
+					<input type="text" class="form-control" name="dept_name" id="ndept_name" placeholder="新增子科室名称">
 				</div>
 				<div class="col-md-4">
-					<input type="text" class="form-control" name="nfather_dept" id="nfather_dept" placeholder="所属科室名称">
+					<input type="text" class="form-control" name="father_dept_name" id="nfather_dept"
+						   placeholder="所属科室名称">
+					<input type="hidden" name="hos_id" value="<%= hospital._id%>"/>
 				</div>
 				<button type="submit" class="btn btn-default">新增</button>
 				<button type="reset" class="btn btn-primary">重置</button>
@@ -113,7 +115,7 @@
 		$(document).ready(function() {
 			$('#newDept').submit(function() {
 				$.post($(this).attr('action'),$(this).serialize(),function(result) {
-					if (result.code == 0) {
+					if (result.status == 0) {
 						alert('新建成功');
 						window.location.reload();
 					} else {

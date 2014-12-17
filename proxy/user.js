@@ -57,4 +57,8 @@ exports.getUserById = function (id, callback) {
     User.findOne({_id: id}, callback);
 };
 
+exports.dropUser = function (query, callback) {
+
+    User.remove(query, callback);
+};
 

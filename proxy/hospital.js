@@ -1,6 +1,7 @@
 /**
  * Created by Megas on 2014/12/9.
  * 与hospital model交互，用于提供数据
+ * Todo: 新建医院时加入权重参数
  */
 
 var models = require('../models');
@@ -107,8 +108,10 @@ exports.getDeptDotctors = function (dept_id, callback) {
         var proxy = new eventproxy();
         proxy.after('update', dept_doc.length, function () {
             var fit_hospital = {};
+            fit_hospital.hostpital_id = hospital._id;
             fit_hospital.hospital_name = hospital.hospital_name;
             fit_hospital.dept_name = hospital.hospital_dept[0].dept_name;
+            fit_hospital.dept_id = hospital.hospital_dept[0]._id;
             fit_hospital.doctors = doctors;
 
             callback(null, fit_hospital);
@@ -117,7 +120,7 @@ exports.getDeptDotctors = function (dept_id, callback) {
         for (var j = 0; j < dept_doc.length; j++) {
             (function (i) {
                 var doc_id = dept_doc[i];
-                Doctor.getDoctorById(doc_id, function (err, doctor) {
+                Doctor.findOne({"_id": doc_id}, {}, function (err, doctor) {
                     if (err) return callback(err);
 
                     doctors.push({
@@ -138,10 +141,11 @@ exports.getDeptDotctors = function (dept_id, callback) {
     });
 };
 
-exports.update = function (conditions, update, options, callback) {
-    Hospital.update(conditions, update, options, callback);
+exports.updateDeptByQuery = function (query, ups, callback) {
+
+    Hospital.update(query, ups, callback);
 };
 
-exports.remove = function (query, callback) {
-    Hospital.remove(query, callback);
-};
+exports.dropHospital = function (opt, callback) {
+    Hospital.remove(opt, callback);
+}
