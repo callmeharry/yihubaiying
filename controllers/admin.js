@@ -258,7 +258,20 @@ exports.docInfo = function (req, res, next) {
 };
 
 exports.callInfo = function (req, res, next) {
-    res.render('administrator/callInfo');
+    var doc_id = validator(req.body.doc_id);
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    Doctor.getDoctorById(doc_id, proxy.done('doctor',function(doctor){
+        return doctor;
+    }));
+
+
+    proxy.all('doctor',function(doctor){
+        res.render('administrator/callinfo',{
+            doctor:doctor
+        })
+    });
 
 };
 
@@ -548,3 +561,26 @@ exports.replyFeedbackinter = function (req, res, next) {
     });
 
 }
+
+
+//Add doctor visit time
+exports.addDocVisit = function(req, res, next){
+    var doc_id = req.body.doct_id;
+    var fee = req.body.fee;
+    var visit_end_time = req.body.visit_end_time;
+    var visit_end_time = req.body.visit_end_time;
+    var totalSource = req.body.totalSource;
+    var leftSource = req.body.leftSource;
+
+    var ups = {visit_end_time:visit_end_time,
+        visit_end_time:visit_end_time,
+        totalSource:totalSource,
+        leftSource:leftSource,
+        fee:fee};
+    Doctor.addDoctorVisit(doc_id, ups, function(err){
+        if(err) return res.send({status:-1,msg:"failed"});
+
+        res.send({status:0});
+    });
+
+};

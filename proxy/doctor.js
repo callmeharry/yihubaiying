@@ -29,15 +29,10 @@ exports.newAndSaveDoctor = function (dept_id, docName, docIntro, goods, callback
 
 };
 
-exports.addDoctorVisit = function (docId, startTime, endTime, totalSource, leftSource, callback) {
+exports.addDoctorVisit = function (docId, ups, callback) {
     Doctor.update({_id: docId}, {
         $push: {
-            doctor_visit: {
-        visit_start_time: startTime,
-        visit_end_time: endTime,
-        totalSource: totalSource,
-        leftSource: leftSource
-            }
+            doctor_visit: ups
         }
     }, callback);
 };
