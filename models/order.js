@@ -11,7 +11,7 @@ var ObjectId = Schema.ObjectId;
 var config = require('../config');
 
 var OrderSchema = new Schema({
-    order_time: { type: Date,default :Date.now},
+    order_time: {type: Date, default: Date.now},
     order_see_time:{type:String},
     hospital_id: { type: ObjectId },
     dept_id: { type: ObjectId },
@@ -23,7 +23,7 @@ var OrderSchema = new Schema({
     order_if_finished:{type:Boolean, default: false},
     order_fee:{type:Number},
     comment:{
-        time:{type:Date,default:Date.now},
+        time: {type: Date, default: Date.now},
         good_or_bad:{type:Boolean},
         content:{type:String}
     }

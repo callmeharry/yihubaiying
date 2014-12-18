@@ -209,7 +209,7 @@ exports.removeHospitalInfo = removeHospitalInfo;
 var addDocToDept = function (req, res, next) {
     var hosId = req.query.ak;
     var deptId = req.query.deptId;
-    var docId= req.query.docId;
+    var docId = req.query.docId;
 
     var query = {_id: hosId, 'hospital_dept._id': deptId};
     var option = {};
@@ -235,7 +235,7 @@ exports.addDocToDept = addDocToDept;
 var removeDocFromDept = function (req, res, next) {
     var hosId = req.query.ak;
     var deptId = req.query.deptId;
-    var docId= req.query.docId;
+    var docId = req.query.docId;
 
     var query = {_id: hosId, 'hospital_dept._id': deptId};
     var option = {};
@@ -245,7 +245,7 @@ var removeDocFromDept = function (req, res, next) {
         }
         hospital.remove({
             'hospital_dept.dept_doc': docId
-            }, callback);
+        }, callback);
     });
 };
 
