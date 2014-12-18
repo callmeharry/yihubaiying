@@ -37,6 +37,7 @@ exports.genSession = function GenSession(user, res) {
     // $$$$分隔信息
     var _id = user._id;
     var username = user.real_name;
+    var city = user.user_state;
     console.log(username);
     console.log(user);
     res.cookie(config.auth_cookie_userid, _id,
@@ -45,7 +46,7 @@ exports.genSession = function GenSession(user, res) {
     res.cookie(config.auth_cookie_username, username,
         // cookie有效期30天
         {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
-    res.cookie(config.auth_cookie_city, username,
+    res.cookie(config.auth_cookie_city, city,
         // cookie有效期30天
         {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
 };

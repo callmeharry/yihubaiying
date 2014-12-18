@@ -13,10 +13,13 @@ var tool = require('../middlewares/tool');
  */
 exports.showRegister = function (req, res) {
     console.log('register');
+    var username = req.cookies.username;
+    if (username == null)
+        username = "undefined";
     if (tool.getDeviceType(req.url))
-    res.render('mobile/mRegister');
+        res.render('mobile/mRegister', {username: username, title: '医呼百应:注册'});
     else
-        res.render('pc/register');
+        res.render('pc/register', {username: username});
 };
 
 /**

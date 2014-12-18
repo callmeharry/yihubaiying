@@ -19,10 +19,13 @@ exports.showLogin = function (req, res) {
     var url2 = req.url;
     console.log(url2);
     console.log('mobile_login');
+    var username = req.cookies.username;
+    if (username == null)
+        username = "undefined";
     if (tool.getDeviceType(req.url))
-    res.render('mobile/mLogin', {previousurl: url});
+        res.render('mobile/mLogin', {previousurl: url, username: username, title: '医呼百应:登录'});
     else
-        res.render('pc/login', {previousurl: url});
+        res.render('pc/login', {previousurl: url, username: username});
 };
 
 /**

@@ -5,26 +5,26 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>选择医生</title>
 
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Order.css">
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mDoctor.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Order.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
 
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page p-blog">
 <div id="page">
 
-    <div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 生成订单 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <% if(!username) { %>
+    <%- include mNotLoggedIn.html %>
+    <% } else {%>
+    <%- include mLoggedIn.html %>
+    <% } %>
 
     <div id="content">
         <% for(var i = 0; i < doctor.length; i++) {%>
@@ -61,49 +61,13 @@
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">医生专长：</span>
-                        <span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
+                        <span id="doctorSpecialty_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
                     </div>
                 </div>
             </a>
         </article>
         <% } %>
     </div>
-
-    <!-- Menu navigation -->
-    <nav id="menu">
-        <ul>
-            <li class="Selected">
-                <a href="mIndex.html">
-                    <i class="i-home i-small"></i>预约主页
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="i-about i-small"></i>个人信息
-                </a>
-            </li>
-            <li>
-                <a href="blog.html">
-                    <i class="i-blog i-small"></i>订单管理
-                </a>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="i-gallery i-small"></i>收藏夹
-                </a>
-            </li>
-            <li>
-                <a href="shortcodes.html">
-                    <i class="i-shortcodes i-small"></i>问题反馈
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-contact i-small"></i>账户登陆
-                </a>
-            </li>
-        </ul>
-    </nav>
 </div>
 </body>
 </html> 

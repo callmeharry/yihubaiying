@@ -18,86 +18,30 @@
 <body class="o-page">
 <div id="page">
 
-    <div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 时间选择 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <%- include mLoggedIn.html %>
 
     <div class="content">
         <div id="Gallery">
             <div class="gallery-row">
                 <div class="mobile-two">
-                    <div class="gallery-item big-item">
-                        <a href="#">
-                            <div class="dateWindow cannotBeOrdered">
-                                <span>2014-11-29</span>                                    
-                                <br/>
-                                <span>星期六</span>
-                                </br>
-                                <span>15:30</span>
-                                </br>
-                                <span>不可预约</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!--
                     <% for(var i = 0; i < time.length; i++) { %>
-                    -->
-                    <div class="gallery-item big-item dateItem ">
+                    <div class="gallery-item big-item">
                         <a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= time[i].date %>&time=<%= time[i].time %>">
-                            <!-- <div class="dateWindow <%= time[i].canBeOrdered %>">-->
                             <div class="dateWindow canBeOrdered">
-                                <span>2014-12-15<!-- <%= time[i].date %>--></span>
-                                </br>
-                                <span>星期一<!-- <%= time[i].weekOfDay %>--></span>
-                                </br>
-                                <span>14:00<!--<%= time[i].time %> --></span>
-                                </br>
-                                <span>可预约<!-- <%= time[i].source %>--></span>
+                                <span><%= time[i].date %></span>
+                                <br/>
+                                <span><%= time[i].weekOfDay %></span>
+                                <br/>
+                                <span><%= time[i].time %></span>
+                                <br/>
+                                <span><%= time[i].source %></span>
                             </div>
                         </a>
                     </div>
-                            <!--<% } %>-->
-                    </div>
+                    <% } %>
+                </div>
             </div>
         </div>
-
-        <!-- Menu navigation -->
-        <nav id="menu" class="">
-            <ul>
-                <li class="Selected">
-                    <a href="mIndex.html">
-                        <i class="i-home i-small"></i>预约主页
-                    </a>
-                </li>
-                <li>
-                    <a href="about.html">
-                        <i class="i-about i-small"></i>个人信息
-                    </a>
-                </li>
-                <li>
-                    <a href="blog.html">
-                        <i class="i-blog i-small"></i>订单管理
-                    </a>
-                </li>
-                <li>
-                    <a href="gallery.html">
-                        <i class="i-gallery i-small"></i>收藏夹
-                    </a>
-                </li>
-                <li>
-                    <a href="shortcodes.html">
-                        <i class="i-shortcodes i-small"></i>问题反馈
-                    </a>
-                </li>
-                <li>
-                    <a href="mLogin.html">
-                        <i class="i-contact i-small"></i>账户登陆
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </div>
 </div>
 </body>

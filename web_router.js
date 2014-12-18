@@ -37,7 +37,10 @@ router.get('/mobile/book/hospitals', mobileBook.showHospital);
 router.get('/mobile/book/departments', mobileBook.showDepartment);
 router.get('/mobile/book/doctors', mobileBook.showDoctor);
 router.get('/mobile/book/time', mobileBook.showTime);
+router.get('/mobile/book/confirmbook', mobileBook.confirmBook);
 router.get('/mobile/book/finishbook', mobileBook.finishBook);
+router.get('/mobile/book/diseases', mobileBook.showDiseases);
+router.get('/mobile/book/departmentlist', mobileBook.showDepartmentList);
 
 //PC Home page
 router.get('/', mobileIndex.showIndex);
@@ -53,6 +56,15 @@ router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
+//pc book page
+router.get('/book/hospitals', mobileBook.showHospital);
+router.get('/book/departments', mobileBook.showDepartment);
+router.get('/book/doctors', mobileBook.showDoctor);
+router.get('/book/time', mobileBook.showTime);
+router.get('/book/confirmbook', mobileBook.confirmBook);
+router.get('/book/finishbook', mobileBook.finishBook);
+router.get('/book/diseases', mobileBook.showDiseases);
+router.get('/book/departmentlist', mobileBook.showDepartmentList);
 /**
  * Administrator pages
  */

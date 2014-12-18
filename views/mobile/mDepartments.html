@@ -5,15 +5,16 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
 
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/><link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
 
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     
 <!--
     <script type="text/javascript" src="../../public/javascripts/mJS.js"></script>
@@ -33,16 +34,12 @@
 
 <body class="o-page p-blog">
 <div id="page">
-<!-- -->
-<!--
-    <%- include mUserHeader.html %>
--->
 
-    <div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 医院详情 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <% if(!username) { %>
+    <%- include mNotLoggedIn.html %>
+    <% } else {%>
+    <%- include mLoggedIn.html %>
+    <% } %>
 
     <div id="content">
         <article>
@@ -50,7 +47,7 @@
                 <img src="<%= hospital.imgsrc %>"/>
             </div>
             <div class="hospitalName">
-                <h2><span id="id_hospitalName" name="hospitalName">医院名称<!-- %= hospital.name %>--></span></h2>
+                <h2><span id="id_hospitalName" name="hospitalName"><%= hospital.hospital_name %></span></h2>
             </div>
 
             <div class="hospitalInfo">
@@ -59,27 +56,28 @@
                     <col width="75%">
                     <tr>
                         <td><strong>地址：</strong></td>
-                        <td><span id="id_hospitalAddress" name="hospitalAddress">医院地址<!-- <%= hospital.address %>--></span></td>
+                        <td><span id="id_hospitalAddress"
+                                  name="hospitalAddress"><%= hospital.hospital_location %></span></td>
                     </tr>
                     <tr>
                         <td><strong>电话：</strong></td>
-                        <td><span id="id_hospitalTel" name="hospitalTel">75398573<!-- <%= hospital.phoneNumber %>--></span></td>
+                        <td><span id="id_hospitalTel" name="hospitalTel"><%= hospital.hospital_tel %></span></td>
                     </tr>
                     <tr>
                         <td><strong>预约周期:</strong></td>
-                        <td><span>9天</span></td>
+                        <td><span>7天</span></td>
                     </tr>
                     <tr>
                         <td><strong>放号时间：</strong></td>
-                        <td><span>16:00</span></td>
+                        <td><span>9:00</span></td>
                     </tr>
                     <tr>
                         <td><strong>停挂时间：</strong></td>
-                        <td><span>下午15:00停止次日预约挂号 (周五15:00后停挂至下周一)</span></td>
+                        <td><span>17:00</span></td>
                     </tr>
                     <tr>
                         <td><strong>成功预约数</strong></td>
-                        <td><span><%= hospital.orderCount %></span></td>
+                        <td><span><%= hospital.hospital_order_count %></span></td>
                     </tr>
 
                 </table>
@@ -110,40 +108,6 @@
         </div>
     </div>
     <!-- Menu navigation -->
-    <nav id="menu">
-        <ul>
-            <li class="Selected">
-                <a href="mIndex.html">
-                    <i class="i-home i-small"></i>预约主页
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="i-about i-small"></i>个人信息
-                </a>
-            </li>
-            <li>
-                <a href="blog.html">
-                    <i class="i-blog i-small"></i>订单管理
-                </a>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="i-gallery i-small"></i>收藏夹
-                </a>
-            </li>
-            <li>
-                <a href="shortcodes.html">
-                    <i class="i-shortcodes i-small"></i>问题反馈
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-contact i-small"></i>账户登陆
-                </a>
-            </li>
-        </ul>
-    </nav>
 </div>
 </body>
 </html> 

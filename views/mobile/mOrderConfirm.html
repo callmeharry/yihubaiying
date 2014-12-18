@@ -6,68 +6,33 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>订单</title>
 
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Order.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Order.css">
 
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     
 </head>
 <body class="o-page">
 <div id="page">
-    <div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 生成订单 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+
+    <%- include mLoggedIn.html %>
 
     <div id="content">
+        <div style="text-align:center;">
+            <img src="/images/confirm.png">
+        </div>
         <div>
             <h1 class="subheader">您的订单已生成！</h1>
             <hr class="hr3"/>
         </div>
-        <div style="text-align:center;">
-            <img src="../../public/images/confirm.png" >
+        <div>
+            <span>可以在<a href="#">我的订单</a>中查看该订单信息,也可<a href="/mobile">返回首页</a></span>
         </div>
-     <!-- Menu navigation -->
-    <nav id="menu">
-        <ul>
-            <li class="Selected">
-                <a href="mIndex.html">
-                    <i class="i-home i-small"></i>预约主页
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="i-about i-small"></i>个人信息
-                </a>
-            </li>
-            <li>
-                <a href="blog.html">
-                    <i class="i-blog i-small"></i>订单管理
-                </a>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="i-gallery i-small"></i>收藏夹
-                </a>
-            </li>
-            <li>
-                <a href="shortcodes.html">
-                    <i class="i-shortcodes i-small"></i>问题反馈
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-contact i-small"></i>账户登陆
-                </a>
-            </li>
-        </ul>
-    </nav>
 </div>
 </body>
 </html> 

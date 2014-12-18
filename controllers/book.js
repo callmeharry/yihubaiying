@@ -6,7 +6,8 @@
 var eventproxy = require('eventproxy');
 var Hospital = require('../proxy/').Hospital;
 var Order = require('../proxy/order');
-var currPage = require('../middlewares/tool').setCurrentPage;
+var tool = require('../middlewares/tool');
+var currPage = tool.setCurrentPage;
 
 /**
  * 显示医院列表
@@ -15,9 +16,11 @@ var currPage = require('../middlewares/tool').setCurrentPage;
  * @param next
  */
 exports.showHospital = function (req, res, next) {
-    var city = req.cookies.city;
+    var city = '北京';
     var username = req.cookies.username;
+    console.log('1');
     console.log(city);
+    console.log('2');
     var eventProxy = new eventproxy();
 
     Hospital.newHospital('hospital', 'hospitalIntro', '北京', 'hospitalLocation', '0000000', '1', function (err, hospital) {
@@ -46,7 +49,16 @@ exports.showHospital = function (req, res, next) {
             res.send("error happened during get ten hospitals by city.");
         } else {
             currPage(req, res);
-            return res.render('mobile/mHospitalSelect', {username: username, hospital: hospitals});
+            console.log(username);
+            if (!tool.getDeviceType(req.url)) {
+                return res.render('pc/choose_hospital', {username: username, hospital: hospitals, title: '选择医院'});
+            } else {
+                return res.render('mobile/mHospitalSelect', {
+                    username: username,
+                    hospital: hospitals,
+                    title: '选择医院'
+                });
+            }
         }
     });
 };
@@ -58,41 +70,47 @@ exports.showHospital = function (req, res, next) {
  * @param next
  */
 exports.showDepartment = function (req, res, next) {
-    var user = {_id: 123, name: 1234};
+    var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
     var eventProxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
-    //var middleDepartments = new Array();
-    //for (var i = 0; i < 2; i++) {
-    //    var smallDepartments = new Array();
-    //    for (var j = 0; j < 4 * i + 8; j++) {
-    //        var smallName = 'smallDepartments' + i + '-' + j;
-    //        var smallId = i + i + j + j;
-    //        smallDepartments[j] = {_id: smallId, name: smallName};
-    //    }
-    //
-    //    var middleName = 'middleDepartments' + i;
-    //    middleDepartments[i] = {name: middleName, smallDepartments: smallDepartments};
-    //}
-    //var hospital = {
-    //    name: 'name',
-    //    address: 'add',
-    //    phoneNumber: 'phone',
-    //    _id: 'noid',
-    //    orderCount: '333',
-    //    imgsrc: null,
-    //    middleDepartments: middleDepartments
-    //};
+    var middleDepartments = new Array();
+    for (var i = 0; i < 2; i++) {
+        var smallDepartments = new Array();
+        for (var j = 0; j < 4 * i + 8; j++) {
+            var smallName = 'smallDepartments' + i + '-' + j;
+            var smallId = i + i + j + j;
+            smallDepartments[j] = {_id: smallId, name: smallName};
+        }
+
+        var middleName = 'middleDepartments' + i;
+        middleDepartments[i] = {name: middleName, smallDepartments: smallDepartments};
+    }
+    var hospital = {
+        hospital_name: 'name',
+        hospital_address: 'add',
+        hospital_tel: 'phone',
+        _id: 'noid',
+        orderCount: '333',
+        imgsrc: null,
+        middleDepartments: middleDepartments
+    };
     //替换结束
     //显示消息不成功可能是前端对应name的问题
-    Hospital.getDeptByHospitalId(hospitalId, function (err, hospital) {
-        if (err) {
-            res.send("error happened during get departments by hospitalId.");
-        } else {
-            currPage(req, res);
-            return res.render('mobile/mDepartments', {user: user, hospital: hospital});
-        }
-    });
+    //Hospital.getDeptByHospitalId(hospitalId, function (err, hospital) {
+    //    if (err) {
+    //        res.send("error happened during get departments by hospitalId.");
+    //    } else {
+    //        currPage(req, res);
+    //
+    //    }
+    //});
+    console.log('1');
+    if (!tool.getDeviceType(req.url)) {
+        return res.render('pc/choose_department', {username: username, hospital: hospital, title: '选择科室和时间'});
+    } else {
+        return res.render('mobile/mDepartments', {username: username, hospital: hospital, title: '选择科室和时间'});
+    }
 };
 
 /**
@@ -104,6 +122,7 @@ exports.showDepartment = function (req, res, next) {
  */
 
 exports.showDoctor = function (req, res, next) {
+    var username = req.cookies.username;
     var departmentId = req.query.departmentid;
     var hospitalId = req.query.hospitalid;
     console.log('department:' + departmentId + ' hospital:' + hospitalId);
@@ -137,7 +156,21 @@ exports.showDoctor = function (req, res, next) {
     }
     //Hospital.getDocsByHospitalIdAndDepartmentId(hospitalId, departmentId, function (err))
     currPage(req, res);
-    return res.render('mobile/mDoctors', {doctor: doctor, departmentid: departmentId, hospitalid: hospitalId});
+    if (!tool.getDeviceType(req.url)) {
+        return res.render('pc/choose_doctor', {
+            doctor: doctor,
+            departmentid: departmentId,
+            hospitalid: hospitalId,
+            username: username,
+            title: '选择医生'
+        });
+    } else return res.render('mobile/mDoctors', {
+        doctor: doctor,
+        departmentid: departmentId,
+        hospitalid: hospitalId,
+        username: username,
+        title: '选择医生'
+    });
 };
 
 /**
@@ -149,6 +182,7 @@ exports.showDoctor = function (req, res, next) {
  * TODO:这个页面的标题让我搞乱了 帮忙改一下吧
  */
 exports.showTime = function (req, res, next) {
+    var username = req.cookies.username;
     var departmentId = req.query.departmentid;
     var hospitalId = req.query.hospitalid;
     var doctorId = req.query.doctorid;
@@ -165,14 +199,63 @@ exports.showTime = function (req, res, next) {
         }
     }
     currPage(req, res);
-    return res.render('mobile/mDatePicker', {
-        time: time,
-        departmentid: departmentId,
-        hospitalid: hospitalId,
-        doctorid: doctorId
-    });
+    if (tool.getDeviceType(req.url)) {
+        return res.render('mobile/mDatePicker', {
+            time: time,
+            departmentid: departmentId,
+            hospitalid: hospitalId,
+            doctorid: doctorId,
+            username: username,
+            title: '选择看病日期'
+        });
+    } else {
+        return res.render('pc/choose_date', {
+            time: time,
+            departmentid: departmentId,
+            hospitalid: hospitalId,
+            doctorid: doctorId,
+            username: username,
+            title: '选择看病日期'
+        });
+    }
 };
-
+/**
+ * 确认订单信息
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.confirmBook = function (req, res, next) {
+    var username = req.cookies.username;
+    var hospitalId = req.query.hospitalid;
+    var departmentId = req.query.departmentid;
+    var doctorId = req.query.doctorid;
+    var userId = req.session.user_id;
+    var date = req.query.date;
+    var time = req.query.time;
+    console.log(userId);
+    var order = {
+        _id: 111,
+        hospital: hospitalId,
+        dept: departmentId,
+        doctor: doctorId,
+        see_time: date + time,
+        fee: 8,
+        address: 'add',
+        tel: 13122222
+    }
+    if (!tool.getDeviceType(req.url)) {
+        res.render('pc/confirm_order', {
+            username: username, title: '确认订单信息', order: order, departmentid: departmentId,
+            hospitalid: hospitalId,
+            doctorid: doctorId, time: time, date: date
+        });
+    } else res.render('mobile/mOrder', {
+        username: username, title: '确认订单信息', order: order, departmentid: departmentId,
+        hospitalid: hospitalId,
+        doctorid: doctorId, time: time, date: date
+    });
+}
 /**
  * 完成订单
  * @param req
@@ -180,20 +263,33 @@ exports.showTime = function (req, res, next) {
  * @param next
  */
 exports.finishBook = function (req, res, next) {
+    var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
     var departmentId = req.query.departmentid;
     var doctorId = req.query.doctorid;
     var userId = req.session.user_id;
     var date = req.query.date;
-    // var time = req.query.time;
+    var time = req.query.time;
 
-    order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, date, function (err) {
-        if (err) {
-            res.send(err.message);
-            return;
-        }
-    });
+    //Order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, date, function (err) {
+    //    if (err) {
+    //        res.send(err.message);
+    //    }
+    //});
     currPage(req, res);
-    res.send('department:' + departmentId + ' hospital:' + hospitalId + ' doctor:' + doctorId + 'user:' + userId + ' date:' + date);
+    if (tool.getDeviceType(req.url))
+        res.render('mobile/mOrderConfirm', {username: username, title: '订单完成'});
+    else {
+        res.render('pc/pay_successfully', {username: username, title: '订单完成'});
+    }
+
+};
+
+exports.showDepartmentList = function (req, res) {
+    var username = req.cookies.username;
+    if (tool.getDeviceType(req.url))
+        res.render('mobile/mDepartmentList', {username: username, title: '科室列表'})
+};
+exports.showDiseases = function (req, res) {
 
 };
