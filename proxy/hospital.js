@@ -148,4 +148,4 @@ exports.updateDeptByQuery = function (query, ups, callback) {
 
 exports.dropHospital = function (opt, callback) {
     Hospital.remove(opt, callback);
-}
+};

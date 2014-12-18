@@ -73,6 +73,4 @@ exports.getOrderByQuery = function(query,opt,callback){
             })(j);
         }
     });
-
-
-}
+};
