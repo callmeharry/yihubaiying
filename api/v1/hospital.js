@@ -1,5 +1,9 @@
 /**
  * Created by Megas on 2014/12/16.
+ * Todo:用例YHBY-502中的描述：
+ * 医院工作者可以修改、更新医院的信息。包括医院的基本资料、以及医院提供的挂号信息。
+ * 可能与用例YHBY-503描述
+ * 故未实现YHBY-502中对挂号信息的显示
  */
 var models = require('../../models');
 var HospitalModel = models.Hospital;
@@ -34,7 +38,7 @@ var showHospitalInfo = function (req, res, next) {
 
         var proxy = new eventproxy();
         proxy.after('show', hos_dept.length, function () {
-            var hosIntro = {
+            var hosInfo = {
                 hospital_name: hospital.hospital_name,
                 hospital_intro: hospital.hospital_intro,
                 hospital_city: hospital.hospital_city,
@@ -47,7 +51,7 @@ var showHospitalInfo = function (req, res, next) {
                 hospital_is_validated: hospital.hospital_is_validated,
                 hospital_doctors: doctors
             };
-            res.send({hospitalIntro: hosIntro});
+            res.send({hospitalIntro: hosInfo});
         });
 
         for (var m = 0, length = hos_dept.length; m < length; m++) {
@@ -75,7 +79,15 @@ var showHospitalInfo = function (req, res, next) {
 
 exports.showHospitalInfo = showHospitalInfo;
 
-var updateHospitalInfo = function (req, res, next) {
+/**
+ * 修改医院基本信息
+ * 余下的函数全部与用例YHBY-502对应
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
+var updateHospitalBicInfo = function (req, res, next) {
     var hosId = req.query.ak; //post提交不可用query？
 
     var name = req.body.hospital_name;
@@ -94,39 +106,79 @@ var updateHospitalInfo = function (req, res, next) {
             return callback(err);
         }
 
-        var hosDept = hospital.hospital_dept;
-
-        var proxy = new eventproxy();
-        proxy.after('update', hosDept.length, function () {
-            var conditions = {_id: hosId};
-            var update = {
-                $set: {
-                    hospital_name: name,
-                    hospital_intro: intro,
-                    hospital_city: city,
-                    hospital_location: location,
-                    hospital_tel: tel,
-                    hospital_imsrc: imgsrc
-                }
-            };
-            var options = {};
-            HospitalProxy.update(conditions, update, options, function (err) {
-                if (err) {
-                    return res.send('修改出错');
-                } else {
-                    res.send({updatedHospitalIntro: hospital});
-                }
-            });
+        var conditions = {_id: hosId};
+        var update = {
+            $set: {
+                hospital_name: name,
+                hospital_intro: intro,
+                hospital_city: city,
+                hospital_location: location,
+                hospital_tel: tel,
+                hospital_imsrc: imgsrc
+            }
+        };
+        var options = {};
+        HospitalProxy.update(conditions, update, options, function (err) {
+            if (err) {
+                return res.send('修改出错');
+            } else {
+                res.send({updatedHospitalInfo: hospital});
+            }
         });
     });
 };
 
-exports.updateHospitalInfo = updateHospitalInfo;
+exports.updateHospitalBicInfo = updateHospitalBicInfo;
 
+/**
+ * 修改医院科室信息
+ * @param req
+ * @param res
+ * @param next
+ */
+var updateHospitalDeptInfo = function (req, res, next) {
+    var hosId = req.query.ak;
+    var deptId = req.query.deptId;
+
+    var fName = req.body.father_dept_name;
+    var dName = req.body.dept_name;
+
+    var query = {_id: hosId, 'hospital_dept._id': deptId};
+    var option = {};
+    HospitalProxy.getOneHospitalByQuery(query, option, function (err, hospital) {
+        if (err) {
+            return callback(err);
+        }
+
+        var update = {
+            $set: {
+                'hospital_dept.father_dept_name': fName,
+                'hospital_dept_dept_name': dName
+            }
+        };
+        HospitalProxy.update(query, update, option, function (err) {
+            if (err) {
+                res.send('修改出错');
+            } else {
+                res.send({updatedHospitalInfo: hospital});
+            }
+        })
+    });
+};
+
+exports.updateHospitalDeptInfo = updateHospitalDeptInfo;
+
+/**
+ * 删除医院信息
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
 var removeHospitalInfo = function(req, res, next) {
     var hosId = req.query.ak; //post提交不可用query？
 
-    var query = req.body.qyery;
+    var query = req.body.quy;
 
     if (!(HospitalModel.findOne({_id: hosId}))) {
         return res.send('不存在该医院的信息，无法删除');
@@ -136,7 +188,7 @@ var removeHospitalInfo = function(req, res, next) {
         if (err) {
             return callback(err);
         }
-        hospital.remove(query, function (err) {
+        hospital.dropHospital(query, function (err) {
             if (err) {
                 res.send('删除失败');
             } else {
@@ -147,6 +199,57 @@ var removeHospitalInfo = function(req, res, next) {
 };
 
 exports.removeHospitalInfo = removeHospitalInfo;
+
+/**
+ * 将医生ID添加到特定科室
+ * @param req
+ * @param res
+ * @param next
+ */
+var addDocToDept = function (req, res, next) {
+    var hosId = req.query.ak;
+    var deptId = req.query.deptId;
+    var docId= req.query.docId;
+
+    var query = {_id: hosId, 'hospital_dept._id': deptId};
+    var option = {};
+    HospitalProxy.getOneHospitalByQuery(query, option, function (err, hospital) {
+        if (err) {
+            return callback(err);
+        }
+        hospital.update({
+            _id: hosId,
+            'hospital_dept._id': deptId
+        }, {$push: {'hospital_dept.dept_doc': docId}}, callback);
+    });
+};
+
+exports.addDocToDept = addDocToDept;
+
+/**
+ * 根据ID将医生从科室中删除
+ * @param req
+ * @param res
+ * @param next
+ */
+var removeDocFromDept = function (req, res, next) {
+    var hosId = req.query.ak;
+    var deptId = req.query.deptId;
+    var docId= req.query.docId;
+
+    var query = {_id: hosId, 'hospital_dept._id': deptId};
+    var option = {};
+    HospitalProxy.getOneHospitalByQuery(query, option, function (err, hospital) {
+        if (err) {
+            return callback(err);
+        }
+        hospital.remove({
+            'hospital_dept.dept_doc': docId
+            }, callback);
+    });
+};
+
+exports.removeDocFromDept = removeDocFromDept;
 
 
 

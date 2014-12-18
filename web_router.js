@@ -9,14 +9,15 @@ var mobileBook = require('./controllers/book');
 var mobileRegister = require('./controllers/register');
 var admin = require('./controllers/admin');
 var mobileLoginLogout = require('./controllers/loginlogout');
+var user  =require('./controllers/user');
 var mobileIndex = require('./controllers/site');
 var router = express.Router();
 var sms = require('./middlewares/sms');
 var include = require('./test/test_include');
-
+var auth = require('./middlewares/auth');
 //get controllers
 var index = require('./test/index');
-var user = require('./test/users');
+
 
 //Mobile home page
 router.get('/mobile', mobileIndex.showIndex);//show mobile index page
@@ -55,6 +56,10 @@ router.get('/login', mobileLoginLogout.showLogin);
 router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
+
+//PC personal center
+router.get('/personInfo',auth.UserRequired, user.showPersonInfo);
+
 
 //pc book page
 router.get('/book/hospitals', mobileBook.showHospital);
