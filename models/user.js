@@ -19,7 +19,7 @@ var UserSchema = new Schema({
     email: { type: String },
     user_state: {type: String},
     phone_number: { type: String },
-    credit_level: { type: Number },
+    credit_level: { type: Number ,default:10 },
     register_time: { type: Date, default: Date.now },
     //is_active: { type: Boolean, default: true },
     // 用户是否被管理员审核通过。0：未审核 1：审核通过 2：被查封

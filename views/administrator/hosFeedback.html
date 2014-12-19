@@ -21,13 +21,13 @@
 					<span class="list-group-item-heading"><%= feedbacks[i].name%></span>
 
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<button type="button" data-toggle="modal" data-target="#replyModal">回复</button>
+					<button type="button" data-toggle="modal" data-target="#replyModal<%= i%>">回复</button>
 					<p class="list-group-item-text"><b>反馈内容：</b><%= feedbacks[i].content%>
 					</p>
-					<p class="list-group-item-text"><b>反馈日期：</b><%= feedbacks[i].date%>
+					<p class="list-group-item-text"><b>反馈时间：</b><%= feedbacks[i].date%>
 					</p>
 					<!-- Modal -->
-					<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+					<div class="modal fade" id="replyModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 						 aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -37,21 +37,19 @@
 									<h4 class="modal-title" id="myModalLabel">回复医院反馈</h4>
 								</div>
 								<div class="modal-body">
-									<form class="input-group form-control">
+									<form class="input-group form-control" action="/admin/replyFeedback">
+										<input type="hidden" id="feedback_id" name="feedback_id" value="<%= feedbacks[i]._id%>"/>
 										<div class="input-group">
 											<span class="input-group-addon">医院名称</span>
 											<span class="form-control"><%= feedbacks[i].name%></span>
 										</div>
 										<div class="input-group">
 											<span class="input-group-addon">回复内容</span>
-											<textarea class="form-control" name="回复内容" id="" cols="30"
+											<textarea class="form-control" name="check_message" id="check_message" cols="30"
 													  rows="10"></textarea>
 											<!--input type="text" class="form-control" placeholder="回复内容"> -->
 										</div>
-										<div class="input-group">
-											<span class="input-group-addon">联系方式</span>
-											<input type="text" class="form-control" placeholder="联系方式">
-										</div>
+
 										<button type="submit" class="btn btn-default">回复</button>
 										<button type="reset" class="btn btn-primary">重置</button>
 									</form>
@@ -72,6 +70,24 @@
 			}) %>
 	  	</div>
 	</div>
-	
+	<script language="javascript">
+		$(document).ready(function() {
+			$('form').submit(function() {
+				$.post($(this).attr('action'),$(this).serialize(),function(result) {
+					if (result.status == 0) {
+						alert("回复成功");
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json')
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>

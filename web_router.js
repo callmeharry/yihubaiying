@@ -58,7 +58,7 @@ router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
 //PC personal center
-router.get('/personInfo',auth.UserRequired, user.showPersonInfo);
+router.get('/personalCenter/personInfo',auth.UserRequired, user.showPersonInfo);
 
 
 //pc book page
@@ -105,6 +105,16 @@ router.get('/admin/exceptionManage', admin.exceptionManage);
 
 //Ajax from admin
 router.post('/admin/newDept',admin.addDeptInter);
+router.post('/admin/modifyHos',admin.modifyHosInter);
+router.post('/admin/dropHos',admin.dropHosInter);
+router.post('/admin/modifyDept',admin.modifyDept);
+router.post('/admin/dropDept',admin.dropDept);
+router.post('/admin/addDoctor',admin.addDoctorInter);
+router.post('/admin/modifyDoc',admin.modifyDocInter);
+router.post('/admin/dropDoctor',admin.dropDoctorInter);
+router.post('/admin/replyFeedback',admin.replyFeedbackInter);
+router.post('/admin/modifyUser',admin.modifyUser);
+router.post('/admin/deleteUser',admin.deleteUser);
 
 //Test page
 router.get('/sms-test', smsTest.registerVerity);

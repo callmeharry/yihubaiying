@@ -29,10 +29,10 @@
 		</nav>
 
 		<ol class="breadcrumb">
-			<% var1 url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
-			<% var2 url = '/admin/docInfo/?dept_id='+dept.dept_id; %>
-			<li><a href="<%= var1%>">xxx医院</a></li>
-			<li><a href="<%= var2%>">xxx科室</a></li>
+			<% var url1 = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
+			<% var url2 = '/admin/docInfo/?dept_id='+dept.dept_id; %>
+			<li><a href="<%= url1%>">xxx医院</a></li>
+			<li><a href="<%= url2%>">xxx科室</a></li>
 			<li class="active"><a href="#">xxx医生</a></li>
 		</ol>
 

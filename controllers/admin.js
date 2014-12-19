@@ -54,7 +54,7 @@ exports.adminLogin = function (req, res, next) {
          });
          */
         //
-        //Feedback.newAndSave("da wangewqao shangew",1,"548e793995eabe4d1fe99f38",function(err){
+        //Feedback.newAndSave("撒大声地发发舒服",1,"548d317ef66b6e081343d247",function(err){
         //    if(err){
         //        next(err);
         //    }
@@ -112,7 +112,6 @@ exports.hosInfo = function (req, res, next) {
 
     proxy.all('pages', 'hospitals', function (pages, hospitals) {
 
-        console.log(hospitals);
         res.render('administrator/hosInfo', {
             page: page,
             pages: pages,
@@ -388,6 +387,7 @@ exports.modifyHosInter = function (req, res, next) {
     var hos_location = validator.trim(req.body.hos_location) || '';
     var hos_tel = validator.trim(req.body.hos_tel) || '';
     var hos_weight = validator.trim(req.body.hos_weight) || '';
+    console.log(req.body);
 
     var query = {"_id": hos_id};
     var ups = {};
@@ -405,20 +405,20 @@ exports.modifyHosInter = function (req, res, next) {
         ups.hospital_weight = hos_weight;
 
 
-    hospital.updateDeptByQuery(query, {"$set": ups}, function (err) {
+    Hospital.updateDeptByQuery(query, {"$set": ups}, function (err) {
         if (err) return next(err);
 
-        res.sender({status: "success"});
+        res.send({status: 0});
     });
 
 };
 
 exports.dropHosInter = function (req, res, next) {
     var hos_id = req.body.hos_id;
-
+    console.log(hos_id);
     Hospital.dropHospital({"_id": hos_id}, function (err) {
         if (err) return next(err);
-        res.send({"status": "success"});
+        res.send({"status": 0});
     });
 
 };
@@ -452,32 +452,24 @@ exports.addDeptInter = function (req, res, next) {
  */
 exports.modifyDept = function (req, res, next) {
     var dept_id = validator.trim(req.body.dept_id);
-    var dept_name = req.body.dept_name || '';
-    var father_dept_name = req.body.father_dept_name || '';
-    dept_name = validator.trim(dept_name);
-    father_dept_name = validator.trim(father_dept_name);
+    var dept_name = validator.trim(req.body.dept_name)|| '';
+    var father_dept_name = validator.trim(req.body.father_dept_name) || '';
+    console.log(req.body);
 
     var query = {"hospital_dept._id": dept_id};
     var ups = {};
-    if (dept_name === '' && father_dept_name !== '')
-        ups = {"hospital_dept.$.father_dept_name": father_dept_name}
 
-    else if (dept_name !== '' && father_dept_name === '')
-        ups = {"hospital_dept.$.dept_name": dept_name};
+    if(dept_name !== '')
+        ups["hospital_dept.$.dept_name"] = dept_name;
 
-    else if (dept_name !== '' && father_dept_name !== '')
-        ups = {
-            "hospital_dept.$.dept_name": dept_name,
-            "hospital_dept.$.father_dept_name": father_dept_name
-        };
+    if(father_dept_name !== '')
+        ups["hospital_dept.$.father_dept_name"] = father_dept_name;
 
-    else
-        return res.send({status: "success"});
 
     Hospital.updateDeptByQuery(query, ups, function (err) {
         if (err) return next(err);
 
-        res.send({status: "success"});
+        res.send({status: 0});
     });
 };
 /**
@@ -488,47 +480,90 @@ exports.modifyDept = function (req, res, next) {
  */
 exports.dropDept = function (req, res, next) {
     var dept_id = validator.trim(req.body.dept_id);
-
+    console.log(dept_id);
     var query = {"hospital_dept._id": dept_id};
-    var ups = {"$pull": {"hospital_dept._id": dept_id}};
+    var ups = {"$unset": {"hospital_dept.$._id": dept_id}};
     Hospital.updateDeptByQuery(query, ups, function (err) {
 
         if (err) return next(err);
 
-        res.send({status: "success!"});
+        res.send({"status": 0});
     });
 
 };
 
 //add doctorInter
 
-exports.addDoctorinter = function (req, res, next) {
+exports.addDoctorInter = function (req, res, next) {
     var dept_id = req.body.dept_id;
     var doc_name = validator.trim(req.body.doc_name);
     var doc_intro = validator.trim(req.body.doc_intro);
     var good_illness = validator.trim(req.body.good_illness);
-
-    Doctor.newAndSave(dept_id, doc_name, doc_intro, good_illness, function (err) {
+    console.log(req.body);
+    Doctor.newAndSaveDoctor(dept_id, doc_name, doc_intro, good_illness, function (err) {
         if (err) return next(err);
 
-        res.send({status: "success"});
+        res.send({"status": 0});
 
     });
 
 };
 
+//modify doctor
+exports.modifyDocInter = function(req, res, next){
+    var doc_id = validator.trim(req.body.doc_id)||'';
+    var doc_name = validator.trim(req.body.doc_name)||'';
+    var doc_intro = validator.trim(req.body.doc_intro)||'';
+    var good_illness = validator.trim(req.body.good_illness)||'';
+    console.log(req.body);
+    var query = {_id:doc_id};
+    var ups = {};
+
+    if(doc_name !== '' )
+        ups.doctor_name = doc_name;
+
+    if(doc_intro !=='')
+        ups.doctor_intro = doc_intro;
+
+    if(good_illness !=='')
+        ups.doctor_advanced_illness_name = good_illness;
+
+    console.log(ups);
+    Doctor.updateDoctorByQuery(query,{"$set":ups},function(err){
+        if(err) return res.send({status:1,msg:"未存储成功！"});
+
+        return res.send({status:0});
+    });
+
+
+};
+
+//delete doctor
+exports.dropDoctorInter = function(req, res, next){
+    var dept_id = validator.trim(req.body.dept_id);
+    var doc_id = validator.trim(req.body.doc_id);
+    console.log(req.body);
+    console.log(dept_id);
+    console.log(doc_id);
+    Doctor.dropDoctor(dept_id, doc_id,function(err){
+        if(err) next(err);
+        return res.send({status:0});
+    });
+}
+
 
 //change userInfo
-exports.changeStatus = function (req, res, next) {
+exports.modifyUser = function (req, res, next) {
     var user_id = req.body.user_id;
     var user_status = req.body.user_status;
+    var credit = req.body.credit;
 
     var query = {"_id": user_id};
-    var ups = {"user_status": user_status};
+    var ups = {"user_status": user_status,"credit_level":credit};
 
     User.update(query, ups, function (err) {
         if (err) return next(err);
-        res.send({status: "success"});
+        res.send({"status": 0});
     })
 
 };
@@ -540,15 +575,15 @@ exports.deleteUser = function (req, res, next) {
 
     User.dropUser(query, function (err) {
         if (err) return next(err);
-        res.send({status: "success"});
+        res.send({"status": 0});
     });
 
 };
 
 
-// reply userFeedback
+// reply userFeedback and hosFeedback
 
-exports.replyFeedbackinter = function (req, res, next) {
+exports.replyFeedbackInter = function (req, res, next) {
     var feedback_id = req.body.feedback_id;
     var check_message = req.body.check_message;
 
@@ -557,7 +592,7 @@ exports.replyFeedbackinter = function (req, res, next) {
 
     Feedback.replyFeedback(query, ups, function (err) {
         if (err) return next(err);
-        res.send({status: "success"});
+        res.send({"status": 0});
     });
 
 }

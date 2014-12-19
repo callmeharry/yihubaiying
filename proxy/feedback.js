@@ -38,7 +38,7 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
                     var user_id = feedback[i].sender_id;
                     User.getUserById(user_id, function (err, user) {
                         if (err) callback(err);
-
+                        if(feedback[i].if_check == false)
                         feedbacks.push({
                             name: user.real_name, date: tools.formatDate(feedback[i].date, true),
                             content: feedback[i].content, _id: feedback[i]._id, if_check: feedback[i].if_check,
@@ -55,19 +55,22 @@ exports.getFeedbackByQuery = function (query, opt, callback) {
             //hospital feedback
             for (var j = 0; j < feedback.length; j++) {
                 (function (i) {
+                    //filter those feedback has check_message;
+
                     var hos_id = feedback[i].sender_id;
                     Hospital.getHospitalByHospitalId(hos_id, function (err, hos) {
                         if (err) callback(err);
-
+                        if(feedback[i].if_check == false)
                         feedbacks.push({
-                            name: user.real_name, date: tools.formatDate(feedback[i].date, true),
+                            name: hos.hospital_name, date: tools.formatDate(feedback[i].date, true),
                             content: feedback[i].content, _id: feedback[i]._id, if_check: feedback[i].if_check,
                             check_message: feedback[i].check_message ? feedback[i].check_message : ''
                         });
 
                         return proxy.emit('update');
                     });
-                })(j);
+
+                    })(j);
             }
 
         }
