@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>订单</title>
+
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Order.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/HospitalSelect.css">
+
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    
+</head>
+<body class="o-page">
+<div id="page">
+    <div id="header">
+        <a href="#menu"></a>
+        <span> 医呼百应 查询结果 </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+
+    <div id="content">
+        <div>
+            <h1 class="subheader">医院</h1>
+            <hr class="hr3" style="background-color:#587eac;"/>
+        </div>
+        <div>
+            <article>
+            <a href="/mobile/book/departments?hospitalid=<%= hospital[i]._id %>">
+                <div>
+                    <!-- <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">-->
+                    <img class="hospitalPic" src="../../public/images/hospital1.png">
+                </div>
+                <div>
+                    <h2>医院名称<!-- <%= hospital[i].name %>--></h2>
+
+                    <div class="hospitalInfoSytle">
+                        地址：医院地址<!-- <%= hospital[i].address %>-->
+                    </div>
+                    <div class="hospitalInfoSytle">
+                        电话：68976593847<!-- <%= hospital[i].phoneNumber %>-->
+                    </div>
+                    <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
+                        成功预约量：230 <!-- <%= hospital[i].orderCount %>-->
+                    </div>
+                </div>
+            </a>
+        </article>
+        </div>
+
+        <div>
+            <h1 class="subheader">科室</h1>
+            <hr class="hr3" style="background-color:#587eac;"/>
+        </div>
+        <div style="text-align:center;padding:5px;">
+            <ul style="list-style-type:none;">
+                <li><a href="#">心血管内科</a></li>
+                <li><a href="#">心血管外科</a></li>
+                <li><a href="#">胸外科</a></li>
+                <li><a href="#">消化内科</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h1 class="subheader">疾病</h1>
+            <hr class="hr3" style="background-color:#587eac;"/>
+        </div>
+       <div style="text-align:center;padding:5px;">
+            <ul style="list-style-type:none;">
+                <li><a href="#">先天性心脏病</a></li>
+                <li><a href="#">脑供血不足</a></li>
+                <li><a href="#">帕金森</a></li>
+                <li><a href="#">脑出血</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+     <!-- Menu navigation -->
+    <nav id="menu">
+        <ul>
+            <li class="Selected">
+                <a href="mIndex.html">
+                    <i class="i-home i-small"></i>预约主页
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="i-about i-small"></i>个人信息
+                </a>
+            </li>
+            <li>
+                <a href="blog.html">
+                    <i class="i-blog i-small"></i>订单管理
+                </a>
+            </li>
+            <li>
+                <a href="gallery.html">
+                    <i class="i-gallery i-small"></i>收藏夹
+                </a>
+            </li>
+            <li>
+                <a href="shortcodes.html">
+                    <i class="i-shortcodes i-small"></i>问题反馈
+                </a>
+            </li>
+            <li>
+                <a href="mLogin.html">
+                    <i class="i-contact i-small"></i>账户登陆
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html> 
