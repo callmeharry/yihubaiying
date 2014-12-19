@@ -50,3 +50,23 @@ exports.getDoctorByQuery = function (query, opt, callback) {
     Doctor.find(query, '', opt, callback);
 };
 
+exports.updateDoctorByQuery = function(query, ups, callback){
+    Doctor.update(query , ups, callback);
+};
+
+exports.dropDoctor = function(dept_id, doc_id, callback){
+    var query = {"hospital_dept._id": dept_id};
+    var options = {"hospital_dept.$": 1};
+
+    Hospital.findOne(query, options, function(err, hospital){
+        if(err) callback(err);
+
+        console.log(hospital);
+        hospital.hospital_dept[0].dept_doc.pull(doc_id);
+        console.log(hospital.hospital_dept[0].dept_doc);
+        hospital.save(function(err){
+            if(err) return callback(err);
+            Doctor.remove({_id:doc_id},callback);
+        });
+    });
+};

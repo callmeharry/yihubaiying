@@ -18,7 +18,7 @@
 		<table class="table table-hover">
 			<thead>
 			<tr>
-				<th>用户名</th>
+				<th>用户ID</th>
 				<th>真实姓名</th>
 				<th>身份证号</th>
 				<th>联系电话</th>
@@ -34,7 +34,7 @@
 			<tbody>
 			<% for(var i=0; i<users.length; i++){%>
 			<tr>
-				<td><%= users[i].username%></td>
+				<td><%= users[i]._id%></td>
 				<td><%= users[i].real_name%></td>
 				<td><%= users[i].social_number%></td>
 				<td><%= users[i].phone_number%></td>
@@ -51,32 +51,32 @@
 					被查封
 					<% } %>
 				</td>
-				<td><a href="#" data-toggle="modal" data-target="#userModal">编辑</a></td>
+				<td><a href="#" data-toggle="modal" data-target="#userModal<%= i%>">编辑</a></td>
 				<!-- Modal -->
-				<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="userModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<div class="modal-content">
+						<div class="modal-content col-md-offset-4 col-md-7">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								<h4 class="modal-title" id="userEditLabel">修改用户信息</h4>
 							</div>
 							<div class="modal-body">
-								<form class="input-group">
+								<form class="input-group" action="/admin/modifyUser">
 									<div class="input-group">
-										<span class="input-group-addon">用户名</span>
-										<span class="form-control"><%= users[i].username%></span>
+										<span class="input-group-addon">用户ID</span>
+										<input class="form-control" name="user_id" readonly="readonly" value="<%= users[i]._id%>"/>
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">真实姓名</span>
-										<span class="form-control"><%= users[i].real_name%></span>
+										<span class="form-control" readonly="readonly"><%= users[i].real_name%></span>
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">信用额度</span>
-										<input type="text" class="form-control" placeholder="信用额度">
+										<input type="text" id="credit" name="credit" class="form-control" placeholder="信用额度">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">用户状态</span>
-										<select class="form-control">
+										<select class="form-control" id="user_status" name="user_status">
 											<option value="0">未审核</option>
 											<option value="1">审核通过</option>
 											<option value="2">被查封</option>
@@ -90,23 +90,23 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 				<td><!-- Button trigger modal -->
-					<a href="#" data-toggle="modal" data-target="#myModal">
+					<a href="#" data-toggle="modal" data-target="#myModal<%= i%>">
 						删除
 					</a>
 				</td>
 				<!-- Modal -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="myModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							</div>
 							<div class="modal-body">
-								<h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除吗？</h4>
+								<h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除<b><%= users[i].real_name%></b>吗？</h4>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary">删除</button>
+								<button type="button" class="btn btn-primary del" id="<%= users[i]._id%>">删除</button>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
@@ -134,6 +134,43 @@
 	for(var i = 0;i < rl; i++){
 		rt[i].innerHTML = rt[i].innerHTML.substr(0,15);
 	}
+</script>
+<script language="javascript">
+	$(document).ready(function() {
+		$('form').submit(function() {
+			$.post($(this).attr('action'),$(this).serialize(),function(result) {
+				if (result.status == 0) {
+					window.location.reload();
+				} else {
+					if (result.msg) {
+						alert(result.msg);
+					} else {
+						alert('服务器异常');
+					}
+				}
+			},'json')
+			return false;
+		});
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$('button.del').click(function(){
+			var bid = $(this).attr("id");
+			$.post("/admin/deleteUser",{"user_id":bid},function(result) {
+				if (result.status == 0) {
+					window.location.reload();
+				} else {
+					if (result.msg) {
+						alert(result.msg);
+					} else {
+						alert('服务器异常');
+					}
+				}
+			},'json');
+			return false;
+		});
+	});
 </script>
 </body>
 </html>

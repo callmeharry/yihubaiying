@@ -22,36 +22,7 @@
 <!-- 包括所有已编译的插件 -->
 <script src="dist/js/bootstrap.min.js"></script>
 
-<!--网页头部-->
-<div class="container">
-   <div class="row">
-      <div class="logo-th logo col-xs-6">
-         医呼百应网上预约挂号平台
-      </div>
-      <!--搜索框-->
-
-      <div class="input-group col-xs-6">
-         <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
-                  <span class="input-group-btn">
-                     <button class="btn search-button" type="button">
-                        &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                     </button>
-                  </span>
-      </div>
-      <!-- /input-group -->
-   </div>
-</div>
-<!--导航栏-->
-<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
-   <div>
-      <ul class="nav navbar-nav">
-         <li><a href="#">首页</a></li>
-         <li><a href="#">按医院找</a></li>
-         <li><a href="#">按科室找</a></li>
-         <li><a href="#">按疾病找</a></li>
-      </ul>
-   </div>
-</nav>
+<%-include header.html%>
 
 <!--中间部分-->
 <div class="container">
@@ -60,16 +31,16 @@
          <!--左侧导航栏面板-->
          <div class="panel panel-info panel-left">
             <div class="panel-heading">
-               &nbsp;&nbsp;&nbsp;<a href="#" class="panel-title">用户名</a>，您好！
+               &nbsp;&nbsp;&nbsp;<a href="/personalCenter/personInfo" class="panel-title"><%= user.user_id%></a>，您好！
             </div>
             <div class="panel-body">
                <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                  <li class="active"><a href="/personalCenter/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                  <li><a href="/personalCenter/personInfo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+                  <li><a href="/personalCenter/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+                  <li><a href="/personalCenter/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
                </ul>
-               <button class="btn btn-default logout-button" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+               <button class="btn  logout-button" type="button" id="<%= user.user_id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
          </div>
       </div>
@@ -84,64 +55,92 @@
                <table class="table table-striped">
                   <thead>
                   <tr>
-                     <td>订单编号</td>
-                     <td>医院</td>
-                     <td>挂号科室</td>
-                     <td>就诊医师</td>
-                     <td>就诊日期</td>
-                     <td>就诊号</td>
-                     <td>操作</td>
+                     <th>订单编号</th>
+                     <th>医院</th>
+                     <th>挂号科室</th>
+                     <th>就诊医师</th>
+                     <th>就诊日期</th>
+                     <th>就诊号</th>
+                     <th>操作</th>
                   </tr>
                   </thead>
                   <tbody>
+                  <% for(var i=0; i<orders.length; i++) {%>
                   <tr>
-                     <td>201411223657</td>
-                     <td>北京市第三人民医院</td>
-                     <td>神经科</td>
-                     <td>李旭</td>
-                     <td>2014年11月25日下午</td>
-                     <td>14号</td>
+                     <td><%= orders[i].order_time %></td>
+                     <td><%= orders[i].hospital_name %></td>
+                     <td><%= orders[i].dept_name %></td>
+                     <td><%= orders[i].username %></td>
+                     <td><%= orders[i].order_see_time %></td>
+                     <td><%= orders[i].order_number %></td>
                      <td>
                         <button type="button" class="btn btn-default btn-xs">打印</button>
                         <button type="button" class="btn btn-default btn-xs">评价</button>
-                        <button type="button" class="btn btn-default btn-xs">删除</button>
+                        <button type="button" data-toggle="modal" data-target="#myModal<%= i%>" class="btn btn-default btn-xs">删除</button>
                      </td>
+                     <!-- Modal -->
+                     <div class="modal fade" id="myModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                 <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除该订单吗？</h4>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                 <button type="button" class="btn btn-primary del" id="<%= orders[i].order_id %>" >删除</button>
+                              </div>
+                           </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                     </div><!-- /.modal -->
                   </tr>
-                  <tr>
-                     <td>201411223657</td>
-                     <td>北京市第三人民医院</td>
-                     <td>神经科</td>
-                     <td>李旭</td>
-                     <td>2014年11月25日下午</td>
-                     <td>14号</td>
-                     <td>
-                        <button type="button" class="btn btn-default btn-xs">打印</button>
-                        <button type="button" class="btn btn-default btn-xs">评价</button>
-                        <button type="button" class="btn btn-default btn-xs">删除</button>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>201411223657</td>
-                     <td>北京市第三人民医院</td>
-                     <td>神经科</td>
-                     <td>李旭</td>
-                     <td>2014年11月25日下午</td>
-                     <td>14号</td>
-                     <td>
-                        <button type="button" class="btn btn-default btn-xs">打印</button>
-                        <button type="button" class="btn btn-default btn-xs">评价</button>
-                        <button type="button" class="btn btn-default btn-xs">删除</button>
-                     </td>
-                  </tr>
+                  <% } %>
                   </tbody>
                </table>
-
             </div>
          </div>
       </div>
    </div>
 </div>
-
-
+<script>
+   $(document).ready(function() {
+      $('button.del').click(function(){
+         var order_id = $(this).attr("id");
+         $.post("/admin/dropOrder",{"order_id":order_id},function(result) {
+            if (result.status == 0) {
+               window.location.reload();
+            } else {
+               if (result.msg) {
+                  alert(result.msg);
+               } else {
+                  alert('服务器异常');
+               }
+            }
+         },'json');
+         return false;
+      });
+   });
+</script>
+<script>
+   $(document).ready(function() {
+      $('button.logout-button').click(function(){
+         var user_id = $(this).attr("id");
+         $.post("/personalCenter/logout",{"user_id":user_id},function(result) {
+            if (result.status == 0) {
+               window.location.reload();
+            } else {
+               if (result.msg) {
+                  alert(result.msg);
+               } else {
+                  alert('服务器异常');
+               }
+            }
+         },'json');
+         return false;
+      });
+   });
+</script>
 </body>
 </html>

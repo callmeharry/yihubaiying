@@ -108,7 +108,7 @@ exports.getDeptDotctors = function (dept_id, callback) {
         var proxy = new eventproxy();
         proxy.after('update', dept_doc.length, function () {
             var fit_hospital = {};
-            fit_hospital.hostpital_id = hospital._id;
+            fit_hospital.hospital_id = hospital._id;
             fit_hospital.hospital_name = hospital.hospital_name;
             fit_hospital.dept_name = hospital.hospital_dept[0].dept_name;
             fit_hospital.dept_id = hospital.hospital_dept[0]._id;

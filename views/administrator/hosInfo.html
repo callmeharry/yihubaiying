@@ -39,12 +39,12 @@
 						<td><%= hospitals[i]._id%></td>
 						<td><%= hospitals[i].hospital_name%></td>
 						<td>
-							<a href="#" data-toggle="modal" data-target="#infoModal">
+							<a href="#" data-toggle="modal" data-target="#infoModal<%= i %>">
 							  查看详细信息
 							</a>
 						</td>
 						<!-- Modal -->
-						<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="infoModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -64,12 +64,12 @@
 						<% var url = '/admin/deptInfo/?hos_id='+hospitals[i]._id; %>
 						<td><a href='<%= url %>'>查看科室</a></td>
 						<td>
-							<a href="#" data-toggle="modal" data-target="#editModal">
+							<a href="#" data-toggle="modal" data-target="#editModal<%= i %>">
 							  编辑
 							</a>
 						</td>
 						<!-- Modal -->
-						<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="editModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<%= i %>" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -77,33 +77,34 @@
 						        <h4 class="modal-title" id="hosEditLabel">修改医院信息</h4>
 						      </div>
 						      <div class="modal-body">
-						        <form class="input-group">
+						        <form class="input-group" action="/admin/modifyHos">
+									<input type="hidden" id="hos_id" name="hos_id" value="<%= hospitals[i]._id %>">
 								    <div class="input-group">
 									  <span class="input-group-addon">医院名称</span>
-									  <input type="text" class="form-control" placeholder="医院名称">
+									  <input type="text" class="form-control" id="hos_name" name="hos_name" placeholder="医院名称" value="<%= hospitals[i].hospital_name%>">
 								    </div>
 								    <div class="input-group">
 									  <span class="input-group-addon">医院简介</span>
-									  <textarea class="form-control" name="医院简介" id="" cols="30" rows="10"></textarea>
+									  <textarea class="form-control" id="hos_intro" name="hos_intro" cols="30" rows="10"><%= hospitals[i].hospital_intro%></textarea>
 									  <!--input type="text" class="form-control" placeholder="医院简介"> -->
 								    </div>
 									<div class="input-group">
 										<span class="input-group-addon">所在城市</span>
-										<input type="text" class="form-control" placeholder="所在城市">
+										<input type="text" class="form-control" id="hos_city" name="hos_city" placeholder="所在城市" value="<%= hospitals[i].hospital_city%>">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">详细地址</span>
-										<input type="text" class="form-control" placeholder="详细地址">
+										<input type="text" class="form-control" id="hos_location" name="hos_location" placeholder="详细地址" value="<%= hospitals[i].hospital_location%>">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">联系电话</span>
-										<input type="text" class="form-control" placeholder="联系电话">
+										<input type="text" class="form-control" id="hos_tel" name="hos_tel" placeholder="联系电话" value="<%= hospitals[i].hospital_tel%>">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon">权重</span>
-										<input type="text" class="form-control" placeholder="权重">
+										<input type="text" class="form-control" id="hos_weight" name="hos_weight" placeholder="权重" value="<%= hospitals[i].hospital_weight%>">
 									</div>
-								  <button type="submit" class="btn btn-default">修改</button>
+								  <button type="submit" class="btn btn-default" id="<%= i %>">修改</button>
 								  <button type="reset" class="btn btn-primary">重置</button>
 								</form>
 						      </div>
@@ -111,23 +112,23 @@
 						  </div><!-- /.modal-dialog -->
 						</div><!-- /.modal -->
 						<td><!-- Button trigger modal -->
-							<a href="#" data-toggle="modal" data-target="#myModal">
+							<a href="#" data-toggle="modal" data-target="#myModal<%= i %>">
 							  删除
 							</a>
 						</td>
 						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="myModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						      </div>
 						      <div class="modal-body">
-						        <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除吗？</h4>
+						        <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除<b><%= hospitals[i].hospital_name%></b>吗？</h4>
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						        <button type="button" class="btn btn-primary">删除</button>
+						        <button type="button" id="<%= hospitals[i]._id %>" class="btn btn-primary del">删除</button>
 						      </div>
 						    </div><!-- /.modal-content -->
 						  </div><!-- /.modal-dialog -->
@@ -150,6 +151,43 @@
 				td[i].innerHTML=null;
 			}
 		}
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('form').submit(function() {
+				$.post($(this).attr('action'),$(this).serialize(),function(result) {
+					if (result.status == 0) {
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json')
+				return false;
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('button.del').click(function(){
+				var bid = $(this).attr("id");
+				$.post("/admin/dropHos",{"hos_id":bid},function(result) {
+					if (result.status == 0) {
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json');
+				return false;
+			});
+		});
 	</script>
 </body>
 </html>

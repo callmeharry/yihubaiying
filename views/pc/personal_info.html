@@ -8,9 +8,9 @@
    <link href="css/personal_info.css" rel="stylesheet">
    <script src="dist/scripts/jquery.min.js"></script>
    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-   <meta name="description" content=""/>
-   <meta name="keywords" content=""/>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="description" content="" />
+   <meta name="keywords" content="" />
    <!-- 移动设备优先 -->
    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,36 +22,7 @@
 <!-- 包括所有已编译的插件 -->
 <script src="dist/js/bootstrap.min.js"></script>
 
-<!--网页头部-->
-<div class="container">
-   <div class="row">
-      <div class="logo-th logo col-xs-6">
-         医呼百应网上预约挂号平台
-      </div>
-      <!--搜索框-->
-
-      <div class="input-group col-xs-6">
-         <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
-                  <span class="input-group-btn">
-                     <button class="btn search-button" type="button">
-                        &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                     </button>
-                  </span>
-      </div>
-      <!-- /input-group -->
-   </div>
-</div>
-<!--导航栏-->
-<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
-   <div>
-      <ul class="nav navbar-nav">
-         <li><a href="#">首页</a></li>
-         <li><a href="#">按医院找</a></li>
-         <li><a href="#">按科室找</a></li>
-         <li><a href="#">按疾病找</a></li>
-      </ul>
-   </div>
-</nav>
+<%-include header.html%>
 
 <!--中间部分-->
 <div class="container">
@@ -60,16 +31,16 @@
          <!--左侧导航栏面板-->
          <div class="panel panel-info panel-left">
             <div class="panel-heading">
-               &nbsp;&nbsp;&nbsp;<a href="#" class="panel-title">用户名</a>，您好！
+               &nbsp;&nbsp;&nbsp;<a href="/personalCenter/personInfo" class="panel-title"><%= user.user_name%></a>，您好！
             </div>
             <div class="panel-body">
                <ul class="nav nav-pills nav-stacked">
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
-                  <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
-                  <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                  <li><a href="/personalCenter/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                  <li class="active"><a href="/personalCenter/personInfo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+                  <li><a href="/personalCenter/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+                  <li><a href="/personalCenter/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
                </ul>
-               <button class="btn btn-default logout-button" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+               <button class="btn btn-default logout-button" id="<%= user.user_id%>" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
          </div>
       </div>
@@ -85,39 +56,39 @@
                <table class="body-table">
                   <tr>
                      <th class="th-left">用户名：</th>
-                     <th class="th-right">当前用户名</th>
+                     <td class="th-right"><%= user.username%></td>
                   </tr>
                   <tr>
                      <th class="th-left">密码：</th>
-                     <th class="th-right">*********&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_password.html">修改</a></th>
+                     <td class="th-right">*********&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterPassword">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">真实姓名：</th>
-                     <th class="th-right">李小爽</th>
+                     <td class="th-right"><%= user.real_name%></td>
                   </tr>
                   <tr>
                      <th class="th-left">身份证号：</th>
-                     <th class="th-right">120***********0029</th>
+                     <td class="th-right"><%= user.social_number%></td>
                   </tr>
                   <tr>
-                     <th class="th-left">现居住城市：</th>
-                     <th class="th-right">北京&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改</a></th>
+                     <th class="th-left">现居住地：</th>
+                     <td class="th-right"><%= user.address%>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterAddress">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">邮箱：</th>
-                     <th class="th-right">18811399327@163.com&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_email.html">修改</a></th>
+                     <td class="th-right"><%= user.email%>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterEmail">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">手机号：</th>
-                     <th class="th-right">18811399327&nbsp;&nbsp;&nbsp;&nbsp;<a href="modify_phonenumber.html">修改</a></th>
+                     <td class="th-right"><%= user.phone_number%>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterPhone">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">信用等级：</th>
-                     <th class="th-right">3</th>
+                     <td class="th-right"><%= user.credit_level%></td>
                   </tr>
                   <tr>
                      <th class="th-left">注册时间：</th>
-                     <th class="th-right">2014-11-19</th>
+                     <td class="th-right"><%= user.register_time%></td>
                   </tr>
                </table>
             </div>
@@ -125,7 +96,24 @@
       </div>
    </div>
 </div>
-
-
+<script>
+   $(document).ready(function() {
+      $('button.logout-button').click(function(){
+         var user_id = $(this).attr("id");
+         $.post("/personalCenter/logout",{"user_id":user_id},function(result) {
+            if (result.status == 0) {
+               window.location.reload();
+            } else {
+               if (result.msg) {
+                  alert(result.msg);
+               } else {
+                  alert('服务器异常');
+               }
+            }
+         },'json');
+         return false;
+      });
+   });
+</script>
 </body>
 </html>
