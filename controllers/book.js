@@ -89,6 +89,7 @@ exports.showDepartment = function (req, res, next) {
     proxy.fail(next);
     var hospital_origin;
     var query = {_id:hospitalId};
+    var options = {};
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
         hospital_origin = hospital;
     }));
