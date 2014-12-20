@@ -206,6 +206,7 @@ exports.deptInfo = function (req, res, next) {
 
     //get fill hospital and dept
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
+        req.session.hosName = hospital.hospital_name;
         return hospital;
     }));
 
@@ -217,6 +218,7 @@ exports.deptInfo = function (req, res, next) {
 
     proxy.all("pages", "hospital", function (pages, hospital) {
         console.log(pages + " " + hospital);
+
         res.render("administrator/deptInfo", {
             pages: pages,
             page: page,
@@ -242,6 +244,7 @@ exports.docInfo = function (req, res, next) {
     proxy.fail(next);
 
     Hospital.getDeptDotctors(dept_id, proxy.done('hospital', function (hospital) {
+        req.session.dept_name = hospital.dept_name;
         return hospital;
     }));
 
@@ -257,8 +260,15 @@ exports.docInfo = function (req, res, next) {
 };
 
 exports.callInfo = function (req, res, next) {
-    var doc_id = validator(req.body.doc_id);
+
+    var doc_id = validator.trim(req.query.doc_id);
     var proxy = new eventproxy();
+    var hos_id = req.session.hosId;
+    var hos_name = req.session.hosName;
+    var dept_id = req.session.dept_id;
+    var dept_name = req.session.dept_name;
+
+
     proxy.fail(next);
 
     Doctor.getDoctorById(doc_id, proxy.done('doctor', function (doctor) {
@@ -267,8 +277,14 @@ exports.callInfo = function (req, res, next) {
 
 
     proxy.all('doctor', function (doctor) {
-        res.render('administrator/callinfo', {
-            doctor: doctor
+        res.render('administrator/callInfo', {
+            doctor: doctor,
+            page:1,
+            pages:1,
+            hos_id:hos_id,
+            hos_name:hos_name,
+            dept_id:dept_id,
+            dept_name:dept_name
         })
     });
 

@@ -29,11 +29,11 @@
 		</nav>
 
 		<ol class="breadcrumb">
-			<% var url1 = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
-			<% var url2 = '/admin/docInfo/?dept_id='+dept.dept_id; %>
-			<li><a href="<%= url1%>">xxx医院</a></li>
-			<li><a href="<%= url2%>">xxx科室</a></li>
-			<li class="active"><a href="#">xxx医生</a></li>
+			<% var url1 = '/admin/deptInfo/?hos_id='+hos_id; %>
+			<% var url2 = '/admin/docInfo/?dept_id='+dept_id; %>
+			<li><a href="<%= url1%>"><%=hos_name%></a></li>
+			<li><a href="<%= url2%>"><%=dept_name%></a></li>
+			<li class="active"><a href="#"><%=doctor.doctor_name%></a></li>
 		</ol>
 
 	  	<div class="subpanel" id="callInfo">
@@ -49,7 +49,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% for(var i=0; i<calls.length; i++) {%>
+					<% for(var i=0; i<doctor.doctor_visit.length; i++) {%>
 					<tr>
 						<td>XXX</td>
 						<td>XXX</td>
