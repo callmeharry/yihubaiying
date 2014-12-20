@@ -81,7 +81,7 @@ exports.handleLogin = function (req, res, next) {
             }
             //authMiddleWare.genSession(verifiedUser,res);
             console.log('login success');
-            authMiddleWare.genSession(verifiedUser, res);
+            authMiddleWare.genSession(verifiedUser, req, res);
             //redirect the page to the previous page of the login page
             var url = req.cookies.current_page;
             console.log(url);

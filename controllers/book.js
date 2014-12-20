@@ -84,28 +84,42 @@ exports.showHospital = function (req, res, next) {
 exports.showDepartment = function (req, res, next) {
     var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
-    var eventProxy = new eventproxy();
+    var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
-    var middleDepartments = new Array();
-    for (var i = 0; i < 2; i++) {
-        var smallDepartments = new Array();
-        for (var j = 0; j < 4 * i + 8; j++) {
-            var smallName = 'smallDepartments' + i + '-' + j;
-            var smallId = i + i + j + j;
-            smallDepartments[j] = {_id: smallId, name: smallName};
+    proxy.fail(next);
+    var hospital_origin;
+    var query = {_id:hospitalId};
+    Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
+        hospital_origin = hospital;
+    }));
+    var departments = new Array();
+    var i = 0;
+    for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
+        var flag = 0;
+        for(var k = 0; k < i; k++) {
+            if(departments[i].name == hospital_origin.hospital_dept[j].father_dept_name){
+                var len = departments[i].subDepartments.length;
+                departments[i].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
+                flag = 1;
+            }
         }
-
-        var middleName = 'middleDepartments' + i;
-        middleDepartments[i] = {name: middleName, smallDepartments: smallDepartments};
+        if(flag == 0){
+            var subDepartments = new Array();
+            subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
+            departments[i++] = {
+                name:hospital_origin.hospital_dept[j].father_dept_name,
+                subDepartments:subDepartments
+            }
+        }
     }
     var hospital = {
-        hospital_name: 'name',
-        hospital_address: 'add',
-        hospital_tel: 'phone',
-        _id: 'noid',
-        orderCount: '333',
-        imgsrc: null,
-        middleDepartments: middleDepartments
+        hospital_name: hospital_origin.hospital_name,
+        hospital_address: hospital_origin.hospital_location,
+        hospital_tel: hospital_origin.hospital_tel,
+        _id: hospital_origin._id,
+        orderCount: hospital_origin.hospital_order_count,
+        imgsrc: hospital_origin.hospital_imgsrc,
+        departments: departments
     };
     //替换结束
     //显示消息不成功可能是前端对应name的问题
