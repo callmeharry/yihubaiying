@@ -16,10 +16,21 @@ exports.newAndSaveDoctor = function (dept_id, docName, docIntro, goods, callback
     var query = {"hospital_dept._id": dept_id};
     var options = {"hospital_dept.$": 1};
     //save the objectid to dept
-    Hospital.findOne(query, options, function (err, hospital) {
+    Hospital.findOne(query, {}, function (err, hospital) {
         if (err) return callback(err);
+        var index;
+        console.log(hospital);
+        var index;
+        for(var j = 0; j<hospital.hospital_dept.length; j++)
+        {   var id = hospital.hospital_dept[j]._id;
+            console.log( id+"   "+dept_id);
+            if(id == dept_id )
+               index = j;
 
-        hospital.hospital_dept[0].dept_doc.push(doctor._id);
+        }
+
+        console.log(index);
+        hospital.hospital_dept[index].dept_doc.push(doctor._id);
         hospital.save(function (err) {
             if (err) return callback(err);
             doctor.save(callback);

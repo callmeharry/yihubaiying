@@ -94,7 +94,7 @@ exports.getOneHospitalByQuery = function (query, opt, callback) {
 
 exports.getDeptDoctors = function (dept_id, callback) {
     var query = {"hospital_dept._id": dept_id};
-    var options = {"hospital_dept": {"$slice": 1}};
+    var options = {"hospital_dept.$":1};
 
     Hospital.findOne(query, options, function (err, hospital) {
         if (err) return callback(err);
@@ -109,7 +109,6 @@ exports.getDeptDoctors = function (dept_id, callback) {
         proxy.after('update', dept_doc.length, function () {
             var fit_hospital = {};
             fit_hospital.hospital_id = hospital._id;
-            fit_hospital.hospital_name = hospital.hospital_name;
             fit_hospital.dept_name = hospital.hospital_dept[0].dept_name;
             fit_hospital.dept_id = hospital.hospital_dept[0]._id;
             fit_hospital.doctors = doctors;

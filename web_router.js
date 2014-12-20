@@ -58,8 +58,11 @@ router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
 //PC personal center
-router.get('/personInfo',auth.UserRequired, user.showPersonInfo);
+router.get('/person/info',auth.UserRequired, user.showPersonInfo);
+router.get('/person/order',auth.UserRequired, user.showMyOrder);
 
+router.get('/person/info/alterPass',auth.UserRequired, user.showchangePass);
+router.post('/person/info/alterPass',auth.UserRequired,user.changepassword);
 
 //pc book page
 router.get('/book/hospitals', mobileBook.showHospital);

@@ -22,6 +22,11 @@ exports.showPersonInfo = function (req, res, next) {
     });
 };
 
+exports.showchangePass = function(req,res,next){
+    var user = req.session.user;
+    return res.render('pc/modify_password',{user:user});
+};
+
 exports.changepassword = function (req, res, next) {
     var old_password = validator.trim(req.body.old_password);
     var new_password = validator.trim(req.body.new_password);
@@ -33,7 +38,7 @@ exports.changepassword = function (req, res, next) {
         user.password = new_password;
         user.save(function (err) {
             if (err) return next(err);
-            return res.redirect('/personInfo');
+            return res.redirect('/person/info');
         });
 
     });

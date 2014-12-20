@@ -237,7 +237,7 @@ exports.docInfo = function (req, res, next) {
     //dept_id
     var dept_id = validator.trim(req.query.dept_id) || req.session.dept_id || '';
     req.session.dept_id = dept_id;
-    console.log(dept_id);
+    console.log(dept_id+ "test!");
     var limit = config.page_limit;
 
     var proxy = new eventproxy();
@@ -253,7 +253,8 @@ exports.docInfo = function (req, res, next) {
         res.render('administrator/docInfo', {
             page: 1,
             pages: 1,
-            hospital: hospital
+            hospital: hospital,
+            hospital_name:req.session.hosName
         });
     });
 
@@ -516,7 +517,7 @@ exports.addDoctorInter = function (req, res, next) {
     var doc_intro = validator.trim(req.body.doc_intro);
     var good_illness = validator.trim(req.body.good_illness);
     console.log(req.body);
-    Doctor.newAndSaveDoctor(dept_id, doc_name, doc_intro, good_illness, function (err) {
+    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness, function (err) {
         if (err) return next(err);
 
         res.send({"status": 0});
