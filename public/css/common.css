@@ -2,13 +2,23 @@
 	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
 }
 
+.container{
+	width: 970px;
+}
+
+.my-bar {
+	height: 12px;
+	background: #d9edf7;
+	border-color: #bce8f1;
+	color: #428bca;
+}
+
 .logo{
 	font-size: 34px;
 	font-family: "微软雅黑";
-	margin-top: 55px;
-	margin-right: 100px;
-	margin-left: 120px;
-	color: #0066ff;
+	margin-top: 48px;
+	margin-bottom: 28px;
+	color: #5bc0de;
 }
 
 .logo-th{
@@ -40,15 +50,12 @@
 }
 
 .panel-left{
-	float: left;
 	width: 170px;
-	margin-left: 230px;
+	margin-left: 40px;
 }
 
 .panel-right{
-	float: right;
 	width: 700px;
-	margin-right: 230px;
 }
 
 .btn-group{
@@ -146,8 +153,9 @@ select{
 }
 
 .divFound {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
 	border: solid 1px;
-	border-color: #eee;
+	border-color: #bce8f1;
 }
 
 table td {
@@ -167,6 +175,23 @@ a:hover {
 	text-decoration: none;
 }
 
-.navArea {
-	background-color:;
+.myhr{
+	border-top: 1px solid  #bce8f1;
+}
+
+.col-sm-offset-2 {
+margin-left: 18.2%;}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+	color: #5bc0de;
+	background-color: #fff;
+}
+
+.panel-right{
+	min-height: 300px;
+}
+
+td.th-right{
+	width: 300px;
+	line-height: 29px;
 }

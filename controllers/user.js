@@ -12,7 +12,7 @@ var validator = require('validator');
 
 exports.showPersonInfo = function (req, res, next) {
     var user = req.session.user;
-
+    console.log("hehe");
 
 
     User.getUserById(user._id, function (err,user) {
