@@ -102,6 +102,7 @@ exports.handleLogout = function (req, res) {
     res.clearCookie(config.auth_cookie_userid, {path: '/'});
     res.clearCookie(config.auth_cookie_username, {path: '/'});
     res.clearCookie(config.auth_cookie_city, {path: '/'});
+    req.session.destroy();
     if (tool.getDeviceType(req.url))
         res.redirect('/mobile');
     else

@@ -11,9 +11,13 @@ var Feedback = require('../proxy').Feedback;
 var validator = require('validator');
 
 exports.showPersonInfo = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user = req.session.user;
 
-    User.getUserById(user_id, function (user) {
+  
+
+    User.getUserById(user._id, function (err,user) {
+        if(err) return next(err);
+        console.log(user+"hehe!");
         res.render('pc/personal_info', {user: user});
     });
 };
@@ -21,7 +25,7 @@ exports.showPersonInfo = function (req, res, next) {
 exports.changepassword = function (req, res, next) {
     var old_password = validator.trim(req.body.old_password);
     var new_password = validator.trim(req.body.new_password);
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
 
     User.getUserById(user_id, function (user) {
         if (user.password !== old_password)
@@ -36,7 +40,7 @@ exports.changepassword = function (req, res, next) {
 };
 
 exports.changeCity = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var newCity = validator.trim(req.body.newCity);
 
     User.getUserById(user_id, function (user) {
@@ -50,7 +54,7 @@ exports.changeCity = function (req, res, next) {
 };
 
 exports.changePhoneNumber = function (req, res, next) {
-    var user_id = req.sesssion.user_id;
+    var user_id = res.cookies.user_id;
     var newPhoneNumber = req.body.newPhoneNumber || '';
 
     if (newPhoneNumber !== '')
@@ -68,7 +72,7 @@ exports.changePhoneNumber = function (req, res, next) {
 };
 
 exports.changeEmail = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var newEmail = validator(req.body.newEmail);
 
     if (newEmail !== '')
@@ -92,7 +96,7 @@ exports.changeEmail = function (req, res, next) {
  * @param next
  */
 exports.showMyOrder = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
 
     var proxy = new eventproxy();
     proxy.fail(next);
@@ -115,7 +119,7 @@ exports.showMyOrder = function (req, res, next) {
  */
 
 exports.showFavorite = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var proxy = new eventproxy;
     proxy.fail(next);
 
@@ -134,7 +138,7 @@ exports.showFavorite = function (req, res, next) {
 
 exports.submitFeedback = function (req, res, next) {
     var content = validator.trim(req.body.content);
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
 
     Feedback.newAndSave(content, 1, user_id, function (err) {
         if (err) next(err);
@@ -147,7 +151,7 @@ exports.submitFeedback = function (req, res, next) {
 //Ajax interface for order operation
 
 exports.judgeOrder = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var order_id = req.body.order_id;
     var good_or_bad = req.body.good_or_bad;  // type  boolean
     var content = validator.trim(req.body.content);
