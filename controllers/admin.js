@@ -243,7 +243,7 @@ exports.docInfo = function (req, res, next) {
     var proxy = new eventproxy();
     proxy.fail(next);
 
-    Hospital.getDeptDotctors(dept_id, proxy.done('hospital', function (hospital) {
+    Hospital.getDeptDoctors(dept_id, proxy.done('hospital', function (hospital) {
         req.session.dept_name = hospital.dept_name;
         return hospital;
     }));

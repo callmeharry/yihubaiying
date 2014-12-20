@@ -92,7 +92,7 @@ exports.getOneHospitalByQuery = function (query, opt, callback) {
     Hospital.findOne(query, opt, callback);
 };
 
-exports.getDeptDotctors = function (dept_id, callback) {
+exports.getDeptDoctors = function (dept_id, callback) {
     var query = {"hospital_dept._id": dept_id};
     var options = {"hospital_dept": {"$slice": 1}};
 
