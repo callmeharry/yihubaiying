@@ -115,7 +115,7 @@
                 <h3><%= hospital.departments[i].name %></h3>
                 <table>
                     <tr>
-                        <% for(var j = 0; j< hospital.departments[i].subepartments.length; j++) { %>
+                        <% for(var j = 0; j< hospital.departments[i].subDepartments.length; j++) { %>
                         <td>
                             <a data-dept="<%= hospital.departments[i].subDepartments[j] %>" data-hospitalid="<%= hospital._id%>" onclick="showDoctors(this)">
                                 hospital.middleDepartments[i].subDepartments[j] %></a></td>
