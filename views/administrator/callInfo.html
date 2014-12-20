@@ -36,33 +36,78 @@
 			<li class="active"><a href="#"><%=doctor.doctor_name%></a></li>
 		</ol>
 
+		<button type="button" class="btn btn-default btn-info" data-toggle="modal" data-target="#callAddModal">新增出诊信息
+		</button>
+		<div class="modal fade" id="callAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			 aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">新增出诊信息</h4>
+					</div>
+					<div class="modal-body">
+						<form class="input-group col-md-8" action="/admin/addDocVisit">
+							<input type="hidden" id="doc_id" name="doc_id" value="<%= doctor._id %>"/>
+							<div class="input-group">
+								<span class="input-group-addon">开始时间</span>
+								<input class="form-control" type="time" name="visit_start_time">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">结束时间</span>
+								<input type="time" class="form-control" placeholder="结束时间"
+									   name="visit_end_time">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">号源总量</span>
+								<input class="form-control" type="text" name="totalSource">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">剩余号源数量</span>
+								<input class="form-control" type="text" name="leftSource">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">出诊费用</span>
+								<input class="form-control" type="text" name="fee">
+							</div>
+							<button type="submit" class="btn btn-default">添加</button>
+							<button type="reset" class="btn btn-primary">重置</button>
+						</form>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
 	  	<div class="subpanel" id="callInfo">
 	  		<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>出诊时间段</th>
-						<th>具体时间</th>
-						<th>是否出诊</th>
+						<th>开始时间</th>
+						<th>结束时间</th>
 						<th>号源总量</th>
 						<th>剩余号源数量</th>
+						<th>出诊费用</th>
 						<th>编辑</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% for(var i=0; i<doctor.doctor_visit.length; i++) {%>
 					<tr>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
+						<td><%= doctor.doctor_visit[i].visit_start_time %></td>
+						<td><%=doctor.doctor_visit[i].visit_end_time %></td>
+						<td><%= doctor.doctor_visit[i].totalSource %></td>
+						<td><%= doctor.doctor_visit[i].leftSource %></td>
+						<td><%= doctor.doctor_visit[i].fee %></td>
 						<td>
-							<a href="#" data-toggle="modal" data-target="#infoModal">
+							<a href="#" data-toggle="modal" data-target="#infoModal<%= i%>">
 							  编辑
 							</a>
 						</td>
 						<!-- Modal -->
-						<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="infoModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content col-md-8">
 									<div class="modal-header">
@@ -71,59 +116,28 @@
 										<h4 class="modal-title" id="myModalLabel">出诊信息</h4>
 									</div>
 									<div class="modal-body">
-										<form class="input-group">
+										<form class="input-group" action="/admin/modifyDocVisit">
+											<input type="hidden" name="visit_id" value="<%= doctor.doctor_visit[i]._id %>"/>
 											<div class="input-group">
-												<span class="input-group-addon">出诊时间段</span>
-
-												<div class="form-control">
-													<input type="time" id="starttime">至<input type="time" id="endtime">
-												</div>
+												<span class="input-group-addon">开始时间</span>
+												<input class="form-control" type="time" name="visit_start_time">
 											</div>
 											<div class="input-group">
-												<span class="input-group-addon">具体时间</span>
-												<input type="time" class="form-control" placeholder="具体时间"
-													   id="specifictime">
-											</div>
-											<div class="input-group">
-												<span class="input-group-addon">是否出诊</span>
-												<select class="form-control">
-													<option value="1">是</option>
-													<option value="2">否</option>
-												</select>
+												<span class="input-group-addon">结束时间</span>
+												<input type="time" class="form-control" placeholder="结束时间"
+													   name="visit_end_time">
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon">号源总量</span>
-												<select class="form-control">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-													<option value="8">8</option>
-													<option value="9">9</option>
-													<option value="10">10</option>
-													<option value="11">11</option>
-													<option value="12">12</option>
-												</select>
+												<input class="form-control" type="text" name="totalSource">
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon">剩余号源数量</span>
-												<select class="form-control">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-													<option value="8">8</option>
-													<option value="9">9</option>
-													<option value="10">10</option>
-													<option value="11">11</option>
-													<option value="12">12</option>
-												</select>
+												<input class="form-control" type="text" name="leftSource">
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon">出诊费用</span>
+												<input class="form-control" type="text" name="fee">
 											</div>
 											<button type="submit" class="btn btn-default">修改</button>
 											<button type="reset" class="btn btn-primary">重置</button>
@@ -145,5 +159,23 @@
 			}) %>
 	  	</div>
 	</div>
+	<script language="javascript">
+		$(document).ready(function() {
+			$('form').submit(function() {
+				$.post($(this).attr('action'),$(this).serialize(),function(result) {
+					if (result.status == 0) {
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json')
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>

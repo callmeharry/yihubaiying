@@ -22,8 +22,7 @@ var DoctorSchema = new Schema({
             visit_start_time: {type:String},
             visit_end_time: {type: String},
             totalSource: { type: Number },
-            leftSource: { type: Number },
-            if_call:{type:Boolean, default:false}
+            leftSource: { type: Number }
         }
     ]
 });

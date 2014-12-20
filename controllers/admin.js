@@ -611,18 +611,18 @@ exports.replyFeedbackInter = function (req, res, next) {
         res.send({"status": 0});
     });
 
-}
+};
 
 
 //Add doctor visit time
 exports.addDocVisitIntern = function (req, res, next) {
-    var doc_id = req.body.doct_id;
+    var doc_id = req.body.doc_id;
     var fee = req.body.fee;
     var visit_start_time = req.body.visit_start_time;
     var visit_end_time = req.body.visit_end_time;
     var totalSource = req.body.totalSource;
     var leftSource = req.body.leftSource;
-
+    console.log(req.body);
     var ups = {
         visit_start_time: visit_start_time,
         visit_end_time: visit_end_time,

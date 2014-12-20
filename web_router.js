@@ -116,8 +116,8 @@ router.post('/admin/dropDoctor',admin.dropDoctorInter);
 router.post('/admin/replyFeedback',admin.replyFeedbackInter);
 router.post('/admin/modifyUser',admin.modifyUser);
 router.post('/admin/deleteUser',admin.deleteUser);
-router.post('admin/modifyDocVisit',admin.modifyDocVisitIntern);
-router.post('admin/addDocVisit',admin.addDocVisitIntern);
+router.post('/admin/modifyDocVisit',admin.modifyDocVisitIntern);
+router.post('/admin/addDocVisit',admin.addDocVisitIntern);
 
 //Test page
 router.get('/sms-test', smsTest.registerVerity);
