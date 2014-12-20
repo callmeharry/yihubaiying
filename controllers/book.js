@@ -87,28 +87,26 @@ exports.showDepartment = function (req, res, next) {
     var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
     proxy.fail(next);
-    var hospital_origin;
     var query = {_id:hospitalId};
     var options = {};
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
-        hospital_origin = hospital;
         //initialize departmentlist
         var departments = new Array();
         var i = 0;
-        for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
+        for(var j = 0; j < hospital.hospital_dept.length; j++ ){
             var flag = 0;
             for(var k = 0; k < i; k++) {
-                if(departments[k].name == hospital_origin.hospital_dept[j].father_dept_name){
+                if(departments[k].name == hospital.hospital_dept[j].father_dept_name){
                     var len = departments[k].subDepartments.length;
-                    departments[k].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
+                    departments[k].subDepartments[len] = hospital.hospital_dept[j].dept_name;
                     flag = 1;
                 }
             }
             if(flag == 0){
                 var subDepartments = new Array();
-                subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
+                subDepartments[0] = hospital.hospital_dept[j].dept_name;
                 departments[i++] = {
-                    name:hospital_origin.hospital_dept[j].father_dept_name,
+                    name:hospital.hospital_dept[j].father_dept_name,
                     subDepartments:subDepartments
                 }
             }
@@ -167,35 +165,65 @@ exports.showDoctor = function (req, res, next) {
     var username = req.cookies.username;
     var departmentId = req.query.departmentid;
     var hospitalId = req.query.hospitalid;
+    var date = req.query.date;
     console.log('department:' + departmentId + ' hospital:' + hospitalId);
-    var eventProxy = new eventproxy();
-    var doctor = new Array();
-    for (var i = 0; i < 3; i++) {
-        var timeAndSource = new Array();
-        //for(var j = 0; j < 4; j++ ){
-        //
-        //}
-        timeAndSource[0] = {
-            date: '2014-11-' + i + '7  ',
-            time: '10:00-12:00',
-            source: '10/20(格式:剩余号源/总号源)'
-        };
-        timeAndSource[1] = {
-            date: '2014-11-' + i + '8  10:00-12:00',
-            time: '10:00-12:00',
-            source: '11/20(格式:剩余号源/总号源)'
-        };
-        doctor[i] = {
-            _id: 'id' + i,
-            imgsrc: null,
-            name: '姓名' + i,
-            isOnDuty: '是或者否,依据可预约时间段是否出诊',
-            timeAndSource: timeAndSource,//时间段和号源数量情况
-            goodReputation: '20',//好评数
-            intro: '简介' + i,
-            advancedDisease: '疾病1,疾病2(数据库里是字符串数组,在这里直接合成为一个字符串)'
-        };
-    }
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    Hospital.getDeptDoctors(dept_id, proxy.done('hospital', function (hospital) {
+        var doctor = new Array();
+        for(var i = 0; i < hospital.doctors.length; i++) {
+            var flag = '否';//not on duty
+            var timeAndSource = new Array();
+            var k = 0;
+            for(var j = 0; j < hospital.doctors[i].doctor_visit.length; j++){
+                if(hospital.doctors[i].doctor_visit[j].totalSource != '0') {
+                    flag = '是';
+                    timeAndSource[k++] = {
+                        time : tool.getDateByNum(j) + hospital.doctors[i].doctor_visit[j].visit_start_time + hospital.doctors[i].doctor_visit[j].visit_end_time,
+                        source: hospital.doctors[i].doctor_visit[j].leftSource + '/' + hospital.doctors[i].doctor_visit[j].totalSource
+                    }
+                }
+            }
+            doctor[i] = {
+                name:hospital.doctors[i].doc_name,
+                imgsrc:null, //TODO
+                isOnDuty:flag,
+                timeAndSource:timeAndSource,
+                goodReputation:hospital.doctors[i].goodReputation,
+                intro:hospital.doctors[i].doctor_intro,
+                advancedDisease:hospital.doctors[i].doctor_advanced_illness_name,
+                _id:hospital.doctors[i]._id
+            }
+        }
+    }));
+
+    //for (var i = 0; i < 3; i++) {
+    //    var timeAndSource = new Array();
+    //    //for(var j = 0; j < 4; j++ ){
+    //    //
+    //    //}
+    //    timeAndSource[0] = {
+    //        date: '2014-11-' + i + '7  ',
+    //        time: '10:00-12:00',
+    //        source: '10/20(格式:剩余号源/总号源)'
+    //    };
+    //    timeAndSource[1] = {
+    //        date: '2014-11-' + i + '8  10:00-12:00',
+    //        time: '10:00-12:00',
+    //        source: '11/20(格式:剩余号源/总号源)'
+    //    };
+    //    doctor[i] = {
+    //        _id: 'id' + i,
+    //        imgsrc: null,
+    //        name: '姓名' + i,
+    //        isOnDuty: '是或者否,依据可预约时间段是否出诊',
+    //        timeAndSource: timeAndSource,//时间段和号源数量情况
+    //        goodReputation: '20',//好评数
+    //        intro: '简介' + i,
+    //        advancedDisease: '疾病1,疾病2(数据库里是字符串数组,在这里直接合成为一个字符串)'
+    //    };
+    //}
     //Hospital.getDocsByHospitalIdAndDepartmentId(hospitalId, departmentId, function (err))
     currPage(req, res);
     if (!tool.getDeviceType(req.url)) {
@@ -203,6 +231,7 @@ exports.showDoctor = function (req, res, next) {
             doctor: doctor,
             departmentid: departmentId,
             hospitalid: hospitalId,
+            date:date,
             username: username,
             title: '选择医生'
         });
@@ -210,6 +239,7 @@ exports.showDoctor = function (req, res, next) {
         doctor: doctor,
         departmentid: departmentId,
         hospitalid: hospitalId,
+        date:date,
         username: username,
         title: '选择医生'
     });
