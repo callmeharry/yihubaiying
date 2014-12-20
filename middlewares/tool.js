@@ -32,6 +32,6 @@ exports.formatDate = function (date, friendly) {
 exports.getDateByNum = function(num){
     var date = new Date();
     var new_date = new Date();
-    new_date.setDate(date.getDate() + 1000 * 60 * 60 * 24 * (num % 2 == 0 ? (num + 2) : (num + 1)));
-    return new_date;
+    new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * (Math.floor(num / 2 + 1)));
+    return (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日' + ' ';
 }

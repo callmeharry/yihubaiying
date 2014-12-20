@@ -140,6 +140,63 @@ exports.getDeptDoctors = function (dept_id, callback) {
     });
 };
 
+exports.getDoctorsByDeptAndDate = function(dept_id, datenum, callback) {
+    var query = {"hospital_dept._id": dept_id};
+    var options = {"hospital_dept": {"$slice": 1}};
+    var datenum2 = parseInt(datenum) + 2;
+    Hospital.findOne(query, options, function (err, hospital) {
+        if (err) return callback(err);
+
+        if (hospital.hospital_dept.length === 0)
+            return callback(null, {});
+
+        var dept_doc = hospital.hospital_dept[0].dept_doc;
+        var doctors = new Array();
+
+        var proxy = new eventproxy();
+        proxy.after('update', dept_doc.length, function () {
+            var fit_hospital = {};
+            fit_hospital.hospital_id = hospital._id;
+            fit_hospital.hospital_name = hospital.hospital_name;
+            fit_hospital.dept_name = hospital.hospital_dept[0].dept_name;
+            fit_hospital.dept_id = hospital.hospital_dept[0]._id;
+            fit_hospital.doctors = doctors;
+
+            callback(null, fit_hospital);
+        });
+
+        for (var j = 0; j < dept_doc.length; j++) {
+            (function (i) {
+                var doc_id = dept_doc[i];
+                Doctor.findOne({"_id": doc_id}, {}, function (err, doctor) {
+                    if (err) return callback(err);
+                    var flag = 0;
+                    if( datenum == -1){
+                        flag = 1;
+                    }else if(doctor.doctor_visit[(datenum2 <14)?(datenum2 ):(datenum2-14)]){
+                        if(doctor.doctor_visit[(datenum2<14)?(datenum2):(datenum2-14)].totalSource > 0){
+                            flag = 1;
+                        }
+                    }
+                    if (flag == 1) {
+                        doctors.push({
+                            doc_name: doctor.doctor_name,
+                            doc_intro: doctor.doctor_intro,
+                            good_illness: doctor.doctor_advanced_illness_name,
+                            _id: doc_id,
+                            doc_rep: doctor.doctor_good_reputation,
+                            doc_visit: doctor.doctor_visit
+                        });
+                    }
+                    return proxy.emit('update');
+                });
+
+            })(j);
+        }
+
+    });
+}
+
 exports.updateDeptByQuery = function (query, ups, callback) {
 
     Hospital.update(query, ups, callback);

@@ -8,13 +8,13 @@ var Order = models.Order;
 var Hospital = require('../proxy').Hospital;
 var Doctor = require('../proxy').Doctor;
 var eventproxy = require('eventproxy');
-exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, time, seeTime, callback) {
+exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, seeTime, callback) {
     var order = new Order();
     order.hospital_id = hospitalId;
     order.dept_id = departmentId;
     order.doctor_id = doctorId;
     order.user_id = userId;
-    order.order_time = time;
+    order.order_time = new Date();
     order.order_see_time = seeTime;
     order.save(callback);
 };
