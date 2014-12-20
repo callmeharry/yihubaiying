@@ -29,7 +29,7 @@
     <div id="content">
         <% for(var i = 0; i < doctor.length; i++) {%>
         <article>
-            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id%>">
+            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&date=<%= date %>">
                 <div class="PicDiv">
                     <img class="hospitalPic" src="doctor[i].imgsrc">
                 </div>
