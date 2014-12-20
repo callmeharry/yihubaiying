@@ -8,6 +8,7 @@ var Hospital = require('../proxy/').Hospital;
 var Order = require('../proxy/order');
 var tool = require('../middlewares/tool');
 var currPage = tool.setCurrentPage;
+var config = require('../config');
 
 /**
  * 显示医院列表
@@ -16,51 +17,62 @@ var currPage = tool.setCurrentPage;
  * @param next
  */
 exports.showHospital = function (req, res, next) {
-    var city = '北京';
+    var page = parseInt(req.query.page, 10) || 1;
+    var limit = config.page_limit;
+    var city = req.cookies.city;
     var username = req.cookies.username;
-    console.log('1');
-    console.log(city);
-    console.log('2');
-    var eventProxy = new eventproxy();
+    var query = {hospital_city: city};
 
-    Hospital.newHospital('hospital', 'hospitalIntro', '北京', 'hospitalLocation', '0000000', '1', function (err, hospital) {
-        if (err) {
-            console.log(err);
+    var proxy = new eventproxy();
+    proxy.fail(next);
+
+    Hospital.getCountByQuery(query, proxy.done(function (all_hospital_count) {
+        var pages = Math.ceil(all_hospital_count / limit);
+        proxy.emit('pages', pages);
+    }));
+
+    //get hospital infos according to pages
+    var options = {skip: (page - 1) * limit, limit: limit, sort: "-create_date"};
+    Hospital.getHospitalsByQuery(query, options, proxy.done('hospitals', function (hospitals) {
+        return hospitals;
+    }));
+    proxy.all('pages', 'hospitals', function (pages, hospitals) {
+        currPage(req, res);
+        if (!tool.getDeviceType(req.url)) {
+            res.render('pc/choose_hospital', {
+                page: page,
+                pages: pages,
+                hospital: hospitals,
+                username: username,
+                title: '选择医院'
+            });
         } else {
-            Hospital.addDepartment(hospital._id, 'fatherDeptName', 'deptName', function (err) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('hospital in addDepartment: '+hospital);
-                    Hospital.addDeptDoc(hospital._id, 'deptId', 'docId', function (err, hospitalAdded) {
-                        if(err) {
-                            console.log(err);
-                        } else {
-                            console.log(hospitalAdded.hospital_dept);
-                        }
-                    });
-                }
+            res.render('mobile/mHospitalSelect', {
+                page: page,
+                pages: pages,
+                hospital: hospitals,
+                username: username,
+                title: '选择医院'
             });
         }
     });
-
-    Hospital.getTenHospitalsByCity(city, function (err, hospitals) {
-        if (err) {
-            res.send("error happened during get ten hospitals by city.");
-        } else {
-            currPage(req, res);
-            console.log(username);
-            if (!tool.getDeviceType(req.url)) {
-                return res.render('pc/choose_hospital', {username: username, hospital: hospitals, title: '选择医院'});
-            } else {
-                return res.render('mobile/mHospitalSelect', {
-                    username: username,
-                    hospital: hospitals,
-                    title: '选择医院'
-                });
-            }
-        }
-    });
+    //Hospital.getTenHospitalsByCity(city, function (err, hospitals) {
+    //    if (err) {
+    //        res.send("error happened during get ten hospitals by city.");
+    //    } else {
+    //        currPage(req, res);
+    //        console.log(username);
+    //        if (!tool.getDeviceType(req.url)) {
+    //            return res.render('pc/choose_hospital', {username: username, hospital: hospitals, title: '选择医院'});
+    //        } else {
+    //            return res.render('mobile/mHospitalSelect', {
+    //                username: username,
+    //                hospital: hospitals,
+    //                title: '选择医院'
+    //            });
+    //        }
+    //    }
+    //});
 };
 
 /**

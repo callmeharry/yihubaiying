@@ -93,7 +93,7 @@ exports.hosInfo = function (req, res, next) {
 
     var page = parseInt(req.query.page, 10) || 1;
     var limit = config.page_limit;
-    var query = {}
+    var query = {};
 
     var proxy = new eventproxy();
     proxy.fail(next);
