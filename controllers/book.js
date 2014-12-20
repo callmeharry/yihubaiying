@@ -95,36 +95,24 @@ exports.showDepartment = function (req, res, next) {
         //initialize departmentlist
         var departments = new Array();
         var i = 0;
-        departments[0] = {
-            name:'0',
-            subDepartments:[
-                '0-0','0-1','0-2'
-            ]
-        };
-        departments[1] = {
-            name:'1',
-            subDepartments:[
-                '1-0','1-1','1-2','1-3'
-            ]
-        };
-        //for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
-        //    var flag = 0;
-        //    for(var k = 0; k < i; k++) {
-        //        if(departments[k].name == hospital_origin.hospital_dept[j].father_dept_name){
-        //            var len = departments[k].subDepartments.length;
-        //            departments[k].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
-        //            flag = 1;
-        //        }
-        //    }
-        //    if(flag == 0){
-        //        var subDepartments = new Array();
-        //        subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
-        //        departments[i++] = {
-        //            name:hospital_origin.hospital_dept[j].father_dept_name,
-        //            subDepartments:subDepartments
-        //        }
-        //    }
-        //}
+        for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
+            var flag = 0;
+            for(var k = 0; k < i; k++) {
+                if(departments[k].name == hospital_origin.hospital_dept[j].father_dept_name){
+                    var len = departments[k].subDepartments.length;
+                    departments[k].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
+                    flag = 1;
+                }
+            }
+            if(flag == 0){
+                var subDepartments = new Array();
+                subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
+                departments[i++] = {
+                    name:hospital_origin.hospital_dept[j].father_dept_name,
+                    subDepartments:subDepartments
+                }
+            }
+        }
         //initialize date table
         var date = new Date();
         var dateList = new Array();
