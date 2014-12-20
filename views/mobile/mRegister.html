@@ -5,25 +5,25 @@
     <title>注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
 
-    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
     <script type="text/javascript"
             src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
-    <script type="text/javascript" src="/js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <script src="js/vendor/modernizr.js"></script>
     <script type="text/javascript">
         function showWarning() {
             element = document.getElementById('id_passWord').value;
@@ -148,16 +148,18 @@ function commit()
         <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
             <input type="text" placeholder="验证码" name="auth_code">
         </div>
-        <button type="button" class="small radius button" onclick="requestAuthCode(this)"
-                style="background-color:#587eac; margin-top:18px;">获取验证码
+       
+        <div>
+        <button type="button"  style="margin-top:18px; background-color:#587eac; width:90px; margin-left:15px; color:#F0F0F0;" onclick="requestAuthCode(this)" >获取验证码
         </button>
+        </div>>
 
     </div>
 
 
-    <div class="large-12 columns" align="center" style="margin-top:40px;">
-        <input type="submit" name="submit_button" value="提交" onclick="commit()" class="small radius button"
-               style="background-color:#587eac">
+    <div  align="center" style="margin-top:40px;">
+        <input type="submit" name="submit_button" value="提交" onclick="commit()"
+               style="background-color:#587eac; height:40px; width:80px; color:#F0F0F0;">
 
     </div>
 
