@@ -618,13 +618,13 @@ exports.replyFeedbackInter = function (req, res, next) {
 exports.addDocVisit = function (req, res, next) {
     var doc_id = req.body.doct_id;
     var fee = req.body.fee;
-    var visit_end_time = req.body.visit_end_time;
+    var visit_start_time = req.body.visit_start_time;
     var visit_end_time = req.body.visit_end_time;
     var totalSource = req.body.totalSource;
     var leftSource = req.body.leftSource;
 
     var ups = {
-        visit_end_time: visit_end_time,
+        visit_start_time: visit_start_time,
         visit_end_time: visit_end_time,
         totalSource: totalSource,
         leftSource: leftSource,
@@ -635,5 +635,44 @@ exports.addDocVisit = function (req, res, next) {
 
         res.send({status: 0});
     });
+
+};
+
+exports.modifyDocVisitIntern = function(req, res, next){
+    var visit_id = req.body.visit_id||'';
+    var fee = req.body.fee||'';
+    var visit_start_time = req.body.visit_start_time||'';
+    var visit_end_time=  req.body.visit_end_time||'';
+    var totalSource = req.body.totalSource||'';
+    var leftSource = req.body.leftSource||'';
+
+    var query = {"doctor_visit._id":visit_id};
+    var ups = {};
+
+    if(fee !== '')
+        ups['doctor_visit.$.fee'] = fee;
+
+    if(visit_start_time !== '')
+        ups['doctor_visit.$.visit_start_time'] = visit_start_time;
+
+    if(visit_end_time !== '')
+        ups['doctor_visit.$.visit_end_time'] = visit_end_time;
+
+    if(totalSource !== '')
+        ups['doctor_visit.$.totalSource'] = totalSource;
+
+    if(leftSource !== '')
+        ups['doctor_visit.$.leftSource'] = totalSource;
+
+    Doctor.updateDoctorByQuery(query, ups, function(err){
+
+        if(err) return res.send({status:-1, msg:"failed"});
+
+        res.send({status:0});
+    });
+
+
+
+
 
 };
