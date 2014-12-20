@@ -94,6 +94,7 @@ router.get('/admin/deptInfo', admin.deptInfo);
 router.get('/admin/docInfo', admin.docInfo);
 //出诊信息
 router.get('/admin/callInfo', admin.callInfo);
+
 //用户反馈
 router.get('/admin/userFeedback', admin.userFeedback);
 //用户信息
