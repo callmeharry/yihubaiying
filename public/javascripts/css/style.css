@@ -60,7 +60,7 @@ p
 a, a:link, a:active, a:visited, a:hover
 {
 	color: #233241;
-	text-decoration: underline;
+	text-decoration: none;
 }
 pre
 {
@@ -69,10 +69,10 @@ pre
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 }
-/*#page nav*/
-/*{*/
-	/*display: none;*/
-/*}*/
+#page nav
+{
+	display: none;
+}
 
 #header,
 .header,
