@@ -12,7 +12,8 @@
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
-
+    
+    <script type="text/javascript" src="../../public/javascripts/idchecked.js"></script>
     <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     <script src="js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="../../javascripts/idchecked.js"></script>
     <script type="text/javascript">
         function showWarning() {
             element = document.getElementById('id_passWord').value;
@@ -48,12 +50,9 @@ function commit()
 		}
   
 }
-
         function showWarning1() {
             element = document.getElementById('id_repeat_passWord').value;
             element1 = document.getElementById('id_passWord').value;
-
-
             if (element != element1) {
                 //alert(document.getElementById("id_warning").innerHTML);
                 document.getElementById('id_repeat_warning').style.display = "";
@@ -62,7 +61,6 @@ function commit()
                 document.getElementById('id_repeat_warning').style.display = "none";
             }
         }
-
         function showWarning2() {
             element = document.getElementById('id_phoneNumber').value;
             l = element.length;
@@ -86,7 +84,8 @@ function commit()
 <form action="/mobile/register" method="post" id="register_form">
     <div class="row" align="center" style="margin-top:30px;">
         <div class="large-12 columns" align="center">
-            <input id="id_idNumber" name="social_number" type="text" placeholder="身份证号"/>
+            <input id="id_idNumber" name="social_number" type="text" placeholder="身份证号" onchange="scCard()"/>
+            <span id="id_idNumber_errorTips" style="font-size:1em !important;font-family:""微软雅黑"";"></span>
         </div>
     </div>
 
