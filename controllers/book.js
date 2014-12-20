@@ -98,9 +98,9 @@ exports.showDepartment = function (req, res, next) {
         for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
             var flag = 0;
             for(var k = 0; k < i; k++) {
-                if(departments[i].name == hospital_origin.hospital_dept[j].father_dept_name){
-                    var len = departments[i].subDepartments.length;
-                    departments[i].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
+                if(departments[k].name == hospital_origin.hospital_dept[j].father_dept_name){
+                    var len = departments[k].subDepartments.length;
+                    departments[k].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
                     flag = 1;
                 }
             }
