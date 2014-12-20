@@ -75,40 +75,36 @@
                 <col width="50"/>
                 <col width="50"/>
                 <tr>
-                    <td colspan="2"><input name="Date" type="radio" value="" checked />不选择时间</td>
+                    <td colspan="2"><input name="Date" type="radio" value="" checked onclick="changeDate(this)"/>不选择时间</td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月19日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月19日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[0]%>" onclick="changeDate(this)"/><%= hospital.dateList[0]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[1]%>" onclick="changeDate(this)"/><%= hospital.dateList[1]%></td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月20日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月20日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[2]%>" onclick="changeDate(this)"/><%= hospital.dateList[2]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[3]%>" onclick="changeDate(this)"/><%= hospital.dateList[3]%></td>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月21日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月21日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[4]%>" onclick="changeDate(this)"/><%= hospital.dateList[4]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[5]%>" onclick="changeDate(this)"/><%= hospital.dateList[5]%></td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月22日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月22日下午</td>
-                </tr>
-
-                <tr>
-                    <td><input name="Date" type="radio" value="" />12月23日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月23日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[6]%>" onclick="changeDate(this)"/><%= hospital.dateList[6]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[7]%>" onclick="changeDate(this)"/><%= hospital.dateList[7]%></td>
                 </tr>
 
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月24日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月24日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[8]%>" onclick="changeDate(this)"/><%= hospital.dateList[8]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[9]%>" onclick="changeDate(this)"/><%= hospital.dateList[9]%></td>
+                </tr>
+
+                <tr>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[10]%>" onclick="changeDate(this)"/><%= hospital.dateList[10]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[11]%>" onclick="changeDate(this)"/><%= hospital.dateList[11]%></td>
                 </tr>
                 <tr>
-                     <td><input name="Date" type="radio" value="" />12月25日上午</td>
-                     <td><input name="Date" type="radio" value="" />12月25日下午</td>
-                </tr>
-                <tr>
-                    <td><input name="Date" type="radio" value="" />12月26日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月26日下午</td>
+                     <td><input name="Date" type="radio" value="<%= hospital.dateList[12]%>" onclick="changeDate(this)"/><%= hospital.dateList[12]%></td>
+                     <td><input name="Date" type="radio" value="<%= hospital.dateList[13]%>" onclick="changeDate(this)"/><%= hospital.dateList[13]%></td>
                 </tr>
             </table>
         </div>
@@ -121,8 +117,8 @@
                     <tr>
                         <% for(var j = 0; j< hospital.departments[i].subepartments.length; j++) { %>
                         <td>
-                            <a href="/mobile/book/doctors?departmentid=<%= hospital.departments[i].subDepartments[j]._id %>&hospitalid=<%= hospital._id%>"><%=
-                                hospital.middleDepartments[i].subDepartments[j].name %></a></td>
+                            <a data-dept="<%= hospital.departments[i].subDepartments[j] %>" data-hospitalid="<%= hospital._id%>" onclick="showDoctors(this)">
+                                hospital.middleDepartments[i].subDepartments[j] %></a></td>
                         <% if( (j+1) % 3 == 0 || j == hospital.departments[i].subDepartments.length - 1)
                         { %>
                     </tr>
@@ -138,5 +134,21 @@
     </div>
     <!-- Menu navigation -->
 </div>
+<script>
+    var date = 'no';
+    href="<%= hospital.departments[i].subDepartments[j] %><%= hospital._id%>";
+    function changeDate(radioButton){
+        date = radioButton.value();
+    }
+    function getDate(){
+        return date;
+    }
+    function showDoctors(a){
+        var dept = a.getAttribute('data-dept');
+        var hospitalId = a.getAttribute('data-hospitalid');
+        var href = '/mobile/book/doctors?departmentid=' + dept + '&hospitalid=' + hospitalId + '&date=' + date;
+        $.get(href);
+    }
+</script>
 </body>
 </html> 

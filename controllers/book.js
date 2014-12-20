@@ -92,6 +92,7 @@ exports.showDepartment = function (req, res, next) {
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
         hospital_origin = hospital;
     }));
+    //initialize departmentlist
     var departments = new Array();
     var i = 0;
     for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
@@ -112,6 +113,15 @@ exports.showDepartment = function (req, res, next) {
             }
         }
     }
+    //initialize date table
+    var date = new Date();
+    var dateList = new Array();
+    for(var i = 0 ; i < 14 ; i = i + 2) {
+        var new_date = new Date();
+        new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
+        dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
+        dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
+    }
     var hospital = {
         hospital_name: hospital_origin.hospital_name,
         hospital_address: hospital_origin.hospital_location,
@@ -119,7 +129,8 @@ exports.showDepartment = function (req, res, next) {
         _id: hospital_origin._id,
         orderCount: hospital_origin.hospital_order_count,
         imgsrc: hospital_origin.hospital_imgsrc,
-        departments: departments
+        departments: departments,
+        dateList: dateList
     };
     //替换结束
     //显示消息不成功可能是前端对应name的问题
