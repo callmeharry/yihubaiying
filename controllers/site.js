@@ -14,6 +14,9 @@ exports.showIndex = function (req, res) {
     var url = req.url;
     var username = req.cookies.username;
     console.log("logged " + req.cookies.username);
+    res.cookie(config.auth_cookie_city, '北京',
+        // cookie有效期30天
+        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
     if (url.indexOf('mobile') > 0)
         res.render('mobile/mIndex', {username: username, title: '医呼百应:首页'});
     else

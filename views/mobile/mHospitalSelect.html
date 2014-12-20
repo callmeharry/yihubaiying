@@ -14,7 +14,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/HospitalSelect.css">
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/DatePicker.css">
-
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/dist/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
@@ -65,6 +66,11 @@
             </article>
         </div>
         <% } %>
+        <%- partial('list', {
+        pages: pages,
+        page: page,
+        base: '/mobile/book/hospitals/'
+        }) %>
     </div>
 </div>
 </body>
