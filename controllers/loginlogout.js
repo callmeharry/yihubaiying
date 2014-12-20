@@ -81,7 +81,7 @@ exports.handleLogin = function (req, res, next) {
             }
             //authMiddleWare.genSession(verifiedUser,res);
             console.log('login success');
-            authMiddleWare.genSession(verifiedUser, res);
+            authMiddleWare.genSession(verifiedUser, req, res);
             //redirect the page to the previous page of the login page
             var url = req.cookies.current_page;
             console.log(url);
@@ -102,6 +102,7 @@ exports.handleLogout = function (req, res) {
     res.clearCookie(config.auth_cookie_userid, {path: '/'});
     res.clearCookie(config.auth_cookie_username, {path: '/'});
     res.clearCookie(config.auth_cookie_city, {path: '/'});
+    req.session.destroy();
     if (tool.getDeviceType(req.url))
         res.redirect('/mobile');
     else

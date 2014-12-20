@@ -58,7 +58,7 @@ router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
 //PC personal center
-router.get('/personalCenter/personInfo',auth.UserRequired, user.showPersonInfo);
+router.get('/personInfo',auth.UserRequired, user.showPersonInfo);
 
 
 //pc book page

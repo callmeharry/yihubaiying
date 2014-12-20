@@ -19,7 +19,7 @@ var UserProxy = require('../proxy/user');
  * @constructor
  */
 exports.UserRequired = function (req, res, next) {
-    if (!req.session || !req.session.user_id) {
+    if (!req.session || !req.session.user) {
         return res.status(403).send('您还未登录');
     }
     next();
@@ -33,7 +33,7 @@ exports.UserRequired = function (req, res, next) {
  * @param res
  * @constructor
  */
-exports.genSession = function GenSession(user, res) {
+exports.genSession = function GenSession(user, req, res) {
     // $$$$分隔信息
     var _id = user._id;
     var username = user.real_name;
@@ -49,6 +49,7 @@ exports.genSession = function GenSession(user, res) {
     res.cookie(config.auth_cookie_city, city,
         // cookie有效期30天
         {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
+    req.session.user = user;
 };
 
 /**

@@ -6,6 +6,7 @@
 var user = require('../proxy/user');
 var randomNum = "";// 验证码
 var tool = require('../middlewares/tool');
+var authMiddleWare = require('../middlewares/auth');
 /**
  * 显示注册页面
  * @param req
@@ -56,6 +57,7 @@ exports.handleRegister = function (req, res, next) {
                 res.send(err.message);
                 return;
             }
+            authMiddleWare.genSession(user, req, res);
             if (tool.getDeviceType(req.url))
             return res.redirect('/mobile');
             else
