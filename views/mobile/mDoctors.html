@@ -5,68 +5,70 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>选择医生</title>
 
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/Order.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Order.css">
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mDoctor.css">
 
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page p-blog">
 <div id="page">
-
+<!-- 
     <% if(!username) { %>
     <%- include mNotLoggedIn.html %>
     <% } else {%>
     <%- include mLoggedIn.html %>
-    <% } %>
+    <% } %>-->
+<!-- -->
 
     <div id="content">
-        <% for(var i = 0; i < doctor.length; i++) {%>
+        <!-- 
+        <% for(var i = 0; i < doctor.length; i++) {%>-->
         <article>
             <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&date=<%= date %>">
                 <div class="PicDiv">
                     <img class="hospitalPic" src="doctor[i].imgsrc">
                 </div>
                 <div class="InfoDiv">
-                    <h2 id="doctorName_id" name="doctorName"><%= doctor[i].name%></h2>
+                    <h2 id="doctorName_id" name="doctorName"><!-- <%= doctor[i].name%>--></h2>
 
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">是否出诊：</span>
-                        <span id="isOnDuty_id" name="isOnDuty"><%= doctor[i].isOnDuty%></span>
+                        <span id="isOnDuty_id" name="isOnDuty">是<!-- <%= doctor[i].isOnDuty%>--></span>
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">出诊时段,号源：</span>
 								<span id="visitPeriod_id" name="visitPeriod">
-									<% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
+									<!-- <% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
 									<%= doctor[i].timeAndSource[j].time %> &nbsp; <%= doctor[i].timeAndSource[j].source %>
 									<br/>
-									<% } %>
+									<% } %>-->
 								</span>
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">好评数：</span>
                         <span id="acceptedOrderNumber_id"
-                              name="acceptedOrderNumber"><%= doctor[i].goodReputation%></span>/<span
-                            id="totalOrderNumber_id" name="totalOrderNumber">16</span>
+                              name="acceptedOrderNumber"><!-- <%= doctor[i].goodReputation%>--></span>/
+                        <span id="totalOrderNumber_id" name="totalOrderNumber"><!-- 16--></span>
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">医生简介：</span>
-                        <span id="doctorIntro_id" name="doctorIntro"><%= doctor[i].intro%></span>
+                        <span id="doctorIntro_id" name="doctorIntro"><!-- <%= doctor[i].intro%>--></span>
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">医生专长：</span>
-                        <span id="doctorSpecialty_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
+                        <span id="doctorSpecialty_id" name="doctorIntro"><!--<%= doctor[i].advancedDisease%> --></span>
                     </div>
                 </div>
             </a>
         </article>
-        <% } %>
+       <!--  <% } %>-->
     </div>
 </div>
 </body>
