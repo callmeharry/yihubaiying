@@ -92,47 +92,55 @@ exports.showDepartment = function (req, res, next) {
     var options = {};
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
         hospital_origin = hospital;
+        //initialize departmentlist
+        var departments = new Array();
+        var i = 0;
+        for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
+            var flag = 0;
+            for(var k = 0; k < i; k++) {
+                if(departments[i].name == hospital_origin.hospital_dept[j].father_dept_name){
+                    var len = departments[i].subDepartments.length;
+                    departments[i].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
+                    flag = 1;
+                }
+            }
+            if(flag == 0){
+                var subDepartments = new Array();
+                subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
+                departments[i++] = {
+                    name:hospital_origin.hospital_dept[j].father_dept_name,
+                    subDepartments:subDepartments
+                }
+            }
+        }
+        //initialize date table
+        var date = new Date();
+        var dateList = new Array();
+        for(var i = 0 ; i < 14 ; i = i + 2) {
+            var new_date = new Date();
+            new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
+            dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
+            dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
+        }
+        var hospital = {
+            hospital_name: hospital_origin.hospital_name,
+            hospital_address: hospital_origin.hospital_location,
+            hospital_tel: hospital_origin.hospital_tel,
+            _id: hospital_origin._id,
+            orderCount: hospital_origin.hospital_order_count,
+            imgsrc: hospital_origin.hospital_imgsrc,
+            departments: departments,
+            dateList: dateList
+        };
+        if (!tool.getDeviceType(req.url)) {
+            return res.render('pc/choose_department', {username: username, hospital: hospital, title: '选择科室和时间'});
+        } else {
+            return res.render('mobile/mDepartments', {username: username, hospital: hospital, title: '选择科室和时间'});
+        }
     }));
-    //initialize departmentlist
-    var departments = new Array();
-    var i = 0;
-    for(var j = 0; j < hospital_origin.hospital_dept.length; j++ ){
-        var flag = 0;
-        for(var k = 0; k < i; k++) {
-            if(departments[i].name == hospital_origin.hospital_dept[j].father_dept_name){
-                var len = departments[i].subDepartments.length;
-                departments[i].subDepartments[len] = hospital_origin.hospital_dept[j].dept_name;
-                flag = 1;
-            }
-        }
-        if(flag == 0){
-            var subDepartments = new Array();
-            subDepartments[0] = hospital_origin.hospital_dept[j].dept_name;
-            departments[i++] = {
-                name:hospital_origin.hospital_dept[j].father_dept_name,
-                subDepartments:subDepartments
-            }
-        }
-    }
-    //initialize date table
-    var date = new Date();
-    var dateList = new Array();
-    for(var i = 0 ; i < 14 ; i = i + 2) {
-        var new_date = new Date();
-        new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
-        dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
-        dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
-    }
-    var hospital = {
-        hospital_name: hospital_origin.hospital_name,
-        hospital_address: hospital_origin.hospital_location,
-        hospital_tel: hospital_origin.hospital_tel,
-        _id: hospital_origin._id,
-        orderCount: hospital_origin.hospital_order_count,
-        imgsrc: hospital_origin.hospital_imgsrc,
-        departments: departments,
-        dateList: dateList
-    };
+
+
+
     //替换结束
     //显示消息不成功可能是前端对应name的问题
     //Hospital.getDeptByHospitalId(hospitalId, function (err, hospital) {
@@ -143,12 +151,7 @@ exports.showDepartment = function (req, res, next) {
     //
     //    }
     //});
-    console.log('1');
-    if (!tool.getDeviceType(req.url)) {
-        return res.render('pc/choose_department', {username: username, hospital: hospital, title: '选择科室和时间'});
-    } else {
-        return res.render('mobile/mDepartments', {username: username, hospital: hospital, title: '选择科室和时间'});
-    }
+
 };
 
 /**
