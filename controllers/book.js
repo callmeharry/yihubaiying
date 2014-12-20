@@ -119,6 +119,7 @@ exports.showDepartment = function (req, res, next) {
         for(var i = 0 ; i < 14 ; i = i + 2) {
             var new_date = new Date();
             new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
+            date = new_date;
             dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
             dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
         }
