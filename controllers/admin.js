@@ -615,7 +615,7 @@ exports.replyFeedbackInter = function (req, res, next) {
 
 
 //Add doctor visit time
-exports.addDocVisit = function (req, res, next) {
+exports.addDocVisitIntern = function (req, res, next) {
     var doc_id = req.body.doct_id;
     var fee = req.body.fee;
     var visit_start_time = req.body.visit_start_time;
