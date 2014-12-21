@@ -94,3 +94,14 @@ function showPasswordLengthWarning()
         return true;
     }
 }
+function showAuthCode(button)
+{
+	if (showPhoneWarning())
+	{
+		requestAuthCode(button);
+	}
+	else
+	{
+		alert("请先修改手机号格式！");
+	}
+}

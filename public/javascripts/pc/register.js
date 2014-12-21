@@ -75,3 +75,22 @@ function showPhoneWarning()
         return true;
     }
 }
+function commit()
+{
+    element1 = document.getElementById('id_idNumber').value;
+    l1 = element1.length;
+    if (l == 0)
+    {
+        document.getElementById('id_idNumber_warning').style.display = "";
+    }
+    else
+    {
+        element2 = document.getElementById('id_name').value;
+        l2 = element2.length;
+        if (l == 0)
+        {
+            document.getElementById('id_name_warning').style.display = "";
+        }
+
+    }
+}
