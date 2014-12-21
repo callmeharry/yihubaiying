@@ -68,7 +68,7 @@ router.post('/person/info/alterEmail', user.changeEmail);
 router.get('/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
 router.post('/person/info/alterPhone',user.changePhoneNumber);
 router.get('/person/myOrder', auth.UserRequired, user.showMyOrder);
-router.get('/person/myFavorite',auth.UserRequired,user.showFavorite);
+router.get('/person/myFavourite',auth.UserRequired,user.showFavorite);
 router.get('/person/feedback',auth.UserRequired,user.showFeedback);
 router.post('/person/feedback',user.submitFeedback);
 

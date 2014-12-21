@@ -37,8 +37,7 @@
 }
 
 .advice-textarea {
-    width: 500px;
-    height: 200px;
     border-radius: 5px;
     font-weight: normal;
+    resize:none;
 }

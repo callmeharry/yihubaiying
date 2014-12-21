@@ -2,32 +2,32 @@
 <!--中间部分-->
 <div class="container">
    <div class="row">
+      <!--左侧导航栏面板-->
       <div class="col-xs-3">
-         <!--左侧导航栏面板-->
          <div class="panel panel-info panel-left">
             <div class="panel-heading">
-               &nbsp;&nbsp;&nbsp;<a href="/personalCenter/personInfo" class="panel-title"><%= user.user_id%></a>，您好！
+               &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
             </div>
             <div class="panel-body">
                <ul class="nav nav-pills nav-stacked">
-                  <li><a href="/personalCenter/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
-                  <li class="active"><a href="/personalCenter/personInfo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
-                  <li><a href="/personalCenter/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
-                  <li><a href="/personalCenter/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                  <li><a href="/person/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                  <li class="active"><a href="/person/info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+                  <li><a href="/person/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+                  <li><a href="/person/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
                </ul>
-               <button class="btn btn-default logout-button" type="button" id="<%= user.user_id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+               <button class="btn btn-default logout-button" type="button" href="/logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
          </div>
       </div>
       <div class="col-xs-9">
-         <form action="/personalCenter/modifyPhone">
+         <form action="/person/modifyPhone">
             <input type="hidden" name="user_id" value="<%= user.user_id%>"/>
             <!--右侧面板-->
             <div class="panel panel-info panel-right">
                <div class="panel-heading panel-head-personalinfo">
                   <!--上方导航栏-->
                   <ol class="breadcrumb my-bread">
-                     <li><a href="/personalCenter/personInfo">个人信息</a></li>
+                     <li><a href="/person/info">个人信息</a></li>
                      <li class="active">修改手机号</li>
                   </ol>
                </div>
@@ -38,7 +38,7 @@
                            <label class="th-label">新手机号：</label>
                         </th>
                         <th>
-                           <input type="text" class="form-control th-label" id="newPhone" name="newPhone" placeholder="请输入新手机号">
+                           <input type="text" class="form-control th-label" id="newPhone" name="newPhoneNumber" placeholder="请输入新手机号">
                         </th>
                      </tr>
                      <tr>
@@ -46,7 +46,7 @@
                            &nbsp;
                         </th>
                         <th>
-                           <button class="btn identify-button" data="<%= user.user_id%>">获取短信验证码</button>
+                           <button class="btn identify-button" data="<%= user.user_id%>" onclick="requestAuthCode(this)">获取短信验证码</button>
                         </th>
                      </tr>
                      <tr>
@@ -70,54 +70,18 @@
          </div>
          <div class="alert alert-warning alert-dismissible panel-body panel-body-center hide" id="fail" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            修改失败！请重试。
          </div>
       </div>
    </div>
 </div>
-<script>
-   $(document).ready(function() {
-      $('button.logout-button').click(function(){
-         var user_id = $(this).attr("id");
-         $.post("/personalCenter/logout",{"user_id":user_id},function(result) {
-            if (result.status == 0) {
-               window.location.reload();
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json');
-         return false;
-      });
-   });
-</script>
-<script>
-   $(document).ready(function() {
-      $('button.identify-button').click(function(){
-         var user_id = $(this).attr("data");
-         $.post("/personalCenter/getMessageCode",{"user_id":user_id},function(result) {
-            if (result.status == 0) {
-               window.location.reload();
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json');
-         return false;
-      });
-   });
-</script>
+
 <script language="javascript">
    $(document).ready(function() {
       $('form').submit(function() {
          $.post($(this).attr('action'),$(this).serialize(),function(result) {
             if (result.status == 0) {
-               $('#success').removeClass('hide');
+               window.location.href="/person/info";
             } else {
                if (result.msg) {
                   $('#fail').removeClass('hide');
