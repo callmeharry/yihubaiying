@@ -195,7 +195,7 @@ exports.getDoctorsByDeptAndDate = function(dept_id, datenum, callback) {
         }
 
     });
-}
+};
 
 exports.updateDeptByQuery = function (query, ups, callback) {
 
