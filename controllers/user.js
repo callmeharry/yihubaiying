@@ -9,6 +9,7 @@ var User = require('../proxy').User;
 var Order = require('../proxy').Order;
 var Feedback = require('../proxy').Feedback;
 var validator = require('validator');
+var tool = require('../middlewares/tool');
 
 exports.showPersonInfo = function (req, res, next) {
     var user = req.session.user;
@@ -17,8 +18,8 @@ exports.showPersonInfo = function (req, res, next) {
 
     User.getUserById(user._id, function (err,user) {
         if(err) return next(err);
-        console.log(user+"hehe!");
-        res.render('pc/personal_info', {user: user});
+        res.render('pc/personal_info', {user: user,
+            register_time:tool.formatDate(user.register_time)});
     });
 };
 
@@ -28,11 +29,10 @@ exports.showchangePass = function(req,res,next){
 };
 
 exports.changepassword = function (req, res, next) {
-    var old_password = validator.trim(req.body.old_password);
-    var new_password = validator.trim(req.body.new_password);
-    var user_id = res.cookies.user_id;
-
-    User.getUserById(user_id, function (user) {
+    var old_password = validator.trim(req.body.oldPassword);
+    var new_password = validator.trim(req.body.newPassword);
+    var current_user = req.session.user;
+    User.getUserById(current_user._id, function (err,user) {
         if (user.password !== old_password)
             return res.render('pc/modify_password', {error: "old password is not correct!"});
         user.password = new_password;
@@ -58,6 +58,12 @@ exports.changeCity = function (req, res, next) {
     });
 };
 
+exports.showChangePhone = function(req, res, next){
+    res.render('pc/modify_phonenumber',{
+        user:req.session.user
+    });
+};
+
 exports.changePhoneNumber = function (req, res, next) {
     var current_user = req.session.user;
     var newPhoneNumber = req.body.newPhoneNumber || '';
@@ -76,19 +82,27 @@ exports.changePhoneNumber = function (req, res, next) {
 
 };
 
+exports.showChangeEmail = function(req, res, next){
+    res.render('pc/modify_email',{
+        user:req.session.user
+    });
+};
+
+
 exports.changeEmail = function (req, res, next) {
     var user = req.session.user;
-    var newEmail = validator(req.body.newEmail)||'';
+    var newEmail = validator.trim(req.body.newEmail)||'';
+    console.log("test!");
 
-    if (newEmail !== '')
-        res.send({status: 0, msg: "can not be null"});
+    if (newEmail === '')
+        res.send('pc/modify_email',{error:"the mail should not be null"});
 
-    User.getUserById(user._id, function (user) {
+    User.getUserById(user._id, function (err, user) {
         user.email = newEmail;
         user.save(function (err) {
-            if (err) return res.send({status: 0, msg: "can not be null"});
+            if (err) return next(err);
 
-            res.send({status: 0});
+            res.redirect('/person/info');
         });
 
     });
@@ -101,17 +115,20 @@ exports.changeEmail = function (req, res, next) {
  * @param next
  */
 exports.showMyOrder = function (req, res, next) {
-    var user_id = res.cookies.user_id;
+    var user = req.session.user;
 
     var proxy = new eventproxy();
     proxy.fail(next);
 
-    Order.getOrderByQuery({user_id: user_id}, {sort: "-order_time"}, proxy.done('orders', function (orders) {
+    Order.getOrderByQuery({user_id: user._id}, {sort: "-order_time"}, proxy.done('orders', function (orders) {
         return orders;
     }));
 
     proxy.all('orders', function (orders) {
-        return res.render('pc/my_order', orders);
+        return res.render('pc/my_order', {
+            orders:orders,
+            user:user
+        });
     });
 };
 
@@ -124,31 +141,38 @@ exports.showMyOrder = function (req, res, next) {
  */
 
 exports.showFavorite = function (req, res, next) {
-    var user_id = res.cookies.user_id;
+    var user = req.session.user;
     var proxy = new eventproxy;
     proxy.fail(next);
 
-    User.getUserById(user_id, proxy.done('user', function (user) {
+    User.getUserById(user._id, proxy.done('user', function (user) {
         return user;
     }));
 
     proxy.all('user', function (user) {
-        res.render('pc/my_favorite', {
-            favorite_hospital: user.favourite_hospital,
-            favorite_doctor: user.favourite_doctor
+        res.render('pc/my_favourite', {
+           user:user
         });
     });
 
 };
 
+exports.showFeedback=  function(req, res, next){
+    var user = req.session.user;
+    res.render('pc/feedback',{
+        user:user
+    });
+
+}
+
 exports.submitFeedback = function (req, res, next) {
     var content = validator.trim(req.body.content);
-    var user_id = res.cookies.user_id;
+    var user =req.session.user;
 
-    Feedback.newAndSave(content, 1, user_id, function (err) {
+    Feedback.newAndSave(content, 1, user._id, function (err) {
         if (err) next(err);
 
-        res.send({status: 0});
+        res.redirect('/person/info');
     });
 
 }

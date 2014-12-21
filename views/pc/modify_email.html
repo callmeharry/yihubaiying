@@ -26,13 +26,12 @@
             <div class="panel-heading panel-head-personalinfo">
                <!--上方导航栏-->
                <ol class="breadcrumb my-bread">
-                  <li><a href="/personalCenter/personInfo">个人信息</a></li>
+                  <li><a href="/person/info">个人信息</a></li>
                   <li class="active">修改邮箱</li>
                </ol>
             </div>
             <div>
-               <form class="form-center" action="/personalCenter/modifyEmail">
-                  <input type="hidden" id="user_id" name="user_id" value="user.user_name"/>
+               <form class="form-center" action="/person/info/alterEmail" method = "post">
                   <div class="row">
                      <div class="col-xs-2"></div>
                      <div class="col-xs-2"> <label class="email-label">新邮箱：</label></div>
@@ -51,7 +50,7 @@
                <table class="body-table">
                   <tr>验证邮件已发送，请查收</tr>
                   <tr>
-                     点此返回<a href="/personalCenter/personInfo">个人中心</a>
+                     点此返回<a href="/person/info">个人中心</a>
                   </tr>
                </table>
             </div>
@@ -59,42 +58,6 @@
       </div>
    </div>
 </div>
-<script>
-   $(document).ready(function() {
-      $('button.logout-button').click(function(){
-         var user_id = $(this).attr("id");
-         $.post("/personalCenter/logout",{"user_id":user_id},function(result) {
-            if (result.status == 0) {
-               window.location.reload();
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json');
-         return false;
-      });
-   });
-</script>
-<script language="javascript">
-   $(document).ready(function() {
-      $('form').submit(function() {
-         $.post($(this).attr('action'),$(this).serialize(),function(result) {
-            if (result.status == 0) {
-               $('#success').removeClass('hide');
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json')
-         return false;
-      });
-   });
-</script>
+
 </body>
 </html>

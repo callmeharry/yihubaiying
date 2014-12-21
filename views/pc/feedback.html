@@ -3,11 +3,11 @@
 <head>
    <title>医呼百应网上预约挂号平台</title>
    <!-- 引入 Bootstrap -->
-   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-   <link href="css/common.css" rel="stylesheet">
-   <link href="css/feedback.css" rel="stylesheet">
-   <script src="dist/scripts/jquery.min.js"></script>
-   <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+   <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/css/common.css" rel="stylesheet">
+   <link href="/css/feedback.css" rel="stylesheet">
+   <script src="/dist/scripts/jquery.min.js"></script>
+   <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
    <meta name="description" content=""/>
    <meta name="keywords" content=""/>
@@ -83,32 +83,25 @@
                <!--上方导航栏-->
                问题反馈
             </div>
+            <form action="/person/feedback" method="post" >
             <div class="panel-body panel-body-center">
+
                <table class="feedback-table">
                   <tr>
                      <th>
                         <label class="th-label">建议描述：</label>
-                        <textarea class="advice-textarea" placeholder="请写下您对于我们网站的建议"></textarea>
+                        <textarea class="advice-textarea" placeholder="请写下您对于我们网站的建议" name = "content"></textarea>
                      </th>
                   </tr>
-                  <tr>
-                     <th>
 
-                     </th>
-                  </tr>
-                  <tr>
-                     <th>
-                        <label class="th-left">验证码：</label>
-                        <input type="text" class="form-control th-right" placeholder="请输入验证码">
-                        <button class="btn identify-button">换一张</button>
-                     </th>
-                  </tr>
                </table>
+
             </div>
-            <button type="button" class="btn btn-primary btn-lg button-center ">
+            <button type="submit" class="btn btn-primary btn-lg button-center ">
                提交
             </button>
          </div>
+         </form>
       </div>
    </div>
 </div>

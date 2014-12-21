@@ -7,14 +7,14 @@
          <!--左侧导航栏面板-->
          <div class="panel panel-info panel-left">
             <div class="panel-heading">
-               &nbsp;&nbsp;&nbsp;<a href="/personalCenter/personInfo" class="panel-title"><%= user.real_name%></a>，您好！
+               &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
             </div>
             <div class="panel-body">
                <ul class="nav nav-pills nav-stacked">
-                  <li><a href="/personalCenter/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
-                  <li class="active"><a href="/personalCenter/personInfo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
-                  <li><a href="/personalCenter/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
-                  <li><a href="/personalCenter/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                  <li><a href="/person/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                  <li class="active"><a href="/person/info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+                  <li><a href="/person/myFavorite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+                  <li><a href="/person/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
                </ul>
                <button class="btn btn-default logout-button" id="<%= user.user_id%>" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
@@ -48,15 +48,15 @@
                   </tr>
                   <tr>
                      <th class="th-left">现居住地：</th>
-                     <td class="th-right"><span><%= user.address%></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterAddress">修改</a></td>
+                     <td class="th-right"><span><%= user.address%></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/person/info/AlterAddress">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">邮箱：</th>
-                     <td class="th-right"><span><%= user.email%></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterEmail">修改</a></td>
+                     <td class="th-right"><span><%= user.email%></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/person/info/alterEmail">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">手机号：</th>
-                     <td class="th-right"><%= user.phone_number%>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/personalCenter/AlterPhone">修改</a></td>
+                     <td class="th-right"><%= user.phone_number%>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/person/info/alterPhone">修改</a></td>
                   </tr>
                   <tr>
                      <th class="th-left">信用等级：</th>
@@ -64,7 +64,7 @@
                   </tr>
                   <tr>
                      <th class="th-left">注册时间：</th>
-                     <td class="th-right"><%= user.register_time%></td>
+                     <td class="th-right"><%= register_time%></td>
                   </tr>
                </table>
             </div>
