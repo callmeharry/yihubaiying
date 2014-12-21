@@ -21,7 +21,7 @@
          </div>
       </div>
       <div class="col-xs-9">
-         <form action="/person/modifyPhone">
+         <form action="/person/modifyPhone" method="post">
             <input type="hidden" name="user_id" value="<%= user.user_id%>"/>
             <!--右侧面板-->
             <div class="panel panel-info panel-right">
@@ -77,23 +77,5 @@
    </div>
 </div>
 
-<script language="javascript">
-   $(document).ready(function() {
-      $('form').submit(function() {
-         $.post($(this).attr('action'),$(this).serialize(),function(result) {
-            if (result.status == 0) {
-               window.location.href="/person/info";
-            } else {
-               if (result.msg) {
-                  $('#fail').removeClass('hide');
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json')
-         return false;
-      });
-   });
-</script>
 </body>
 </html>

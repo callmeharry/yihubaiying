@@ -143,6 +143,8 @@ exports.addHos = function (req, res, next) {
     var hos_location = validator.trim(req.body.hos_location);
     var hos_tel = validator.trim(req.body.hos_tel);
     var hos_weight = validator.trim(req.body.hos_weight);
+    var hos_img = req.files.hos_img.name||"/images/defaultHos.jpg";
+
     console.log(hos_name + " " + hos_intro + " " + hos_city + " " + hos_location + " hehe");
 
     var ep = new eventproxy();
@@ -159,7 +161,7 @@ exports.addHos = function (req, res, next) {
     }
 
     Hospital.newHospital(hos_name, hos_intro, hos_city,
-        hos_location, hos_tel, hos_weight, function (err) {
+        hos_location, hos_tel, hos_weight,"/uploads/"+hos_img, function (err) {
             if (err)
                 return next(err);
             console.log("save hospital successfully");
@@ -511,16 +513,19 @@ exports.dropDept = function (req, res, next) {
 
 //add doctorInter
 
-exports.addDoctorInter = function (req, res, next) {
+exports.addDoctor = function (req, res, next) {
     var dept_id = req.body.dept_id;
     var doc_name = validator.trim(req.body.doc_name);
     var doc_intro = validator.trim(req.body.doc_intro);
     var good_illness = validator.trim(req.body.good_illness);
     console.log(req.body);
-    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness, function (err) {
+    console.log(req.files);
+    var doc_imgsrc = req.files.doc_img.name;
+
+    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness,"/upload/"+doc_imgsrc, function (err) {
         if (err) return next(err);
 
-        res.send({"status": 0});
+        res.redirect('/admin/docInfo');
 
     });
 
@@ -672,8 +677,17 @@ exports.modifyDocVisitIntern = function(req, res, next){
         res.send({status:0});
     });
 
-
-
-
-
 };
+
+exports.showUpload = function(req, res ,next){
+    res.render('test/test');
+};
+var multer = require('multer');
+
+exports.testUpload = function(req, res, next){
+    console.log(req.body);
+    console.log(req.files);
+
+    res.redirect('/test/upload');
+};
+

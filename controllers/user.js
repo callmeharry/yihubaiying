@@ -96,12 +96,13 @@ exports.changeEmail = function (req, res, next) {
 
     if (newEmail === '')
         res.send('pc/modify_email',{error:"the mail should not be null"});
-
+    console.log("shit!1");
     User.getUserById(user._id, function (err, user) {
         user.email = newEmail;
-        user.save(function (err) {
-            if (err) return next(err);
-
+        console.log("shit!2");
+        user.save(function (errs) {
+            if (errs) return next(err);
+            console.log("shit!");
             res.redirect('/person/info');
         });
 

@@ -63,24 +63,5 @@
       </div>
    </div>
 </div>
-
-<script language="javascript">
-   $(document).ready(function() {
-      $('form').submit(function() {
-         $.post($(this).attr('action'),$(this).serialize(),function(result) {
-            if (result.status == 0) {
-               window.location.href="/person/info";
-            } else {
-               if (result.msg) {
-                  alert("修改失败");
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json')
-         return false;
-      });
-   });
-</script>
 </body>
 </html>

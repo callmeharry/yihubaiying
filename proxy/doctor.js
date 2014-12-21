@@ -7,12 +7,12 @@ var models = require('../models');
 var Doctor = models.Doctor;
 var Hospital = models.Hospital;
 
-exports.newAndSaveDoctor = function (dept_id, docName, docIntro, goods, callback) {
+exports.newAndSaveDoctor = function (dept_id, docName, docIntro, goods, doc_imgsrc, callback) {
     var doctor = new Doctor();
     doctor.doctor_name = docName;
     doctor.doctor_intro = docIntro;
     doctor.doctor_advanced_illness_name = goods;
-
+    doctor.doctor_imgsrc = doc_imgsrc;
     var query = {"hospital_dept._id": dept_id};
     var options = {"hospital_dept.$": 1};
     //save the objectid to dept

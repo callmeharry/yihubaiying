@@ -22,7 +22,7 @@
 						<h4 class="modal-title">新增医生</h4>
 					</div>
 					<div class="modal-body">
-						<form class="input-group col-md-8" action="/admin/addDoctor" method="post">
+						<form class="input-group col-md-8" action="/admin/addDoctor" enctype="multipart/form-data"  method="post">
 							<input type="hidden" id="dept_id" name="dept_id" value="<%= hospital.dept_id %>"/>
 							<div class="input-group">
 								<span class="input-group-addon">医生姓名</span>
@@ -59,7 +59,6 @@
 					<tr>
 						<th>医生ID</th>
 						<th>医生姓名</th>
-						<th>医生图片</th>
 						<th>医生简介</th>
 						<th>擅长项目</th>
 						<th>出诊信息</th>
@@ -72,7 +71,6 @@
 					<tr>
 						<td><%= hospital.doctors[i]._id %></td>
 						<td><%= hospital.doctors[i].doc_name %></td>
-						<td><img src="#"></td>
 						<td><%= hospital.doctors[i].doc_intro %></td>
 						<td><%= hospital.doctors[i].good_illness%></td>
 						<% var url = '/admin/callInfo/?doc_id='+hospital.doctors[i]._id; %>

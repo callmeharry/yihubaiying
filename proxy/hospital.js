@@ -15,7 +15,7 @@ var eventproxy = require('eventproxy');
  * @param callback
  */
 exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospitalLocation,
-                                hospitalTel, hospitalWeight, callback) {
+                                hospitalTel, hospitalWeight,hos_imgsrc, callback) {
 
     var hospital = new Hospital();
     hospital.hospital_name = hospitalName;
@@ -25,6 +25,7 @@ exports.newHospital = function (hospitalName, hospitalIntro, hospitalCity, hospi
     hospital.hospital_tel = hospitalTel;
     hospital.hospital_is_validated = true;
     hospital.hospital_weight = hospitalWeight;
+    hospital.hospital_imgsrc = hos_imgsrc;
     hospital.save(callback);
     //console.log('new hospital' + hospitalName + hospitalIntro + hospitalCity);
 };

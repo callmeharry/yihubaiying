@@ -43,6 +43,21 @@ router.get('/mobile/book/finishbook', mobileBook.finishBook);
 router.get('/mobile/book/diseases', mobileBook.showDiseases);
 router.get('/mobile/book/departmentlist', mobileBook.showDepartmentList);
 
+//mobile personInfo
+router.get('/mobile/person/info',auth.UserRequired, user.showPersonInfo);
+router.get('/person/order',auth.UserRequired, user.showMyOrder);
+
+router.get('/mobile/person/info/alterPass',auth.UserRequired, user.showchangePass);
+router.post('/mobile/person/info/alterPass',auth.UserRequired,user.changepassword);
+router.get('/mobile/person/info/alterEmail',auth.UserRequired, user.showChangeEmail);
+router.post('/mobile/person/info/alterEmail', user.changeEmail);
+router.get('/mobile/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
+router.post('/mobile/person/info/alterPhone',user.changePhoneNumber);
+router.get('/mobile/person/myOrder', auth.UserRequired, user.showMyOrder);
+router.get('/mobile/person/myFavourite',auth.UserRequired,user.showFavorite);
+router.get('/mobile/person/feedback',auth.UserRequired,user.showFeedback);
+router.post('/mobile/person/feedback',user.submitFeedback);
+
 //PC Home page
 router.get('/', mobileIndex.showIndex);
 
@@ -121,7 +136,7 @@ router.post('/admin/modifyHos',admin.modifyHosInter);
 router.post('/admin/dropHos',admin.dropHosInter);
 router.post('/admin/modifyDept',admin.modifyDept);
 router.post('/admin/dropDept',admin.dropDept);
-router.post('/admin/addDoctor',admin.addDoctorInter);
+router.post('/admin/addDoctor',admin.addDoctor);
 router.post('/admin/modifyDoc',admin.modifyDocInter);
 router.post('/admin/dropDoctor',admin.dropDoctorInter);
 router.post('/admin/replyFeedback',admin.replyFeedbackInter);
@@ -135,5 +150,9 @@ router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
 router.get('/sms', sms.registerVerify);
 router.get('/include-test', include.do);
+
+//test upload file
+router.get('/test/upload',admin.showUpload);
+router.post('/test/upload',admin.testUpload);
 
 module.exports = router;
