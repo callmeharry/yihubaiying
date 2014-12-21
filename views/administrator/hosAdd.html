@@ -14,7 +14,7 @@
 		</nav>
 
 	  	<div class="panel-body col-md-offset-3 col-md-5" id="hosAdd">
-			<form id="hosaddform" method="post" action="/admin/hosAdd">
+			<form id="hosaddform" method="post" action="/admin/hosAdd" enctype="multipart/form-data">
 		  		<ul class="list-group">
 				  <li class="list-group-item">
 				  	<div class="input-group">
@@ -54,9 +54,18 @@
 								   btvd-class='btvdclass' btvd-err="必须输入数字！" >
 						</div>
 					</li>
+					<li class="list-group-item">
+						<div class="input-group">
+							<span class="input-group-addon">医院图片</span>
+							<input type="file" class="form-control" name="hos_img" onchange="previewImage(this)">
+						</div>
+						<div id="preview">
+							<img id="imghead" width="202px" height="157px" border=0 alt="医院图片">
+						</div>
+					</li>
 				</ul>
 				
-				<div class="col-md-4">
+				<div class="col-md-5">
 				  	<button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
 					<input type="submit" class="btn btn-primary" value="完成"/>
 				</div>
