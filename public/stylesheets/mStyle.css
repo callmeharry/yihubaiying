@@ -68,7 +68,21 @@
 	color: gray;
 }
 
-/**********************************************************mGallery.html*/
+/************************************************************mCitySelect.html*/
+.cityBlock{
+	font-size: 2em !important;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	text-align: center;
+}
+.panel h5{
+	height: 25px;
+	line-height: 25px;
+	background-color: #C9C9C9;
+}
 
-.doctor{
-	text-align:center;
+.cityTable{
+	width: 100% !important;
+	text-align: center;
+	font-size: 15px;
+}

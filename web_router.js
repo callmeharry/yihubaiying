@@ -17,19 +17,21 @@ var include = require('./test/test_include');
 var auth = require('./middlewares/auth');
 //get controllers
 var index = require('./test/index');
+var authCode = require('./middlewares/tool').getAuthCode;
+var search = require('./controllers/search');
 
-
+//search page
+router.post('/searchresult',search.handleSearch);
+router.post('/mobile/searchresult',search.handleSearch);
 //Mobile home page
 router.get('/mobile', mobileIndex.showIndex);//show mobile index page
 
 //Mobile register page
 router.get('/mobile/register', mobileRegister.showRegister);//show mobile register page
-router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
 router.post('/mobile/register', mobileRegister.handleRegister);//handle register info
 
 //Mobile login logout page
 router.get('/mobile/login', mobileLoginLogout.showLogin);
-router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/mobile/login', mobileLoginLogout.handleLogin);
 router.get('/mobile/logout', mobileLoginLogout.handleLogout);
 
@@ -43,23 +45,48 @@ router.get('/mobile/book/finishbook', mobileBook.finishBook);
 router.get('/mobile/book/diseases', mobileBook.showDiseases);
 router.get('/mobile/book/departmentlist', mobileBook.showDepartmentList);
 
+//mobile personInfo
+router.get('/mobile/person/info',auth.UserRequired, user.showPersonInfo);
+router.get('/person/order',auth.UserRequired, user.showMyOrder);
+
+router.get('/mobile/person/info/alterPass',auth.UserRequired, user.showchangePass);
+router.post('/mobile/person/info/alterPass',auth.UserRequired,user.changepassword);
+router.get('/mobile/person/info/alterEmail',auth.UserRequired, user.showChangeEmail);
+router.post('/mobile/person/info/alterEmail', user.changeEmail);
+router.get('/mobile/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
+router.post('/mobile/person/info/alterPhone',user.changePhoneNumber);
+router.get('/mobile/person/myOrder', auth.UserRequired, user.showMyOrder);
+router.get('/mobile/person/myFavourite',auth.UserRequired,user.showFavorite);
+router.get('/mobile/person/feedback',auth.UserRequired,user.showFeedback);
+router.post('/mobile/person/feedback',user.submitFeedback);
+
 //PC Home page
 router.get('/', mobileIndex.showIndex);
 
 //PC register page
 router.get('/register', mobileRegister.showRegister);//show pc register page
-router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
+router.post('/mobile/generateAuthCode', authCode);//generate a 6-digit auth code
 router.post('/register', mobileRegister.handleRegister);//handle register info
 
 //pc login logout page
 router.get('/login', mobileLoginLogout.showLogin);
-router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
 //PC personal center
-router.get('/personalCenter/personInfo',auth.UserRequired, user.showPersonInfo);
+router.get('/person/info',auth.UserRequired, user.showPersonInfo);
+router.get('/person/order',auth.UserRequired, user.showMyOrder);
 
+router.get('/person/info/alterPass',auth.UserRequired, user.showchangePass);
+router.post('/person/info/alterPass',auth.UserRequired,user.changepassword);
+router.get('/person/info/alterEmail',auth.UserRequired, user.showChangeEmail);
+router.post('/person/info/alterEmail', user.changeEmail);
+router.get('/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
+router.post('/person/info/alterPhone',user.changePhoneNumber);
+router.get('/person/myOrder', auth.UserRequired, user.showMyOrder);
+router.get('/person/myFavourite',auth.UserRequired,user.showFavorite);
+router.get('/person/feedback',auth.UserRequired,user.showFeedback);
+router.post('/person/feedback',user.submitFeedback);
 
 //pc book page
 router.get('/book/hospitals', mobileBook.showHospital);
@@ -110,7 +137,7 @@ router.post('/admin/modifyHos',admin.modifyHosInter);
 router.post('/admin/dropHos',admin.dropHosInter);
 router.post('/admin/modifyDept',admin.modifyDept);
 router.post('/admin/dropDept',admin.dropDept);
-router.post('/admin/addDoctor',admin.addDoctorInter);
+router.post('/admin/addDoctor',admin.addDoctor);
 router.post('/admin/modifyDoc',admin.modifyDocInter);
 router.post('/admin/dropDoctor',admin.dropDoctorInter);
 router.post('/admin/replyFeedback',admin.replyFeedbackInter);
@@ -124,5 +151,9 @@ router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
 router.get('/sms', sms.registerVerify);
 router.get('/include-test', include.do);
+
+//test upload file
+router.get('/test/upload',admin.showUpload);
+router.post('/test/upload',admin.testUpload);
 
 module.exports = router;

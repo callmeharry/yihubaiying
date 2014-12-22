@@ -45,13 +45,29 @@ exports.getOrderInfo = getOrderInfo;
 /**
  * 供医院处理订单
  * 对应YHBY-504
- * Todo：对需求文档有疑问
  * @param req
  * @param res
  * @param next
  */
-var handleOrder = function (req, res, next) {
+var confirmOrder = function (req, res, next) {
+    var hosId = req.query.ak;
+    var orderId = req.query.oID;
 
+    HospitalProxy.getHospitalByHospitalId(hosId, function (err) {
+        if (err) {
+            return callback(err);
+        } else {
+            var query = {id: orderId};
+
+            OrderProxy.getOrderByQuery(query, {}, function (err, order) {
+                if (err) {
+                    return res.send('处理订单时出错');
+                } else {
+                    order.update(query, {$set: {'order_if_finished': true}});
+                }
+            });
+        }
+    });
 };
 
-exports.handleOrder = handleOrder;
+exports.confirmOrder = confirmOrder;

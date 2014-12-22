@@ -143,6 +143,12 @@ exports.addHos = function (req, res, next) {
     var hos_location = validator.trim(req.body.hos_location);
     var hos_tel = validator.trim(req.body.hos_tel);
     var hos_weight = validator.trim(req.body.hos_weight);
+
+    if(req.files.hos_img.name)
+        var hos_img=  "/uploads/"+ req.files.hos_img.name;
+    else
+        hos_img = "/images/defaultHos.jpg";
+
     console.log(hos_name + " " + hos_intro + " " + hos_city + " " + hos_location + " hehe");
 
     var ep = new eventproxy();
@@ -159,7 +165,7 @@ exports.addHos = function (req, res, next) {
     }
 
     Hospital.newHospital(hos_name, hos_intro, hos_city,
-        hos_location, hos_tel, hos_weight, function (err) {
+        hos_location, hos_tel, hos_weight,hos_img, function (err) {
             if (err)
                 return next(err);
             console.log("save hospital successfully");
@@ -237,7 +243,7 @@ exports.docInfo = function (req, res, next) {
     //dept_id
     var dept_id = validator.trim(req.query.dept_id) || req.session.dept_id || '';
     req.session.dept_id = dept_id;
-    console.log(dept_id);
+    console.log(dept_id+ "test!");
     var limit = config.page_limit;
 
     var proxy = new eventproxy();
@@ -253,7 +259,8 @@ exports.docInfo = function (req, res, next) {
         res.render('administrator/docInfo', {
             page: 1,
             pages: 1,
-            hospital: hospital
+            hospital: hospital,
+            hospital_name:req.session.hosName
         });
     });
 
@@ -510,16 +517,22 @@ exports.dropDept = function (req, res, next) {
 
 //add doctorInter
 
-exports.addDoctorInter = function (req, res, next) {
+exports.addDoctor = function (req, res, next) {
     var dept_id = req.body.dept_id;
     var doc_name = validator.trim(req.body.doc_name);
     var doc_intro = validator.trim(req.body.doc_intro);
     var good_illness = validator.trim(req.body.good_illness);
     console.log(req.body);
-    Doctor.newAndSaveDoctor(dept_id, doc_name, doc_intro, good_illness, function (err) {
-        if (err) return next(err);
+    console.log(req.files);
+    if(req.files.doc_img)
+        var doc_imgsrc = "/uploads/"+req.files.doc_img.name;
+    else
+        doc_imgsrc = '/images/docDefault.png';
 
-        res.send({"status": 0});
+    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness,doc_imgsrc, function (err) {
+        if (err) return next(err);
+        console.log("shhaaa!");
+        res.redirect('/admin/docInfo');
 
     });
 
@@ -671,8 +684,17 @@ exports.modifyDocVisitIntern = function(req, res, next){
         res.send({status:0});
     });
 
-
-
-
-
 };
+
+exports.showUpload = function(req, res ,next){
+    res.render('test/test');
+};
+var multer = require('multer');
+
+exports.testUpload = function(req, res, next){
+    console.log(req.body);
+    console.log(req.files);
+
+    res.redirect('/test/upload');
+};
+

@@ -1,3 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-1.11.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/javascripts/admin.js"></script>
+    <script src="/js/image.js"></script>
+    <title>AdminSys</title>
+</head>
+<body>
 <header>
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,7 +39,12 @@
                 <li role="presentation"><a href="/admin/exceptionManage">异常管理</a></li>
             </ul>
 
-            <p class="navbar-text navbar-right">欢迎，管理员 <a id="logout" href="javascript:void(0)" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" data-content='<a href="adminLogin.html">退出</a>'>Admin</a></p>
+            <p class="navbar-text navbar-right">
+                欢迎，管理员
+                <a id="logout" href="javascript:void(0)" class="navbar-link" tabindex="0" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="bottom" data-content='<a id="test" href="adminLogin.html">退出</a>'>
+                    Admin
+                </a>
+            </p>
         </div><!-- /.navbar-collapse -->
     </nav>
 </header>

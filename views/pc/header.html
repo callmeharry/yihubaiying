@@ -1,38 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="logo-th logo col-xs-6">
+            医呼百应网上预约挂号平台
+        </div>
+        <!--搜索框-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>医呼百应网上预约挂号平台</title>
+    <!-- 引入 Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/javascripts/pc/login.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
 <header>
     <!--网页头部-->
-    <table class="head-table">
-        <tr>
-            <th class="logo-th">
-                <!--Logo-->
-                <div class="logo">
-                    <h1>医呼百应网上预约挂号平台</h1>
-                </div>
-            </th>
-            <th>
-                <form>
-                    <!--搜索框-->
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
-                        <span class="input-group-btn">
-                           <button class="btn search-button" type="button">
-                               &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                           </button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
-                </form>
-            </th>
-        </tr>
-    </table>
-    <!--导航栏-->
-    <nav class="navbar navbar-default head-navbar my-bar" role="navigation">
-        <div>
-            <ul class="nav navbar-nav">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">按医院找</a></li>
-                <li><a href="#">按科室找</a></li>
-                <li><a href="#">按疾病找</a></li>
-            </ul>
+    <div class="container">
+        <div class="row">
+            <div class="logo-th logo col-xs-6">
+                医呼百应网上预约挂号平台
+            </div>
+            <!--搜索框-->
+
+        <div class="input-group col-xs-6">
+            <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
+                  <span class="input-group-btn">
+                     <button class="btn search-button" type="button">
+                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
+                     </button>
+                  </span>
         </div>
-    </nav>
-</header>
+        <!-- /input-group -->
+    </div>
+</div>
+
+<!--导航栏-->
+<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="/book/hospitals">按医院找</a></li>
+            <li><a href="/book/departmentlist">按科室找</a></li>
+            <li><a href="/book/diseases">按疾病找</a></li>
+        </ul>
+    </div>
+</nav>

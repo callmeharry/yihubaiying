@@ -2,8 +2,8 @@
 	text-align: center !important;
 }
 .o-team-person table{
-	width:100%;
-	table-layout:fixed;
+	width:100% !important;
+	table-layout:fixed !important;
 }
 .hospitalPic{
 	height: 150%;
@@ -20,7 +20,7 @@ article{
 }
 article h2{
 	font-family: "微软雅黑";
-	font-size: 1.5em;
+	font-size: 2em;
 	font-weight: bold;
 	color: #0066FF;
 }

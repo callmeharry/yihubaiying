@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/Order.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
 
@@ -26,15 +27,16 @@
     <%- include mLoggedIn.html %>
     <% } %>
 
+
     <div id="content">
         <% for(var i = 0; i < doctor.length; i++) {%>
         <article>
-            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id%>">
-                <div class="PicDiv">
+            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">
+                <div style="float: left; width: 85px">
                     <img class="hospitalPic" src="doctor[i].imgsrc">
                 </div>
                 <div class="InfoDiv">
-                    <h2 id="doctorName_id" name="doctorName"><%= doctor[i].name%></h2>
+                    <span id="doctorName_id" name="doctorName"><%= doctor[i].name%></span>
 
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">是否出诊：</span>
@@ -52,8 +54,7 @@
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">好评数：</span>
                         <span id="acceptedOrderNumber_id"
-                              name="acceptedOrderNumber"><%= doctor[i].goodReputation%></span>/<span
-                            id="totalOrderNumber_id" name="totalOrderNumber">16</span>
+                              name="acceptedOrderNumber"><%= doctor[i].goodReputation%></span>
                     </div>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">医生简介：</span>
@@ -66,7 +67,11 @@
                 </div>
             </a>
         </article>
-        <% } %>
+
+
+
+
+  <% } %>
     </div>
 </div>
 </body>

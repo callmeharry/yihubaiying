@@ -9,34 +9,56 @@ var User = require('../proxy').User;
 var Order = require('../proxy').Order;
 var Feedback = require('../proxy').Feedback;
 var validator = require('validator');
+var tool = require('../middlewares/tool');
 
 exports.showPersonInfo = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user = req.session.user;
+    console.log("hehe"+user);
 
-    User.getUserById(user_id, function (user) {
-        res.render('pc/personal_info', {user: user});
+
+    User.getUserById(user._id, function (err,user) {
+        if(err) return next(err);
+        res.render('pc/personal_info', {user: user,
+            register_time:tool.formatDate(user.register_time)});
     });
 };
 
-exports.changepassword = function (req, res, next) {
-    var old_password = validator.trim(req.body.old_password);
-    var new_password = validator.trim(req.body.new_password);
-    var user_id = req.session.user_id;
+exports.showchangePass = function(req,res,next){
+    var user = req.session.user;
+    return res.render('pc/modify_password',{user:user});
+};
 
-    User.getUserById(user_id, function (user) {
+exports.changepassword = function (req, res, next) {
+    var old_password = validator.trim(req.body.oldPassword);
+    var new_password = validator.trim(req.body.newPassword);
+    var confirm_password = validator.trim(req.body.confirmPassword);
+    var current_user = req.session.user;
+
+    if(confirm_password != new_password)
+    {
+        console.log('test!');
+        return res.render('pc/modify_password',{error:"the new password is not the same!",
+            user:current_user});
+    }
+
+
+
+
+    User.getUserById(current_user._id, function (err,user) {
         if (user.password !== old_password)
-            return res.render('pc/modify_password', {error: "old password is not correct!"});
+            return res.render('pc/modify_password', {error: "old password is not correct!",
+                user:current_user});
         user.password = new_password;
         user.save(function (err) {
             if (err) return next(err);
-            return res.redirect('/personInfo');
+            return res.redirect('/person/info');
         });
 
     });
 };
 
 exports.changeCity = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var newCity = validator.trim(req.body.newCity);
 
     User.getUserById(user_id, function (user) {
@@ -49,37 +71,52 @@ exports.changeCity = function (req, res, next) {
     });
 };
 
+exports.showChangePhone = function(req, res, next){
+    res.render('pc/modify_phonenumber',{
+        user:req.session.user
+    });
+};
+
 exports.changePhoneNumber = function (req, res, next) {
-    var user_id = req.sesssion.user_id;
+    var current_user = req.session.user;
     var newPhoneNumber = req.body.newPhoneNumber || '';
 
     if (newPhoneNumber !== '')
         return res.send({status: -1, msg: "failed"});
 
-    User.getUserById(user_id, function (user) {
+    User.getUserById(current_user._id, function (user) {
         user.phone_number = newPhoneNumber;
         user.save(function (err) {
             if (err) return res.send({status: -1, msg: "failed"});
 
-            return res.rend({status: 0});
+            return res.send({status: 0});
         });
     });
 
 };
 
+exports.showChangeEmail = function(req, res, next){
+    res.render('pc/modify_email',{
+        user:req.session.user
+    });
+};
+
+
 exports.changeEmail = function (req, res, next) {
-    var user_id = req.session.user_id;
-    var newEmail = validator(req.body.newEmail);
+    var user = req.session.user;
+    var newEmail = validator.trim(req.body.newEmail)||'';
+    console.log("test!");
 
-    if (newEmail !== '')
-        res.send({status: 0, msg: "can not be null"});
-
-    User.getUserById(user_id, function (user) {
+    if (newEmail === '')
+        res.send('pc/modify_email',{error:"the mail should not be null"});
+    console.log("shit!1");
+    User.getUserById(user._id, function (err, user) {
         user.email = newEmail;
-        user.save(function (err) {
-            if (err) return res.send({status: 0, msg: "can not be null"});
-
-            res.send({status: 0});
+        console.log("shit!2");
+        user.save(function (errs) {
+            if (errs) return next(err);
+            console.log("shit!");
+            res.redirect('/person/info');
         });
 
     });
@@ -92,17 +129,20 @@ exports.changeEmail = function (req, res, next) {
  * @param next
  */
 exports.showMyOrder = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user = req.session.user;
 
     var proxy = new eventproxy();
     proxy.fail(next);
 
-    Order.getOrderByQuery({user_id: user_id}, {sort: "-order_time"}, proxy.done('orders', function (orders) {
+    Order.getOrderByQuery({user_id: user._id}, {sort: "-order_time"}, proxy.done('orders', function (orders) {
         return orders;
     }));
 
     proxy.all('orders', function (orders) {
-        return res.render('pc/my_order', orders);
+        return res.render('pc/my_order', {
+            orders:orders,
+            user:user
+        });
     });
 };
 
@@ -115,31 +155,54 @@ exports.showMyOrder = function (req, res, next) {
  */
 
 exports.showFavorite = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user = req.session.user;
     var proxy = new eventproxy;
     proxy.fail(next);
 
-    User.getUserById(user_id, proxy.done('user', function (user) {
+    User.getUserById(user._id, proxy.done('user', function (user) {
         return user;
     }));
 
     proxy.all('user', function (user) {
-        res.render('pc/my_favorite', {
-            favorite_hospital: user.favourite_hospital,
-            favorite_doctor: user.favourite_doctor
+        res.render('pc/my_favourite', {
+           user:user
         });
     });
 
 };
 
+exports.getMyFeedbacks = function(req, res, next){
+    var user = req.session.user;
+    Feedback.getFeedbackByQuery({sender_id:user._id,fdType:1},{},function(err,feedbacks){
+        if(err) return next(err);
+        res.render('',{
+            feedbacks:feedbacks
+        });
+
+
+    });
+
+
+
+};
+
+
+exports.showFeedback=  function(req, res, next){
+    var user = req.session.user;
+    res.render('pc/feedback',{
+        user:user
+    });
+
+}
+
 exports.submitFeedback = function (req, res, next) {
     var content = validator.trim(req.body.content);
-    var user_id = req.session.user_id;
+    var user =req.session.user;
 
-    Feedback.newAndSave(content, 1, user_id, function (err) {
+    Feedback.newAndSave(content, 1, user._id, function (err) {
         if (err) next(err);
 
-        res.send({status: 0});
+        res.redirect('/person/info');
     });
 
 }
@@ -147,7 +210,7 @@ exports.submitFeedback = function (req, res, next) {
 //Ajax interface for order operation
 
 exports.judgeOrder = function (req, res, next) {
-    var user_id = req.session.user_id;
+    var user_id = res.cookies.user_id;
     var order_id = req.body.order_id;
     var good_or_bad = req.body.good_or_bad;  // type  boolean
     var content = validator.trim(req.body.content);
@@ -169,4 +232,3 @@ exports.dropOrder = function (req, res, next) {
     });
 
 };
-

@@ -1,19 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<script src="/javascripts/admin.js"></script>
-	<style type="text/css">
-		.navbar-default{margin:0px;}
-		.breadcrumb{margin:0px;}
-	</style>
-	<title>AdminSys</title>
-</head>
-<body>
-	<%- include header.html%>
+<%- include header.html%>
 	<div class="panel panel-default" id="hosInfoManage">
 		<%- include hosbar.html%>
 
@@ -23,6 +8,7 @@
 					<tr>
 						<th>医院ID</th>
 						<th>医院名称</th>
+						<th>医院图片</th>
 						<th>医院简介</th>
 						<th>所在城市</th>
 						<th>详细地址</th>
@@ -38,6 +24,7 @@
 					<tr>
 						<td><%= hospitals[i]._id%></td>
 						<td><%= hospitals[i].hospital_name%></td>
+						<td><img src="<%=hospitals[i].hospital_imgsrc%>" alt="" width="30px" height="25px"/></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#infoModal<%= i %>">
 							  查看详细信息
@@ -83,6 +70,10 @@
 									  <span class="input-group-addon">医院名称</span>
 									  <input type="text" class="form-control" id="hos_name" name="hos_name" placeholder="医院名称" value="<%= hospitals[i].hospital_name%>">
 								    </div>
+									<div class="input-group">
+										<span class="input-group-addon">医院图片</span>
+										<input type="file" class="form-control" name="hos_img" onchange="previewImage(this)">
+									</div>
 								    <div class="input-group">
 									  <span class="input-group-addon">医院简介</span>
 									  <textarea class="form-control" id="hos_intro" name="hos_intro" cols="30" rows="10"><%= hospitals[i].hospital_intro%></textarea>

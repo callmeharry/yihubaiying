@@ -7,6 +7,7 @@
    <link href="/dist/css/common.css" rel="stylesheet">
    <script src="/dist/scripts/jquery.min.js"></script>
    <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
+   <link href="/css/index_tourist.css" rel="stylesheet">
    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
    <meta name="description" content=""/>
    <meta name="keywords" content=""/>
@@ -66,7 +67,7 @@
 
       <div class="col-xs-9">
          <!--右侧面板-->
-         <div class="panel panel-info panel-right">
+         <div class="panel panel-primary panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方名字-->
                选择科室
@@ -97,44 +98,101 @@
                </div>
                <br>
                <div class="row text-left" style="margin-left:2px">
-                  <h4>开放预约科室</h4>
+                  <h4><b>选择日期时间</b></h4>
                </div>
                <table class="table table-bordered table-striped">
                   <tbody>
                   <tr>
-                     <td rowspan="2">内科</td>
-                     <td><a href="#">过敏反应科</a></td>
-                     <td>干一科</td>
-                     <td>呼吸内科</td>
-                     <td>内分泌科</td>
+                     <td>上午</td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[0]%>"/><%= hospital.dateList[0]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[2]%>"/><%= hospital.dateList[2]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[4]%>"/><%= hospital.dateList[4]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[6]%>"/><%= hospital.dateList[6]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[8]%>"/><%= hospital.dateList[8]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[10]%>"/><%= hospital.dateList[10]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[12]%>"/><%= hospital.dateList[12]%></td>
+                     <td rowspan="2"><input type="radio"  name="Date" value="no" checked/>任意时间</td>
                   </tr>
                   <tr>
-                     <td>神经科</td>
-                     <td>肾脏科</td>
-                     <td></td>
-                     <td></td>
-                  </tr>
-                  <tr>
-                     <td rowspan="2">外科</td>
-                     <td>肛肠科</td>
-                     <td>泌尿科</td>
-                     <td>乳腺科</td>
-                     <td>细胞移植科</td>
-                  </tr>
-                  <tr>
-                     <td>神经创伤科</td>
-                     <td>普通外科</td>
-                     <td>胸外科</td>
-                     <td>烧伤整形科</td>
+                     <td>下午</td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[1]%>"/><%= hospital.dateList[1]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[3]%>"/><%= hospital.dateList[3]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[5]%>"/><%= hospital.dateList[5]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[7]%>"/><%= hospital.dateList[7]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[9]%>"/><%= hospital.dateList[9]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[11]%>"/><%= hospital.dateList[11]%></td>
+                     <td><input type="radio" name="Date" value="<%= hospital.dateList[13]%>"/><%= hospital.dateList[13]%></td>
                   </tr>
                   </tbody>
                </table>
+               <div class="row text-left" style="margin-left:2px">
+                  <h4><b>开放预约科室</b></h4>
+               </div>
+               <% for(var i = 0; i < hospital.departments.length; i++) { %>
+               <div class="row text-left" style="margin-left:20px">
+                  <h4><%= hospital.departments[i].name %></h4>
+               </div>
+               <table width="700px">
+                  <tr>
+                     <% for(var j = 0; j< hospital.departments[i].subDepartments.length; j++) { %>
+                     <td width="200px">
+                        <a href="#" name="/book/doctors?departmentid=<%= hospital.departments[i].subDepartments_id[j] %>&hospitalid=<%= hospital._id%>&date=" onclick="showDoctors(this)">
+                           <%= hospital.departments[i].subDepartments[j] %></a></td>
+                        <% if (hospital.departments[i].subDepartments.length == 1) {%>
+                           <td width="200px"></td>
+                           <td width="200px"></td>
+                        <% } %>
+                        <% if(hospital.departments[i].subDepartments.length == 2 && j == 1) {%>
+                           <td width="200px"></td>
+                        <% } %>
+                     <% if( (j+1) % 3 == 0 || j == hospital.departments[i].subDepartments.length - 1)
+                     { %>
+                  </tr>
+                  <% if( j < hospital.departments[i].subDepartments.length - 1) { %>
+                  <tr>
+                     <% } %>
+                     <% } %>
+                     <% } %>
+               </table>
+               <% } %>
             </div>
          </div>
       </div>
    </div>
 </div>
-
-
+<script>
+   function showDoctors(a){
+      var date = document.getElementsByName("Date");
+      var date_item;
+      var num;
+      for(var i = 0; i < date.length; i++ ) {
+         if (date.item(i).checked) {
+            date_item = date.item(i).getAttribute("value");
+            num = i - 1;
+            break;
+         }
+      };
+      switch(num){
+         case -1:num = 0;break;
+         case 0:num = 2;break;
+         case 1:num = 4;break;
+         case 2:num = 6;break;
+         case 3:num = 8;break;
+         case 4:num = 10;break;
+         case 5:num = 12;break;
+         case 6:num = -1;break;
+         case 7:num = 1;break;
+         case 8:num = 3;break;
+         case 9:num = 5;break;
+         case 10:num = 7;break;
+         case 11:num = 9;break;
+         case 12:num = 11;break;
+         case 13:num = 13;break;
+         default :num = 11;
+      }
+      var href = a.name + date_item + '&datenum=' + num;
+      window.location.href=href;
+   }
+</script>
 </body>
 </html>

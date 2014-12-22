@@ -4,7 +4,7 @@ function requestAuthCode(button) {
     time(button);
     xmlHttp = GetXmlHttpObject();
 
-    var url = "/mobile/generateAuthCodeL";
+    var url = "/mobile/generateAuthCode";
     xmlHttp.open("POST", url, true);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.send();
@@ -93,4 +93,15 @@ function showPasswordLengthWarning()
         document.getElementById('id_warning').style.display = "none";
         return true;
     }
+}
+function showAuthCode(button)
+{
+	if (showPhoneWarning())
+	{
+		requestAuthCode(button);
+	}
+	else
+	{
+		alert("请先修改手机号格式！");
+	}
 }

@@ -5,7 +5,15 @@
     <title></title>
 </head>
 <body>
-<p><%= error %></p>
-<%- include test_include.html%>
+<form method = "post" action="/test/upload" enctype="multipart/form-data" >
+
+    <input type="text" name="username" />
+    <input type="password" name="password"/>
+    <input type="file" name="thumbnail"/>
+    <input type="submit" value="register"/>
+
+</form>
+<img src="/uploads/1419158001367.png"/>
+
 </body>
 </html>

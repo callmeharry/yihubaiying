@@ -6,6 +6,7 @@
 var user = require('../proxy/user');
 var randomNum = "";// 验证码
 var tool = require('../middlewares/tool');
+var authMiddleWare = require('../middlewares/auth');
 /**
  * 显示注册页面
  * @param req
@@ -13,13 +14,10 @@ var tool = require('../middlewares/tool');
  */
 exports.showRegister = function (req, res) {
     console.log('register');
-    var username = req.cookies.username;
-    if (username == null)
-        username = "undefined";
     if (tool.getDeviceType(req.url))
-        res.render('mobile/mRegister', {username: username, title: '医呼百应:注册'});
+        res.render('mobile/mRegister', {title: '医呼百应:注册', error:''});
     else
-        res.render('pc/register', {username: username});
+        res.render('pc/register', {error:''});
 };
 
 /**
@@ -41,25 +39,44 @@ exports.handleRegister = function (req, res, next) {
     var city = req.body.city;
     var name = req.body.name;
     var authCode = req.body.auth_code;
+    var realAuthCode = global.authCode;
+
     console.log(phoneNumber);
-    if (!(authCode == randomNum)) {
-        res.send('error_auth_code');
+    console.log(global.authCode);
+    if (!(authCode == realAuthCode)) {
+        if (tool.getDeviceType(req.url))
+            res.render('mobile/mRegister', {title: '医呼百应:注册', error:'验证码错误'});
+        else
+            res.render('pc/register', {error:'验证码错误'});
         return;
     }
     user.getOneUserByPhoneNumber(phoneNumber, function (err, users) {
         if (users != null) {
-            res.send('Used phone number.');
+            if (tool.getDeviceType(req.url))
+                res.render('mobile/mRegister', {title: '医呼百应:注册', error:'此电话号码(' +phoneNumber + ')已被使用'});
+            else
+                res.render('pc/register', {error:'此电话号码(' +phoneNumber + ')已被使用'});
             return;
         }
-        user.newAndSave(phoneNumber, socialNumber, password, city, name, function (err) {
-            if (err) {
-                res.send(err.message);
-                return;
-            }
-            if (tool.getDeviceType(req.url))
-            return res.redirect('/mobile');
-            else
-                return res.redirect('/');
+        user.getUserByQuery({social_number:socialNumber},{},function(err, users2){
+           if(users2[0] != null){
+               if (tool.getDeviceType(req.url))
+                   res.render('mobile/mRegister', {title: '医呼百应:注册', error:'此身份证号码(' + socialNumber + ')已被使用'});
+               else
+                   res.render('pc/register', {error:'此身份证号码(' + socialNumber + ')已被使用'});
+               return;
+           }
+            user.newAndSave(phoneNumber, socialNumber, password, city, name, function (err, verifiedUser) {
+                if (err) {
+                    next();
+                    return;
+                }
+                authMiddleWare.genSession(verifiedUser, req, res);
+                if (tool.getDeviceType(req.url))
+                    return res.redirect('/mobile');
+                else
+                    return res.redirect('/');
+            });
         });
     });
 };

@@ -10,7 +10,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var router = require('./web_router');
-
+var multer = require('multer');
 var passport = require('passport');
 var lodash = require('lodash');
 var csurf = require('csurf');
@@ -48,6 +48,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(multer({
+    dest: './public/uploads',
+    rename: function (fieldname, filename) {
+        return Date.now();
+    }
+}));
+
 
 //url settings
 app.use('/', router);

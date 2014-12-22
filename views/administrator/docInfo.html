@@ -1,25 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<script src="/javascripts/admin.js"></script>
-	<style type="text/css">
-		.navbar-default{margin:0px;}
-		.breadcrumb{margin:0px;}
-	</style>
-	<title>AdminSys</title>
-</head>
-<body>
-	<%- include header.html%>
+<%- include header.html%>
+<style type="text/css">
+	.breadcrumb{margin:0px;}
+</style>
 	<div class="panel panel-default" id="hosInfoManage">
 		<%- include hosbar.html%>
 
 		<ol class="breadcrumb">
 			<% var url = '/admin/deptInfo/?hos_id='+hospital.hospital_id; %>
-			<li><a href="<%= url%>"><%= hospital.hospital_name %></a></li>
+			<li><a href="<%= url%>"><%= hospital_name %></a></li>
 			<li class="active"><a href="#"><%= hospital.dept_name %></a></li>
 		</ol>
 
@@ -34,7 +22,7 @@
 						<h4 class="modal-title">新增医生</h4>
 					</div>
 					<div class="modal-body">
-						<form class="input-group col-md-8" action="/admin/addDoctor">
+						<form class="input-group col-md-8" id="add" action="/admin/addDoctor" enctype="multipart/form-data"  method="post">
 							<input type="hidden" id="dept_id" name="dept_id" value="<%= hospital.dept_id %>"/>
 							<div class="input-group">
 								<span class="input-group-addon">医生姓名</span>
@@ -47,6 +35,13 @@
 							<div class="input-group">
 								<span class="input-group-addon">擅长项目</span>
 								<input type="text" class="form-control" id="good_illness" name="good_illness" placeholder="擅长项目">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">医生图片</span>
+								<input type="file" class="form-control" name="doc_img" onchange="previewImage(this)">
+							</div>
+							<div id="preview">
+								<img id="imghead" width="202px" height="157px" border=0 alt="医院图片">
 							</div>
 							<button type="submit" class="btn btn-default">新增</button>
 							<button type="reset" class="btn btn-primary">重置</button>
@@ -64,6 +59,7 @@
 					<tr>
 						<th>医生ID</th>
 						<th>医生姓名</th>
+						<th>医生图片</th>
 						<th>医生简介</th>
 						<th>擅长项目</th>
 						<th>出诊信息</th>
@@ -76,6 +72,7 @@
 					<tr>
 						<td><%= hospital.doctors[i]._id %></td>
 						<td><%= hospital.doctors[i].doc_name %></td>
+						<td><img src="<%=hospital.doctors[i].doc_imgsrc%>" alt="" width="30" height="25"/></td>
 						<td><%= hospital.doctors[i].doc_intro %></td>
 						<td><%= hospital.doctors[i].good_illness%></td>
 						<% var url = '/admin/callInfo/?doc_id='+hospital.doctors[i]._id; %>
@@ -94,7 +91,7 @@
 								  <h4 class="modal-title" id="myModalLabel"><%= hospital.doctors[i].doc_name %></h4>
 						      </div>
 						      <div class="modal-body">
-						        <form class="input-group" action="/admin/modifyDoc">
+						        <form class="input-group modify" action="/admin/modifyDoc" >
 									<input type="hidden" id="mdoc_id" name="doc_id" value="<%= hospital.doctors[i]._id %>"/>
 								  <div class="input-group">
 									  <span class="input-group-addon">医生姓名</span>
@@ -108,6 +105,10 @@
 									  <span class="input-group-addon">擅长项目</span>
 									  <input type="text" class="form-control" id="ngood_illness" name="good_illness" value="<%= hospital.doctors[i].good_illness %>" placeholder="擅长项目">
 								  </div>
+									<div class="input-group">
+										<span class="input-group-addon">医生图片</span>
+										<input type="file" class="form-control" name="doc_img">
+									</div>
 								  <button type="submit" class="btn btn-default">修改</button>
 								  <button type="reset" class="btn btn-primary">重置</button>
 								</form>
@@ -148,9 +149,9 @@
 			}) %>
 	  	</div>
 	</div>
-	<script language="javascript">
+	<script>
 		$(document).ready(function() {
-			$('form').submit(function() {
+			$('form.modify').submit(function() {
 				$.post($(this).attr('action'),$(this).serialize(),function(result) {
 					if (result.status == 0) {
 						window.location.reload();

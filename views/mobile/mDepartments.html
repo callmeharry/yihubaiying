@@ -5,16 +5,16 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
 
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
 
 
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
     
 </head>
 
@@ -43,7 +43,7 @@
                     <tr>
                         <td><strong>地址：</strong></td>
                         <td><span id="id_hospitalAddress"
-                                  name="hospitalAddress"><%= hospital.hospital_location %></span></td>
+                                  name="hospitalAddress"><%= hospital.hospital_address %></span></td>
                     </tr>
                     <tr>
                         <td><strong>电话：</strong></td>
@@ -62,71 +62,71 @@
                         <td><span>17:00</span></td>
                     </tr>
                     <tr>
-                        <td><strong>成功预约数</strong></td>
+                        <td><strong>成功预约数：</strong></td>
                         <td><span><%= hospital.hospital_order_count %></span></td>
                     </tr>
-
+                    <tr>
+                        <td><strong>医院简介：</strong></td>
+                        <td><span>医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介。</span></td>
+                    </tr>
+                    <input type="hidden" value="no" id="date">
                 </table>
             </div>
         </article>
 
         <div>
-            <table style="width:100%;">
+            <table>
                 <col width="50"/>
                 <col width="50"/>
                 <tr>
-                    <td colspan="2"><input name="Date" type="radio" value="" checked />不选择时间</td>
+                    <td colspan="2"><input name="Date" type="radio" value="no" checked />不选择时间</td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月19日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月19日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[0]%>" /><%= hospital.dateList[0]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[1]%>" /><%= hospital.dateList[1]%></td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月20日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月20日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[2]%>" /><%= hospital.dateList[2]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[3]%>" /><%= hospital.dateList[3]%></td>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月21日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月21日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[4]%>" /><%= hospital.dateList[4]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[5]%>" /><%= hospital.dateList[5]%></td>
                 </tr>
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月22日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月22日下午</td>
-                </tr>
-
-                <tr>
-                    <td><input name="Date" type="radio" value="" />12月23日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月23日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[6]%>" /><%= hospital.dateList[6]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[7]%>" /><%= hospital.dateList[7]%></td>
                 </tr>
 
                 <tr>
-                    <td><input name="Date" type="radio" value="" />12月24日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月24日下午</td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[8]%>" /><%= hospital.dateList[8]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[9]%>" /><%= hospital.dateList[9]%></td>
+                </tr>
+
+                <tr>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[10]%>" /><%= hospital.dateList[10]%></td>
+                    <td><input name="Date" type="radio" value="<%= hospital.dateList[11]%>" /><%= hospital.dateList[11]%></td>
                 </tr>
                 <tr>
-                     <td><input name="Date" type="radio" value="" />12月25日上午</td>
-                     <td><input name="Date" type="radio" value="" />12月25日下午</td>
-                </tr>
-                <tr>
-                    <td><input name="Date" type="radio" value="" />12月26日上午</td>
-                    <td><input name="Date" type="radio" value="" />12月26日下午</td>
+                     <td><input name="Date" type="radio" value="<%= hospital.dateList[12]%>" /><%= hospital.dateList[12]%></td>
+                     <td><input name="Date" type="radio" value="<%= hospital.dateList[13]%>" /><%= hospital.dateList[13]%></td>
                 </tr>
             </table>
         </div>
 
         <div class="o-team">
             <div class="o-team-person">
-                <% for(var i = 0; i < hospital.middleDepartments.length; i++) { %>
-                <h3><%= hospital.middleDepartments[i].name %></h3>
-                <table>
+                <% for(var i = 0; i < hospital.departments.length; i++) { %>
+                <h3 style="font-size:2em !important;"><%= hospital.departments[i].name %></h3>
+                <table style="width:100% !important;">
                     <tr>
-                        <% for(var j = 0; j< hospital.middleDepartments[i].smallDepartments.length; j++) { %>
+                        <% for(var j = 0; j< hospital.departments[i].subDepartments.length; j++) { %>
                         <td>
-                            <a href="/mobile/book/doctors?departmentid=<%= hospital.middleDepartments[i].smallDepartments[j]._id %>&hospitalid=<%= hospital._id%>"><%=
-                                hospital.middleDepartments[i].smallDepartments[j].name %></a></td>
-                        <% if( (j+1) % 3 == 0 || j == hospital.middleDepartments[i].smallDepartments.length - 1)
+                            <a href="#" name="/mobile/book/doctors?departmentid=<%= hospital.departments[i].subDepartments_id[j] %>&hospitalid=<%= hospital._id%>&date=" onclick="showDoctors(this)">
+                                <%= hospital.departments[i].subDepartments[j] %></a></td>
+                        <% if( (j+1) % 3 == 0 || j == hospital.departments[i].subDepartments.length - 1)
                         { %>
                     </tr>
-                    <% if( j < hospital.middleDepartments[i].smallDepartments.length - 1) { %>
+                    <% if( j < hospital.departments[i].subDepartments.length - 1) { %>
                     <tr>
                         <% } %>
                         <% } %>
@@ -138,5 +138,21 @@
     </div>
     <!-- Menu navigation -->
 </div>
+<script>
+    function showDoctors(a){
+        var date = document.getElementsByName("Date");
+        var date_item;
+        var num;
+        for(var i = 0; i < date.length; i++ ) {
+            if (date.item(i).checked) {
+                date_item = date.item(i).getAttribute("value");
+                num = i - 1;
+                break;
+            }
+        };
+        var href = a.name + date_item + '&datenum=' + num;
+        window.location.href=href;
+    }
+</script>
 </body>
 </html> 

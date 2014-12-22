@@ -24,17 +24,15 @@
         <div id="Gallery">
             <div class="gallery-row">
                 <div class="mobile-two">
-                    <% for(var i = 0; i < time.length; i++) { %>
+                    <% for(var i = 0; i < list.length; i++) { %>
                     <div class="gallery-item big-item">
-                        <a href="/mobile/book/confirmbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= time[i].date %>&time=<%= time[i].time %>">
-                            <div class="dateWindow canBeOrdered">
-                                <span><%= time[i].date %></span>
+                        <a href="/mobile/book/confirmbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&time=<%= list[i].time %>&datenum=<%= list[i].datenum %>">
+                            <div class="dateWindow <%= list[i].available %>">
+                                <span>时间:<%= list[i].time %></span>
                                 <br/>
-                                <span><%= time[i].weekOfDay %></span>
+                                <span>费用:<%= list[i].fee %></span>
                                 <br/>
-                                <span><%= time[i].time %></span>
-                                <br/>
-                                <span><%= time[i].source %></span>
+                                <span>剩余号源:<%= list[i].source %></span>
                             </div>
                         </a>
                     </div>

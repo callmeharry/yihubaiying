@@ -7,6 +7,7 @@
    <link href="/dist/css/common.css" rel="stylesheet">
    <script src="/dist/scripts/jquery.min.js"></script>
    <script src="/dist/js/bootstrap.min.js"></script>
+   <link href="/css/index_tourist.css" rel="stylesheet">
    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
    <meta name="description" content=""/>
    <meta name="keywords" content=""/>
@@ -45,10 +46,10 @@
 <nav class="navbar navbar-default head-navbar my-bar" role="navigation">
    <div>
       <ul class="nav navbar-nav">
-         <li><a href="#">首页</a></li>
-         <li><a href="#">按医院找</a></li>
-         <li><a href="#">按科室找</a></li>
-         <li><a href="#">按疾病找</a></li>
+         <li><a href="/">首页</a></li>
+         <li class="active"><a href="/book/hospitals">按医院找</a></li>
+         <li><a href="/book/departmentlist">按科室找</a></li>
+         <li><a href="/book/diseases">按疾病找</a></li>
       </ul>
    </div>
 </nav>
@@ -66,7 +67,7 @@
       </div>
       <div class="col-xs-9">
          <!--右侧面板-->
-         <div class="panel panel-info panel-right">
+         <div class="panel panel-primary panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方名字-->
                选择医院

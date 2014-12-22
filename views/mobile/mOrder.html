@@ -32,10 +32,6 @@
                 <col width="25%">
                 <col width="75%">
                 <tr>
-                    <td><strong>订单编号:</strong></td>
-                    <td><span><%= order._id %></span></td>
-                </tr>
-                <tr>
                     <td><strong>挂号医院:</strong></td>
                     <td><span><%= order.hospital %></span></td>
                 </tr>
@@ -66,7 +62,7 @@
             </table>
         </div>
         <div style="text-align:center;">
-            <a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&date=<%= date %>&time=<%= time %>"
+            <a href="/mobile/book/finishbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&time=<%= order.see_time %>$datenum=<%= datenum %>"
                class="o-buttons b-big blue">确认订单</a>
         </div>
     </div>

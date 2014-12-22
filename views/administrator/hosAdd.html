@@ -1,24 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<script src="/javascripts/admin.js"></script>
-	<script src="/javascripts/bt-validate.js"></script>
-	<script type="text/javascript">
-		$('#hosaddform').validation();
-	</script>
-	<style type="text/css">
-		.navbar-default{margin:0px;}
-		.subpanel{display:none;}
-		.breadcrumb{margin:0px;}
-	</style>
-	<title>AdminSys</title>
-</head>
-<body>
-	<%- include header.html%>
+<%- include header.html%>
 	<div class="panel panel-default" id="hosInfoManage">
 	  	<div class="panel-heading">
 	    	<h2 class="panel-title">医院信息管理</h2>
@@ -34,7 +14,7 @@
 		</nav>
 
 	  	<div class="panel-body col-md-offset-3 col-md-5" id="hosAdd">
-			<form id="hosaddform" method="post" action="/admin/hosAdd">
+			<form id="hosaddform" method="post" action="/admin/hosAdd" enctype="multipart/form-data">
 		  		<ul class="list-group">
 				  <li class="list-group-item">
 				  	<div class="input-group">
@@ -74,9 +54,18 @@
 								   btvd-class='btvdclass' btvd-err="必须输入数字！" >
 						</div>
 					</li>
+					<li class="list-group-item">
+						<div class="input-group">
+							<span class="input-group-addon">医院图片</span>
+							<input type="file" class="form-control" name="hos_img" onchange="previewImage(this)">
+						</div>
+						<div id="preview">
+							<img id="imghead" width="202px" height="157px" border=0 alt="医院图片">
+						</div>
+					</li>
 				</ul>
 				
-				<div class="col-md-4">
+				<div class="col-md-5">
 				  	<button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
 					<input type="submit" class="btn btn-primary" value="完成"/>
 				</div>

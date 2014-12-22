@@ -5,25 +5,27 @@
     <title>注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css">
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
-
-    <script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
+    
+    <script type="text/javascript" src="../../public/javascripts/idchecked.js"></script>
+    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
     <script type="text/javascript"
             src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     <script src="js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="../../javascripts/idchecked.js"></script>
     <script type="text/javascript">
         function showWarning() {
             element = document.getElementById('id_passWord').value;
@@ -48,12 +50,9 @@ function commit()
 		}
   
 }
-
         function showWarning1() {
             element = document.getElementById('id_repeat_passWord').value;
             element1 = document.getElementById('id_passWord').value;
-
-
             if (element != element1) {
                 //alert(document.getElementById("id_warning").innerHTML);
                 document.getElementById('id_repeat_warning').style.display = "";
@@ -62,7 +61,6 @@ function commit()
                 document.getElementById('id_repeat_warning').style.display = "none";
             }
         }
-
         function showWarning2() {
             element = document.getElementById('id_phoneNumber').value;
             l = element.length;
@@ -86,7 +84,9 @@ function commit()
 <form action="/mobile/register" method="post" id="register_form">
     <div class="row" align="center" style="margin-top:30px;">
         <div class="large-12 columns" align="center">
-            <input id="id_idNumber" name="social_number" type="text" placeholder="身份证号"/>
+            <span id="error" name="error" style=" color:#DD2427;"><%= error %></span>
+            <input id="id_idNumber" name="social_number" type="text" placeholder="身份证号" onchange="scCard()"/>
+            <span id="id_idNumber_errorTips"></span>
         </div>
     </div>
 
@@ -143,9 +143,17 @@ function commit()
             <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">手机输入有误</span>
         </div>
     </div>
+<<<<<<< HEAD
      <div class="row" style="margin-top:20px;">
         <div style="width:30%; float:left; margin-left:12px;" >
             <input type="text" name="auth_code" placeholder="输入验证码" >
+=======
+    <div class="row">
+
+        <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
+            <input type="text" placeholder="验证码" name="auth_code">
+            <span id="id_authcode_no_phone" name="authcode_warning" style="display:none; color:#DD2427;">请输入正确的手机号,再请求验证码</span>
+>>>>>>> FETCH_HEAD
         </div>
         <div   style="float:right; width:30%; margin-right:70px;" >
             <button type="button"  style="background-color:#587eac;border-radius:5px; font-size:12px; width:130px;" onclick="requestAuthCode(this)">获取验证码
@@ -156,8 +164,15 @@ function commit()
 
 
     <div  align="center" style="margin-top:40px;">
+<<<<<<< HEAD
         <input type="hidden" name="previousUrl" value="<%= previousurl %>">
         <button type="submit"  name="post" value="true"  style="background-color:#587eac; width:80px; border-radius:5px; font-size:12px;">确定</button>
+=======
+        <input type="hidden" id="authCode">
+        <input type="submit" name="submit_button" value="提交" onclick="commit()"
+               style="background-color:#587eac; height:40px; width:80px; color:#F0F0F0;">
+
+>>>>>>> FETCH_HEAD
     </div>
 
 </form>
@@ -170,18 +185,26 @@ function commit()
 <script>
     var xmlHttp;
     var remainingTime = 60;
+    var authCode;
     function requestAuthCode(button) {
-        time(button);
-        xmlHttp = GetXmlHttpObject();
-        if (xmlHttp == null) {
-            alert('您的浏览器不支持AJAX！');
-            return;
+        showWarning2();
+        if(document.getElementById('id_phone_warning').style.display == ""){
+            document.getElementById('id_authcode_no_phone').style.display = "";
+        }else{
+            document.getElementById('id_authcode_no_phone').style.display = "none";
+            time(button);
+            xmlHttp = GetXmlHttpObject();
+            if (xmlHttp == null) {
+                alert('您的浏览器不支持AJAX！');
+                return;
+            }
+            var url = "/mobile/generateAuthCode";
+            xmlhttp.open("POST", url, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+            xmlHttp.onreadystatechange = getOkPost;//发送事件后，收到信息了调用函数
         }
-        var url = "/mobile/generateAuthCode";
-        xmlhttp.open("POST", url, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
-        xmlHttp.onreadystatechange = getOkPost;//发送事件后，收到信息了调用函数
+
     }
     function time(button) {
         if (remainingTime == 0) {
@@ -214,7 +237,6 @@ function commit()
         }
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             var d = xmlHttp.responseText; // 返回值
-            // 处理返回值
         }
     }
 </script>

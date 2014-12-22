@@ -5,18 +5,53 @@
 
 var models = require('../models');
 var Order = models.Order;
-var Hospital = require('../proxy').Hospital;
-var Doctor = require('../proxy').Doctor;
+var Hospital = require('../models').Hospital;
+var Doctor = require('../models').Doctor;
 var eventproxy = require('eventproxy');
-exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, time, seeTime, callback) {
+
+exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, seeTime, dateNum, callback) {
+    var proxy = new eventproxy();
+    proxy.fail(callback);
+
     var order = new Order();
     order.hospital_id = hospitalId;
     order.dept_id = departmentId;
     order.doctor_id = doctorId;
     order.user_id = userId;
-    order.order_time = time;
+    order.order_time = new Date();
     order.order_see_time = seeTime;
-    order.save(callback);
+
+    order.save(proxy.done(function(){
+        proxy.emit("order");
+    }));
+    var today = new Date();
+    var weekOfTomorrow = today.getDay() + 1;
+    var index = (2*weekOfTomorrow+dateNum<14)?(2*weekOfTomorrow+dateNum):(2*weekOfTomorrow+dateNum-14);
+
+
+    var ups = {"$inc":{"hospital_order_count":1}};
+    Hospital.update({_id:hospitalId},ups,proxy.done(function(){
+        proxy.emit('hospital');
+
+    }));
+
+
+
+    Doctor.findOne({_id:doctorId},function(err, doctor){
+        if(err) return callback(err);
+        console.log(dateNum);
+        console.log(index);
+        doctor.doctor_visit[index].leftSource = doctor.doctor_visit[index].leftSource -1;
+        doctor.save(proxy.done(function(){
+            proxy.emit('doctor');
+        }));
+
+    });
+
+    proxy.all('doctor','hospital','order',function(){
+        callback(null);
+    });
+
 };
 
 exports.addComment = function (orderId, goodOrBad, content, callback) {
@@ -54,7 +89,7 @@ exports.getOrderByQuery = function (query, opt, callback) {
                 var user_id = orders[i].user_id;
                 fit_orders.push(orders[i]);
 
-                Hospital.getDeptDotctors(dept_id, proxy.done(function (hospital) {
+                Hospital.getDeptDoctors(dept_id, proxy.done(function (hospital) {
                     fit_orders[i].hospital_name = hospital.hospital_name;
                     fit_orders[i].dept_name = hospital.dept_name;
                     proxy.emit('updates');
