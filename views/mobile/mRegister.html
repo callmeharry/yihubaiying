@@ -114,10 +114,10 @@ function commit()
         </div>
     </div>
 
-    <div class="row" align="center" style="margin-top:20px;">
-        <div class="large-12 columns" align="center">
+    <div  class="row" align="center" style="margin-top:20px;">
+        <div name="city" class="large-12 columns" align="center">
 
-            <select name="city">
+            <select style="font-size:13px; height:35px; font-color:#C0C0C0;>
                 <option value="0" selected>现居城市</option>
                 <option value="北京">北京</option>
                 <option value="天津">天津</option>
@@ -143,15 +143,20 @@ function commit()
             <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">手机输入有误</span>
         </div>
     </div>
+<<<<<<< HEAD
+     <div class="row" style="margin-top:20px;">
+        <div style="width:30%; float:left; margin-left:12px;" >
+            <input type="text" name="auth_code" placeholder="输入验证码" >
+=======
     <div class="row">
 
         <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
             <input type="text" placeholder="验证码" name="auth_code">
             <span id="id_authcode_no_phone" name="authcode_warning" style="display:none; color:#DD2427;">请输入正确的手机号,再请求验证码</span>
+>>>>>>> FETCH_HEAD
         </div>
-       
-        <div>
-        <button type="button"  style="margin-top:18px; background-color:#587eac; width:90px; margin-left:15px; color:#F0F0F0;" onclick="requestAuthCode(this)" >获取验证码
+        <div   style="float:right; width:30%; margin-right:70px;" >
+            <button type="button"  style="background-color:#587eac;border-radius:5px; font-size:12px; width:130px;" onclick="requestAuthCode(this)">获取验证码
         </button>
         </div>
 
@@ -159,10 +164,15 @@ function commit()
 
 
     <div  align="center" style="margin-top:40px;">
+<<<<<<< HEAD
+        <input type="hidden" name="previousUrl" value="<%= previousurl %>">
+        <button type="submit"  name="post" value="true"  style="background-color:#587eac; width:80px; border-radius:5px; font-size:12px;">确定</button>
+=======
         <input type="hidden" id="authCode">
         <input type="submit" name="submit_button" value="提交" onclick="commit()"
                style="background-color:#587eac; height:40px; width:80px; color:#F0F0F0;">
 
+>>>>>>> FETCH_HEAD
     </div>
 
 </form>
