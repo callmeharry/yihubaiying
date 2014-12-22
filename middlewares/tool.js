@@ -34,4 +34,14 @@ exports.getDateByNum = function(num){
     var new_date = new Date();
     new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * (Math.floor(num / 2 + 1)));
     return (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日' + ' ';
-}
+};
+
+exports.getAuthCode = function (req, res) {
+    //authMiddleWare.genAuthCode();
+    var randomNumLogin = '';
+    for (var i = 0; i < 6; ++i) {
+        randomNumLogin += Math.floor(Math.random() * 10);
+    }
+    console.log(randomNumLogin);
+    global.authCode = randomNumLogin;
+};

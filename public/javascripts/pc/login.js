@@ -4,7 +4,7 @@ function requestAuthCode(button) {
     time(button);
     xmlHttp = GetXmlHttpObject();
 
-    var url = "/mobile/generateAuthCodeL";
+    var url = "/mobile/generateAuthCode";
     xmlHttp.open("POST", url, true);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.send();

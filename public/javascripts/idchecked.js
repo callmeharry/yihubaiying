@@ -5,7 +5,7 @@ function scCard(){
     if(!checkCard(scCard)){
       $("#id_idNumber_errorTips").html("身份证号码错误");
     }else{
-    $("#errorTips").html("");
+    $("#id_idNumber_errorTips").html("");
     }
   }
   return false;

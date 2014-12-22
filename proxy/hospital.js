@@ -84,7 +84,13 @@ exports.getCountByQuery = function (query, callback) {
     Hospital.count(query, callback);
 };
 
-
+exports.addOneOrder = function(hospitalId, callback){
+    Hospital.find({_id:hospitalId}, function(hospital){
+        console.log(hospital);
+        var newCount = parseInt(hospital.hospital_order_count) + 1;
+        Hospital.update({_id:hospitalId},{$set:{hospital_order_count:newCount}},callback);
+    });
+}
 exports.getHospitalsByQuery = function (query, opt, callback) {
     Hospital.find(query, '', opt, callback);
 };

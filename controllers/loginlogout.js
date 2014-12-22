@@ -19,26 +19,16 @@ exports.showLogin = function (req, res) {
     var url2 = req.url;
     console.log(url2);
     console.log('mobile_login');
-    var username = req.cookies.username;
-    if (username == null)
-        username = "undefined";
     if (tool.getDeviceType(req.url))
-        res.render('mobile/mLogin', {previousurl: url, username: username, title: '医呼百应:登录'});
+        res.render('mobile/mLogin', {previousurl: url,title: '医呼百应:登录', error:''});
     else
-        res.render('pc/login', {previousurl: url, username: username});
+        res.render('pc/login', {previousurl: url, error:''});
 };
 
 /**
  * 获取验证码
  */
-exports.getAuthCode = function (req, res) {
-    //authMiddleWare.genAuthCode();
-    randomNumLogin = '';
-    for (var i = 0; i < 6; ++i) {
-        randomNumLogin += Math.floor(Math.random() * 10);
-    }
-    console.log(randomNumLogin);
-};
+
 
 /**
  * 处理用户登录
@@ -53,11 +43,19 @@ exports.handleLogin = function (req, res, next) {
     var phoneNumber = req.body.phoneNumber;
     var password = req.body.passWord;
     var authCode = req.body.auth_code;
+    var realAuthCode = global.authCode;
     console.log(phoneNumber + " " + password + " " + authCode + " " + randomNumLogin);
 
-    if (authCode != randomNumLogin) {
-        res.send('error_auth_code');
-        return;
+    if (authCode != realAuthCode) {
+        if (!tool.getDeviceType(req.url)) {
+            res.render('pc/login', {previousurl: url, error: '验证码错误'});
+        } else {
+            res.render('mobile/mLogin', {
+                previousurl: url,
+                title: '医呼百应:登录',
+                error: '验证码错误'
+            });
+        }
     }
 
     // 交给前端验证
@@ -67,8 +65,15 @@ exports.handleLogin = function (req, res, next) {
     //}
     User.getOneUserByPhoneNumber(phoneNumber, function (err, user) {
         if (user == null) {
-            res.send('user does not exist.');
-            return;
+            if (!tool.getDeviceType(req.url)) {
+                res.render('pc/login', {previousurl: url,error: '此手机号未被注册'});
+            } else {
+                res.render('mobile/mLogin', {
+                    previousurl: url,
+                    title: '医呼百应:登录',
+                    error: '此手机号未被注册'
+                });
+            }
         }
         User.getOneUserByPhoneNumberAndPassword(phoneNumber, password, function (err, verifiedUser) {
             if (err) {
@@ -76,7 +81,15 @@ exports.handleLogin = function (req, res, next) {
                 return;
             }
             if (!verifiedUser) {
-                res.send('error password');
+                if (!tool.getDeviceType(req.url)) {
+                    res.render('pc/login', {previousurl: url,error: '用户名与密码不匹配'});
+                } else {
+                    res.render('mobile/mLogin', {
+                        previousurl: url,
+                        title: '医呼百应:登录',
+                        error: '用户名与密码不匹配'
+                    });
+                }
                 return;
             }
             //authMiddleWare.genSession(verifiedUser,res);

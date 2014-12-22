@@ -17,19 +17,21 @@ var include = require('./test/test_include');
 var auth = require('./middlewares/auth');
 //get controllers
 var index = require('./test/index');
+var authCode = require('./middlewares/tool').getAuthCode;
+var search = require('./controllers/search');
 
-
+//search page
+router.post('/searchresult',search.handleSearch);
+router.post('/mobile/searchresult',search.handleSearch);
 //Mobile home page
 router.get('/mobile', mobileIndex.showIndex);//show mobile index page
 
 //Mobile register page
 router.get('/mobile/register', mobileRegister.showRegister);//show mobile register page
-router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
 router.post('/mobile/register', mobileRegister.handleRegister);//handle register info
 
 //Mobile login logout page
 router.get('/mobile/login', mobileLoginLogout.showLogin);
-router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/mobile/login', mobileLoginLogout.handleLogin);
 router.get('/mobile/logout', mobileLoginLogout.handleLogout);
 
@@ -63,12 +65,11 @@ router.get('/', mobileIndex.showIndex);
 
 //PC register page
 router.get('/register', mobileRegister.showRegister);//show pc register page
-router.post('/mobile/generateAuthCode', mobileRegister.getAuthCode);//generate a 6-digit auth code
+router.post('/mobile/generateAuthCode', authCode);//generate a 6-digit auth code
 router.post('/register', mobileRegister.handleRegister);//handle register info
 
 //pc login logout page
 router.get('/login', mobileLoginLogout.showLogin);
-router.post('/mobile/generateAuthCodeL', mobileLoginLogout.getAuthCode);
 router.post('/login', mobileLoginLogout.handleLogin);
 router.get('/logout', mobileLoginLogout.handleLogout);
 
