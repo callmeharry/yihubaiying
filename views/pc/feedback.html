@@ -28,7 +28,7 @@
                <!--上方导航栏-->
                问题反馈
             </div>
-            <form action="/person/feedback" method="post" >
+            <form action="/person/feedback" method="post">
             <div class="panel-body panel-body-center">
                <textarea class="form-control advice-textarea" cols="10" rows="10" placeholder="请写下您对于我们网站的建议" name = "content"></textarea>
             </div>
@@ -40,23 +40,5 @@
       </div>
    </div>
 </div>
-<script language="javascript">
-   $(document).ready(function() {
-      $('form').submit(function() {
-         $.post($(this).attr('action'),$(this).serialize(),function(result) {
-            if (result.status == 0) {
-               window.location.href="/person/info";
-            } else {
-               if (result.msg) {
-                  alert("提交失败");
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json')
-         return false;
-      });
-   });
-</script>
 </body>
 </html>

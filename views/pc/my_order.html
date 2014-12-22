@@ -57,7 +57,7 @@
                      <!-- Modal -->
                      <div class="modal fade" id="assessModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                           <form action="/person/assessOrder">
+                           <form action="/person/assessOrder" method="post">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -100,24 +100,6 @@
       </div>
    </div>
 </div>
-<script language="javascript">
-   $(document).ready(function() {
-      $('form').submit(function() {
-         $.post($(this).attr('action'),$(this).serialize(),function(result) {
-            if (result.status == 0) {
-               alert("评价成功");
-            } else {
-               if (result.msg) {
-                  alert("评价失败");
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json')
-         return false;
-      });
-   });
-</script>
 <script>
    $(document).ready(function() {
       $('button.del').click(function(){

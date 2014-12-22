@@ -63,23 +63,5 @@
         </div>
     </div>
 </div>
-<script language="javascript">
-    $(document).ready(function() {
-        $('form').submit(function() {
-            $.post($(this).attr('action'),$(this).serialize(),function(result) {
-                if (result.status == 0) {
-                    $('#success').removeClass('hide');
-                } else {
-                    if (result.msg) {
-                        $('#fail').removeClass('hide');
-                    } else {
-                        alert('服务器异常');
-                    }
-                }
-            },'json')
-            return false;
-        });
-    });
-</script>
 </body>
 </html>

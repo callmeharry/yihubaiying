@@ -55,7 +55,7 @@
    $(document).ready(function() {
       $('button.del').click(function(){
          var favourite_id = $(this).attr("id");
-         $.post("/personalCenter/DropFavourite",{"favourite_id":favourite_id},function(result)  {
+         $.post("/person/dropFavourite",{"favourite_id":favourite_id},function(result)  {
             if (result.status == 0) {
                window.location.reload();
             } else {
