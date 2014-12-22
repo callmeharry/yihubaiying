@@ -18,7 +18,7 @@
     <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
-<body class="o-page p-blog">
+<body class="o-page p-blog" onload="getCollectionState();">
 <div id="page">
 
     <% if(!username) { %>
@@ -29,15 +29,16 @@
 
 
     <div id="content">
+        <span style="display: none" id="id_hospitalId"><%= hospitalid %></span>
         <% for(var i = 0; i < doctor.length; i++) {%>
         <article>
-            <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">
+            <div>
                 <div style="float: left; width: 85px">
                     <img class="hospitalPic" src="doctor[i].imgsrc">
                 </div>
                 <div class="InfoDiv">
-                    <span id="doctorName_id" name="doctorName"><%= doctor[i].name%></span>
-
+                    <span id="doctorName_id" name="doctorName"><%= doctor[i].name %></span>
+                    <span style="display: none" name="id_doctorId"><%= doctor[i]._id %></span>
                     <div class="a-meta doctorInfoSytle">
                         <span class="doctorColumnHead">是否出诊：</span>
                         <span id="isOnDuty_id" name="isOnDuty"><%= doctor[i].isOnDuty%></span>
@@ -64,8 +65,12 @@
                         <span class="doctorColumnHead">医生专长：</span>
                         <span id="doctorSpecialty_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
                     </div>
+                    <button name="collection" style="background-color:#587eac; height:50px; width:80px;" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)">收藏</button>
+
+                    <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
                 </div>
-            </a>
+
+            </div>
         </article>
 
 
@@ -74,5 +79,63 @@
   <% } %>
     </div>
 </div>
+<script>
+    function getCollectionState(){
+        var user_id = getCookie('user_id');
+        var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+        var doctor_id = document.getElementsByName("id_doctorId");
+        for(var i = 0 ;i < doctor_id.length ; i++) {
+            $.post("/getdoctorcollectionstate", {
+                "user_id": user_id,
+                "hospital_id": hospital_id,
+                "doctor_id":doctor_id[i].innerHTML
+            }, function (result) {
+                if (result.status == 0) {
+                    document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+                } else {
+                    if (result.msg) {
+                        alert(result.msg);
+                    } else {
+                        alert('服务器异常');
+                    }
+                }
+            }, 'json');
+        }
+
+        return false;
+    }
+    function changeCollectionState(button){
+        var user_id = getCookie('user_id');
+        var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+        var doctor_id = button.id.split("_")[1];
+        alert(doctor_id);
+        $.post("/changedoctorcollectionstate", {
+            "user_id": user_id,
+            "hospital_id": hospital_id,
+            "doctor_id":doctor_id[i].innerHTML
+        }, function (result) {
+            if (result.status == 0) {
+                document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+            } else {
+                if (result.msg) {
+                    alert(result.msg);
+                } else {
+                    alert('服务器异常');
+                }
+            }
+        }, 'json');
+    }
+    function getCookie(objName){//获取指定名称的cookie的值
+        var arrStr = document.cookie.split("; ");
+        for(var i = 0;i < arrStr.length;i ++){
+            var temp = arrStr[i].split("=");
+            if(temp[0] == objName) {
+                var a = unescape(temp[1]);
+                var c = a.split("\"");
+                return c[1];
+            }
+        }
+    }
+</script>
 </body>
 </html> 

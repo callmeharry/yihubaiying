@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>医呼百应网上预约挂号平台</title>
+      <!-- 引入 Bootstrap -->
+      <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/css/common.css" rel="stylesheet">
+      <script src="/dist/scripts/jquery.min.js"></script>
+      <script src="/dist/bootstrap/bootstrap.min.js"></script>
+      <link href="/css/index_tourist.css" rel="stylesheet">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <!-- 移动设备优先 -->
+      <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+   </head>
+   
+
+   <body onload="getCollectionState()">
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="/dist/bootstrap/bootstrap.min.js"></script>
+
+      <div class="navbar-right" style="margin-right:0px">
+         <div class="dropdown">
+            <a href="#" tabindex="0" class="btn btn-xs btn-info change_city" role="button" data-toggle="dropdown">切换城市</a>
+            <ul class="dropdown-menu" role="menu">
+               <li>
+                  <a href="#" class="dropdown-toggle">北京</a>
+               </li>
+               <li>
+                  <a href="#" class="dropdown-toggle">上海</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <!--网页头部-->
+      <div class="container">
+          <div class="row">
+              <div class="logo-th logo col-xs-6">
+                      医呼百应网上预约挂号平台
+              </div>
+                  <!--搜索框-->
+                  
+                  <div class="input-group col-xs-6">
+                      <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
+                        <span class="input-group-btn">
+                           <button class="btn search-button" type="button">
+                               &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
+                           </button>
+                        </span>
+                  </div>
+                  <!-- /input-group -->
+          </div>
+      </div>
+      <!--导航栏-->
+      <nav class="navbar navbar-default head-navbar my-bar" role="navigation">
+          <div>
+              <ul class="nav navbar-nav">
+                  <li><a href="#">首页</a></li>
+                  <li><a href="#">按医院找</a></li>
+                  <li><a href="#">按科室找</a></li>
+                  <li><a href="#">按疾病找</a></li>
+              </ul>
+          </div>
+      </nav>
+
+      <!--中间部分-->
+      <div class="container">
+         <div class="row">
+            <div class="col-xs-3">
+               <!--左侧导航栏面板-->
+               <% if(!username) { %>
+               <%- include user_notloggedin.html %>
+               <% } else {%>
+               <%- include user_loggedin.html %>
+               <% } %>
+            </div>
+
+            <div class="col-xs-9">
+                <!--右侧面板--> 
+               <div class="panel panel-info panel-right">
+                  <div class="panel-heading panel-head-center">
+                     <!--上方名字-->
+                     选择医生
+                  </div>
+                  <div class="panel-body panel-body-center">
+                     <span style="display: none" id="id_hospitalId"><%= hospitalid %></span>
+                     <div class="list-group">
+                        <% for(var i = 0; i < doctor.length; i++) {%>
+                        <div class="list-group_item">
+                           <div class="row">
+                              <div class="col-md-2">
+                                 <img src="doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
+                              </div>
+                              <div class="col-md-10" style="text-align:left">
+                                 <table class="table">
+                                    <tbody>
+                                       <tr>
+                                          <td>医生姓名：<%= doctor[i].name%></td>
+                                          <td>医生专长：<%= doctor[i].advancedDisease%></td>
+                                          <td>医生简介：<%= doctor[i].intro%></td>
+                                       </tr>                                
+                                       <tr>
+                                          <td>是否出诊：<%= doctor[i].isOnDuty%></td>
+                                          <td>出诊时段，号源：
+                                             <% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
+                                             <%= doctor[i].timeAndSource[j].time %> &nbsp; <%= doctor[i].timeAndSource[j].source %>
+                                             <br/>
+                                             <% } %>
+                                          </td>
+                                       </tr>                                    
+                                       <tr>
+                                          <td>好评数  ：<%= doctor[i].goodReputation%></td>
+                                       </tr>               
+                                    </tbody>
+                                 </table>
+                                 <div style="display: inline">
+                                    <button name="collection" class="btn btn-default" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)">收藏</button>
+                                    <a href="/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <% } %>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script>
+         function getCollectionState(){
+            var user_id = getCookie('user_id');
+            var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+            var doctor_id = document.getElementsByName("id_doctorId");
+            for(var i = 0 ;i < doctor_id.length ; i++) {
+               $.post("/getdoctorcollectionstate", {
+                  "user_id": user_id,
+                  "hospital_id": hospital_id,
+                  "doctor_id":doctor_id[i].innerHTML
+               }, function (result) {
+                  if (result.status == 0) {
+                     document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+                  } else {
+                     if (result.msg) {
+                        alert(result.msg);
+                     } else {
+                        alert('服务器异常');
+                     }
+                  }
+               }, 'json');
+            }
+
+            return false;
+         }
+         function changeCollectionState(button){
+            var user_id = getCookie('user_id');
+            var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+            var doctor_id = button.id.split("_")[1];
+            alert(doctor_id);
+            $.post("/changedoctorcollectionstate", {
+               "user_id": user_id,
+               "hospital_id": hospital_id,
+               "doctor_id":doctor_id[i].innerHTML
+            }, function (result) {
+               if (result.status == 0) {
+                  document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+               } else {
+                  if (result.msg) {
+                     alert(result.msg);
+                  } else {
+                     alert('服务器异常');
+                  }
+               }
+            }, 'json');
+         }
+         function getCookie(objName){//获取指定名称的cookie的值
+            var arrStr = document.cookie.split("; ");
+            for(var i = 0;i < arrStr.length;i ++){
+               var temp = arrStr[i].split("=");
+               if(temp[0] == objName) {
+                  var a = unescape(temp[1]);
+                  var c = a.split("\"");
+                  return c[1];
+               }
+            }
+         }
+      </script>
+     
+
+   </body>
+</html>

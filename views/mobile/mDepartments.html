@@ -5,20 +5,20 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
 
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Departments.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
 
 
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     
 </head>
 
-<body class="o-page p-blog">
+<body class="o-page p-blog" onload="getCollectionState();">
 <div id="page">
 
     <% if(!username) { %>
@@ -34,6 +34,8 @@
             </div>
             <div class="hospitalName">
                 <h2><span id="id_hospitalName" name="hospitalName"><%= hospital.hospital_name %></span></h2>
+                <span style="display: none" id="id_hospitalId"><%= hospital._id %></span>
+                <button style="background-color:#587eac; height:50px; width:80px; display: none" id="collection" onclick="changeCollectionState()">收藏</button>
             </div>
 
             <div class="hospitalInfo">
@@ -67,7 +69,7 @@
                     </tr>
                     <tr>
                         <td><strong>医院简介：</strong></td>
-                        <td><span>医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介。</span></td>
+                        <td><span><%= hospital.hospital_intro%></span></td>
                     </tr>
                     <input type="hidden" value="no" id="date">
                 </table>
@@ -152,6 +154,52 @@
         };
         var href = a.name + date_item + '&datenum=' + num;
         window.location.href=href;
+    }
+    function getCollectionState(){
+        var user_id = getCookie('user_id');
+        var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+        if(user_id){
+            document.getElementById("collection").style.display = "";
+            $.post("/gethospitalcollectionstate",{"user_id":user_id,"hospital_id":hospital_id},function(result) {
+                if (result.status == 0) {
+                    window.location.reload();
+                } else {
+                    if (result.msg) {
+                        alert(result.msg);
+                    } else {
+                        alert('服务器异常');
+                    }
+                }
+            },'json');
+        }
+
+        return false;
+    }
+    function changeCollectionState(){
+        var user_id = getCookie('user_id');
+        var hospital_name = document.getElementById("id_hospitalName").innerHTML;
+        $.post("/changehospitalcollectionstate",{"user_id":user_id,"hospital_name":hospital_name},function(result) {
+            if (result.status == 0) {
+                window.location.reload();
+            } else {
+                if (result.msg) {
+                    alert(result.msg);
+                } else {
+                    alert('服务器异常');
+                }
+            }
+        },'json');
+    }
+    function getCookie(objName){//获取指定名称的cookie的值
+        var arrStr = document.cookie.split("; ");
+        for(var i = 0;i < arrStr.length;i ++){
+            var temp = arrStr[i].split("=");
+            if(temp[0] == objName) {
+                var a = unescape(temp[1]);
+                var c = a.split("\"");
+                return c[1];
+            }
+        }
     }
 </script>
 </body>

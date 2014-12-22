@@ -17,7 +17,7 @@
 </head>
 
 
-<body>
+<body onload="getCollectionState()">
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="/javascripts/js/jquery.min.js"></script>
 <!-- 包括所有已编译的插件 -->
@@ -94,6 +94,8 @@
                      <p class="text-muted">退号时间：就诊前一工作日15:00前取消</p>
 
                      <p class="text-muted">总预约量：<%= hospital.hospital_order_count %></p>
+                     <span style="display: none" id="id_hospitalId"><%= hospital._id %></span>
+                     <button class="btn btn-default" style=" display: none" id="collection" onclick="changeCollectionState()">收藏</button>
                   </div>
                </div>
                <br>
@@ -136,8 +138,8 @@
                   <tr>
                      <% for(var j = 0; j< hospital.departments[i].subDepartments.length; j++) { %>
                      <td width="200px">
-                        <a href="#" name="/book/doctors?departmentid=<%= hospital.departments[i].subDepartments_id[j] %>&hospitalid=<%= hospital._id%>&date=" onclick="showDoctors(this)">
-                           <%= hospital.departments[i].subDepartments[j] %></a></td>
+                        <span style="cursor: pointer" data-name="/book/doctors?departmentid=<%= hospital.departments[i].subDepartments_id[j] %>&hospitalid=<%= hospital._id%>&date=" onclick="showDoctors(this)">
+                           <%= hospital.departments[i].subDepartments[j] %></span></td>
                         <% if (hospital.departments[i].subDepartments.length == 1) {%>
                            <td width="200px"></td>
                            <td width="200px"></td>
@@ -190,8 +192,54 @@
          case 13:num = 13;break;
          default :num = 11;
       }
-      var href = a.name + date_item + '&datenum=' + num;
+      var href = a.getAttribute('data-name') + date_item + '&datenum=' + num;
       window.location.href=href;
+   }
+   function getCollectionState(){
+      var user_id = getCookie('user_id');
+      var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+      if(user_id){
+         document.getElementById("collection").style.display = "";
+         $.post("/gethospitalcollectionstate",{"user_id":user_id,"hospital_id":hospital_id},function(result) {
+            if (result.status == 0) {
+               window.location.reload();
+            } else {
+               if (result.msg) {
+                  alert(result.msg);
+               } else {
+                  alert('服务器异常');
+               }
+            }
+         },'json');
+      }
+
+      return false;
+   }
+   function changeCollectionState(){
+      var user_id = getCookie('user_id');
+      var hospital_name = document.getElementById("id_hospitalName").innerHTML;
+      $.post("/changehospitalcollectionstate",{"user_id":user_id,"hospital_name":hospital_name},function(result) {
+         if (result.status == 0) {
+            window.location.reload();
+         } else {
+            if (result.msg) {
+               alert(result.msg);
+            } else {
+               alert('服务器异常');
+            }
+         }
+      },'json');
+   }
+   function getCookie(objName){//获取指定名称的cookie的值
+      var arrStr = document.cookie.split("; ");
+      for(var i = 0;i < arrStr.length;i ++){
+         var temp = arrStr[i].split("=");
+         if(temp[0] == objName) {
+            var a = unescape(temp[1]);
+            var c = a.split("\"");
+            return c[1];
+         }
+      }
    }
 </script>
 </body>

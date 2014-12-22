@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>医呼百应网上预约挂号平台</title>
+        <!-- 引入 Bootstrap -->
+        <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/common.css" rel="stylesheet">
+        <link href="/css/index_tourist.css" rel="stylesheet">
+        <script src="/dist/scripts/jquery.min.js"></script>
+        <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
+        <script src= "/test/js/bootstrap-modal.js" ></script>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="description" content=""/>
+        <meta name="keywords" content=""/>
+        <!-- 移动设备优先 -->
+        <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    </head>
+<body>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="dist/js/bootstrap.min.js"></script>
+
+<!--网页头部-->
+<div class="container">
+    <div class="row">
+        <div class="logo-th logo col-xs-6">
+                医呼百应网上预约挂号平台
+        </div>
+            <!--搜索框-->
+            
+            <div class="input-group col-xs-6">
+                <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
+                  <span class="input-group-btn">
+                     <button class="btn search-button" type="button">
+                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
+                     </button>
+                  </span>
+            </div>
+            <!-- /input-group -->
+    </div>
+</div>
+
+<!--导航栏-->
+<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li><a href="/book/hospitals">按医院找</a></li>
+            <li><a href="/book/departmentlist">按科室找</a></li>
+            <li class="active"><a href="/book/diseases">按疾病找</a></li>
+        </ul>
+    </div>
+</nav>
+      <div class="row">
+         <div class="col-md-2"></div>
+         <div class="col-md-2 department-list">
+            <ul class="nav nav-pills nav-stacked" role="tablist">
+               <li role="presentation" class="active"><a href="#">内科</a></li>
+               <li role="presentation"><a href="#">外科</a></li>
+               <li role="presentation"><a href="#">妇产科</a></li>
+               <li role="presentation"><a href="#">生殖中心</a></li>
+               <li role="presentation"><a href="#">儿科</a></li>
+               <li role="presentation"><a href="#">骨外科</a></li>
+               <li role="presentation"><a href="#">眼科</a></li>
+               <li role="presentation"><a href="#">口腔科</a></li>
+            </ul>
+
+         </div>         
+         <div class="col-md-6">          
+          <div>
+            <h3>心血管内科</h3>
+          </div>
+          <table class="table table-bordered table-striped department-table">
+            <tbody>
+              <tr>
+                <td><a href="diseaseDetail.php?id=1">冠心病</a></td>
+                <td><a href="diseaseDetail.php?id=2">高血压</a></td>
+                <td><a href="diseaseDetail.php?id=3">心律失常</a></td>
+                <td><a href="diseaseDetail.php?id=4">房颤</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=5">阵发性室上性心动过速</a></td>
+                <td><a href="diseaseDetail.php?id=6">心衰</a></td>
+                <td><a href="diseaseDetail.php?id=7">心肌炎</a></td>
+                <td><a href="diseaseDetail.php?id=8">房间隔缺损</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=9">先天性心脏病</a></td>
+                <td><a href="diseaseDetail.php?id=10">心肌病</a></td>
+                <td><a href="diseaseDetail.php?id=11">风湿性心脏病</a></td>
+                <td><a href="diseaseDetail.php?id=12">心肌梗死</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=13">心绞痛</a></td>
+                <td><a href="diseaseDetail.php?id=14">急性感染性心内膜炎</a></td>
+                <td><a href="diseaseDetail.php?id=15">心肌缺血</a></td>
+                <td></td>
+              </tr>             
+            </tbody>
+          </table>
+          <div>
+            <h3>神经内科</h3>
+          </div>
+          <table class="table table-bordered table-striped department-table">
+            <tbody>
+              <tr>
+                <td><a href="diseaseDetail.php?id=16">脑梗塞</a></td>
+                <td><a href="diseaseDetail.php?id=17">癫痫</a></td>
+                <td><a href="diseaseDetail.php?id=18">头痛</a></td>
+                <td><a href="diseaseDetail.php?id=19">帕金森</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=20">头晕</a></td>
+                <td><a href="diseaseDetail.php?id=21">脑出血</a></td>
+                <td><a href="diseaseDetail.php?id=22">重症肌无力</a></td>
+                <td><a href="diseaseDetail.php?id=23">抑郁症</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=24">失眠</a></td>
+                <td><a href="diseaseDetail.php?id=25">脑供血不足</a></td>
+                <td><a href="diseaseDetail.php?id=26">脑炎</a></td>
+                <td><a href="diseaseDetail.php?id=27">多发性硬化</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=28">运动神经元病</a></td>
+                <td><a href="diseaseDetail.php?id=29">痴呆</a></td>
+                <td><a href="diseaseDetail.php?id=30">肌病</a></td>
+                <td><a href="diseaseDetail.php?id=31">脑血栓</a></td>
+              </tr>
+              <tr>
+                <td><a href="diseaseDetail.php?id=32">偏头痛</a></td>
+                <td><a href="diseaseDetail.php?id=33">脑栓塞</a></td>
+                <td></td>
+                <td></td>
+              </tr>         
+              
+              
+
+            </tbody>
+          </table>  
+         </div>
+
+
+         </div>  
+         <div class="col-md-2"></div>  
+
+      </div>
+         
+
+   </body>
+</html>
