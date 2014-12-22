@@ -54,7 +54,7 @@ exports.getOrderByQuery = function (query, opt, callback) {
                 var user_id = orders[i].user_id;
                 fit_orders.push(orders[i]);
 
-                Hospital.getDeptDotctors(dept_id, proxy.done(function (hospital) {
+                Hospital.getDeptDoctors(dept_id, proxy.done(function (hospital) {
                     fit_orders[i].hospital_name = hospital.hospital_name;
                     fit_orders[i].dept_name = hospital.dept_name;
                     proxy.emit('updates');

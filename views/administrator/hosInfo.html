@@ -8,6 +8,7 @@
 					<tr>
 						<th>医院ID</th>
 						<th>医院名称</th>
+						<th>医院图片</th>
 						<th>医院简介</th>
 						<th>所在城市</th>
 						<th>详细地址</th>
@@ -23,6 +24,7 @@
 					<tr>
 						<td><%= hospitals[i]._id%></td>
 						<td><%= hospitals[i].hospital_name%></td>
+						<td><img src="<%=hospitals[i].hospital_imgsrc%>" alt="" width="30px" height="25px"/></td>
 						<td>
 							<a href="#" data-toggle="modal" data-target="#infoModal<%= i %>">
 							  查看详细信息

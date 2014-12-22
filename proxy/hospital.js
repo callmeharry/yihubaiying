@@ -128,6 +128,7 @@ exports.getDeptDoctors = function (dept_id, callback) {
                         doc_intro: doctor.doctor_intro,
                         good_illness: doctor.doctor_advanced_illness_name,
                         _id: doc_id,
+                        doc_imgsrc:doctor.doctor_imgsrc,
                         doc_rep: doctor.doctor_good_reputation,
                         doc_visit: doctor.doctor_visit
                     });

@@ -13,7 +13,7 @@ var tool = require('../middlewares/tool');
 
 exports.showPersonInfo = function (req, res, next) {
     var user = req.session.user;
-    console.log("hehe");
+    console.log("hehe"+user);
 
 
     User.getUserById(user._id, function (err,user) {
@@ -31,10 +31,23 @@ exports.showchangePass = function(req,res,next){
 exports.changepassword = function (req, res, next) {
     var old_password = validator.trim(req.body.oldPassword);
     var new_password = validator.trim(req.body.newPassword);
+    var confirm_password = validator.trim(req.body.confirmPassword);
     var current_user = req.session.user;
+
+    if(confirm_password != new_password)
+    {
+        console.log('test!');
+        return res.render('pc/modify_password',{error:"the new password is not the same!",
+            user:current_user});
+    }
+
+
+
+
     User.getUserById(current_user._id, function (err,user) {
         if (user.password !== old_password)
-            return res.render('pc/modify_password', {error: "old password is not correct!"});
+            return res.render('pc/modify_password', {error: "old password is not correct!",
+                user:current_user});
         user.password = new_password;
         user.save(function (err) {
             if (err) return next(err);

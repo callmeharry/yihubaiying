@@ -22,7 +22,7 @@
 						<h4 class="modal-title">新增医生</h4>
 					</div>
 					<div class="modal-body">
-						<form class="input-group col-md-8" action="/admin/addDoctor" enctype="multipart/form-data"  method="post">
+						<form class="input-group col-md-8" id="add" action="/admin/addDoctor" enctype="multipart/form-data"  method="post">
 							<input type="hidden" id="dept_id" name="dept_id" value="<%= hospital.dept_id %>"/>
 							<div class="input-group">
 								<span class="input-group-addon">医生姓名</span>
@@ -59,6 +59,7 @@
 					<tr>
 						<th>医生ID</th>
 						<th>医生姓名</th>
+						<th>医生图片</th>
 						<th>医生简介</th>
 						<th>擅长项目</th>
 						<th>出诊信息</th>
@@ -71,6 +72,7 @@
 					<tr>
 						<td><%= hospital.doctors[i]._id %></td>
 						<td><%= hospital.doctors[i].doc_name %></td>
+						<td><img src="<%=hospital.doctors[i].doc_imgsrc%>" alt="" width="30" height="25"/></td>
 						<td><%= hospital.doctors[i].doc_intro %></td>
 						<td><%= hospital.doctors[i].good_illness%></td>
 						<% var url = '/admin/callInfo/?doc_id='+hospital.doctors[i]._id; %>
@@ -89,7 +91,7 @@
 								  <h4 class="modal-title" id="myModalLabel"><%= hospital.doctors[i].doc_name %></h4>
 						      </div>
 						      <div class="modal-body">
-						        <form class="input-group" action="/admin/modifyDoc">
+						        <form class="input-group" action="/admin/modifyDoc" id="modify" >
 									<input type="hidden" id="mdoc_id" name="doc_id" value="<%= hospital.doctors[i]._id %>"/>
 								  <div class="input-group">
 									  <span class="input-group-addon">医生姓名</span>
@@ -105,7 +107,7 @@
 								  </div>
 									<div class="input-group">
 										<span class="input-group-addon">医生图片</span>
-										<input type="file" class="form-control" name="doc_img" onchange="previewImage(this)">
+										<input type="file" class="form-control" name="doc_img">
 									</div>
 								  <button type="submit" class="btn btn-default">修改</button>
 								  <button type="reset" class="btn btn-primary">重置</button>
@@ -147,7 +149,24 @@
 			}) %>
 	  	</div>
 	</div>
-
+	<script>
+		$(document).ready(function() {
+			$('#modify').submit(function() {
+				$.post($(this).attr('action'),$(this).serialize(),function(result) {
+					if (result.status == 0) {
+						window.location.reload();
+					} else {
+						if (result.msg) {
+							alert(result.msg);
+						} else {
+							alert('服务器异常');
+						}
+					}
+				},'json')
+				return false;
+			});
+		});
+	</script>
 	<script>
 		$(document).ready(function() {
 			$('button.del').click(function(){

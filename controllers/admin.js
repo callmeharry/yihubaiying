@@ -520,11 +520,14 @@ exports.addDoctor = function (req, res, next) {
     var good_illness = validator.trim(req.body.good_illness);
     console.log(req.body);
     console.log(req.files);
-    var doc_imgsrc = req.files.doc_img.name;
+    if(req.files.doc_img)
+        var doc_imgsrc = "/upload/"+req.files.doc_img.name;
+    else
+        doc_imgsrc = '/images/docDefault.png';
 
-    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness,"/upload/"+doc_imgsrc, function (err) {
+    Doctor.newAndSaveDoctor(dept_id,doc_name, doc_intro, good_illness,doc_imgsrc, function (err) {
         if (err) return next(err);
-
+        console.log("shhaaa!");
         res.redirect('/admin/docInfo');
 
     });
