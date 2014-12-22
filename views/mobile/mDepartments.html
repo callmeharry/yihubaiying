@@ -5,16 +5,16 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
 
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
 
 
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
     
 </head>
 
@@ -62,8 +62,12 @@
                         <td><span>17:00</span></td>
                     </tr>
                     <tr>
-                        <td><strong>成功预约数</strong></td>
+                        <td><strong>成功预约数：</strong></td>
                         <td><span><%= hospital.hospital_order_count %></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>医院简介：</strong></td>
+                        <td><span>医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介。</span></td>
                     </tr>
                     <input type="hidden" value="no" id="date">
                 </table>
@@ -71,7 +75,7 @@
         </article>
 
         <div>
-            <table style="width:100%;">
+            <table>
                 <col width="50"/>
                 <col width="50"/>
                 <tr>
@@ -112,8 +116,8 @@
         <div class="o-team">
             <div class="o-team-person">
                 <% for(var i = 0; i < hospital.departments.length; i++) { %>
-                <h3><%= hospital.departments[i].name %></h3>
-                <table>
+                <h3 style="font-size:2em !important;"><%= hospital.departments[i].name %></h3>
+                <table style="width:100% !important;">
                     <tr>
                         <% for(var j = 0; j< hospital.departments[i].subDepartments.length; j++) { %>
                         <td>
