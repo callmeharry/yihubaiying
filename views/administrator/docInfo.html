@@ -91,7 +91,7 @@
 								  <h4 class="modal-title" id="myModalLabel"><%= hospital.doctors[i].doc_name %></h4>
 						      </div>
 						      <div class="modal-body">
-						        <form class="input-group" action="/admin/modifyDoc" id="modify" >
+						        <form class="input-group modify" action="/admin/modifyDoc" >
 									<input type="hidden" id="mdoc_id" name="doc_id" value="<%= hospital.doctors[i]._id %>"/>
 								  <div class="input-group">
 									  <span class="input-group-addon">医生姓名</span>
@@ -151,7 +151,7 @@
 	</div>
 	<script>
 		$(document).ready(function() {
-			$('#modify').submit(function() {
+			$('form.modify').submit(function() {
 				$.post($(this).attr('action'),$(this).serialize(),function(result) {
 					if (result.status == 0) {
 						window.location.reload();

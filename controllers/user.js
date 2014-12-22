@@ -171,6 +171,22 @@ exports.showFavorite = function (req, res, next) {
 
 };
 
+exports.getMyFeedbacks = function(req, res, next){
+    var user = req.session.user;
+    Feedback.getFeedbackByQuery({sender_id:user._id,fdType:1},{},function(err,feedbacks){
+        if(err) return next(err);
+        res.render('',{
+            feedbacks:feedbacks
+        });
+
+
+    });
+
+
+
+};
+
+
 exports.showFeedback=  function(req, res, next){
     var user = req.session.user;
     res.render('pc/feedback',{
@@ -216,4 +232,3 @@ exports.dropOrder = function (req, res, next) {
     });
 
 };
-

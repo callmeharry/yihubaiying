@@ -143,7 +143,11 @@ exports.addHos = function (req, res, next) {
     var hos_location = validator.trim(req.body.hos_location);
     var hos_tel = validator.trim(req.body.hos_tel);
     var hos_weight = validator.trim(req.body.hos_weight);
-    var hos_img = req.files.hos_img.name||"/images/defaultHos.jpg";
+
+    if(req.files.hos_img.name)
+        var hos_img=  "/uploads/"+ req.files.hos_img.name;
+    else
+        hos_img = "/images/defaultHos.jpg";
 
     console.log(hos_name + " " + hos_intro + " " + hos_city + " " + hos_location + " hehe");
 
@@ -161,7 +165,7 @@ exports.addHos = function (req, res, next) {
     }
 
     Hospital.newHospital(hos_name, hos_intro, hos_city,
-        hos_location, hos_tel, hos_weight,"/uploads/"+hos_img, function (err) {
+        hos_location, hos_tel, hos_weight,hos_img, function (err) {
             if (err)
                 return next(err);
             console.log("save hospital successfully");
@@ -521,7 +525,7 @@ exports.addDoctor = function (req, res, next) {
     console.log(req.body);
     console.log(req.files);
     if(req.files.doc_img)
-        var doc_imgsrc = "/upload/"+req.files.doc_img.name;
+        var doc_imgsrc = "/uploads/"+req.files.doc_img.name;
     else
         doc_imgsrc = '/images/docDefault.png';
 

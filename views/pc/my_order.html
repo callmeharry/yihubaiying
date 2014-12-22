@@ -5,7 +5,7 @@
    <div class="row">
       <!--左侧导航栏面板-->
       <div class="col-xs-3">
-         <div class="panel panel-info panel-left">
+         <div class="panel panel-primary panel-left">
             <div class="panel-heading">
                &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
             </div>
@@ -22,7 +22,7 @@
       </div>
       <div class="col-xs-9">
          <!--右侧面板-->
-         <div class="panel panel-info panel-right">
+         <div class="panel panel-priamry panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方名字-->
                我的订单
@@ -35,18 +35,19 @@
                      <th>医院</th>
                      <th>挂号科室</th>
                      <th>就诊医师</th>
+                     <th>订单时间</th>
                      <th>就诊日期</th>
-                     <th>就诊号</th>
                      <th>操作</th>
                   </tr>
                   </thead>
                   <tbody>
                   <% for(var i=0; i<orders.length; i++) {%>
                   <tr>
-                     <td><%= orders[i].order_time %></td>
+                     <td><%= orders[i]._id %></td>
                      <td><%= orders[i].hospital_name %></td>
                      <td><%= orders[i].dept_name %></td>
                      <td><%= orders[i].doctor_name %></td>
+                     <td><%= orders[i].order_time%></td>
                      <td><%= orders[i].order_see_time %></td>
                      <td><%= orders[i].order_number %></td>
                      <td>

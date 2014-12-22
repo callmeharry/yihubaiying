@@ -5,7 +5,7 @@
    <div class="row">
       <!--左侧导航栏面板-->
       <div class="col-xs-3">
-         <div class="panel panel-info panel-left">
+         <div class="panel panel-primary panel-left">
             <div class="panel-heading">
                &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
             </div>
@@ -24,7 +24,7 @@
          <form action="/person/modifyPhone" method="post">
             <input type="hidden" name="user_id" value="<%= user.user_id%>"/>
             <!--右侧面板-->
-            <div class="panel panel-info panel-right">
+            <div class="panel panel-primary panel-right">
                <div class="panel-heading panel-head-personalinfo">
                   <!--上方导航栏-->
                   <ol class="breadcrumb my-bread">

@@ -1,5 +1,5 @@
 .body{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 }
 
 .container{
@@ -8,8 +8,8 @@
 
 .my-bar {
 	height: 12px;
-	background: #d9edf7;
-	border-color: #bce8f1;
+	background: #01BBE4;
+	border-color: #01BBE4;
 	color: #428bca;
 }
 
@@ -46,7 +46,7 @@
 .head-navbar{
 	font-size: 15px;
 	padding-left: 280px;
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 }
 
 .panel-left{
@@ -74,7 +74,7 @@
 }
 
 select{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 	color: #333;
 	font-size: 15px;
 	width: 200px;
@@ -86,7 +86,7 @@ select{
 }
 
 .right-panel-div{
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 	font-size: 16px;
 	margin-left: 140px;
 }
@@ -112,7 +112,7 @@ select{
 .panel-head-center{
 	text-align: center;
 	font-size: 18px;
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 }
 
 .panel-body-center{
@@ -151,7 +151,7 @@ select{
 }
 
 .divFound {
-	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;
+	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 	border: solid 1px;
 	border-color: #bce8f1;
 }
@@ -192,4 +192,13 @@ margin-left: 18.2%;}
 td.th-right{
 	width: 300px;
 	line-height: 29px;
+}
+
+.panel-primary{
+	border-color: #01BBE4;
+}
+
+.panel-primary > .panel-heading {
+	color: #FFF;
+	background-color: #01BBE4;
 }

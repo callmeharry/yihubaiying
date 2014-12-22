@@ -129,6 +129,7 @@ exports.getDeptDoctors = function (dept_id, callback) {
                 Doctor.findOne({"_id": doc_id}, {}, function (err, doctor) {
                     if (err) return callback(err);
 
+                    if(doctor!= null)
                     doctors.push({
                         doc_name: doctor.doctor_name,
                         doc_intro: doctor.doctor_intro,
