@@ -4,48 +4,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
+    
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap.css">
 
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-
-
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
     
 </head>
-
+<!-- -->
 <body class="o-page p-blog" onload="getCollectionState();">
 <div id="page">
-
+<!-- 
     <% if(!username) { %>
     <%- include mNotLoggedIn.html %>
     <% } else {%>
     <%- include mLoggedIn.html %>
     <% } %>
 
+
+--><div id="header">
+        <a href="#menu"></a>
+        <span> 选择城市 </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
     <div id="content">
         <article>
             <div class="bigPic">
                 <img src="<%= hospital.imgsrc %>"/>
             </div>
             <div class="hospitalName">
-                <h2><span id="id_hospitalName" name="hospitalName"><%= hospital.hospital_name %></span></h2>
-                <span style="display: none" id="id_hospitalId"><%= hospital._id %></span>
-                <button style="background-color:#587eac; height:50px; width:80px; display: none" id="collection" onclick="changeCollectionState()">收藏</button>
+                <h2><span id="id_hospitalName" name="hospitalName" style="float:left;">医院名称<!-- <%= hospital.hospital_name %>--></span></h2>
+                <span style="display: none" id="id_hospitalId" ><!-- <%= hospital._id %>--></span>
+                <button id="collection" class="btn">收藏</button>
+                <!--<a href="#"><span onclick="changeCollectionState()"></span></a>-->
             </div>
 
             <div class="hospitalInfo">
-                <table>
-                    <col width="25%">
-                    <col width="75%">
+                <table width="100%">
+                    <col width="35%">
+                    <col width="65%">
                     <tr>
                         <td><strong>地址：</strong></td>
-                        <td><span id="id_hospitalAddress"
-                                  name="hospitalAddress"><%= hospital.hospital_address %></span></td>
+                        <td><span id="id_hospitalAddress" name="hospitalAddress"><%= hospital.hospital_address %></span></td>
                     </tr>
                     <tr>
                         <td><strong>电话：</strong></td>
@@ -64,12 +68,12 @@
                         <td><span>17:00</span></td>
                     </tr>
                     <tr>
-                        <td><strong>成功预约数：</strong></td>
+                        <td><strong>成功预约：</strong></td>
                         <td><span><%= hospital.hospital_order_count %></span></td>
                     </tr>
                     <tr>
                         <td><strong>医院简介：</strong></td>
-                        <td><span><%= hospital.hospital_intro%></span></td>
+                        <td><span><%= hospital.hospital_intro%>医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介医院简介</span></td>
                     </tr>
                     <input type="hidden" value="no" id="date">
                 </table>
@@ -139,6 +143,46 @@
         </div>
     </div>
     <!-- Menu navigation -->
+    <nav id="menu">
+        <ul>
+            <li class="Selected">
+                <a href="mIndex.html">
+                    <i class="i-home i-small"></i>预约主页
+                </a>
+            </li>
+            <li>
+                <a href="mLogin.html">
+                    <i class="i-comments i-small"></i>切换城市
+                </a>
+            </li>
+            <li>
+                <a href="mPersonalCenter.html">
+                    <i class="i-about i-small"></i>个人信息
+                </a>
+            </li>
+            <li>
+                <a href="blog.html">
+                    <i class="i-blog i-small"></i>订单管理
+                </a>
+            </li>
+            <li>
+                <a href="gallery.html">
+                    <i class="i-gallery i-small"></i>收藏夹
+                </a>
+            </li>
+            <li>
+                <a href="shortcodes.html">
+                    <i class="i-shortcodes i-small"></i>问题反馈
+                </a>
+            </li>
+            <li>
+                <a href="mLogin.html">
+                    <i class="i-contact i-small"></i>账户登陆
+                </a>
+            </li>
+            
+        </ul>
+    </nav>  
 </div>
 <script>
     function showDoctors(a){
