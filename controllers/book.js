@@ -433,3 +433,7 @@ exports.showDiseases = function (req, res) {
     else
         res.render('pc/findby_disease', {username: username, title: '疾病列表'});
 };
+
+exports.showDiseaseResult = function(req,res,next){
+
+};
