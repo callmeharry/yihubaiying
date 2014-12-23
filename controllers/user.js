@@ -240,7 +240,12 @@ exports.showFavorite = function (req, res, next) {
     }));
 
     proxy.all('user', function (user) {
-        res.render('pc/my_favourite', {
+        console.log(user);
+        if(tool.getDeviceType(req.url))
+            res.render('mobile/mGallery',{user:user});
+
+        else
+            res.render('pc/my_favourite', {
            user:user
         });
     });

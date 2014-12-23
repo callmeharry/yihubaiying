@@ -46,7 +46,7 @@
                   <tbody>
                   <% for(var i=0; i<user.favourite_hospital.length; i++) {%>
                   <tr>
-                     <td><img src="<%=favourite_hospital[i].hospital_imgsrc%>" class="img-responsive" alt="Responsive" style="height:70px"></td>
+                     <td><img src="<%=user.favourite_hospital[i].hospital_imgsrc%>" class="img-responsive" alt="Responsive" style="height:70px"></td>
                      <td colspan="3" class="text-left">
                         <a href="#"><%= user.favourite_hospital[i].hospital_name %></a>
                         <p>地址：<%= user.favourite_hospital[i].hospital_location %></p>

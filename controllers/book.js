@@ -231,7 +231,7 @@ exports.showDoctor = function (req, res, next) {
                     }
                     doctor[i] = {
                         name:hospital.doctors[i].doc_name,
-                        imgsrc:null, //TODO
+                        imgsrc:hospital.doctors[i].doctor_imgsrc,
                         isOnDuty:flag,
                         timeAndSource:timeAndSource,
                         goodReputation:hospital.doctors[i].doc_rep,

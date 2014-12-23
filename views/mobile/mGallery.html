@@ -3,121 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>收藏夹</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    
-    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page">
 <div id="page">
-<div id="header">
+    <%- partial('mLoggedIn', {
+    title:'医呼百应 收藏',
+    username:user.real_name
+    }) %>
 
-    <a href="#menu"></a>
-    <span> 医呼百应 收藏夹 </span>
-    <a class="backBtn" href="javascript:history.back();"></a>
-</div>
+    <div align="center"; style="background-color:#587eac;">
+        <hr>
+        <span style="font-size:15px;">收藏的医院</span>
+        <hr>
+    </div>
+    <div class="article-comments">
+        <ul >
+            <% for(var i=0; i<user.favourite_hospital.length; i++) {%>
+            <li style="margin-left:10px;" >
+                <img  src="<%= user.favourite_hospital[i].hospital_imgsrc %>" style="width:60px;height:60px;" />
+                <p class="c-a-name"><strong>医院名称<%= user.favourite_hospital[i].hospital_name %></strong></p>
+                <p class="comment-date">电话：<%= user.favourite_hospital[i].hospital_tel %></p>
+                <p class="desc">
+                <p>地址：<%= user.favourite_hospital[i].hospital_location %></p>
+                </p>
+            </li>
+            <% } %>
+        </ul>
+        <!--<script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>-->
+    </div>
 
-<nav id="menu">
-    <ul>
-    	<li  class="Selected">
-               <a href="mLogin.html">
-                    <i class="i-home i-small"></i>登录
-               </a>
-        </li>
-        <li >
-               <a href="mRegister.html">
-        <i class="i-home i-small"></i>注册
-               </a>
-        </li>
-        <li>
-            <a href="mIndex.html">
-                <i class="i-home i-small"></i>预约主页
-            </a>
-        </li>
-        <li>
-            <a href="mAbout.html">
-                <i class="i-about i-small"></i>个人信息
-            </a>
-        </li>
-        <li>
-            <a href="mBlog.html">
-                <i class="i-blog i-small"></i>订单管理
-            </a>
-        </li>
-        <li>
-            <a href="mGallery.html">
-                <i class="i-gallery i-small"></i>收藏夹
-            </a>
-        </li>
-        <li>
-            <a href="mShortCodes.html">
-                <i class="i-shortcodes i-small"></i>问题反馈
-            </a>
-        </li>
-    </ul>
-</nav>
-  		<div align="center">
-            <h1 class="subheader">收藏</h1>
-            <hr class="hr3"/>
-        </div>
-<div id="collection" align="center">
-
-    <table align="center" style="margin-top:20px; width:200px;">
-            <tr>
-            <td class="doctor">医院</td>
-        </tr>
-        <tr>
-            <td class="doctor">北医三院</td>
-        </tr>
-        <tr>
-            <td class="doctor">协和医院</td>
-        </tr>
-        <tr>
-            <td class="doctor">北航校医院</td>
-        </tr>
-        <tr>
-
-            <td class="doctor">北大医院</td>
-        </tr>
-        <tr>
-            <td class="doctor">积水潭医院</td>
-        </tr>
-
-    </table>
-    
-    <table  align="center" style="margin-top:20px;  text-align:center; width:200px;">
-        <tr>
-            <td class="doctor">医生</td>
-            
-        </tr>
-        <tr>
-            <td class="doctor">张三</td>
-            
-        </tr>
-        <tr>
-            <td class="doctor">李旭</td>
-            
-        </tr>
-        <tr>
-            <td class="doctor">马冰莹</td>
-            
-        </tr>
-        <tr>
-            <td class="doctor">李小爽</td>
-            
-        </tr>
-        <tr>
-            <td class="doctor">王洁薇</td>
-            
-        </tr>
-
-    </table>
-
-</div>
+    <div align="center"; style="background-color:#587eac;">
+        <hr>
+        <span style="font-size:15px;">收藏的医生</span>
+        <hr>
+    </div>
+    <div class="article-comments">
+        <ul >
+            <% for(var i=0; i<user.favourite_doctor.length; i++) {%>
+            <li style="margin-left:10px;" >
+                <img  src="<%= user.favourite_doctor[i].doc_imgsrc %>" style="width:60px;height:60px;" />
+                <p class="c-a-name"><strong>医生姓名:<%= user.favourite_doctor[i].doc_name %></strong></p>
+                <p class="comment-date">擅长项目:<%= user.favourite_doctor[i].doc_goods %></p>
+                <p class="desc">
+                <p>所属医院：<%= user.favourite_doctor[i].doc_hospital %></p>
+                </p>
+            </li>
+            <% } %>
+        </ul>
+        <!--<script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>-->
+    </div>
 </div>
 </body>
 </html>

@@ -1,39 +1,97 @@
 <%- include header.html%>
-	<div class="panel panel-default" id="exceptionManage">
-	  	<div class="panel-heading">
-	    	<h2 class="panel-title">异常管理</h2>
-	  	</div>
-	 	<div class="panel-body">
-	    	<button type="button" class="btn btn-default btn-info">获取异常</button>
-	    	<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>用户身份证号</th>
-						<th>异常信息</th>
-						<th>用户IP</th>
-						<th>处理异常</th>
-						<th>忽略异常</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% for(var i=0; i<exceps.length; i++) {%>
-					<tr>
-						<td><%= exceps[i].username%></td>
-						<td><%= exceps[i].info%></td>
-						<td><%= exceps[i].ip%></td>
-						<td><a href="#">处理</a></td>
-						<td><a href="#">忽略</a></td>
-					</tr>
-					<% } %>
-				</tbody>
-			</table>
-			<%- partial('list', {
-			pages: pages,
-			page: page,
-			base: '/admin/exceptionInfo/'
-			}) %>
-	  	</div>
+<div class="panel panel-default" id="exceptionManage">
+	<div class="panel-heading">
+		<h2 class="panel-title">异常管理</h2>
 	</div>
-	
+	<div class="panel-body">
+		<button type="button" class="btn btn-default btn-info">获取异常</button>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>用户身份证号</th>
+				<th>异常信息</th>
+				<th>用户IP</th>
+				<th>处理异常</th>
+				<th>忽略异常</th>
+			</tr>
+			</thead>
+			<tbody>
+
+			<tr>
+				<td>522101199510017653</td>
+				<td>同一IP多次登录</td>
+				<td>124.205.18.175</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330719196804253671</td>
+				<td>同一IP多次登录</td>
+				<td>124.205.18.175</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330825199501224157</td>
+				<td>同一IP多次登录</td>
+				<td>124.205.18.175</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330825199501224157</td>
+				<td>同一IP多次登录</td>
+				<td>61.138.015.064</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330721196310212433</td>
+				<td>同一IP多次登录</td>
+				<td>61.138.015.064</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330503199509285840</td>
+				<td>同一IP多次登录</td>
+				<td>61.150.243.255</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>520503199509285875</td>
+				<td>同一IP多次登录</td>
+				<td>61.150.243.255</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330724196201110015</td>
+				<td>同一IP多次登录</td>
+				<td>61.146.119.255</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+
+			<tr>
+				<td>330722197510228617</td>
+				<td>同一IP多次登录</td>
+				<td>61.146.119.255</td>
+				<td><a href="#">处理</a></td>
+				<td><a href="#">忽略</a></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 </body>
 </html>

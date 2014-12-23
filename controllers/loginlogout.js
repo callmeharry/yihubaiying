@@ -69,7 +69,6 @@ exports.handleLogin = function (req, res, next) {
                 res.render('pc/login', {previousurl: url,error: '此手机号未被注册'});
             } else {
                 res.render('mobile/mLogin', {
-                    previousurl: url,
                     title: '医呼百应:登录',
                     error: '此手机号未被注册'
                 });

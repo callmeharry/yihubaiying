@@ -7,6 +7,7 @@ var models = require('../models');
 var User = models.User;
 var Hospital = require('../proxy/hospital');
 var Doctor = require('../proxy/doctor');
+var validator = require('validator');
 var eventproxy = require('eventproxy');
 
 /**
