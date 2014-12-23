@@ -702,48 +702,48 @@ exports.testUpload = function(req, res, next){
 
 
 exports.loadDocVisit = function(req, res, next){
-    var fee = 5;
-    var visit_start_time = "7:00";
-    var visit_end_time = "11:30";
-    var totalSource =20;
-    var leftSource = 20;
-
-    var ups = {
-        visit_start_time: visit_start_time,
-        visit_end_time: visit_end_time,
-        totalSource: totalSource,
-        leftSource: leftSource,
-        fee: fee
-    };
-    Doctor.getDoctorByQuery({},{},function(err, doctors){
-        console.log(doctors);
-
-        var proxy = new eventproxy();
-        proxy.fail(err);
-
-        proxy.after('updates', doctors.length,function(){
-
-            res.render('administrator/adminLogin');
-            });
-
-        for(var j = 0 ; j<doctors.length; j++){
-            (function(i){
-
-                Doctor.addDoctorVisit(doctors[i]._id,ups,function(err){
-                    if(err) return res.send("存储错误");
-
-                    return proxy.emit('updates');
-                });
-
-            })(j);
-
-
-        }
-
-
-
-
-    });
+    //    var fee = 5;
+    //var visit_start_time = "13:00";
+    //var visit_end_time = "17:30";
+    //var totalSource =0;
+    //var leftSource = 0;
+    //
+    //var ups = {
+    //    visit_start_time: visit_start_time,
+    //    visit_end_time: visit_end_time,
+    //    totalSource: totalSource,
+    //    leftSource: leftSource,
+    //    fee: fee
+    //};
+    //Doctor.getDoctorByQuery({},{},function(err, doctors){
+    //    console.log(doctors);
+    //
+    //    var proxy = new eventproxy();
+    //    proxy.fail(err);
+    //
+    //    proxy.after('updates', doctors.length,function(){
+    //
+    //        res.render('administrator/adminLogin');
+    //        });
+    //
+    //    for(var j = 0 ; j<doctors.length; j++){
+    //        (function(i){
+    //
+    //            Doctor.addDoctorVisit(doctors[i]._id,ups,function(err){
+    //                if(err) return res.send("存储错误");
+    //
+    //                return proxy.emit('updates');
+    //            });
+    //
+    //        })(j);
+    //
+    //
+    //    }
+    //
+    //
+    //
+    //
+    //});
 
 
 };
