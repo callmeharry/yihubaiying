@@ -1,70 +1,27 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>提问</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    
-    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page">
 <div id="page">
-<nav id="menu">
-            <ul>
-            <li  class="Selected">
-               <a href="mLogin.html">
-                    <i class="i-home i-small"></i>登录
-               </a>
-        </li>
-        <li >
-               <a href="mRegister.html">
-        <i class="i-home i-small"></i>注册
-               </a>
-        </li>
-                <li >
-                    <a href="mIndex.html">
-                        <i class="i-home i-small"></i>预约主页
-                    </a>
-                </li>
-                <li>
-                    <a href="mAbout.html">
-                        <i class="i-about i-small"></i>个人信息
-                    </a>
-                </li>
-                <li>
-                    <a href="mBlog.html">
-                        <i class="i-blog i-small"></i>订单管理
-                    </a>
-                </li>
-                <li>
-                    <a href="mGallery.html">
-                        <i class="i-gallery i-small"></i>收藏夹
-                    </a>
-                </li>
-                <li>
-                    <a href="mShortCodes.html">
-                        <i class="i-shortcodes i-small"></i>问题反馈
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-<div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 提问 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <%- partial('mLoggedIn', {
+    title:'医呼百应 问题反馈',
+    username:user.real_name
+    }) %>
 <div align="center" style=" margin-top:100px; padding:10px;">
-    <form>
+    <form action = "/mobile/person/submitFeedback" method="post">
 
         <label>*输入您的问题<span class="required"></span></label>
-        <textarea id="ContactMessage" name="comment" placeholder="Message"></textarea>
-        <button type="button" style="background-color:#587eac; width:70px; height:40px; color:#FFFFFF">提问</button>
+        <textarea id="ContactMessage" name="content" placeholder="Message"></textarea>
+        <button type="submit" style="background-color:#587eac; width:70px; height:40px; color:#FFFFFF">提问</button>
 
 
     </form>

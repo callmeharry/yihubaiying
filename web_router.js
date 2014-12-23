@@ -63,7 +63,8 @@ router.post('/mobile/person/info/alterPhone',user.changePhoneNumber);
 router.get('/mobile/person/myOrder', auth.UserRequired, user.showMyOrder);
 router.get('/mobile/person/myFavourite',auth.UserRequired,user.showFavorite);
 router.get('/mobile/person/feedback',auth.UserRequired,user.showFeedback);
-router.post('/mobile/person/feedback',user.submitFeedback);
+router.get('/mobile/person/submitFeedback',auth.UserRequired,user.showsubmitFeedback);
+router.post('/mobile/person/submitFeedback',user.submitFeedback);
 
 //PC Home page
 router.get('/', mobileIndex.showIndex);

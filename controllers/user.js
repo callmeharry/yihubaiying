@@ -19,7 +19,7 @@ exports.showPersonInfo = function (req, res, next) {
     User.getUserById(user._id, function (err,user) {
         if(err) return next(err);
         var register_time = tool.formatDate(user.register_time);
-
+        req.session.user = user;
         if(tool.getDeviceType(req.url))
             res.render('mobile/mAbout', {user: user,
                   register_time:register_time});
@@ -74,7 +74,7 @@ exports.changepassword = function (req, res, next) {
         user.password = new_password;
         user.save(function (err) {
             if (err) return next(err);
-
+            req.session.user = user;
             return tool.getDeviceType(req.url)==true ? res.redirect('/mobile/person/info'):res.redirect('/person/info');
         });
 
@@ -102,6 +102,8 @@ exports.changeAddress = function (req, res, next) {
         user.address = newCity;
         user.save(function (err) {
             if (err) return next(err);
+            req.session.user = user;
+
             if(tool.getDeviceType(req.url))
                 return res.redirect('/mobile/person/info');
             else
@@ -142,7 +144,7 @@ exports.changePhoneNumber = function (req, res, next) {
         user.phone_number = newPhoneNumber;
         user.save(function (err) {
             if (err) next(err);
-
+            req.session.user = user;
             if(tool.getDeviceType(req.url))
                 res.redirect('/mobile/person/info');
             else
@@ -186,7 +188,7 @@ exports.changeEmail = function (req, res, next) {
         user.email = newEmail;
         user.save(function (errs) {
             if (errs) return next(err);
-
+            req.session.user = user;
             if(tool.getDeviceType(req.url))
                 res.redirect('/mobile/person/info');
             else
@@ -282,7 +284,8 @@ exports.showFeedback =  function(req, res, next){
 exports.showsubmitFeedback = function(req, res, next){
     var user = req.session.user;
     if(tool.getDeviceType(req.url))
-        res.render
+        res.render('mobile/mAskPage',{user:user});
+
     res.render('pc/feedback',{
         user:user
     });
@@ -295,7 +298,10 @@ exports.submitFeedback = function (req, res, next) {
     Feedback.newAndSave(content, 1, user._id, function (err) {
         if (err) next(err);
 
-        res.redirect('/person/feedback');
+        if(tool.getDeviceType(req.url))
+            res.redirect('/mobile/person/feedback');
+        else
+            res.redirect('/person/feedback');
     });
 
 }
