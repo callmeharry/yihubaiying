@@ -45,3 +45,25 @@ exports.getAuthCode = function (req, res) {
     console.log(randomNumLogin);
     global.authCode = randomNumLogin;
 };
+
+exports.parseTime = function(time){
+    var clock = time.split(' ')[1];
+    var firstclock = clock.split('~')[0];
+    var secondclock = clock.split('~')[1];
+    var hour1 = firstclock.split(':')[0];
+    var hour2 = secondclock.split(':')[0];
+    if(parseInt(hour1) < 12){
+        return '上午' + time;
+    }else{
+        var new_time = '下午';
+        var hour1_string = (parseInt(hour1) - 12).toString();
+        if(hour1_string.length == 1)
+            hour1_string = '0' + hour1_string;
+        var hour2_string = (parseInt(hour2) - 12).toString();
+        if(hour2_string.length == 1)
+            hour2_string = '0' + hour2_string;
+        new_time +=  hour1_string + ":" + firstclock.split(':')[1] + "~" + hour2_string + ":" + secondclock.split(':')[1];
+        return new_time;
+
+    }
+}

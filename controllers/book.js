@@ -89,7 +89,7 @@ exports.showHospital = function (req, res, next) {
 exports.showDepartment = function (req, res, next) {
     var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
-
+    var userId = req.session.user._id;
     var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
     proxy.fail(next);
@@ -123,31 +123,44 @@ exports.showDepartment = function (req, res, next) {
                 }
             }
         }
-        //initialize date table
-        var date = new Date();
-        var dateList = new Array();
-        for(var i = 0 ; i < 14 ; i = i + 2) {
-            var new_date = new Date();
-            new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
-            date = new_date;
-            dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
-            dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
-        }
-        var hospital = {
-            hospital_name: hospital.hospital_name,
-            hospital_address: hospital.hospital_location,
-            hospital_tel: hospital.hospital_tel,
-            _id: hospital._id,
-            hospital_order_count: hospital.hospital_order_count,
-            imgsrc: hospital.hospital_imgsrc,
-            departments: departments,
-            dateList: dateList
-        };
-        if (!tool.getDeviceType(req.url)) {
-            return res.render('pc/choose_department', {username: username, hospital: hospital, title: '选择科室和时间'});
-        } else {
-            return res.render('mobile/mDepartments', {username: username, hospital: hospital, title: '选择科室和时间'});
-        }
+        var collection = "收藏";
+        User.getUserByQuery({"_id":userId},{},function(err,currUser){
+            console.log(currUser);
+            for(var r = 0; r < currUser[0].favourite_hospital.length ; r++){
+                console.log(currUser[0].favourite_hospital[r] + " " + hospitalId);
+                if(currUser[0].favourite_hospital[r] == hospitalId)
+                    collection = "取消收藏";
+            }
+
+            //initialize date table
+            var date = new Date();
+            var dateList = new Array();
+            for(var i = 0 ; i < 14 ; i = i + 2) {
+                var new_date = new Date();
+                new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
+                date = new_date;
+                dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
+                dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
+            }
+            console.log(collection);
+            var hospitala = {
+                hospital_name: hospital.hospital_name,
+                hospital_address: hospital.hospital_location,
+                hospital_tel: hospital.hospital_tel,
+                _id: hospital._id,
+                hospital_order_count: hospital.hospital_order_count,
+                imgsrc: hospital.hospital_imgsrc,
+                departments: departments,
+                dateList: dateList,
+                collection:collection
+            };
+            if (!tool.getDeviceType(req.url)) {
+                return res.render('pc/choose_department', {username: username, hospital: hospitala, title: '选择科室和时间'});
+            } else {
+                return res.render('mobile/mDepartments', {username: username, hospital: hospitala, title: '选择科室和时间'});
+            }
+        })
+
     }));
 
 
@@ -369,7 +382,7 @@ exports.confirmBook = function (req, res, next) {
     var hospitalId = req.query.hospitalid;
     var departmentId = req.query.departmentid;
     var doctorId = req.query.doctorid;
-    var userId = req.session.user_id;
+    var userId = req.session.user._id;
     var time = req.query.time;
     var dateNum = parseInt(req.query.datenum);
     var today = new Date();
@@ -378,8 +391,6 @@ exports.confirmBook = function (req, res, next) {
     proxy.fail(next);
     proxy.all('hospital','doctor',function(hospital,doctor){
         var dept;
-        console.log(hospital);
-        console.log(doctor);
         for(var i = 0; i < hospital.hospital_dept.length; i++)
             if(hospital.hospital_dept[i]._id == departmentId){
                 dept = hospital.hospital_dept[i].dept_name;
@@ -395,18 +406,58 @@ exports.confirmBook = function (req, res, next) {
             address: hospital.hospital_location,
             tel: hospital.hospital_tel
         };
-        if (!tool.getDeviceType(req.url)) {
-            res.render('pc/confirm_order', {
-                username: username, title: '确认订单信息', order: order, departmentid: departmentId,
-                hospitalid: hospitalId,
-                doctorid: doctorId, time: time,
-                datenum:dateNum
-            });
-        } else res.render('mobile/mOrder', {
-            username: username, title: '确认订单信息', order: order, departmentid: departmentId,
-            hospitalid: hospitalId,
-            doctorid: doctorId,  time: time,
-            datenum:dateNum
+
+        var date = time.split(' ')[0];
+        var hour1 = time.split(' ')[1].split(":")[0];
+        if(parseInt(hour1) < 12)
+            date += ' 上午';
+        else
+            date += ' 下午';
+        console.log(date);
+        var departmentQuery = {};
+        departmentQuery['order_see_time'] = new RegExp(date.toString());
+        departmentQuery['user_id'] = userId;
+        departmentQuery['dept_id'] = departmentId;
+        var proxy2 = new eventproxy();
+        var dateQuery = {};
+        dateQuery['order_see_time'] = new RegExp(date.toString());
+        dateQuery['user_id'] = userId;
+        console.log(departmentQuery);
+        console.log(dateQuery);
+        proxy2.fail(next);
+        Order.getOrderByQuery(departmentQuery,{},proxy2.done('order_department',function(order_department){
+            console.log(order_department + "34ff");
+            return order_department;
+        }));
+
+        Order.getOrderByQuery(dateQuery,{},proxy2.done('order_date',function(order_date){
+            return order_date;
+        }));
+
+        proxy2.all('order_date','order_department',function(order_date,order_department){
+            console.log(order_date);
+            console.log(order_department);
+            if(order_date.length >= 3 || order_department.length >= 1){
+                if (!tool.getDeviceType(req.url)){
+                    res.render('pc/error',{errormessage:'您当前时段订单数量过多,无法完成本订单',username:username});
+                }else{
+                    res.render('mobile/mErrorPage',{errormessage:'您当前时段订单数量过多,无法完成本订单',username:username,title:"出现了一个错误"});
+                }
+            }else{
+                if (!tool.getDeviceType(req.url)) {
+                    res.render('pc/confirm_order', {
+                        username: username, title: '确认订单信息', order: order, departmentid: departmentId,
+                        hospitalid: hospitalId,
+                        doctorid: doctorId, time: time,
+                        datenum:dateNum
+                    });
+                } else res.render('mobile/mOrder', {
+                    username: username, title: '确认订单信息', order: order, departmentid: departmentId,
+                    hospitalid: hospitalId,
+                    doctorid: doctorId,  time: time,
+                    datenum:dateNum
+                });
+            }
         });
     });
     Hospital.getOneHospitalByQuery({_id:hospitalId},{},function(err,hospital){
@@ -429,9 +480,13 @@ exports.finishBook = function (req, res, next) {
     var doctorId = req.query.doctorid;
     var userId = req.cookies.user_id;
     var time = req.query.time;
+    var date = time.split('日')[0] + '日';
+    var clock = tool.parseTime(time.split('日')[1]);
+    var new_time = date + ' ' + clock;
+    console.log(new_time);
     var dateNum = parseInt(req.query.datenum);
-    console.log(userId +" "+ hospitalId + " " + departmentId + " " + doctorId + " " + time + " " + dateNum);
-    Order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, time, dateNum,function (order, err) {
+    console.log(userId +" "+ hospitalId + " " + departmentId + " " + doctorId + " " + new_time + " " + dateNum);
+    Order.newAndSaveOrder(hospitalId, departmentId, doctorId, userId, new_time, dateNum,function (order, err) {
         if (tool.getDeviceType(req.url))
             res.render('mobile/mOrderConfirm', {username: username, title: '订单完成'});
         else {

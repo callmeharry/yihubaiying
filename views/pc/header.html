@@ -1,21 +1,40 @@
+<html>
+<head>
+    <title>医呼百应网上预约挂号平台</title>
+    <!-- 引入 Bootstrap -->
+    <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
+    <script type="text/javascript">uaredirect("/mobile");</script>
+    <script src="/dist/scripts/jquery.min.js"></script>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/index_tourist.css" rel="stylesheet">
+    <script src="/dist/bootstrap/bootstrap.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <!-- 移动设备优先 -->
+    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 <div style="background:url(/images/header.jpg)">
-	<div align="right" style="mergin-right:20px" class="col-sm-2 col-sm-offset-10">
-		<label style="color:#ffffff" class="col-sm-4">城市</label>
-		<div class="dropdown col-sm-7">
-			<label style="color:#ffffff" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-				切换城市
-				<span class="caret"></span>
-			</label>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">北京</a></li>
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">上海</a></li>
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">天津</a></li>
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">重庆</a></li>
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">广东</a></li>
-			   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">湖北</a></li>
-			</ul>
-		</div>
-	</div>
+    <div align="right" style="mergin-right:20px" class="col-sm-2 col-sm-offset-10">
+        <label style="color:#ffffff" class="col-sm-4" ><span id="currCity">北京</span></label>
+        <div class="dropdown col-sm-7">
+            <label style="color:#ffffff" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                切换城市
+                <span class="caret"></span>
+            </label>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="北京" onclick="changeCity(this)">北京</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="上海" onclick="changeCity(this)">上海</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="天津" onclick="changeCity(this)">天津</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="重庆" onclick="changeCity(this)">重庆</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="广东" onclick="changeCity(this)">广东</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="湖北" onclick="changeCity(this)">湖北</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="logo-th logo col-xs-6">
@@ -24,12 +43,12 @@
             <!--搜索框-->
             <form method="post" action="/searchresult">
                 <div class="input-group col-xs-6">
-                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText" required="required">
-                  <span class="input-group-btn">
-                     <input class="btn search-button" type="submit" value="搜索">
-                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                      </button>
-                  </span>
+                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText">
+	                  <span class="input-group-btn">
+	                     <input class="btn search-button" type="submit" value="搜索">
+	                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
+                          </button>
+	                  </span>
                 </div>
             </form>
             <!-- /input-group -->
@@ -48,3 +67,32 @@
         </div>
     </nav>
 </div>
+<script>
+    function changeCity(li){
+        delCookie('city');
+        setCookie('city',li.name);
+        document.getElementById('currCity').innerHTML = li.name;
+    }
+    function setCookie(name,value)
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
+    }
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+        else return null;
+    }
+</script>
+</body>
+</html>
