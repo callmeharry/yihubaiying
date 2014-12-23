@@ -93,11 +93,11 @@
                         <% for(var i = 0; i < doctor.length; i++) {%>
                         <div class="list-group_item">
                            <div class="row">
-                              <div class="col-md-2">
+                              <!-- <div class="col-md-2">
                                  <img src="doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
-                              </div>
-                              <div class="col-md-10" style="text-align:left">
-                                 <table class="table">
+                              </div> -->
+                              <div class="col-md-12" style="text-align:left">
+                                 <!-- <table class="table">
                                     <tbody>
                                        <tr>
                                           <td>医生姓名：<%= doctor[i].name%></td>
@@ -117,13 +117,59 @@
                                           <td>好评数  ：<%= doctor[i].goodReputation%></td>
                                        </tr>               
                                     </tbody>
-                                 </table>
+                                 </table> -->
+                                 <div class="col-md-2">
+                                 	<img src="doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
+                                 </div>
+                                 <div class="col-md-10">
+                                 	<table>
+                                 		<tr>
+                                 			<td>医生姓名：</td>
+                                 			<td><strong><%= doctor[i].name%></strong></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>医生专长：</td>
+                                 			<td><strong><%= doctor[i].advancedDisease%></strong></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>医生简介：</td>
+                                 			<td><strong><%= doctor[i].intro%></strong></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>是否出诊：</td>
+                                 			<td><strong><%= doctor[i].isOnDuty%></strong></td>
+                                 		</tr>
+                                 		<tr>
+                                 			<td>好评数</td>
+                                 			<td><strong><%= doctor[i].goodReputation%></strong></td>
+                                 		</tr>
+                                 	</table>
+                                 </div>
+                                 <div class="col-md-12">
+                                 	<table>
+                                 		<tr>
+                                 			<th>出诊时段</th>
+                                 			<th>号源</th>
+                                 		</tr>
+                                 		<% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
+                                 		<tr>
+	                                 		<td>
+	                                 			<%= doctor[i].timeAndSource[j].time %>
+	                                 		</td>
+	                                 		<td>
+	                                 			<%= doctor[i].timeAndSource[j].source %>
+	                                 		</td>
+                                        </tr>
+                                        <% } %>
+                                 	</table>
+                                 </div>
                                  <div style="display: inline">
                                     <button name="collection" class="btn btn-default" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)">收藏</button>
-                                    <a href="/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
+                                    <a class="btn btn-primary" href="/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
                                  </div>
                               </div>
-                           </div>
+                           </div><br/>
+                           <div style="height:1px;background-color:#000000;line-height:1px;clear:both;display:block;overflow:hidden"></div><br/>
                         </div>
                         <% } %>
                      </div>
