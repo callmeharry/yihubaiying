@@ -8,11 +8,11 @@ exports.changeHospitalCollectionState = function(req,res,next){
     var hospital_id = req.body.hospital_id;
     var todo = req.body.todo;
     if(todo == '收藏'){
-        User.updateByQuery({_id:user_id},{'$push':{"hospital_id":hospital_id}},function(err,user){
+        User.updateByQuery({_id:user_id},{'$push':{"favorite_hospital":hospital_id}},function(err,user){
             res.send({status:0});
         });
     }else{
-        User.updateByQuery({_id:user_id},{'$pull':hospital_id},function(err,user){
+        User.updateByQuery({_id:user_id},{'$pull':{"favorite_hospital":hospital_id}},function(err,user){
             res.send({status:0});
         });
     }
@@ -23,11 +23,11 @@ exports.changeHospitalCollectionState = function(req,res,next){
     var doctor_id = req.body.doctor_id;
     var todo = req.body.todo;
     if(todo == '收藏'){
-        User.updateByQuery({_id:user_id},{'$push':hospital_id},function(err,user){
+        User.updateByQuery({_id:user_id},{'$push':{"favorite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err,user){
             res.send({status:0});
         });
     }else{
-        User.updateByQuery({_id:user_id},{'$pull':hospital_id},function(err,user){
+        User.updateByQuery({_id:user_id},{'$pull':{"favorite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err,user){
             res.send({status:0});
         })
     }

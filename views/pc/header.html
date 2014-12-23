@@ -24,7 +24,7 @@
             <!--搜索框-->
             <form method="post" action="/searchresult">
                 <div class="input-group col-xs-6">
-                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText">
+                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText" required="required">
                   <span class="input-group-btn">
                      <input class="btn search-button" type="submit" value="搜索">
                          &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
@@ -40,7 +40,7 @@
     <nav class="navbar navbar-default head-navbar my-bar" role="navigation">
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">首页</a></li>
+                <li><a href="/">首页</a></li>
                 <li><a href="/book/hospitals">按医院找</a></li>
                 <li><a href="/book/departmentlist">按科室找</a></li>
                 <li><a href="/book/diseases">按疾病找</a></li>

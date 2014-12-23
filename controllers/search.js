@@ -15,8 +15,6 @@ exports.handleSearch = function(req,res,next) {
     var proxy = new eventproxy();
     proxy.fail(next);
     proxy.all('hospital','doctor',function(hospital,doctor){
-        console.log(doctor);
-        console.log(hospital);
         if (tool.getDeviceType(req.url))
             res.render('mobile/mSearchResult',{username:username,doctor:doctor,hospital:hospital,searchtext:searchText,title:"\"" + searchText + "\"的搜索结果"});
         else
@@ -47,7 +45,6 @@ exports.handleSearch = function(req,res,next) {
                 var flag = '否';//not on duty
                 var timeAndSource = new Array();
                 var k = 0;
-                console.log(m);
                 for(var j = 0; j < doctors[m].doctor_visit.length; j++){
                     if(doctors[m].doctor_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].totalSource != '0') {
                         flag = '是';
@@ -62,7 +59,6 @@ exports.handleSearch = function(req,res,next) {
                         time:'无',
                         source:''
                     };
-                console.log(m+" " + doctors[m]);
                 doctor[m] = {
                     name:doctors[m].doctor_name,
                     imgsrc:null, //TODO
