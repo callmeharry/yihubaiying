@@ -63,8 +63,8 @@ select{
 	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 	color: #333;
 	font-size: 15px;
-	width: 200px;
-	margin-left: 20px;
+	width: 140px;
+	margin-left: 5%;
 	border-radius: 5px;
 	padding-left: 3px;
 	padding-top: 2px;
@@ -73,10 +73,10 @@ select{
 .right-panel-div{
 	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 	font-size: 16px;
-	margin-left: 140px;
+	margin-left: 5%;
 }
 .area-div{
-	margin-top: 40px;
+	margin-top: 20px;
 }
 .hospital-div{
 	margin-top: 20px;
@@ -95,6 +95,16 @@ select{
 	font-size: 18px;
 	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
 }
+
+.book-button {
+	background-color: #f9a821;
+	color: #ffffff;
+	text-align: center;
+	width: 140px;
+	margin-left: 5px;
+	margin-bottom: 15px;
+}
+
 .panel-body-center{
 	text-align: center;
 	font-family: "微软雅黑","宋体",Arial,Verdana,sans-serif;
