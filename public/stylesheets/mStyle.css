@@ -58,7 +58,6 @@
 }
 .panel-collapse{
 	text-align: center;
-	
 	font-size: 1em;
 	font-family: "微软雅黑";
 	color: #587eac;
@@ -85,4 +84,11 @@
 	width: 100% !important;
 	text-align: center;
 	font-size: 15px;
+}
+.selectCitySpan{
+	font-size: 1.5em !important;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	text-align: center;
+	color: gray;
 }

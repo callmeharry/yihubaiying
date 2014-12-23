@@ -5,18 +5,14 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>更改城市</title>
 
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/mStyle.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.css">
-    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
-    <script type="text/javascript" src="/javascripts/dropdown.js"></script>
-    <script type="text/javascript" src="/javascripts/bootstrap.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../public../../public/stylesheets/bootstrap.css">
+    
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
 
 </head>
 <body class="o-page">
@@ -24,10 +20,15 @@
         <%- include mNotLoggedIn.html %>
         <div class="panel">
             <div id="currentCity" class="cityBlock panel">
-                当前定位城市：<span style="color:orange;"><%= currCity %></span>
+                当前定位城市：
+                <br/>
+                <span style="color:orange;"><%= currCity %></span>
             </div>
-            <span>选择城市</span>
-            <div name="city" class="large-12 columns" align="center">
+            <div style="margin:15px;paddin:10px;">
+                <span class="selectCitySpan">选择城市:</span>
+            </div>
+            
+            <div name="city" class="large-12 columns" align="center" style="margin:15px;padding:10px;">
 
                 <select id="new_city" style="font-size:13px; height:35px; font-color:#C0C0C0;">
                     <option value="0" selected>选择城市</option>
@@ -44,7 +45,9 @@
                     <option value="西安">西安</option>
                     <option value="武汉">武汉</option>
                 </select>
-                <button onclick="changeCity()">确定</button>
+                <div style="text-align:center;margin-top:20px;">
+                    <a href="#" class="o-buttons b-big blue">确定</a>
+                </div>
             </div>
         </div>
     </div>

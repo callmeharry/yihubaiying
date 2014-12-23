@@ -102,29 +102,43 @@
                <div class="row text-left" style="margin-left:2px">
                   <h4><b>选择日期时间</b></h4>
                </div>
-               <table class="table table-bordered table-striped">
+               <table class="table table-bordered table-striped" style="text-align:left;">
                   <tbody>
-                  <tr>
-                     <td>上午</td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[0]%>"/><%= hospital.dateList[0]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[2]%>"/><%= hospital.dateList[2]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[4]%>"/><%= hospital.dateList[4]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[6]%>"/><%= hospital.dateList[6]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[8]%>"/><%= hospital.dateList[8]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[10]%>"/><%= hospital.dateList[10]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[12]%>"/><%= hospital.dateList[12]%></td>
-                     <td rowspan="2"><input type="radio"  name="Date" value="no" checked/>任意时间</td>
-                  </tr>
-                  <tr>
-                     <td>下午</td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[1]%>"/><%= hospital.dateList[1]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[3]%>"/><%= hospital.dateList[3]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[5]%>"/><%= hospital.dateList[5]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[7]%>"/><%= hospital.dateList[7]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[9]%>"/><%= hospital.dateList[9]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[11]%>"/><%= hospital.dateList[11]%></td>
-                     <td><input type="radio" name="Date" value="<%= hospital.dateList[13]%>"/><%= hospital.dateList[13]%></td>
-                  </tr>
+					<tr>
+	                  	<th>上午</th>
+		                <th>下午</th>
+              		</tr>
+              		<tr>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[0]%>"/><%= hospital.dateList[0]%></td>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[1]%>"/><%= hospital.dateList[1]%></td>
+              		</tr>
+              		<tr>
+                        <td><input type="radio" name="Date" value="<%= hospital.dateList[2]%>"/><%= hospital.dateList[2]%></td>
+                    	<td><input type="radio" name="Date" value="<%= hospital.dateList[3]%>"/><%= hospital.dateList[3]%></td>
+              		</tr>
+              		<tr>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[4]%>"/><%= hospital.dateList[4]%></td>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[5]%>"/><%= hospital.dateList[5]%></td>
+              		</tr>
+              		<tr>
+						<td><input type="radio" name="Date" value="<%= hospital.dateList[6]%>"/><%= hospital.dateList[6]%></td>
+						<td><input type="radio" name="Date" value="<%= hospital.dateList[7]%>"/><%= hospital.dateList[7]%></td>
+              		</tr>
+              		<tr>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[8]%>"/><%= hospital.dateList[8]%></td>
+                    	<td><input type="radio" name="Date" value="<%= hospital.dateList[9]%>"/><%= hospital.dateList[9]%></td>
+              		</tr>
+              		<tr>
+	                    <td><input type="radio" name="Date" value="<%= hospital.dateList[10]%>"/><%= hospital.dateList[10]%></td>
+	              		<td><input type="radio" name="Date" value="<%= hospital.dateList[11]%>"/><%= hospital.dateList[11]%></td>
+              		</tr>
+              		<tr>
+              			<td><input type="radio" name="Date" value="<%= hospital.dateList[12]%>"/><%= hospital.dateList[12]%></td>
+                    	<td><input type="radio" name="Date" value="<%= hospital.dateList[13]%>"/><%= hospital.dateList[13]%></td>
+              		</tr>
+              		<tr>
+                    	<td><input type="radio"  name="Date" value="no" checked/>任意时间</td>
+              		</tr>
                   </tbody>
                </table>
                <div class="row text-left" style="margin-left:2px">
