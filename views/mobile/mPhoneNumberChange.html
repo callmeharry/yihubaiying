@@ -31,16 +31,17 @@
     }) %>
 
 
-    <form action="/mobile/login" method="post" >
+    <form action="/mobile/person/info/alterPhone" method="post" >
 
         <div style="margin-left:20px; margin-top:50px;" >
             <span>＊新手机号码</span>
         </div>
         <div  align="center" style="padding-left:20px; padding-right:20px;">
-            <input id="id_new_phone" name="new_phone" type="text" placeholder="新手机号码"/>
+            <input id="id_new_phone" name="newPhoneNumber" type="text" placeholder="新手机号码"/>
         </div>
-        <div  align="center" style="margin-top:40px;">
-            <a href="#" class="o-buttons b-big blue">保存</a>
+        <div align="center" style="margin-top:40px;">
+            <button type="submit" name="post" value="true" style="background-color:#587eac; width:100px; border-radius:5px; font-size:12px; height: 38px;line-height: 5px;">确定
+            </button>
         </div>
 
     </form>

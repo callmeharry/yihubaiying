@@ -1,106 +1,67 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>城市更改</title>
-	<link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
-	<link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css"/>
-    <script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <meta charset="UTF-8">
+    <title>城市更改</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css"/>
+    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
     <script type="text/javascript"
-            src="../../public/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
-	<script src="js/vendor/modernizr.js"></script>
+            src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script src="js/vendor/modernizr.js"></script>
 </head>
 
 <body class="o-page">
 <div id="page">
-<nav id="menu">
-            <ul>
-            <li >
-                    <a href="mLogin.html">
-                        <i class="i-home i-small"></i>登录
-                    </a>
-                </li>
-                <li >
-                    <a href="mRegister.html">
-                        <i class="i-home i-small"></i>注册
-                    </a>
-                </li>
-                <li >
-                    <a href="mIndex.html">
-                        <i class="i-home i-small"></i>预约主页
-                    </a>
-                </li>
-                <li>
-                    <a href="mAbout.html">
-                        <i class="i-about i-small"></i>个人信息
-                    </a>
-                </li>
-                <li>
-                    <a href="mBlog.html">
-                        <i class="i-blog i-small"></i>订单管理
-                    </a>
-                </li>
-                <li>
-                    <a href="mGallery.html">
-                        <i class="i-gallery i-small"></i>收藏夹
-                    </a>
-                </li>
-                <li>
-                    <a href="mShortCodes.html">
-                        <i class="i-shortcodes i-small"></i>问题反馈
-                    </a>
-                </li>
-            </ul>
-        </nav>
+    <%- partial('mLoggedIn', {
+    title:'医呼百应 更改城市',
+    username:user.real_name
+    }) %>
 
-<div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 更改城市 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
-<form action="/mobile/login" method="post" id="login_form">
-    <div  align="center" style="margin-top:80px;">
-        <div  align="center" style="padding:20px;">
+    <form action="/mobile/person/info/alterAddress" method="post" >
+        <div  align="center" style="margin-top:80px;">
+            <div  align="center" style="padding:20px;">
 
-            <select name="city">
-                <option value="0" selected>现居城市</option>
-                <option value="1">北京</option>
-                <option value="2">天津</option>
-                <option value="3">上海</option>
-                <option value="4">广州</option>
-                <option value="5">淮安</option>
-                <option value="6">徐州</option>
-                <option value="7">无锡</option>
-                <option value="8">太原</option>
-                <option value="9">长沙</option>
-                <option value="10">青岛</option>
-                <option value="11">西安</option>
-                <option value="12">武汉</option>
-            </select>
+                <select name="newAddress">
+                    <option value="0" selected>现居城市</option>
+                    <option value="北京">北京</option>
+                    <option value="天津">天津</option>
+                    <option value="上海">上海</option>
+                    <option value="广州">广州</option>
+                    <option value="淮安">淮安</option>
+                    <option value="徐州">徐州</option>
+                    <option value="无锡">无锡</option>
+                    <option value="太原">太原</option>
+                    <option value="长沙">长沙</option>
+                    <option value="青岛">青岛</option>
+                    <option value="西安">西安</option>
+                    <option value="武汉">武汉</option>
+                </select>
 
+            </div>
+
+            <div align="center" style="margin-top:40px;">
+                <button type="submit" name="post" value="true" style="background-color:#587eac; width:100px; border-radius:5px; font-size:12px; height: 38px;line-height: 5px;">确定
+                </button>
+            </div>
         </div>
-     <div  align="center" style="margin-top:50px;">
-        <input type="hidden" name="previousUrl" value="<%= previousurl %>">
-        <a href="#" class="o-buttons b-big blue">保存</a>
-    </div>
     </form>
-</form>
 
-<script>
-    $(document).foundation();
-</script>
+    <script>
+        $(document).foundation();
+    </script>
 </div>
 </body>
 </html>
