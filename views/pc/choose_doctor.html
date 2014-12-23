@@ -59,8 +59,8 @@
                      <!--上方名字-->
                      选择医生
                   </div>
-                  <div class="panel-body panel-body-center">
-                     <span style="display: none" id="id_hospitalId"><%= hospitalid %></span>
+                  <div class="panel-body">
+                     <span style="display: none" id="id_hospitalName"><%= hospital_name %></span>
                      <div class="list-group">
                         <% for(var i = 0; i < doctor.length; i++) {%>
                         <div class="list-group_item">
@@ -68,7 +68,7 @@
                               <!-- <div class="col-md-2">
                                  <img src="doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
                               </div> -->
-                              <div class="col-md-12" style="text-align:left">
+                              <!--<div class="col-md-12" style="text-align:left">-->
                                  <!-- <table class="table">
                                     <tbody>
                                        <tr>
@@ -112,7 +112,7 @@
                                  			<td><strong><%= doctor[i].isOnDuty%></strong></td>
                                  		</tr>
                                  		<tr>
-                                 			<td>好评数</td>
+                                 			<td>好评数：</td>
                                  			<td><strong><%= doctor[i].goodReputation%></strong></td>
                                  		</tr>
                                  	</table>
@@ -154,12 +154,12 @@
       <script>
          function getCollectionState(){
             var user_id = getCookie('user_id');
-            var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+            var hospital_name = document.getElementById("id_hospitalName").innerHTML;
             var doctor_id = document.getElementsByName("id_doctorId");
             for(var i = 0 ;i < doctor_id.length ; i++) {
                $.post("/getdoctorcollectionstate", {
                   "user_id": user_id,
-                  "hospital_id": hospital_id,
+                  "hospital_name": hospital_name,
                   "doctor_id":doctor_id[i].innerHTML
                }, function (result) {
                   if (result.status == 0) {

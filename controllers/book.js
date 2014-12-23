@@ -99,8 +99,6 @@ exports.showDepartment = function (req, res, next) {
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
         //initialize departmentlist
         var departments = new Array();
-        console.log(hospital);
-        console.log(hospital.hospital_dept);
         var i = 0;
         for(var j = 0; j < hospital.hospital_dept.length; j++ ){
             var flag = 0;
@@ -126,10 +124,13 @@ exports.showDepartment = function (req, res, next) {
         }
         var collection = "收藏";
         User.getUserByQuery({"_id":userId},{},function(err,currUser){
-            for(var r = 0; r < currUser.favorite_hospital.length ; r++){
-                if(currUser.favourite_hospital[r] == hospitalId)
+            console.log(currUser);
+            for(var r = 0; r < currUser[0].favourite_hospital.length ; r++){
+                console.log(currUser[0].favourite_hospital[r] + " " + hospitalId);
+                if(currUser[0].favourite_hospital[r] == hospitalId)
                     collection = "取消收藏";
             }
+
             //initialize date table
             var date = new Date();
             var dateList = new Array();
@@ -140,6 +141,7 @@ exports.showDepartment = function (req, res, next) {
                 dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
                 dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
             }
+            console.log(collection);
             var hospitala = {
                 hospital_name: hospital.hospital_name,
                 hospital_address: hospital.hospital_location,
@@ -149,7 +151,7 @@ exports.showDepartment = function (req, res, next) {
                 imgsrc: hospital.hospital_imgsrc,
                 departments: departments,
                 dateList: dateList,
-                collection:"收藏"
+                collection:collection
             };
             if (!tool.getDeviceType(req.url)) {
                 return res.render('pc/choose_department', {username: username, hospital: hospitala, title: '选择科室和时间'});
@@ -189,9 +191,13 @@ exports.showDoctor = function (req, res, next) {
     var hospitalId = req.query.hospitalid;
     var date = req.query.date;
     var dateNum = req.query.datenum;
+    var hospitalName = req.query.hospitalname;
     var url = req.query.previouspage;
+    var userId = req.session.user._id;
     var today = new Date();
     var weekOfTomorrow = today.getDay() + 1;
+
+    var proxy = new eventproxy();
     console.log('department:' + departmentId + ' hospital:' + hospitalId);
     var proxy = new eventproxy();
     proxy.fail(next);
@@ -201,6 +207,10 @@ exports.showDoctor = function (req, res, next) {
         else
             res.render('pc/login', {previousurl: url, error:''});
     }else{
+        User.getUserByQuery({"_id":userId},{},function(err,currUser){
+            proxy.emit("user",currUser);
+        });
+        proxy.
         Hospital.getDoctorsByDeptAndDate(departmentId, dateNum,proxy.done('hospital', function (hospital) {
             var doctor = new Array();
             for(var i = 0; i < hospital.doctors.length; i++) {
@@ -220,7 +230,7 @@ exports.showDoctor = function (req, res, next) {
                     timeAndSource = {
                         time:'无',
                         source:''
-                    }
+                    };
                 doctor[i] = {
                     name:hospital.doctors[i].doc_name,
                     imgsrc:null, //TODO
@@ -229,7 +239,8 @@ exports.showDoctor = function (req, res, next) {
                     goodReputation:hospital.doctors[i].doc_rep,
                     intro:hospital.doctors[i].doc_intro,
                     advancedDisease:hospital.doctors[i].good_illness,
-                    _id:hospital.doctors[i]._id
+                    _id:hospital.doctors[i]._id,
+                    collection:collection
                 }
             }
             currPage(req, res);
@@ -245,7 +256,8 @@ exports.showDoctor = function (req, res, next) {
                     hospitalid: hospitalId,
                     datenum:dateNum,
                     username: username,
-                    title: title
+                    title: title,
+                    hospital_name:hospitalName
                 });
             } else return res.render('mobile/mDoctors', {
                 doctor: doctor,
@@ -253,7 +265,8 @@ exports.showDoctor = function (req, res, next) {
                 hospitalid: hospitalId,
                 datenum:dateNum,
                 username: username,
-                title: title
+                title: title,
+                hospital_name:hospitalName
             });
         }));
     }
