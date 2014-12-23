@@ -13,18 +13,18 @@
 <body class="o-page">
 <div id="page">
     <%- partial('mLoggedIn', {
-    title:'医呼百应 更改电话',
+    title:'医呼百应 修改邮箱',
     username:user.real_name
     }) %>
 
 
-    <form action="/mobile/person/info/alterPhone" method="post" >
+    <form action="/mobile/person/info/alterEmail" method="post" >
 
         <div style="margin-left:20px; margin-top:50px;" >
-            <span>＊新手机号码</span>
+            <span>＊邮箱地址</span>
         </div>
         <div  align="center" style="padding-left:20px; padding-right:20px;">
-            <input id="id_new_phone" name="newPhoneNumber" type="text" placeholder="新手机号码"/>
+            <input id="id_new_phone" name="newEmail" type="email" placeholder="新电子邮箱"/>
         </div>
         <div align="center" style="margin-top:40px;">
             <button type="submit" name="post" value="true" style="background-color:#587eac; width:100px; border-radius:5px; font-size:12px; height: 38px;line-height: 5px;">确定
