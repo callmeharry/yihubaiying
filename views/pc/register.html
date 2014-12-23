@@ -22,31 +22,10 @@
 
    </head>
    <body>
-      <!--网页头部-->
-      <div style="background:url(/images/header.jpg)">
-      <table class="head-table">
-         <tr>
-            <th class="logo-th">
-               <!--Logo-->
-               <div class="logo">
-                  <h1>医呼百应网上预约挂号平台</h1>
-               </div>
-            </th>
-            <th>
-               <!--搜索框-->
-               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
-                  <span class="input-group-btn">
-                     <button class="btn search-button" type="button">
-                     &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                     </button>
-                  </span>
-               </div><!-- /input-group -->
-            </th>
-         </tr>
-      </table>
-	</div>
-      <!--导航栏欢迎词-->
+   <!--网页头部-->
+   <%- include header.html %>
+
+   <!--导航栏欢迎词-->
       <div class="welcome-register">
          <label class="welcome-register-text col-sm-4 col-sm-offset-4">注册我们的网站</label>
          <a class="welcome-a col-sm-4" href="login.html">已有账号，前往登录</a>
@@ -193,6 +172,6 @@
          	}
          }
       </script>
-
+      <% include footer.html %>
    </body>
 </html>

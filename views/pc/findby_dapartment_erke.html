@@ -27,36 +27,8 @@
 <script src="dist/js/bootstrap.min.js"></script>
 
 <!--网页头部-->
-<div class="container">
-    <div class="row">
-        <div class="logo-th logo col-xs-6">
-                医呼百应网上预约挂号平台
-        </div>
-            <!--搜索框-->
-            
-            <div class="input-group col-xs-6">
-                <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名">
-                  <span class="input-group-btn">
-                     <button class="btn search-button" type="button">
-                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                     </button>
-                  </span>
-            </div>
-            <!-- /input-group -->
-    </div>
-</div>
+<%- include header.html %>
 
-<!--导航栏-->
-<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">按医院找</a></li>
-            <li  class="active"><a href="#">按科室找</a></li>
-            <li><a href="#">按疾病找</a></li>
-        </ul>
-    </div>
-</nav>
       <div class="row">
          <div class="col-md-2"></div>
          <div class="col-md-2 department-list">
@@ -128,7 +100,7 @@
          <div class="col-md-2"></div>  
 
       </div>
-         
 
+<% include footer.html %>
    </body>
 </html>
