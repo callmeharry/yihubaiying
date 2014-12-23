@@ -1,9 +1,5 @@
 /**
  * Created by Megas on 2014/12/16.
- * Todo:用例YHBY-502中的描述：
- * 医院工作者可以修改、更新医院的信息。包括医院的基本资料、以及医院提供的挂号信息。
- * 可能与用例YHBY-503描述
- * 故未实现YHBY-502中对挂号信息的显示
  */
 var models = require('../../models');
 var HospitalModel = models.Hospital;
@@ -188,7 +184,9 @@ var addDocToDept = function (req, res, next) {
         hospital.update({
             _id: hosId,
             'hospital_dept._id': deptId
-        }, {$push: {'hospital_dept.dept_doc': docId}}, callback);
+        }, {$push: {'hospital_dept.dept_doc': docId}}, function () {
+            res.send('添加成功');
+        });
     });
 };
 
@@ -213,7 +211,9 @@ var removeDocFromDept = function (req, res, next) {
         }
         hospital.remove({
             'hospital_dept.dept_doc': docId
-        }, callback);
+        }, function () {
+            res.send('ID为'+docId+'的医生已从ID为'+deptId+'的科室成功删除');
+        });
     });
 };
 

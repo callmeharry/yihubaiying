@@ -64,6 +64,7 @@ var confirmOrder = function (req, res, next) {
                     return res.send('处理订单时出错');
                 } else {
                     order.update(query, {$set: {'order_if_finished': true}});
+                    return res.send('订单号：'+OrderProxy._id+'\n'+OrderProxy.order_if_finished);
                 }
             });
         }

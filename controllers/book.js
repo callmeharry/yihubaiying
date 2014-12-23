@@ -28,7 +28,6 @@ exports.showHospital = function (req, res, next) {
     console.log(city);
     if(department)
     query = {hospital_city:city,"hospital_dept.dept_name":department};
-    console.log(query);
     var proxy = new eventproxy();
     proxy.fail(next);
 
@@ -90,7 +89,7 @@ exports.showHospital = function (req, res, next) {
 exports.showDepartment = function (req, res, next) {
     var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
-    var userId = req.session.user._id;
+
     var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
     proxy.fail(next);
@@ -99,6 +98,8 @@ exports.showDepartment = function (req, res, next) {
     Hospital.getOneHospitalByQuery(query, options, proxy.done("hospital", function (hospital) {
         //initialize departmentlist
         var departments = new Array();
+        console.log(hospital);
+        console.log(hospital.hospital_dept)
         var i = 0;
         for(var j = 0; j < hospital.hospital_dept.length; j++ ){
             var flag = 0;
@@ -122,44 +123,31 @@ exports.showDepartment = function (req, res, next) {
                 }
             }
         }
-        var collection = "收藏";
-        User.getUserByQuery({"_id":userId},{},function(err,currUser){
-            console.log(currUser);
-            for(var r = 0; r < currUser[0].favourite_hospital.length ; r++){
-                console.log(currUser[0].favourite_hospital[r] + " " + hospitalId);
-                if(currUser[0].favourite_hospital[r] == hospitalId)
-                    collection = "取消收藏";
-            }
-
-            //initialize date table
-            var date = new Date();
-            var dateList = new Array();
-            for(var i = 0 ; i < 14 ; i = i + 2) {
-                var new_date = new Date();
-                new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
-                date = new_date;
-                dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
-                dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
-            }
-            console.log(collection);
-            var hospitala = {
-                hospital_name: hospital.hospital_name,
-                hospital_address: hospital.hospital_location,
-                hospital_tel: hospital.hospital_tel,
-                _id: hospital._id,
-                hospital_order_count: hospital.hospital_order_count,
-                imgsrc: hospital.hospital_imgsrc,
-                departments: departments,
-                dateList: dateList,
-                collection:collection
-            };
-            if (!tool.getDeviceType(req.url)) {
-                return res.render('pc/choose_department', {username: username, hospital: hospitala, title: '选择科室和时间'});
-            } else {
-                return res.render('mobile/mDepartments', {username: username, hospital: hospitala, title: '选择科室和时间'});
-            }
-        })
-
+        //initialize date table
+        var date = new Date();
+        var dateList = new Array();
+        for(var i = 0 ; i < 14 ; i = i + 2) {
+            var new_date = new Date();
+            new_date.setTime(date.getTime() + 1000 * 60 * 60 * 24);
+            date = new_date;
+            dateList[i] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日上午';
+            dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
+        }
+        var hospital = {
+            hospital_name: hospital.hospital_name,
+            hospital_address: hospital.hospital_location,
+            hospital_tel: hospital.hospital_tel,
+            _id: hospital._id,
+            hospital_order_count: hospital.hospital_order_count,
+            imgsrc: hospital.hospital_imgsrc,
+            departments: departments,
+            dateList: dateList
+        };
+        if (!tool.getDeviceType(req.url)) {
+            return res.render('pc/choose_department', {username: username, hospital: hospital, title: '选择科室和时间'});
+        } else {
+            return res.render('mobile/mDepartments', {username: username, hospital: hospital, title: '选择科室和时间'});
+        }
     }));
 
 
@@ -406,7 +394,7 @@ exports.confirmBook = function (req, res, next) {
             fee: doctor[0].doctor_visit[(2*weekOfTomorrow+dateNum<14)?(2*weekOfTomorrow+dateNum):(2*weekOfTomorrow+dateNum-14)].fee,
             address: hospital.hospital_location,
             tel: hospital.hospital_tel
-        }
+        };
         if (!tool.getDeviceType(req.url)) {
             res.render('pc/confirm_order', {
                 username: username, title: '确认订单信息', order: order, departmentid: departmentId,
@@ -427,7 +415,7 @@ exports.confirmBook = function (req, res, next) {
     Doctor.getDoctorByQuery({_id:doctorId},{},function(err,doctor){
         proxy.emit('doctor',doctor);
     });
-}
+};
 /**
  * 完成订单
  * @param req

@@ -8,7 +8,6 @@ var eventproxy = require('eventproxy');
 var User = require('../proxy').User;
 var Order = require('../proxy').Order;
 var Feedback = require('../proxy').Feedback;
-var validator = require('validator');
 var tool = require('../middlewares/tool');
 
 exports.showPersonInfo = function (req, res, next) {
@@ -291,7 +290,7 @@ exports.showsubmitFeedback = function(req, res, next){
         user:user
     });
 
-}
+};
 exports.submitFeedback = function (req, res, next) {
     var content = validator.trim(req.body.content);
     var user =req.session.user;
@@ -305,7 +304,7 @@ exports.submitFeedback = function (req, res, next) {
             res.redirect('/person/feedback');
     });
 
-}
+};
 
 //Ajax interface for order operation
 
