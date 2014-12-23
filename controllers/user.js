@@ -154,7 +154,13 @@ exports.changePhoneNumber = function (req, res, next) {
 };
 
 exports.showChangeEmail = function(req, res, next){
-    res.render('pc/modify_email',{
+    if(tool.getDeviceType(req.url))
+        res.render('mobile/mChangeEmail',{
+            user:req.session.user
+        });
+    else
+
+        res.render('pc/modify_email',{
         user:req.session.user
     });
 };
@@ -166,15 +172,25 @@ exports.changeEmail = function (req, res, next) {
     console.log("test!");
 
     if (newEmail === '')
-        res.send('pc/modify_email',{error:"the mail should not be null"});
-    console.log("shit!1");
+    {
+        if(tool.getDeviceType(req.url))
+            return  res.render('mobile/mChangeEmail',{user:user,
+                    error:"the mail should not be null"});
+        else
+            return res.render('pc/modify_email',{
+                user:user,
+                error:"the mail should not be null"});
+    }
+
     User.getUserById(user._id, function (err, user) {
         user.email = newEmail;
-        console.log("shit!2");
         user.save(function (errs) {
             if (errs) return next(err);
-            console.log("shit!");
-            res.redirect('/person/info');
+
+            if(tool.getDeviceType(req.url))
+                res.redirect('/mobile/person/info');
+            else
+                res.redirect('/person/info');
         });
 
     });
@@ -250,17 +266,23 @@ exports.showFeedback =  function(req, res, next){
     var query= {sender_id:user._id,fdType:1}
     Feedback.getFeedbackByQuery(query,{},function(err, feedbacks){
         if(err) return next(err);
-
+        if(tool.getDeviceType(req.url))
+            res.render('mobile/mShortCodes',{
+                user:user,
+                feedback:feedbacks
+            })
         res.render('pc/my_feedback',{
             feedback:feedbacks,
             user:user
-        })
+        });
 
     });
 
 };
 exports.showsubmitFeedback = function(req, res, next){
     var user = req.session.user;
+    if(tool.getDeviceType(req.url))
+        res.render
     res.render('pc/feedback',{
         user:user
     });
@@ -273,7 +295,7 @@ exports.submitFeedback = function (req, res, next) {
     Feedback.newAndSave(content, 1, user._id, function (err) {
         if (err) next(err);
 
-        res.redirect('/person/info');
+        res.redirect('/person/feedback');
     });
 
 }

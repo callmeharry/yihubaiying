@@ -1,103 +1,52 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>问题反馈</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+
     <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-    
-    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
     <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page">
 <div id="page">
-<div id="header">
+    <%- partial('mLoggedIn', {
+    title:'医呼百应 问题反馈',
+    username:user.real_name
+    }) %>
 
-    <a href="#menu"></a>
-    <span> 医呼百应 问题反馈 </span>
-    <a class="backBtn" href="javascript:history.back();"></a>
-</div>
-
-<nav id="menu">
-    <ul>
-    <li  class="Selected">
-               <a href="mLogin.html">
-                    <i class="i-home i-small"></i>登录
-               </a>
-        </li>
-        <li >
-               <a href="mRegister.html">
-        <i class="i-home i-small"></i>注册
-               </a>
-        </li>
-        <li>
-            <a href="mIndex.html">
-                <i class="i-home i-small"></i>预约主页
-            </a>
-        </li>
-        <li>
-            <a href="mAbout.html">
-                <i class="i-about i-small"></i>个人信息
-            </a>
-        </li>
-        <li>
-            <a href="mBlog.html">
-                <i class="i-blog i-small"></i>订单管理
-            </a>
-        </li>
-        <li>
-            <a href="mGallery.html">
-                <i class="i-gallery i-small"></i>收藏夹
-            </a>
-        </li>
-        <li>
-            <a href="mShortCodes.html">
-                <i class="i-shortcodes i-small"></i>问题反馈
-            </a>
-        </li>
-    </ul>
-</nav>
-<div id="question" align="center">
-<div>
+    <div id="question" align="center">
+        <div>
             <h1 class="subheader">问题反馈</h1>
             <hr class="hr3" style="background-color:#587eac;"/>
         </div>
-    <table cellspacing="10" align="center" style="margin-top:20px;">
-        <tr>
-            <td>时间</td>
-            <td>问题</td>
-            <td>是否解决</td>
-        </tr>
-        <tr>
-            <td>2013/2/1</td>
-            <td>无法预约</td>
-            <td>已解决</td>
-        </tr>
-        <tr>
-            <td>2013/3/2</td>
-            <td>无法支付</td>
-            <td>已解决</td>
-        </tr>
-        <tr>
-            <td>2030/3/2</td>
-            <td>支付后无法打印</td>
-            <td>待解决</td>
-        </tr>
-
-        <tr>
-            <td>2030/3/4</td>
-            <td>医院查不到预约信息</td>
-            <td>待解决</td>
-        </tr>
-    </table>
-    <a href="mAskPage.html">
-        <button type="button" href="mAskPage.html"
-                style="background-color:#587eac; width:70px; height:40px; color:#FFFFFF">提问
-        </button>
-    </a>
+        <a href="/mobile/person/submitFeedback" class="panel-heading">新的反馈</a>
+        <div class="list-group">
+            <% for(var i=0; i<feedback.length; i++) {%>
+            <li href="#" class="list-group-item active">
+                <% if(feedback[i].if_check) {%>
+                <% var status = "已回复"; %>
+                <% } else { %>
+                <% status = "未回复"; %>
+                <% } %>
+                <span class="list-group-item-heading">反馈时间：<%= feedback[i].date%> 状态：<%= status%> </span>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p class="list-group-item-text"><b>反馈内容：</b><%= feedback[i].content%>
+                </p>
+                <% if(feedback[i].if_check) {%>
+                <p class="list-group-item-text"><b>回复内容：</b><%= feedback[i].check_message%>
+                </p>
+                <% } %>
+            </li>
+            <% } %>
+        </div>
+        <a href="mAskPage.html">
+            <button type="button" href="mAskPage.html"
+                    style="background-color:#587eac; width:70px; height:40px; color:#FFFFFF">提问
+            </button>
+        </a>
     </div>
 </body>
 </html>
