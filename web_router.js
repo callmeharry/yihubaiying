@@ -107,8 +107,9 @@ router.get('/book/finishbook', mobileBook.finishBook);
 router.get('/book/diseases', mobileBook.showDiseases);
 router.get('/book/departmentlist', mobileBook.showDepartmentList);
 
-//collection
+//collection state change
 router.post('/changehospitalcollectionstate', collection.changeHospitalCollectionState);
+router.post('/changedoctorcollectionstate', collection.changeDoctorCollectionState);
 /**
  * Administrator pages
  */

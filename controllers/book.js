@@ -210,47 +210,66 @@ exports.showDoctor = function (req, res, next) {
         User.getUserByQuery({"_id":userId},{},function(err,currUser){
             proxy.emit("user",currUser);
         });
-        proxy.
-        Hospital.getDoctorsByDeptAndDate(departmentId, dateNum,proxy.done('hospital', function (hospital) {
-            var doctor = new Array();
-            for(var i = 0; i < hospital.doctors.length; i++) {
-                var flag = '否';//not on duty
-                var timeAndSource = new Array();
-                var k = 0;
-                for(var j = 0; j < hospital.doctors[i].doc_visit.length; j++){
-                    if(hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].totalSource != '0') {
-                        flag = '是';
-                        timeAndSource[k++] = {
-                            time : tool.getDateByNum(j) + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].visit_start_time + ' ~ ' + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].visit_end_time,
-                            source: hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].leftSource + '/' + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].totalSource
+        proxy.all("user",function(user){
+            console.log(user[0]);
+            Hospital.getDoctorsByDeptAndDate(departmentId, dateNum,proxy.done('hospital', function (hospital) {
+                var doctor = new Array();
+                for(var i = 0; i < hospital.doctors.length; i++) {
+                    var flag = '否';//not on duty
+                    var timeAndSource = new Array();
+                    var k = 0;
+                    for(var j = 0; j < hospital.doctors[i].doc_visit.length; j++){
+                        if(hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].totalSource != '0') {
+                            flag = '是';
+                            timeAndSource[k++] = {
+                                time : tool.getDateByNum(j) + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].visit_start_time + ' ~ ' + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].visit_end_time,
+                                source: hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].leftSource + '/' + hospital.doctors[i].doc_visit[(2*weekOfTomorrow+j<14)?(2*weekOfTomorrow+j):(2*weekOfTomorrow+j-14)].totalSource
+                            }
                         }
                     }
+
+                    if(flag == '否')
+                        timeAndSource = {
+                            time:'无',
+                            source:''
+                        };
+                    var collection = "收藏";
+                    for(var p = 0 ; p < user[0].favourite_doctor.length ; p++){
+                        console.log(user[0].favourite_doctor[p].doctor_id + " " + hospital.doctors[i]._id)
+                        if(user[0].favourite_doctor[p].doctor_id == hospital.doctors[i]._id){
+                            collection = "取消收藏";
+                            break;
+                        }
+                    }
+                    doctor[i] = {
+                        name:hospital.doctors[i].doc_name,
+                        imgsrc:null, //TODO
+                        isOnDuty:flag,
+                        timeAndSource:timeAndSource,
+                        goodReputation:hospital.doctors[i].doc_rep,
+                        intro:hospital.doctors[i].doc_intro,
+                        advancedDisease:hospital.doctors[i].good_illness,
+                        _id:hospital.doctors[i]._id,
+                        collection:collection
+                    }
                 }
-                if(flag == '否')
-                    timeAndSource = {
-                        time:'无',
-                        source:''
-                    };
-                doctor[i] = {
-                    name:hospital.doctors[i].doc_name,
-                    imgsrc:null, //TODO
-                    isOnDuty:flag,
-                    timeAndSource:timeAndSource,
-                    goodReputation:hospital.doctors[i].doc_rep,
-                    intro:hospital.doctors[i].doc_intro,
-                    advancedDisease:hospital.doctors[i].good_illness,
-                    _id:hospital.doctors[i]._id,
-                    collection:collection
+                currPage(req, res);
+                var title = '选择医生';
+                if(dateNum != -1){
+                    console.log(dateNum+" dd");
+                    title += '(' + tool.getDateByNum(dateNum) + (dateNum % 2 == 0 ? '上' : '下') + '午)';
                 }
-            }
-            currPage(req, res);
-            var title = '选择医生';
-            if(dateNum != -1){
-                console.log(dateNum+" dd");
-                title += '(' + tool.getDateByNum(dateNum) + (dateNum % 2 == 0 ? '上' : '下') + '午)';
-            }
-            if (!tool.getDeviceType(req.url)) {
-                return res.render('pc/choose_doctor', {
+                if (!tool.getDeviceType(req.url)) {
+                    return res.render('pc/choose_doctor', {
+                        doctor: doctor,
+                        departmentid: departmentId,
+                        hospitalid: hospitalId,
+                        datenum:dateNum,
+                        username: username,
+                        title: title,
+                        hospital_name:hospitalName
+                    });
+                } else return res.render('mobile/mDoctors', {
                     doctor: doctor,
                     departmentid: departmentId,
                     hospitalid: hospitalId,
@@ -259,16 +278,9 @@ exports.showDoctor = function (req, res, next) {
                     title: title,
                     hospital_name:hospitalName
                 });
-            } else return res.render('mobile/mDoctors', {
-                doctor: doctor,
-                departmentid: departmentId,
-                hospitalid: hospitalId,
-                datenum:dateNum,
-                username: username,
-                title: title,
-                hospital_name:hospitalName
-            });
-        }));
+            }));
+        });
+
     }
 };
 

@@ -17,7 +17,7 @@
    </head>
    
 
-   <body onload="getCollectionState()">
+   <body>
       <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
       <script src="https://code.jquery.com/jquery.js"></script>
       <!-- 包括所有已编译的插件 -->
@@ -117,31 +117,31 @@
                                  		</tr>
                                  	</table>
                                  </div>
-                                 <div class="col-md-12">
+                                 <div class="col-md-offset-2 col-md-10">
                                  	<table>
                                  		<tr>
-                                 			<th>出诊时段</th>
-                                 			<th>号源</th>
+                                 			<th style="width: 300px; padding-left: 50px;">出诊时段</th>
+                                 			<th style="width: 300px;">号源</th>
                                  		</tr>
                                  		<% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
                                  		<tr>
-	                                 		<td>
+	                                 		<td style="width: 300px;">
 	                                 			<%= doctor[i].timeAndSource[j].time %>
 	                                 		</td>
-	                                 		<td>
+	                                 		<td style="width: 300px;">
 	                                 			<%= doctor[i].timeAndSource[j].source %>
 	                                 		</td>
                                         </tr>
                                         <% } %>
                                  	</table>
                                  </div>
-                                 <div style="display: inline">
-                                    <button name="collection" class="btn btn-default" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)">收藏</button>
+                                 <div class="col-md-offset-4" style="display: inline ">
+                                    <button name="collection" class="btn btn-default" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)"><%= doctor[i].collection %></button>
                                     <a class="btn btn-primary" href="/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
                                  </div>
                               </div>
                            </div><br/>
-                           <div style="height:1px;background-color:#000000;line-height:1px;clear:both;display:block;overflow:hidden"></div><br/>
+                           <div style="height:2px;background-color:#C0C0C0;line-height:1px;clear:both;display:block;overflow:hidden"></div><br/>
                         </div>
                         <% } %>
                      </div>
@@ -152,42 +152,23 @@
       </div>
 
       <script>
-         function getCollectionState(){
-            var user_id = getCookie('user_id');
-            var hospital_name = document.getElementById("id_hospitalName").innerHTML;
-            var doctor_id = document.getElementsByName("id_doctorId");
-            for(var i = 0 ;i < doctor_id.length ; i++) {
-               $.post("/getdoctorcollectionstate", {
-                  "user_id": user_id,
-                  "hospital_name": hospital_name,
-                  "doctor_id":doctor_id[i].innerHTML
-               }, function (result) {
-                  if (result.status == 0) {
-                     document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
-                  } else {
-                     if (result.msg) {
-                        alert(result.msg);
-                     } else {
-                        alert('服务器异常');
-                     }
-                  }
-               }, 'json');
-            }
-
-            return false;
-         }
          function changeCollectionState(button){
             var user_id = getCookie('user_id');
-            var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+            var hospital_name = document.getElementById("id_hospitalName").innerHTML;
             var doctor_id = button.id.split("_")[1];
-            alert(doctor_id);
+            var todo = button.innerHTML;
             $.post("/changedoctorcollectionstate", {
                "user_id": user_id,
-               "hospital_id": hospital_id,
-               "doctor_id":doctor_id[i].innerHTML
+               "hospital_name": hospital_name,
+               "doctor_id":doctor_id,
+               "todo":todo
             }, function (result) {
                if (result.status == 0) {
-                  document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+                  if(document.getElementById("collection_"+doctor_id).innerHTML == "收藏"){
+                     document.getElementById("collection_"+doctor_id).innerHTML = "取消收藏";
+                  }else{
+                     document.getElementById("collection_"+doctor_id).innerHTML = "收藏"
+                  }
                } else {
                   if (result.msg) {
                      alert(result.msg);

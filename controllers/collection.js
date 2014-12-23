@@ -38,12 +38,15 @@ exports.changeDoctorCollectionState = function(req,res,next){
     var hospital_name = req.body.hospital_name;
     var doctor_id = req.body.doctor_id;
     var todo = req.body.todo;
+    console.log(user_id + " " + hospital_name + " " + doctor_id + " " + todo);
     if(todo == '收藏'){
-        User.updateByQuery({_id:user_id},{'$push':{"favorite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err,user){
+        User.updateByQuery({_id:user_id},{'$push':{"favourite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err){
+            if(err)console.log(err);
             res.send({status:0});
         });
     }else{
-        User.updateByQuery({_id:user_id},{'$pull':{"favorite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err,user){
+        User.updateByQuery({_id:user_id},{'$pull':{"favourite_doctor":{"hospital":hospital_name,"doctor_id":doctor_id}}},function(err){
+            if(err)console.log(err);
             res.send({status:0});
         })
     }

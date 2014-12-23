@@ -28,7 +28,7 @@
 
 
     <div id="content">
-        <span style="display: none" id="id_hospitalId"><%= hospital_name %></span>
+        <span style="display: none" id="id_hospitalName"><%= hospital_name %></span>
         <% for(var i = 0; i < doctor.length; i++) {%>
         <article>
             <div>
@@ -64,7 +64,7 @@
                         <span class="doctorColumnHead">医生专长：</span>
                         <span id="doctorSpecialty_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
                     </div>
-                    <button name="collection" id="collection_<%= doctor[i]._id %>" class="btn collection" onclick="changeCollectionState(this)">收藏</button>
+                    <button name="collection" id="collection_<%= doctor[i]._id %>" class="btn collection" onclick="changeCollectionState(this)"><%= doctor[i].collection %></button>
                     <a class="btn collection" href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>"><span>选择</span></a>
                 </div>
 
@@ -78,42 +78,23 @@
     </div>
 </div>
 <script>
-    function getCollectionState(){
-        var user_id = getCookie('user_id');
-        var hospital_id = document.getElementById("id_hospitalId").innerHTML;
-        var doctor_id = document.getElementsByName("id_doctorId");
-        for(var i = 0 ;i < doctor_id.length ; i++) {
-            $.post("/getdoctorcollectionstate", {
-                "user_id": user_id,
-                "hospital_id": hospital_id,
-                "doctor_id":doctor_id[i].innerHTML
-            }, function (result) {
-                if (result.status == 0) {
-                    document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
-                } else {
-                    if (result.msg) {
-                        alert(result.msg);
-                    } else {
-                        alert('服务器异常');
-                    }
-                }
-            }, 'json');
-        }
-
-        return false;
-    }
     function changeCollectionState(button){
         var user_id = getCookie('user_id');
-        var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+        var hospital_name = document.getElementById("id_hospitalName").innerHTML;
         var doctor_id = button.id.split("_")[1];
-        alert(doctor_id);
+        var todo = button.innerHTML;
         $.post("/changedoctorcollectionstate", {
             "user_id": user_id,
-            "hospital_id": hospital_id,
-            "doctor_id":doctor_id[i].innerHTML
+            "hospital_name": hospital_name,
+            "doctor_id":doctor_id,
+            "todo":todo
         }, function (result) {
             if (result.status == 0) {
-                document.getElementById("collection_"+doctor_id[i].innerHTML).innerHTML = result;
+                if(document.getElementById("collection_"+doctor_id).innerHTML == "收藏"){
+                    document.getElementById("collection_"+doctor_id).innerHTML = "取消收藏";
+                }else{
+                    document.getElementById("collection_"+doctor_id).innerHTML = "收藏"
+                }
             } else {
                 if (result.msg) {
                     alert(result.msg);
