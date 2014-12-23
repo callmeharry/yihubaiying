@@ -164,7 +164,6 @@ router.get('/sms-test', smsTest.registerVerity);
 router.post('/pay', getpost.do);
 router.get('/sms', sms.registerVerify);
 router.get('/include-test', include.do);
-router.get('/admin/uploads',admin.loadDocVisit);
 //test upload file
 router.get('/test/upload',admin.showUpload);
 router.post('/test/upload',admin.testUpload);
