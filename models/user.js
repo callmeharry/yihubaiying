@@ -24,10 +24,10 @@ var UserSchema = new Schema({
     //is_active: { type: Boolean, default: true },
     // 用户是否被管理员审核通过。0：未审核 1：审核通过 2：被查封
     user_status: {type: Number, default: 0},
-    favourite_hospital: [{type: String}],
+    favourite_hospital: [{type: ObjectId}],
     favourite_doctor: [
         {
-            name: { type: String },
+            id: { type: ObjectId },
             hospital: { type: String }
         }
     ],

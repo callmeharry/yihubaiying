@@ -19,6 +19,7 @@ var auth = require('./middlewares/auth');
 var index = require('./test/index');
 var authCode = require('./middlewares/tool').getAuthCode;
 var search = require('./controllers/search');
+var collection = require('./controllers/collection');
 
 //search page
 router.post('/searchresult',search.handleSearch);
@@ -104,6 +105,9 @@ router.get('/book/confirmbook', mobileBook.confirmBook);
 router.get('/book/finishbook', mobileBook.finishBook);
 router.get('/book/diseases', mobileBook.showDiseases);
 router.get('/book/departmentlist', mobileBook.showDepartmentList);
+
+//collection
+router.post('/changehospitalcollectionstate', collection.changeHospitalCollectionState);
 /**
  * Administrator pages
  */

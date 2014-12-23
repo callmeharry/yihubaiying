@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/Order.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/mDoctor.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
 
     <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
@@ -63,9 +64,8 @@
                         <span class="doctorColumnHead">医生专长：</span>
                         <span id="doctorSpecialty_id" name="doctorIntro"><%= doctor[i].advancedDisease%></span>
                     </div>
-                    <button name="collection" style="background-color:#587eac; height:50px; width:80px;" id="collection_<%= doctor[i]._id %>" onclick="changeCollectionState(this)">收藏</button>
-
-                    <a href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>">选择</a>
+                    <button name="collection" id="collection_<%= doctor[i]._id %>" class="btn collection" onclick="changeCollectionState(this)">收藏</button>
+                    <a class="btn collection" href="/mobile/book/time?hospitalid=<%= hospitalid %>&departmentid=<%= departmentid %>&doctorid=<%= doctor[i]._id %>&datenum=<%= datenum %>"><span>选择</span></a>
                 </div>
 
             </div>

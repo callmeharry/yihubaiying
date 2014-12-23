@@ -5,15 +5,15 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>医院详情</title>
     
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/Departments.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap.css">
-
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
-    
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/Departments.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
 </head>
 <!-- -->
 <body class="o-page p-blog" onload="getCollectionState();">
@@ -28,7 +28,7 @@
 
 --><div id="header">
         <a href="#menu"></a>
-        <span> 选择城市 </span>
+        <span> 医院详情 </span>
         <a class="backBtn" href="javascript:history.back();"></a>
     </div>
     <div id="content">
@@ -39,7 +39,7 @@
             <div class="hospitalName">
                 <h2><span id="id_hospitalName" name="hospitalName" style="float:left;">医院名称<!-- <%= hospital.hospital_name %>--></span></h2>
                 <span style="display: none" id="id_hospitalId" ><!-- <%= hospital._id %>--></span>
-                <button id="collection" class="btn">收藏</button>
+                <button class="btn collection">收藏</button>
                 <!--<a href="#"><span onclick="changeCollectionState()"></span></a>-->
             </div>
 
@@ -81,6 +81,7 @@
         </article>
 
         <div>
+            <span class="spanFont">时间选择</span>
             <table width="100%">
                 <col width="50%"/>
                 <col width="50%"/>
@@ -119,11 +120,12 @@
             </table>
         </div>
 
-        <div class="o-team">
-            <div class="o-team-person">
+        <div class="o-team" style="width: 100%">
+            <span class="spanFont">科室选择</span>
+            <div class="o-team-person" style="width: 100%">
                 <% for(var i = 0; i < hospital.departments.length; i++) { %>
-                <h3 style="font-size:2em !important;"><%= hospital.departments[i].name %></h3>
-                <table style="width:100% !important;">
+                <h3 style="font-size:2em !important; text-align: left;"><%= hospital.departments[i].name %></h3>
+                <table width="100%">
                     <col width="33.3%">
                     <col width="33.3%">
                     <col width="33.3%">

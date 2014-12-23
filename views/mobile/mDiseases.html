@@ -21,11 +21,11 @@
 <body class="o-page">
 <div id="page">
 
-    <div id="header">
-        <a href="#menu"></a>
-        <span> 医呼百应 疾病列表 </span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <% if(!username) { %>
+    <%- include mNotLoggedIn.html %>
+    <% } else {%>
+    <%- include mLoggedIn.html %>
+    <% } %>
 
     <div class="content">
 
@@ -45,21 +45,21 @@
                 </div> 
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=冠心病'>冠心病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=高血压'>高血压</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心律失常'>心律失常</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=房颤'>房颤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=阵发性室上性心动过速'>阵发性室上性心动过速</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心衰'>心衰</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心肌炎'>心肌炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=房间隔缺损'>房间隔缺损</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=先天性心脏病'>先天性心脏病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心肌病'>心肌病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=风湿性心脏病'>风湿性心脏病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心肌梗死'>心肌梗死</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心绞痛'>心绞痛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=急性感染性心内膜炎'>急性感染性心内膜炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=心血管内科&disease=心肌缺血'>心肌缺血</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=冠心病'>冠心病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=高血压'>高血压</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心律失常'>心律失常</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=房颤'>房颤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=阵发性室上性心动过速'>阵发性室上性心动过速</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心衰'>心衰</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心肌炎'>心肌炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=房间隔缺损'>房间隔缺损</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=先天性心脏病'>先天性心脏病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心肌病'>心肌病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=风湿性心脏病'>风湿性心脏病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心肌梗死'>心肌梗死</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心绞痛'>心绞痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=急性感染性心内膜炎'>急性感染性心内膜炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=心血管内科&disease=心肌缺血'>心肌缺血</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,24 +74,24 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=脑梗塞'>脑梗塞</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=癫痫'>癫痫</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=头痛'>头痛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=帕金森'>帕金森</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=头晕'>头晕</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=脑出血'>脑出血</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=重症肌无力'>重症肌无力</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=抑郁症'>抑郁症</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=失眠'>失眠</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=脑供血不足'>脑供血不足</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=脑炎'>脑炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=多发性硬化'>多发性硬化</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=运动神经元病'>运动神经元病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=痴呆'>痴呆</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=肌病'>肌病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=肌病'>脑血栓</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=偏头痛'>偏头痛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经内科&disease=脑栓塞'>脑栓塞</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=脑梗塞'>脑梗塞</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=癫痫'>癫痫</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=头痛'>头痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=帕金森'>帕金森</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=头晕'>头晕</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=脑出血'>脑出血</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=重症肌无力'>重症肌无力</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=抑郁症'>抑郁症</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=失眠'>失眠</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=脑供血不足'>脑供血不足</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=脑炎'>脑炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=多发性硬化'>多发性硬化</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=运动神经元病'>运动神经元病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=痴呆'>痴呆</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=肌病'>肌病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=肌病'>脑血栓</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=偏头痛'>偏头痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经内科&disease=脑栓塞'>脑栓塞</a></li>
                     </ul>
                 </div>
             </div>
@@ -107,14 +107,14 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=胃炎'>胃炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=胃溃疡'>胃溃疡</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=肝硬化'>肝硬化</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=胰腺炎'>胰腺炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=反流性食管炎'>反流性食管炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=溃疡性结肠炎'>溃疡性结肠炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=消化道出血'>消化道出血</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=消化内科&disease=肠炎'>肠炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=胃炎'>胃炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=胃溃疡'>胃溃疡</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=肝硬化'>肝硬化</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=胰腺炎'>胰腺炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=反流性食管炎'>反流性食管炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=溃疡性结肠炎'>溃疡性结肠炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=消化道出血'>消化道出血</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=消化内科&disease=肠炎'>肠炎</a></li>
                     </ul>
                 </div>
             </div>
@@ -129,21 +129,21 @@
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                      <ul class="list-group">
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=糖尿病'>糖尿病</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=甲亢'>甲亢</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=甲减'>甲减</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=甲状腺炎'>甲状腺炎</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=垂体瘤'>垂体瘤</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=甲状腺瘤'>甲状腺瘤</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=矮小症'>矮小症</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=糖尿病足'>糖尿病足</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=内分泌失调'>内分泌失调</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=骨质疏松'>骨质疏松</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=肥胖症'>肥胖症</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=糖尿病神经病变'>糖尿病神经病变</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=1型糖尿病'>1型糖尿病</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=2型糖尿病'>2型糖尿病</a></li>
-                       <li class="list-group-item"><a href='/mobile/book/disease/result?department=内分泌科&disease=Graves病'>Graves病</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=糖尿病'>糖尿病</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=甲亢'>甲亢</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=甲减'>甲减</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=甲状腺炎'>甲状腺炎</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=垂体瘤'>垂体瘤</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=甲状腺瘤'>甲状腺瘤</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=矮小症'>矮小症</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=糖尿病足'>糖尿病足</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=内分泌失调'>内分泌失调</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=骨质疏松'>骨质疏松</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=肥胖症'>肥胖症</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=糖尿病神经病变'>糖尿病神经病变</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=1型糖尿病'>1型糖尿病</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=2型糖尿病'>2型糖尿病</a></li>
+                       <li class="list-group-item"><a href='/mobile/book/hospitals?department=内分泌科&disease=Graves病'>Graves病</a></li>
                     </ul>
                 </div>
             </div>
@@ -158,18 +158,18 @@
                 </div>
                 <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=红斑狼疮'>红斑狼疮</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=类风湿性关节炎'>类风湿性关节炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=强直性脊柱炎'>强直性脊柱炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=干燥综合征'>干燥综合征</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=皮肌炎'>皮肌炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=痛风'>痛风</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=白塞氏病'>白塞氏病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=成人斯蒂尔病'>成人斯蒂尔病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=血清阴性脊柱关节病'>血清阴性脊柱关节病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=血管炎'>血管炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=系统性红斑狼疮'>系统性红斑狼疮</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=免疫科&disease=风湿性关节炎'>风湿性关节炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=红斑狼疮'>红斑狼疮</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=类风湿性关节炎'>类风湿性关节炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=强直性脊柱炎'>强直性脊柱炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=干燥综合征'>干燥综合征</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=皮肌炎'>皮肌炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=痛风'>痛风</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=白塞氏病'>白塞氏病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=成人斯蒂尔病'>成人斯蒂尔病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=血清阴性脊柱关节病'>血清阴性脊柱关节病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=血管炎'>血管炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=系统性红斑狼疮'>系统性红斑狼疮</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=免疫科&disease=风湿性关节炎'>风湿性关节炎</a></li>
                     </ul>
                 </div>
             </div>
@@ -184,23 +184,23 @@
                 </div>
                 <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=哮喘'>哮喘</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=肺炎'>肺炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=支气管炎'>支气管炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=肺癌'>肺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=慢阻肺'>慢阻肺</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=咳嗽'>咳嗽</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=>肺结核<'>肺结核</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=肺气肿'>肺气肿</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=肺心病'>肺心病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=支气管扩张'>支气管扩张</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=胸膜炎'>胸膜炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=肺栓塞'>肺栓塞</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=感冒'>感冒</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=睡眠呼吸暂停综合症'>睡眠呼吸暂停综合症</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=结节病'>结节病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=慢性支气管炎'>慢性支气管炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=呼吸科&disease=间质性肺炎'>间质性肺炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=哮喘'>哮喘</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=肺炎'>肺炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=支气管炎'>支气管炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=肺癌'>肺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=慢阻肺'>慢阻肺</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=咳嗽'>咳嗽</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=>肺结核<'>肺结核</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=肺气肿'>肺气肿</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=肺心病'>肺心病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=支气管扩张'>支气管扩张</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=胸膜炎'>胸膜炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=肺栓塞'>肺栓塞</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=感冒'>感冒</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=睡眠呼吸暂停综合症'>睡眠呼吸暂停综合症</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=结节病'>结节病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=慢性支气管炎'>慢性支气管炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=呼吸科&disease=间质性肺炎'>间质性肺炎</a></li>
                     </ul>
                 </div>
             </div>
@@ -215,15 +215,15 @@
                 </div>
                 <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=肾炎'>肾炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=肾病综合征'>肾病综合征</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=肾功能衰竭'>肾功能衰竭</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=IGA肾病'>IGA肾病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=尿毒症'>尿毒症</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=狼疮性肾炎'>狼疮性肾炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=尿路感染'>尿路感染</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=紫癜性肾炎'>紫癜性肾炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肾病内科&disease=肾小球肾炎'>肾小球肾炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=肾炎'>肾炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=肾病综合征'>肾病综合征</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=肾功能衰竭'>肾功能衰竭</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=IGA肾病'>IGA肾病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=尿毒症'>尿毒症</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=狼疮性肾炎'>狼疮性肾炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=尿路感染'>尿路感染</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=紫癜性肾炎'>紫癜性肾炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肾病内科&disease=肾小球肾炎'>肾小球肾炎</a></li>
                     </ul>
                 </div>
             </div>    
@@ -238,22 +238,22 @@
                 </div>
                 <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=高血压'>高血压</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=糖尿病'>糖尿病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=冠心病'>冠心病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=尿急胃病'>胃病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=脑梗塞'>脑梗塞</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=胃炎'>胃炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=胃溃疡'>胃溃疡</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=感冒'>感冒</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=肺炎'>肺炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=脑血栓'>脑血栓</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=支气管炎'>支气管炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=头痛'>头痛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=肝炎'>肝炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=肾病'>肾病</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=咳嗽'>咳嗽</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=普通内科&disease=发烧'>发烧</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=高血压'>高血压</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=糖尿病'>糖尿病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=冠心病'>冠心病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=尿急胃病'>胃病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=脑梗塞'>脑梗塞</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=胃炎'>胃炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=胃溃疡'>胃溃疡</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=感冒'>感冒</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=肺炎'>肺炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=脑血栓'>脑血栓</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=支气管炎'>支气管炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=头痛'>头痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=肝炎'>肝炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=肾病'>肾病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=咳嗽'>咳嗽</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=普通内科&disease=发烧'>发烧</a></li>
                     </ul>
                 </div>
             </div>
@@ -278,19 +278,19 @@
                 </div>
                 <div id="collapseThirteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThirteen">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=垂体瘤'>垂体瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑膜瘤'>脑膜瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑肿瘤'>脑肿瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=胶质瘤'>胶质瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑外伤'>脑外伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑出血'>脑出血</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑动脉瘤'>脑动脉瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=面肌痉挛'>面肌痉挛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=脑血管畸形'>脑血管畸形</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=癫痫'>癫痫</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=椎管内肿瘤'>椎管内肿瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=三叉神经痛'>三叉神经痛</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=神经外科&disease=听神经瘤'>听神经瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=垂体瘤'>垂体瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑膜瘤'>脑膜瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑肿瘤'>脑肿瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=胶质瘤'>胶质瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑外伤'>脑外伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑出血'>脑出血</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑动脉瘤'>脑动脉瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=面肌痉挛'>面肌痉挛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=脑血管畸形'>脑血管畸形</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=癫痫'>癫痫</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=椎管内肿瘤'>椎管内肿瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=三叉神经痛'>三叉神经痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=神经外科&disease=听神经瘤'>听神经瘤</a></li>
                     </ul>
                 </div>
             </div>
@@ -305,17 +305,17 @@
                 </div>
                 <div id="collapseFourteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourteen">
                     <ul class="list-group">
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=肺癌'>肺癌</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=食道癌'>食道癌</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=气胸'>气胸</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=纵隔肿瘤'>纵隔肿瘤</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=支气管扩张'>支气管扩张</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=多汗症'>多汗症</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=漏斗胸'>漏斗胸</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=胸腔积液'>胸腔积液</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=胸膜炎'>胸膜炎</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=胸部创伤'>胸部创伤</a></li>
-                     <li class="list-group-item"><a href='/mobile/book/disease/result?department=胸外科&disease=血胸'>血胸</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=肺癌'>肺癌</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=食道癌'>食道癌</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=气胸'>气胸</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=纵隔肿瘤'>纵隔肿瘤</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=支气管扩张'>支气管扩张</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=多汗症'>多汗症</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=漏斗胸'>漏斗胸</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=胸腔积液'>胸腔积液</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=胸膜炎'>胸膜炎</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=胸部创伤'>胸部创伤</a></li>
+                     <li class="list-group-item"><a href='/mobile/book/hospitals?department=胸外科&disease=血胸'>血胸</a></li>
                 </ul>
                 </div>
             </div>
@@ -340,16 +340,16 @@
                 </div>
                 <div id="collapseFifteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifteen">
                      <ul class="list-group">
-                        ><li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=子宫肌瘤'>子宫肌瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=不孕不育'>不孕不育</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=宫颈炎'>宫颈炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=卵巢囊肿'>卵巢囊肿</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=宫颈癌前病变'>宫颈癌前病变</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=子宫内膜异位症'>子宫内膜异位症</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=月经失调'>月经失调</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=阴道炎'>阴道炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=多囊卵巢综合征'>多囊卵巢综合征</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=妇产科&disease=宫外孕'>宫外孕</a></li>                   
+                        ><li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=子宫肌瘤'>子宫肌瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=不孕不育'>不孕不育</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=宫颈炎'>宫颈炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=卵巢囊肿'>卵巢囊肿</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=宫颈癌前病变'>宫颈癌前病变</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=子宫内膜异位症'>子宫内膜异位症</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=月经失调'>月经失调</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=阴道炎'>阴道炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=多囊卵巢综合征'>多囊卵巢综合征</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=妇产科&disease=宫外孕'>宫外孕</a></li>
                     </ul>
                 </div>
             </div>
@@ -364,8 +364,8 @@
                 </div>
                 <div id="collapseSixteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSixteen">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=计划生育科&disease=人流'>人流</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=计划生育科&disease=引产'>引产</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=计划生育科&disease=人流'>人流</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=计划生育科&disease=引产'>引产</a></li>
                     </ul>
                 </div>
             </div>
@@ -389,16 +389,16 @@
                 </div>
                 <div id="collapseSeventeen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeventeen">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=膝关节损伤'>膝关节损伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=踝部扭伤'>踝部扭伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=韧带损伤'>韧带损伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=滑膜炎'>滑膜炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=关节损伤'>关节损伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=骨折'>骨折</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=运动创伤'>运动创伤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=关节炎'>关节炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=肩周炎'>肩周炎</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=运动医学科&disease=颈椎病'>颈椎病</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=膝关节损伤'>膝关节损伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=踝部扭伤'>踝部扭伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=韧带损伤'>韧带损伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=滑膜炎'>滑膜炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=关节损伤'>关节损伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=骨折'>骨折</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=运动创伤'>运动创伤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=关节炎'>关节炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=肩周炎'>肩周炎</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=运动医学科&disease=颈椎病'>颈椎病</a></li>
                     </ul>
                 </div>
             </div>
@@ -421,16 +421,16 @@
                 </div>
                 <div id="collapseEighteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEighteen">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=肺癌'>肺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=乳腺癌'>乳腺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=淋巴瘤'>淋巴瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=胃癌'>胃癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=结肠癌'>结肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=直肠癌'>直肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=食道癌'>食道癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=鼻咽癌'>鼻咽癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=肝癌'>肝癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤内科&disease=癌痛'>癌痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=肺癌'>肺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=乳腺癌'>乳腺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=淋巴瘤'>淋巴瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=胃癌'>胃癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=结肠癌'>结肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=直肠癌'>直肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=食道癌'>食道癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=鼻咽癌'>鼻咽癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=肝癌'>肝癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤内科&disease=癌痛'>癌痛</a></li>
                     </ul>
                 </div>
             </div>
@@ -445,16 +445,16 @@
                 </div>
                 <div id="collapseNineteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNineteen">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=胃癌'>胃癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=乳腺癌'>乳腺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=直肠癌'>直肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=肺癌'>肺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=结肠癌'>结肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=肝癌'>肝癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=甲状腺瘤'>甲状腺瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=乳腺纤维瘤'>乳腺纤维瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=食道癌<'>食道癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤外科&disease=乳腺肿瘤'>乳腺肿瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=胃癌'>胃癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=乳腺癌'>乳腺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=直肠癌'>直肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=肺癌'>肺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=结肠癌'>结肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=肝癌'>肝癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=甲状腺瘤'>甲状腺瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=乳腺纤维瘤'>乳腺纤维瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=食道癌<'>食道癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤外科&disease=乳腺肿瘤'>乳腺肿瘤</a></li>
                     </ul>
                 </div>
             </div>
@@ -469,58 +469,22 @@
                 </div>
                 <div id="collapseTwenty" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwenty">
                      <ul class="list-group">
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=肺癌'>肺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=乳腺癌'>乳腺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=淋巴瘤'>淋巴瘤</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=胃癌'>胃癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=鼻咽癌'>鼻咽癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=食道癌'>食道癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=肝癌'>肝癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=直肠癌'>直肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=胰腺癌'>胰腺癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=结肠癌'>结肠癌</a></li>
-                        <li class="list-group-item"><a href='/mobile/book/disease/result?department=肿瘤综合科&disease=癌痛'>癌痛</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=肺癌'>肺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=乳腺癌'>乳腺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=淋巴瘤'>淋巴瘤</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=胃癌'>胃癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=鼻咽癌'>鼻咽癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=食道癌'>食道癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=肝癌'>肝癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=直肠癌'>直肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=胰腺癌'>胰腺癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=结肠癌'>结肠癌</a></li>
+                        <li class="list-group-item"><a href='/mobile/book/hospitals?department=肿瘤综合科&disease=癌痛'>癌痛</a></li>
                     </ul>
                 </div>
             </div>           
         </div>
-    </div>      
-
-    <!-- Menu navigation -->
-    <nav id="menu">
-        <ul>
-            <li class="Selected">
-                <a href="mIndex.html">
-                    <i class="i-home i-small"></i>预约主页
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="i-about i-small"></i>个人信息
-                </a>
-            </li>
-            <li>
-                <a href="blog.html">
-                    <i class="i-blog i-small"></i>订单管理
-                </a>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="i-gallery i-small"></i>收藏夹
-                </a>
-            </li>
-            <li>
-                <a href="shortcodes.html">
-                    <i class="i-shortcodes i-small"></i>问题反馈
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-contact i-small"></i>账户登陆
-                </a>
-            </li>
-        </ul>
-    </nav>
+    </div>
 </div>
 </body>
 </html> 

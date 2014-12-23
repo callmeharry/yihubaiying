@@ -17,7 +17,7 @@
 </head>
 
 
-<body onload="getCollectionState()">
+<body>
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="/javascripts/js/jquery.min.js"></script>
 <!-- 包括所有已编译的插件 -->
@@ -67,7 +67,7 @@
 
                      <p class="text-muted">总预约量：<%= hospital.hospital_order_count %></p>
                      <span style="display: none" id="id_hospitalId"><%= hospital._id %></span>
-                     <button class="btn btn-default" style=" display: none" id="collection" onclick="changeCollectionState()">收藏</button>
+                     <button class="btn btn-default" id="collection" onclick="changeCollectionState()"><% hospital.collection %></button>
                   </div>
                </div>
                <br>
@@ -181,32 +181,18 @@
       var href = a.getAttribute('data-name') + date_item + '&datenum=' + num;
       window.location.href=href;
    }
-   function getCollectionState(){
-      var user_id = getCookie('user_id');
-      var hospital_id = document.getElementById("id_hospitalId").innerHTML;
-      if(user_id){
-         document.getElementById("collection").style.display = "";
-         $.post("/gethospitalcollectionstate",{"user_id":user_id,"hospital_id":hospital_id},function(result) {
-            if (result.status == 0) {
-               window.location.reload();
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json');
-      }
 
-      return false;
-   }
    function changeCollectionState(){
       var user_id = getCookie('user_id');
-      var hospital_name = document.getElementById("id_hospitalName").innerHTML;
-      $.post("/changehospitalcollectionstate",{"user_id":user_id,"hospital_name":hospital_name},function(result) {
+      var hospital_id = document.getElementById("id_hospitalId").innerHTML;
+      $.post("/changehospitalcollectionstate",{"user_id":user_id,"hospital_id":hospital_id,"todo":document.getElementById("collection").innerHTML},function(result) {
          if (result.status == 0) {
-            window.location.reload();
+            if(document.getElementById("collection").innerHTML == "收藏"){
+               document.getElementById("collection").innerHTML = "取消收藏";
+            }else{
+               document.getElementById("collection").innerHTML = "收藏"
+            }
+
          } else {
             if (result.msg) {
                alert(result.msg);

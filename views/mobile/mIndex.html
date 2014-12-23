@@ -4,13 +4,15 @@
     <meta charset="utf-8"/>
     <title>医呼百应挂号网</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css">
-	<link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
-	<link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
-	
-	<script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
-	<script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
+
+
+
     <!--<script src="js/vendor/modernizr.js"></script>-->
 
 </head>
@@ -34,10 +36,26 @@
 
 <div class="block">
     <form action="/mobile/searchresult" method="post">
-        <input type="text" name="searchText" placeholder="输入医院、科室、医生名称,找到合适的医院和医生">
-        <input type="submit" style="background-color:#587eac;" onclick="" value="搜索">
+        <input type="text" name="searchText" placeholder="输入医院、科室、医生名称">
+        <button type="submit"  style="background-color:#587eac;border-radius:5px; font-size:12px; width:100px; margin-top:20px;" >搜索
+        </button>
     </form>
 </div>
+
+
+<!-- <div class="block">
+                 <a href="mRegister.html">
+             <button type="button"  style="background-color:#587eac;">注册
+     </button>
+     </a>
+      <a href="mLogin.html">
+     <button type="button"   style="background-color:#587eac;">登录
+     </button>
+     </a>
+         </div>
+         -->
+
+
 
 <div class="block">
     快速预约挂号
@@ -46,6 +64,7 @@
 <div class="exploreSiteFullPane">
 
     <a href="/mobile/book/hospitals" class="explorePane active">
+
 					<span class="i-pane i-blue">
 						<i class="i-home"></i>
 					</span>
@@ -61,101 +80,100 @@
 					<span class="i-pane i-blue">
 						<i class="i-blog"></i>
 					</span>
+
         <h4>选择疾病</h4>
     </a>
 
 </div>
 
-
-<div class="article-comments">
-    <div align="center" ;>
-        <hr>
-        <span>附近的医院</span>
-        <hr>
-
-    </div>
-
-
-    <div class="row">
-
-
-        <div class='row'>
-
-            <ul style='width:100%'>
-                <li>
-                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
-
-                    <p class="c-a-name"><strong>协和医院</strong></p>
-
-                    <p class="comment-date">三级甲等</p>
-
-                    <p class="desc">
-                        北京市海淀区花园北路49号中央党校院区]区大有庄100号
-                    </p>
-                </li>
-                <hr>
-                <li>
-                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
-
-                    <p class="c-a-name"><strong>北医三院</strong></p>
-
-                    <p class="comment-date">三级甲等</p>
-
-                    <p class="desc">
-                        [东院]北京市东城区帅府园一号 [西院]北京市西城区大木仓胡同41号
-                    </p>
-
-                </li>
-                <hr>
-                <li>
-                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
-
-                    <p class="c-a-name"><strong>积水潭医院</strong></p>
-
-                    <p class="comment-date">三级甲等</p>
-
-                    <p class="desc">
-                        北京大兴区兴丰大街三段（56号）；庄向北100米路东。
-                        所属地区：大兴区
-                    </p>
-
-                </li>
-                <hr>
-                <li>
-                    <img src="/images/hospital3.jpg"/>
-
-                    <p class="c-a-name"><strong>武警三医院</strong></p>
-
-                    <p class="comment-date">三级甲等</p>
-
-                    <p class="desc">
-                        北京市大兴区黄村镇黄良路口北侧
-                    </p>
-
-                </li>
-                <hr>
-                <li>
-                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
-
-                    <p class="c-a-name"><strong>北京大学医院</strong></p>
-
-                    <p class="comment-date">三级甲等</p>
-
-                    <p class="desc">
-                        北京大兴区兴丰大街三段（56号）分院]路亦庄出口向北100米路东。
-
-                    </p>
-
-                </li>
-
-            </ul>
-
-
-        </div>
-
-    </div>
+<div align="center";>
+    <hr>
+    <span style="font-size:15px;">附近的医院</span>
+    <hr>
 
 </div>
+
+<div class="article-comments">
+
+
+
+    <ul >
+        <li style="margin-left:10px;" >
+            <img style="width:60px;height:60px;" src=" /images/hospital3.jpg" />
+            <p class="c-a-name"><strong>北京协和医院</strong></p>
+            <p class="comment-date">010-69155564</p>
+            <p class="desc">
+                北京市东城区帅府园一号
+            </p>
+        </li>
+
+        <li style="margin-left:10px;">
+            <img style="width:60px;height:60px;" style="align-content:center;" src=" /images/hospital3.jpg" />
+            <p class="c-a-name"><strong>北京市仁和医院</strong></p>
+            <p class="comment-date">010-69242469</p>
+            <p class="desc">
+                大兴区兴丰大街1号
+            </p>
+
+        </li>
+
+        <li style="margin-left:10px;">
+            <img style="width:60px;height:60px;" style="align-content:center;" src=" /images/hospital3.jpg" />
+            <p class="c-a-name"><strong>北京肿瘤医院</strong></p>
+            <p class="comment-date">010-88196155</p>
+            <p class="desc">
+                北京市海淀区阜成路52号
+                所属地区：大兴区
+            </p>
+
+        </li>
+
+        <li style="margin-left:10px;">
+            <img style="width:60px;height:60px;" src=" /images/hospital3.jpg" />
+            <p class="c-a-name"><strong>北京大学第六医院</strong></p>
+            <p class="comment-date">010-82801984</p>
+            <p class="desc">
+                北京市海淀区花园北路51号
+            </p>
+
+        </li>
+
+        <li style="margin-left:10px;">
+            <img  style="width:60px;height:60px;" src=" /images/hospital3.jpg" />
+            <p class="c-a-name"><strong>北京大学第三医院</strong></p>
+            <p class="comment-date">010-82266699</p>
+            <p class="desc">
+                北京市海淀区花园北路49号
+
+            </p>
+
+        </li>
+
+    </ul>
+
+
+
+
+
+
+
+
+    <!--<script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>-->
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+
 
 </body>
 </html>

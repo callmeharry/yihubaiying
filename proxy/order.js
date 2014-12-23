@@ -5,9 +5,10 @@
 
 var models = require('../models');
 var Order = models.Order;
-var Hospital = require('../models').Hospital;
-var Doctor = require('../models').Doctor;
+var Hospital = require('../proxy/hospital');
+var Doctor = require('../proxy/doctor');
 var eventproxy = require('eventproxy');
+var User = require('../proxy/user');
 
 exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, seeTime, dateNum, callback) {
     var proxy = new eventproxy();
@@ -30,14 +31,14 @@ exports.newAndSaveOrder = function (hospitalId, departmentId, doctorId, userId, 
 
 
     var ups = {"$inc":{"hospital_order_count":1}};
-    Hospital.update({_id:hospitalId},ups,proxy.done(function(){
+    Hospital.updateDeptByQuery({_id:hospitalId},ups,proxy.done(function(){
         proxy.emit('hospital');
 
     }));
 
 
 
-    Doctor.findOne({_id:doctorId},function(err, doctor){
+    Doctor.getDoctorById(doctorId,function(err, doctor){
         if(err) return callback(err);
         console.log(dateNum);
         console.log(index);

@@ -33,3 +33,15 @@ div span{
 a{
 	text-decoration: none !important;
 }
+
+.collection{
+	margin: 1px;
+	line-height: 15px;
+	font-size: 1.5em;
+	background-color: #ff9900;
+	color: white;
+	margin-left: 30px;
+}
+.collection span{
+	color: #ffffff;
+}

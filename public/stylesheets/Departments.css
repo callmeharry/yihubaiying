@@ -24,7 +24,7 @@ article h2{
 	font-weight: bold;
 	color: #587eac;
 }
-#collection{
+.collection{
 	margin: 1px;
 	line-height: 15px;
 	font-size: 1.5em;
@@ -50,7 +50,10 @@ table a:link {color:gray; text-decoration: none;}
 table a:visited {color:gray;}	
 table a:hover {text-decoration:none; color:gray;}
 
-table{
-	
+.spanFont{
+	font-family: "微软雅黑";
+	font-size: 2em;
+	font-weight: bold;
+	color: #587eac;
 }
 
