@@ -1,3 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>医呼百应网上预约挂号平台</title>
+    <!-- 引入 Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/javascripts/pc/login.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
 <%-include header.html%>
 
 <!--中间部分-->
@@ -5,7 +18,7 @@
     <div class="row">
         <!--左侧导航栏面板-->
         <div class="col-xs-3">
-            <div class="panel panel-primary panel-left">
+            <div class="panel panel-info panel-left">
                 <div class="panel-heading">
                     &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
                 </div>
@@ -22,7 +35,7 @@
         </div>
         <div class="col-xs-9">
             <!--右侧面板-->
-            <div class="panel panel-primary panel-right">
+            <div class="panel panel-info panel-right">
                 <div class="panel-heading panel-head-personalinfo">
                     <!--上方导航栏-->
                     <ol class="breadcrumb my-bread">
@@ -38,7 +51,12 @@
                                     <label class="th-label">原居住地：</label>
                                 </th>
                                 <td>
+                                    <% if (typeof(user.address) !== 'undefined' && user.address) { %>
                                     <%= user.address%>
+                                    <% } else { %>
+                                    wu
+                                    <% } %>
+
                                 </td>
                             </tr>
                             <tr>

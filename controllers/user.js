@@ -57,16 +57,22 @@ exports.changepassword = function (req, res, next) {
     });
 };
 
+exports.showChangeAddress = function(req, res, next){
+    var user = req.session.user;
+    res.render('pc/modify_address',{
+        user:user
+    });
+};
 exports.changeCity = function (req, res, next) {
-    var user_id = res.cookies.user_id;
-    var newCity = validator.trim(req.body.newCity);
+    var current_user = res.session.user;
+    var newCity = validator.trim(req.body.newAddress);
 
-    User.getUserById(user_id, function (user) {
+    User.getUserById(current_user._id, function (user) {
         user.address = newCity;
         user.save(function (err) {
-            if (err) return res.send({status: -1, msg: "failed"});
+            if (err) return next(err);
 
-            return res.send({status: 0});
+            return res.redirect('/person/info');
         });
     });
 };
@@ -187,14 +193,27 @@ exports.getMyFeedbacks = function(req, res, next){
 };
 
 
-exports.showFeedback=  function(req, res, next){
+exports.showFeedback =  function(req, res, next){
+    var user = req.session.user;
+    var query= {sender_id:user._id,fdType:1}
+    Feedback.getFeedbackByQuery(query,{},function(err, feedbacks){
+        if(err) return next(err);
+
+        res.render('pc/my_feedback',{
+            feedback:feedbacks,
+            user:user
+        })
+
+    });
+
+};
+exports.showsubmitFeedback = function(req, res, next){
     var user = req.session.user;
     res.render('pc/feedback',{
         user:user
     });
 
 }
-
 exports.submitFeedback = function (req, res, next) {
     var content = validator.trim(req.body.content);
     var user =req.session.user;

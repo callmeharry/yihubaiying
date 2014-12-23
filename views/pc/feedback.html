@@ -1,5 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+   <title>医呼百应网上预约挂号平台</title>
+   <!-- 引入 Bootstrap -->
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/css/common.css" rel="stylesheet">
+   <script src="/js/jquery-1.11.2.js"></script>
+   <script src="/js/bootstrap.min.js"></script>
+   <script src="/javascripts/pc/login.js"></script>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <link href="/css/feedback.css" rel="stylesheet">
+</head>
+<body>
+
 <%-include header.html%>
-<link href="/css/feedback.css" rel="stylesheet">
 <!--中间部分-->
 <div class="container">
    <div class="row">
@@ -23,18 +37,18 @@
 
       <!--右侧面板-->
       <div class="col-xs-9">
-         <div class="panel panel-primary panel-right">
+         <div class="panel panel-info panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方导航栏-->
                问题反馈
             </div>
             <form action="/person/feedback" method="post">
-            <div class="panel-body panel-body-center">
-               <textarea class="form-control advice-textarea" cols="10" rows="10" placeholder="请写下您对于我们网站的建议" name = "content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg button-center ">
-               提交
-            </button>
+               <div class="panel-body panel-body-center">
+                  <textarea class="form-control advice-textarea" cols="10" rows="10" placeholder="请写下您对于我们网站的建议" name = "content"></textarea>
+               </div>
+               <button type="submit" class="btn btn-primary btn-lg button-center ">
+                  提交
+               </button>
             </form>
          </div>
       </div>

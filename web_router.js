@@ -83,10 +83,13 @@ router.get('/person/info/alterEmail',auth.UserRequired, user.showChangeEmail);
 router.post('/person/info/alterEmail', user.changeEmail);
 router.get('/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
 router.post('/person/info/alterPhone',user.changePhoneNumber);
+router.get('/person/info/alterAddress',user.showChangeAddress);
+router.post('/person/info/alterAddress',auth.UserRequired, user.changeCity);
 router.get('/person/myOrder', auth.UserRequired, user.showMyOrder);
 router.get('/person/myFavourite',auth.UserRequired,user.showFavorite);
 router.get('/person/feedback',auth.UserRequired,user.showFeedback);
-router.post('/person/feedback',user.submitFeedback);
+router.get('/person/submitFeedback',auth.UserRequired,user.showsubmitFeedback);
+router.post('/person/submitFeedback',user.submitFeedback);
 
 //pc book page
 router.get('/book/hospitals', mobileBook.showHospital);

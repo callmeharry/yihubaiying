@@ -3,27 +3,27 @@
 <head>
     <meta charset="utf-8"/>
     <title>医呼百应挂号网</title>
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
-	<link rel="stylesheet" type="text/css" href="../../public/stylesheets/foundation.css">
-	<link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-	<link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-	<link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-	<link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-	<link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
 
-	<script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
     <script type="text/javascript"
-			src="../../public/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-	<script type="text/javascript" src="/../../publicjavascripts/js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+            src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/publicjavascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
     <!--<script src="js/vendor/modernizr.js"></script>-->
-    
+
 </head>
 <body>
 <% if(!username) { %>
@@ -31,143 +31,142 @@
 <% } else {%>
 <%- include mLoggedIn.html %>
 <% } %>
-   <!-- <div class="block">
-   				 <a href="mRegister.html">
-				<button type="button"  style="background-color:#587eac;">注册
-        </button> 
-        </a>
-         <a href="mLogin.html">
-        <button type="button"   style="background-color:#587eac;">登录
-        </button> 
-        </a>
-			</div>
-            -->
+<!-- <div class="block">
+                 <a href="mRegister.html">
+             <button type="button"  style="background-color:#587eac;">注册
+     </button>
+     </a>
+      <a href="mLogin.html">
+     <button type="button"   style="background-color:#587eac;">登录
+     </button>
+     </a>
+         </div>
+         -->
 
-            <div class="block">
-				<form action="/mobile/searchresult" method="post">
-				<input type="text" name="searchText" placeholder="输入医院、科室、医生名称">
-                <input type="submit"   style="background-color:#587eac;" onclick="" value="搜索">
-				</form>
-			</div>
+<div class="block">
+    <form action="/mobile/searchresult" method="post">
+        <input type="text" name="searchText" placeholder="输入医院、科室、医生名称">
+        <input type="submit" style="background-color:#587eac;" onclick="" value="搜索">
+    </form>
+</div>
 
-        <div class="block">
-				快速预约挂号
-			</div>
-			
-			<div class="exploreSiteFullPane">
+<div class="block">
+    快速预约挂号
+</div>
 
-				<a href="/mobile/book/hospitals" class="explorePane active">
+<div class="exploreSiteFullPane">
+
+    <a href="/mobile/book/hospitals" class="explorePane active">
 					<span class="i-pane i-blue">
 						<i class="i-home"></i>
 					</span>
-					<h4>选择医院</h4>
-				</a>
-				<a href="/mobile/book/departmentlist" class="explorePane middle">
+        <h4>选择医院</h4>
+    </a>
+    <a href="/mobile/book/departmentlist" class="explorePane middle">
 					<span class="i-pane i-blue">
 						<i class="i-about"></i>
 					</span>
-					<h4>选择科室</h4>
-				</a>
-				<a href="/mobile/book/diseases" class="explorePane">
+        <h4>选择科室</h4>
+    </a>
+    <a href="/mobile/book/diseases" class="explorePane">
 					<span class="i-pane i-blue">
 						<i class="i-blog"></i>
 					</span>
-					<h4>选择疾病</h4>
-				</a>
-				
-			</div>
-          
+        <h4>选择疾病</h4>
+    </a>
+
+</div>
+
 
 <div class="article-comments">
-						<div align="center";>
-						<hr>
-						<span>附近的医院</span>
-                        <hr>
-<<<<<<< HEAD
-                        </div>
+    <div align="center" ;>
+        <hr>
+        <span>附近的医院</span>
+        <hr>
 
-						
-						<div class='row'>
+    </div>
 
-						<div class="row">
 
-=======
-						
-						<div class='row'>
->>>>>>> FETCH_HEAD
-						<ul style='width:100%'>
-							<li>
-								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
-								<p class="c-a-name"><strong>协和医院</strong></p>
-								<p class="comment-date">三级甲等</p>
-								<p class="desc">
-									北京市海淀区花园北路49号中央党校院区]区大有庄100号
-								</p>
-							</li>
-							<hr>
-							<li>
-								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
-								<p class="c-a-name"><strong>北医三院</strong></p>
-								<p class="comment-date">三级甲等</p>
-								<p class="desc">
-									[东院]北京市东城区帅府园一号 [西院]北京市西城区大木仓胡同41号 
-								</p>
-								
-							</li>
-							<hr>
-                            <li>
-								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
-								<p class="c-a-name"><strong>积水潭医院</strong></p>
-								<p class="comment-date">三级甲等</p>
-								<p class="desc">
-									北京大兴区兴丰大街三段（56号）；庄向北100米路东。 
-所属地区：大兴区
-								</p>
-								
-							</li>
-							<hr>
-                            <li>
-								<img  src="../../public/images/hospital3.jpg" />
-								<p class="c-a-name"><strong>武警三医院</strong></p>
-								<p class="comment-date">三级甲等</p>
-								<p class="desc">
-									北京市大兴区黄村镇黄良路口北侧 
-								</p>
-								
-							</li>
-							<hr>
-                            <li>
-								<img  style="align-content:center;" src="../../public/images/hospital3.jpg" />
-								<p class="c-a-name"><strong>北京大学医院</strong></p>
-								<p class="comment-date">三级甲等</p>
-								<p class="desc">
-									北京大兴区兴丰大街三段（56号）分院]路亦庄出口向北100米路东。 
+    <div class="row">
 
-								</p>
-								
-							</li>
-							
-						</ul>
-<<<<<<< HEAD
 
-						</div>
+        <div class='row'>
 
-                        </div>
+            <ul style='width:100%'>
+                <li>
+                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
 
-					</div>
-                 
-<!--<script src="js/vendor/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-<script>
-    $(document).foundation();
-</script>-->
-=======
-						</div>
-					</div>
-                    <div align="center">
-                  <button type="button"   style="background-color:#587eac;">更多
-        </button> 
+                    <p class="c-a-name"><strong>协和医院</strong></p>
+
+                    <p class="comment-date">三级甲等</p>
+
+                    <p class="desc">
+                        北京市海淀区花园北路49号中央党校院区]区大有庄100号
+                    </p>
+                </li>
+                <hr>
+                <li>
+                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
+
+                    <p class="c-a-name"><strong>北医三院</strong></p>
+
+                    <p class="comment-date">三级甲等</p>
+
+                    <p class="desc">
+                        [东院]北京市东城区帅府园一号 [西院]北京市西城区大木仓胡同41号
+                    </p>
+
+                </li>
+                <hr>
+                <li>
+                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
+
+                    <p class="c-a-name"><strong>积水潭医院</strong></p>
+
+                    <p class="comment-date">三级甲等</p>
+
+                    <p class="desc">
+                        北京大兴区兴丰大街三段（56号）；庄向北100米路东。
+                        所属地区：大兴区
+                    </p>
+
+                </li>
+                <hr>
+                <li>
+                    <img src="/images/hospital3.jpg"/>
+
+                    <p class="c-a-name"><strong>武警三医院</strong></p>
+
+                    <p class="comment-date">三级甲等</p>
+
+                    <p class="desc">
+                        北京市大兴区黄村镇黄良路口北侧
+                    </p>
+
+                </li>
+                <hr>
+                <li>
+                    <img style="align-content:center;" src="/images/hospital3.jpg"/>
+
+                    <p class="c-a-name"><strong>北京大学医院</strong></p>
+
+                    <p class="comment-date">三级甲等</p>
+
+                    <p class="desc">
+                        北京大兴区兴丰大街三段（56号）分院]路亦庄出口向北100米路东。
+
+                    </p>
+
+                </li>
+
+            </ul>
+
+
         </div>
->>>>>>> FETCH_HEAD
+
+    </div>
+
+</div>
+
 </body>
 </html>

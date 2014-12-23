@@ -1,3 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+   <title>医呼百应网上预约挂号平台</title>
+   <!-- 引入 Bootstrap -->
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/css/common.css" rel="stylesheet">
+   <script src="/js/jquery-1.11.2.js"></script>
+   <script src="/js/bootstrap.min.js"></script>
+   <script src="/javascripts/pc/login.js"></script>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
 <%-include header.html%>
 
 <!--中间部分-->
@@ -5,7 +18,7 @@
    <div class="row">
       <!--左侧导航栏面板-->
       <div class="col-xs-3">
-         <div class="panel panel-primary panel-left">
+         <div class="panel panel-info panel-left">
             <div class="panel-heading">
                &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
             </div>
@@ -22,7 +35,7 @@
       </div>
       <div class="col-xs-9">
          <!--右侧面板-->
-         <div class="panel panel-priamry panel-right">
+         <div class="panel panel-info panel-right">
             <div class="panel-heading panel-head-center">
                <!--上方名字-->
                我的订单
@@ -35,48 +48,35 @@
                      <th>医院</th>
                      <th>挂号科室</th>
                      <th>就诊医师</th>
-                     <th>订单时间</th>
                      <th>就诊日期</th>
+                     <th>状态</th>
                      <th>操作</th>
                   </tr>
                   </thead>
                   <tbody>
                   <% for(var i=0; i<orders.length; i++) {%>
                   <tr>
-                     <td><%= orders[i]._id %></td>
+                     <td><%= orders[i].order_number %></td>
                      <td><%= orders[i].hospital_name %></td>
                      <td><%= orders[i].dept_name %></td>
                      <td><%= orders[i].doctor_name %></td>
-                     <td><%= orders[i].order_time%></td>
+                     <td>
+                        <% var comment = orders[i].comment  %>
+                        <% if (typeof(comment) !== 'undefined' && comment) { %>
+                        已评价
+                        <% } else if(orders[i].order_if_pay === true) { %>
+                        <a title="已支付，点击完成评价" href="/person/order/comment" style="display:block">未评价</a>
+                        <% } else if(orders[i].order_if_pay === false ) { %>
+                        <a title="点击完成支付" href="/person/order/pay" style="display:block">未支付</a>
+                        <% } %>
+                     </td>
                      <td><%= orders[i].order_see_time %></td>
-                     <td><%= orders[i].order_number %></td>
                      <td>
                         <button type="button" class="btn btn-default btn-xs">打印</button>
-                        <button type="button" data-toggle="modal" data-target="#assessModal<%= i%>" class="btn btn-default btn-xs">评价</button>
-                        <button type="button" data-toggle="modal" data-target="#myModal<%= i%>" class="btn btn-default btn-xs">删除</button>
+                        <button type="button" data-toggle="modal" data-target="#deleteModal<%= i%>" class="btn btn-default btn-xs">删除</button>
                      </td>
                      <!-- Modal -->
-                     <div class="modal fade" id="assessModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                           <form action="/person/assessOrder" method="post">
-                              <div class="modal-content">
-                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                 </div>
-                                 <div class="modal-body">
-                                    <label class="th-label">评价订单：</label>
-                                    <textarea placeholder="请写下您对于该订单的评价" name = "content"></textarea>
-                                 </div>
-                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
-                                 </div>
-                              </div><!-- /.modal-content -->
-                           </form>
-                        </div><!-- /.modal-dialog -->
-                     </div><!-- /.modal -->
-                     <!-- Modal -->
-                     <div class="modal fade" id="myModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal fade" id="deleteModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                            <div class="modal-content">
                               <div class="modal-header">

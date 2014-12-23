@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>医呼百应网上预约挂号平台</title>
+    <!-- 引入 Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/javascripts/pc/login.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<%-include header.html%>
+
+<!--中间部分-->
+<div class="container">
+    <div class="row">
+        <!--左侧导航栏面板-->
+        <div class="col-xs-3">
+            <div class="panel panel-info panel-left">
+                <div class="panel-heading">
+                    &nbsp;&nbsp;&nbsp;<a href="/person/info" class="panel-title"><%= user.real_name%></a>，您好！
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="/person/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                        <li><a href="/person/info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
+                        <li><a href="/person/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
+                        <li><a href="/person/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                    </ul>
+                    <button class="btn btn-default logout-button" type="button" href="/logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <!--右侧面板-->
+            <div class="panel panel-info panel-right">
+                <div class="panel-heading panel-head-center">
+                    <!--上方名字-->
+                    我的订单
+                </div>
+                <div class="panel-body panel-body-center">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>反馈编号</th>
+                            <th>反馈日期</th>
+                            <th>删除</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(var i=0; i<feedback.length; i++) {%>
+                        <tr>
+                            <td><%= feedback[i]._id %></td>
+                            <td></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#myModal<%= i%>">
+                                    删除
+                                </a>
+                            </td>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除该反馈吗？</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            <button type="button" class="btn btn-primary del" id="<%= feedback[i].feedback_id %>" >删除</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('button.del').click(function(){
+            var feedback_id = $(this).attr("id");
+            $.post("/person/dropFeedback",{"feedback_id":feedback_id},function(result) {
+                if (result.status == 0) {
+                    window.location.reload();
+                } else {
+                    if (result.msg) {
+                        alert(result.msg);
+                    } else {
+                        alert('服务器异常');
+                    }
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
