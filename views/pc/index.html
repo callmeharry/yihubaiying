@@ -25,39 +25,7 @@
 <!-- 包括所有已编译的插件 -->
 
 <!--网页头部-->
-<div style="background:url(/images/header.jpg)">
-<div class="container">
-    <div class="row">
-        <div class="logo-th logo col-xs-6">
-            医呼百应网上预约挂号平台
-        </div>
-        <!--搜索框-->
-        <form method="post" action="/searchresult">
-        <div class="input-group col-xs-6">
-            <input type="text" class="form-control" placeholder="请输入疾病名、科室名或者医院名" name="searchText">
-                  <span class="input-group-btn">
-                     <input class="btn search-button" type="submit" value="搜索">
-                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
-                     </button>
-                  </span>
-        </div>
-        </form>
-        <!-- /input-group -->
-    </div>
-</div>
-
-<!--导航栏-->
-<nav class="navbar navbar-default head-navbar my-bar" role="navigation">
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">首页</a></li>
-            <li><a href="/book/hospitals">按医院找</a></li>
-            <li><a href="/book/departmentlist">按科室找</a></li>
-            <li><a href="/book/diseases">按疾病找</a></li>
-        </ul>
-    </div>
-</nav>
-</div>
+    <%- include header.html %>
 <!--中间部分-->
 <div class="container">
     <div class="row">
@@ -347,58 +315,58 @@
                     <div class="col-xs-12">
                         <table class="table table-bordered col-sm-12">
                     		<tr>
-                    			<th rowspan="3"><a href="/book/hospital?department= 内科">内科</a></th>
-		                    	<td><a href="/book/hospital?department= 心血管内科">心血管内科</a></td>
-		                    	<td><a href="/book/hospital?department= 呼吸内科">呼吸内科</a></td>
-		                    	<td><a href="/book/hospital?department= 消化内科">消化内科</a></td>
-		                    	<th rowspan="3"><a href="/book/hospital?department= 外科">外科</a></th>
-		                    	<td><a href="/book/hospital?department= 胸外科">胸外科</a></td>
-		                    	<td><a href="/book/hospital?department= 普外科">普外科</a></td>
-		                    	<td><a href="/book/hospital?department= 神经外科">神经外科</a></td>
+                    			<th rowspan="3"><a href="/book/hospitals?department= 内科">内科</a></th>
+		                    	<td><a href="/book/hospitals?department= 心血管内科">心血管内科</a></td>
+		                    	<td><a href="/book/hospitals?department= 呼吸内科">呼吸内科</a></td>
+		                    	<td><a href="/book/hospitals?department= 消化内科">消化内科</a></td>
+		                    	<th rowspan="3"><a href="/book/hospitals?department= 外科">外科</a></th>
+		                    	<td><a href="/book/hospitals?department= 胸外科">胸外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 普外科">普外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 神经外科">神经外科</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/hospital?department= 神经内科">神经内科</a></td>
-		                    	<td><a href="/book/hospital?department= 血液科">血液科</a></td>
-		                    	<td><a href="/book/hospital?department= 肾内科">肾内科</a></td>
-		                    	<td><a href="/book/hospital?department= 肝胆外科">肝胆外科</a></td>
-		                    	<td><a href="/book/hospital?department= 肛肠外科">肛肠外科</a></td>
-		                    	<td><a href="/book/hospital?department= 泌尿外科">泌尿外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 神经内科">神经内科</a></td>
+		                    	<td><a href="/book/hospitals?department= 血液科">血液科</a></td>
+		                    	<td><a href="/book/hospitals?department= 肾内科">肾内科</a></td>
+		                    	<td><a href="/book/hospitals?department= 肝胆外科">肝胆外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 肛肠外科">肛肠外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 泌尿外科">泌尿外科</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/hospital?department= 内分泌科">内分泌科</a></td>
-		                    	<td><a href="/book/hospital?department= 感染科">感染科</a></td>
-		                    	<td><a href="/book/hospital?department= 消风湿免疫科">消风湿免疫科</a></td>
-		                    	<td><a href="/book/hospital?department= 血管外科">血管外科</a></td>
-		                    	<td><a href="/book/hospital?department= 整形外科">整形外科</a></td>
-		                    	<td><a href="/book/hospital?department= 乳腺外科">乳腺外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 内分泌科">内分泌科</a></td>
+		                    	<td><a href="/book/hospitals?department= 感染科">感染科</a></td>
+		                    	<td><a href="/book/hospitals?department= 消风湿免疫科">消风湿免疫科</a></td>
+		                    	<td><a href="/book/hospitals?department= 血管外科">血管外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 整形外科">整形外科</a></td>
+		                    	<td><a href="/book/hospitals?department= 乳腺外科">乳腺外科</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<th><a href="/book/hospital?department= 骨科">骨科</a></th>
-		                    	<td><a href="/book/hospital?department= 脊柱外科">脊柱外科</a></td>
-								<td><a href="/book/hospital?department= 关节外科">关节外科</a></td>
-								<td><a href="/book/hospital?department= 手外科">手外科</a></td>
+		                    	<th><a href="/book/hospitals?department= 骨科">骨科</a></th>
+		                    	<td><a href="/book/hospitals?department= 脊柱外科">脊柱外科</a></td>
+								<td><a href="/book/hospitals?department= 关节外科">关节外科</a></td>
+								<td><a href="/book/hospitals?department= 手外科">手外科</a></td>
 								<th rowspan="3">其他</th>
-								<td><a href="/book/hospital?department= 皮肤性病科科">皮肤性病科科</a></td>
-								<td><a href="/book/hospital?department= 肿瘤科">肿瘤科</a></td>
-								<td><a href="/book/hospital?department= 中医科">中医科</a></td>
+								<td><a href="/book/hospitals?department= 皮肤性病科科">皮肤性病科科</a></td>
+								<td><a href="/book/hospitals?department= 肿瘤科">肿瘤科</a></td>
+								<td><a href="/book/hospitals?department= 中医科">中医科</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<th><a href="/book/hospital?department= 五官">五官</a></th>
-		                    	<td><a href="/book/hospital?department= 眼科">眼科</a></td>
-		                    	<td><a href="/book/hospital?department= 耳鼻咽喉科">耳鼻咽喉科</a></td>
-		                    	<td><a href="/book/hospital?department= 口腔科">口腔科</a></td>
-		                    	<td><a href="/book/hospital?department= 男科">男科</a></td>
-		                    	<td><a href="/book/hospital?department= 放射科">放射科</a></td>
-		                    	<td><a href="/book/hospital?department= 超声科">超声科</a></td>
+		                    	<th><a href="/book/hospitals?department= 五官">五官</a></th>
+		                    	<td><a href="/book/hospitals?department= 眼科">眼科</a></td>
+		                    	<td><a href="/book/hospitals?department= 耳鼻咽喉科">耳鼻咽喉科</a></td>
+		                    	<td><a href="/book/hospitals?department= 口腔科">口腔科</a></td>
+		                    	<td><a href="/book/hospitals?department= 男科">男科</a></td>
+		                    	<td><a href="/book/hospitals?department= 放射科">放射科</a></td>
+		                    	<td><a href="/book/hospitals?department= 超声科">超声科</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<th><a href="/book/hospital?department= 妇产科">妇产科</a></th>
-		                    	<td><a href="/book/hospital?department= 妇科">妇科</a></td>
-		                    	<td><a href="/book/hospital?department= 产科">产科</a></td>
-		                    	<td><a href="/book/hospital?department= 生殖与遗传">生殖与遗传</a></td>
-		                    	<td><a href="/book/hospital?department= 心理科">心理科</a></td>
-		                    	<td><a href="/book/hospital?department= 儿科">儿科</a></td>
-		                    	<td><a href="/book/hospital?department= 更多">更多<span class="glyphicon glyphicon-play"></span></a></td>
+		                    	<th><a href="/book/hospitals?department= 妇产科">妇产科</a></th>
+		                    	<td><a href="/book/hospitals?department= 妇科">妇科</a></td>
+		                    	<td><a href="/book/hospitals?department= 产科">产科</a></td>
+		                    	<td><a href="/book/hospitals?department= 生殖与遗传">生殖与遗传</a></td>
+		                    	<td><a href="/book/hospitals?department= 心理科">心理科</a></td>
+		                    	<td><a href="/book/hospitals?department= 儿科">儿科</a></td>
+		                    	<td><a href="/book/hospitals?department= 更多">更多<span class="glyphicon glyphicon-play"></span></a></td>
 		                    </tr>
 	                    </table>
                     </div>
@@ -502,11 +470,5 @@
 
 <% include footer.html %>
 
-<script>
-    function search(){
-        var searchText = document.getElementById("search_text").value;
-        alert(searchText);
-    }
-</script>
 </body>
 </html>

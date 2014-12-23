@@ -56,6 +56,9 @@ exports.changepassword = function (req, res, next) {
             user:current_user});
     }
 
+
+
+
     User.getUserById(current_user._id, function (err,user) {
         if (user.password !== old_password)
         {
@@ -276,4 +279,10 @@ exports.dropOrder = function (req, res, next) {
         res.send({status: 0});
     });
 
+};
+
+exports.changeCity = function(req,res,next) {
+    var city = req.cookies.city;
+    console.log(1);
+    res.render('mobile/mCityChange(2)',{title:"更改城市",currCity:city});
 };
