@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <title>科室列表</title>
+    <title>更改城市</title>
 
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
     <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/mStyle.css">
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../public../../public/stylesheets/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../public/stylesheets/bootstrap-theme.css">
     <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
@@ -21,102 +21,68 @@
 </head>
 <body class="o-page">
     <div id="page">
-        <div id="header">
-            <a href="#menu"></a>
-            <span> 选择城市 </span>
-            <a class="backBtn" href="javascript:history.back();"></a>
-        </div>
+        <%- include mNotLoggedIn.html %>
         <div class="panel">
             <div id="currentCity" class="cityBlock panel">
-                当前定位城市：<span style="color:orange;">北京</span>
+                当前定位城市：
+                <br/>
+                <span style="color:orange;"><%= currCity %></span>
             </div>
-            <div class="panel">
-                <h5>热门城市：</h5>
-                <table class="cityTable">
-                    <tr>
-                        <td><a href="#">北京</a></td>
-                        <td><a href="#">天津</a></td>
-                        <td><a href="#">上海</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">广州</a></td>
-                        <td><a href="#">深圳</a></td>
-                        <td><a href="#">西安</a></td>
-                    </tr>
-                </table>
+            <div style="margin:15px;paddin:10px;">
+                <span class="selectCitySpan">选择城市:</span>
             </div>
-            <div class="panel">
-                <h5>更多城市：</h5>
-                <table class="cityTable">
-                    <tr>
-                        <td><a href="#">北京</a></td>
-                        <td><a href="#">天津</a></td>
-                        <td><a href="#">上海</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">广州</a></td>
-                        <td><a href="#">深圳</a></td>
-                        <td><a href="#">西安</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">淮安</a></td>
-                        <td><a href="#">徐州</a></td>
-                        <td><a href="#">无锡</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">长沙</a></td>
-                        <td><a href="#">太原</a></td>
-                        <td><a href="#">青岛</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">武汉</a></td>
-                        <td><a href="#"></a></td>
-                        <td><a href="#"></a></td>
-                    </tr>
-                </table>
+            
+            <div name="city" class="large-12 columns" align="center" style="margin:15px;padding:10px;">
+
+                <select id="new_city" style="font-size:13px; height:35px; font-color:#C0C0C0;">
+                    <option value="0" selected>选择城市</option>
+                    <option value="北京">北京</option>
+                    <option value="天津">天津</option>
+                    <option value="上海">上海</option>
+                    <option value="广州">广州</option>
+                    <option value="淮安">淮安</option>
+                    <option value="徐州">徐州</option>
+                    <option value="无锡">无锡</option>
+                    <option value="太原">太原</option>
+                    <option value="长沙">长沙</option>
+                    <option value="青岛">青岛</option>
+                    <option value="西安">西安</option>
+                    <option value="武汉">武汉</option>
+                </select>
+                <div style="text-align:center;margin-top:20px;">
+                    <a href="#" class="o-buttons b-big blue">确定</a>
+                </div>
             </div>
         </div>
-            
-        <nav id="menu">
-        <ul>
-            <li class="Selected">
-                <a href="mIndex.html">
-                    <i class="i-home i-small"></i>预约主页
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-comments i-small"></i>切换城市
-                </a>
-            </li>
-            <li>
-                <a href="mPersonalCenter.html">
-                    <i class="i-about i-small"></i>个人信息
-                </a>
-            </li>
-            <li>
-                <a href="blog.html">
-                    <i class="i-blog i-small"></i>订单管理
-                </a>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="i-gallery i-small"></i>收藏夹
-                </a>
-            </li>
-            <li>
-                <a href="shortcodes.html">
-                    <i class="i-shortcodes i-small"></i>问题反馈
-                </a>
-            </li>
-            <li>
-                <a href="mLogin.html">
-                    <i class="i-contact i-small"></i>账户登陆
-                </a>
-            </li>
-            
-        </ul>
-    </nav>  
     </div>
+<script>
+    function changeCity(){
+        var obj = document.getElementById('new_city');
+        var city = obj.value;
+        delCookie('city');
+        setCookie('city',city);
+        window.href = history.back();
+    }
+    function setCookie(name,value)
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
+    }
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+        else return null;
+    }
+</script>
 </body>
 </html> 

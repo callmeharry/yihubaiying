@@ -36,7 +36,7 @@
                <div class="panel panel-info panel-right">
                    <div class="panel-heading panel-head-center">
                        <!--上方名字-->
-                       "<%= searchtext %>"搜索结果
+                       "<%= searchtext %>"的搜索结果
                    </div>
                   <div class="panel-body panel-body-center">
                      <div class="list-group">
@@ -81,6 +81,7 @@
                                              <td>医生姓名：<%= doctor[i].name%></td>
                                              <td>医生专长：<%= doctor[i].advancedDisease%></td>
                                              <td>医生简介：<%= doctor[i].intro%></td>
+                                             <td>所在医院：<%= doctor[i].hospital_name%></td>
                                          </tr>
                                          <tr>
                                              <td>是否出诊：<%= doctor[i].isOnDuty%></td>

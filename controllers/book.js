@@ -24,6 +24,7 @@ exports.showHospital = function (req, res, next) {
     var username = req.cookies.username;
     var department = req.query.department;
     var query = {hospital_city: city};
+    console.log(city);
     if(department)
     query = {hospital_city:city,"hospital_dept.dept_name":department};
     var proxy = new eventproxy();
@@ -431,4 +432,8 @@ exports.showDiseases = function (req, res) {
         res.render('mobile/mDiseases', {username: username, title: '疾病列表'})
     else
         res.render('pc/findby_disease', {username: username, title: '疾病列表'});
+};
+
+exports.showDiseaseResult = function(req,res,next){
+
 };

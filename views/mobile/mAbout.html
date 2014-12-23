@@ -3,121 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>个人信息</title>
-    <link type="text/css" rel="stylesheet" href="../../public/stylesheets/photoswipe/photoswipe.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/flexslider.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/jquery.mmenu.all.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="../../public/javascripts/css/mStyle.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/flexslider.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/jquery.mmenu.all.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/javascripts/css/mStyle.css"/>
 
-    <script type="text/javascript" src="../../public/javascripts/photoswipe/klass.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.mobile-1.0rc2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/photoswipe/klass.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mobile-1.0rc2.min.js"></script>
     <script type="text/javascript"
-            src="../../public/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/js/o-script.js"></script>
+            src="/javascripts/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/javascripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/javascripts/js/o-script.js"></script>
 </head>
 
 <body class="o-page">
 <div id="page">
-<div id="header">
-    <a href="#menu"></a>
-    <span> 医呼百应 个人信息 </span>
-    <a class="backBtn" href="javascript:history.back();"></a>
-</div>
+    <%- partial('mLoggedIn', {
+    title:'医呼百应 个人信息',
+    username:user.real_name
+    }) %>
 
-<nav id="menu">
-    <ul>
-    	<li  class="Selected">
-               <a href="mLogin.html">
-                    <i class="i-home i-small"></i>登录
-               </a>
-        </li>
-        <li >
-               <a href="mRegister.html">
-        <i class="i-home i-small"></i>注册
-               </a>
-        </li>
-        <li>
-            <a href="mIndex.html">
-                <i class="i-home i-small"></i>预约主页
-            </a>
-        </li>
-        <li>
-            <a href="mAbout.html">
-                <i class="i-about i-small"></i>个人信息
-            </a>
-        </li>
-        <li>
-            <a href="mBlog.html">
-                <i class="i-blog i-small"></i>订单管理
-            </a>
-        </li>
-        <li>
-            <a href="mGallery.html">
-                <i class="i-gallery i-small"></i>收藏夹
-            </a>
-        </li>
-        <li>
-            <a href="mShortCodes.html">
-                <i class="i-shortcodes i-small"></i>问题反馈
-            </a>
-        </li>
-    </ul>
-</nav>
-
-<div id="personal_information" align="center">
-<div>
+    <div id="personal_information" align="center">
+        <div>
             <h1 class="subheader">个人信息</h1>
             <hr class="hr3" style="background-color:#587eac;"/>
         </div>
-    <table align="center" border＝
-    "0" frame="void" cellspacing="5" style="margin-top:20px;" >
-    <tr>
-        <td>身份证号</td>
-        <td>3828282828282828</td>
-    </tr>
-    <tr>
-        <td>姓名</td>
-        <td>张三</td>
-    </tr>
-    <tr>
-        <td>密码</td>
-        <td>＊＊＊＊＊＊</td>
-        <td><a href="mValue.html">
-             <img src="../../public/images/pencil.png" style="width:30px; height:30px;">
-        </a></td>
-    </tr>
-    <tr>
-        <td>手机号</td>
-        <td>18283838282</td>
-        <td><a href="mValue.html">
-            <img src="../../public/images/pencil.png" style="width:30px; height:30px;">
-        </a></td>
-    </tr>
-    <tr>
-        <td>现居城市</td>
-        <td>北京</td>
-        <td><a href="mValue.html">
-             <img src="../../public/images/pencil.png" style="width:30px; height:30px;">
-        </a></td>
-    </tr>
-    <tr>
-        <td>邮箱</td>
-        <td>18293828293@163.com</td>
-    </tr>
+        <table align="center" border="0" frame="void" cellspacing="5" style="margin-top:20px;" >
+            <tr>
+                <td>身份证号</td>
+                <td><%= user.social_number%></td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td><%= user.real_name%></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td>＊＊＊＊＊＊</td>
+                <td><a href="/mobile/person/info/alterPass">
+                    <img src="/images/pencil.png" style="width:30px; height:30px;">
+                </a></td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td><%= user.phone_number%></td>
+                <td><a href="/mobile/person/info/alterPhone">
+                    <img src="/images/pencil.png" style="width:30px; height:30px;">
+                </a></td>
+            </tr>
+            <tr>
+                <td>现居城市</td>
+                <% if (typeof(user.address) !== 'undefined' && user.address) { %>
 
-    <tr>
-        <td>信用等级</td>
-        <td>3</td>
-    </tr>
+                <td><%= user.address%></td>
+                <% } else { %>
+                <td>wu</td>
+                <% } %>
+                <td><a href="/mobile/person/info/alterAddress">
+                    <img src="/images/pencil.png" style="width:30px; height:30px;">
+                </a></td>
+            </tr>
+            <tr>
+                <td>现居城市</td>
+                <% if (typeof(user.email) !== 'undefined' && user.email) { %>
 
-    </table>
-   
+                <td><%= user.email%></td>
+                <% } else { %>
+                <td>wu</td>
+                <% } %>
+                <td><a href="/mobile/person/info/alterAddress">
+                    <img src="/images/pencil.png" style="width:30px; height:30px;">
+                </a></td>
+            </tr>
+
+            <tr>
+                <td>信用等级</td>
+                <td><%= user.credit_level%></td>
+            </tr>
+
+            <tr>
+                <td>注册时间</td>
+                <td><%= register_time%></td>
+            </tr>
+        </table>
     </div>
+</div>
 </body>
 </html>

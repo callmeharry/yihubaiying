@@ -34,6 +34,8 @@ router.post('/mobile/register', mobileRegister.handleRegister);//handle register
 router.get('/mobile/login', mobileLoginLogout.showLogin);
 router.post('/mobile/login', mobileLoginLogout.handleLogin);
 router.get('/mobile/logout', mobileLoginLogout.handleLogout);
+//Mobile change city page
+router.get('/mobile/changecity',user.changeCity);
 
 //Mobile Book page
 router.get('/mobile/book/hospitals', mobileBook.showHospital);
@@ -44,6 +46,7 @@ router.get('/mobile/book/confirmbook', mobileBook.confirmBook);
 router.get('/mobile/book/finishbook', mobileBook.finishBook);
 router.get('/mobile/book/diseases', mobileBook.showDiseases);
 router.get('/mobile/book/departmentlist', mobileBook.showDepartmentList);
+router.get('/mobile/book/disease/result',mobileBook.showDiseaseResult);
 
 //mobile personInfo
 router.get('/mobile/person/info',auth.UserRequired, user.showPersonInfo);
@@ -100,6 +103,7 @@ router.get('/book/confirmbook', mobileBook.confirmBook);
 router.get('/book/finishbook', mobileBook.finishBook);
 router.get('/book/diseases', mobileBook.showDiseases);
 router.get('/book/departmentlist', mobileBook.showDepartmentList);
+router.get('/mobile/book/disease/result',mobileBook.showDiseaseResult);
 /**
  * Administrator pages
  */

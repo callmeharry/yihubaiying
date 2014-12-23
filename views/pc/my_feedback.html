@@ -24,10 +24,10 @@
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="/person/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
+                        <li><a href="/person/myOrder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的订单</a></li>
                         <li><a href="/person/info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></li>
                         <li><a href="/person/myFavourite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的收藏</a></li>
-                        <li><a href="/person/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
+                        <li class="active"><a href="/person/feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题反馈</a></li>
                     </ul>
                     <button class="btn btn-default logout-button" type="button" href="/logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
@@ -38,72 +38,34 @@
             <div class="panel panel-info panel-right">
                 <div class="panel-heading panel-head-center">
                     <!--上方名字-->
-                    我的订单
+                    问题反馈
                 </div>
+                <a href="/person/submitFeedback" class="panel-heading">新的反馈</a>
                 <div class="panel-body panel-body-center">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>反馈编号</th>
-                            <th>反馈日期</th>
-                            <th>删除</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div class="list-group">
                         <% for(var i=0; i<feedback.length; i++) {%>
-                        <tr>
-                            <td><%= feedback[i]._id %></td>
-                            <td></td>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#myModal<%= i%>">
-                                    删除
-                                </a>
-                            </td>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal<%= i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4 class="error-text"><span class="glyphicon glyphicon-warning-sign"></span>确定要删除该反馈吗？</h4>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                            <button type="button" class="btn btn-primary del" id="<%= feedback[i].feedback_id %>" >删除</button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                        </tr>
+                        <li href="#" class="list-group-item active">
+                            <% if(feedback[i].if_check) {%>
+                            <% var status = "已回复"; %>
+                            <% } else { %>
+                            <% status = "未回复"; %>
+                            <% } %>
+                            <span class="list-group-item-heading">反馈时间：<%= feedback[i].date%> 状态：<%= status%> </span>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <p class="list-group-item-text"><b>反馈内容：</b><%= feedback[i].content%>
+                            </p>
+                            <% if(feedback[i].if_check) {%>
+                            <p class="list-group-item-text"><b>回复内容：</b><%= feedback[i].check_message%>
+                            </p>
+                            <% } %>
+                        </li>
                         <% } %>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('button.del').click(function(){
-            var feedback_id = $(this).attr("id");
-            $.post("/person/dropFeedback",{"feedback_id":feedback_id},function(result) {
-                if (result.status == 0) {
-                    window.location.reload();
-                } else {
-                    if (result.msg) {
-                        alert(result.msg);
-                    } else {
-                        alert('服务器异常');
-                    }
-                }
-            },'json');
-            return false;
-        });
-    });
-</script>
+
 </body>
 </html>
