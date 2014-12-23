@@ -46,7 +46,6 @@ router.get('/mobile/book/confirmbook', mobileBook.confirmBook);
 router.get('/mobile/book/finishbook', mobileBook.finishBook);
 router.get('/mobile/book/diseases', mobileBook.showDiseases);
 router.get('/mobile/book/departmentlist', mobileBook.showDepartmentList);
-router.get('/mobile/book/disease/result',mobileBook.showDiseaseResult);
 
 //mobile personInfo
 router.get('/mobile/person/info',auth.UserRequired, user.showPersonInfo);
@@ -57,6 +56,8 @@ router.post('/mobile/person/info/alterPass',auth.UserRequired,user.changepasswor
 router.get('/mobile/person/info/alterEmail',auth.UserRequired, user.showChangeEmail);
 router.post('/mobile/person/info/alterEmail', user.changeEmail);
 router.get('/mobile/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
+router.get('/mobile/person/info/alterAddress',auth.UserRequired, user.showChangeAddress);
+router.post('/mobile/person/info/alterAddress',auth.UserRequired, user.changeAddress);
 router.post('/mobile/person/info/alterPhone',user.changePhoneNumber);
 router.get('/mobile/person/myOrder', auth.UserRequired, user.showMyOrder);
 router.get('/mobile/person/myFavourite',auth.UserRequired,user.showFavorite);
@@ -87,7 +88,7 @@ router.post('/person/info/alterEmail', user.changeEmail);
 router.get('/person/info/alterPhone',auth.UserRequired, user.showChangePhone);
 router.post('/person/info/alterPhone',user.changePhoneNumber);
 router.get('/person/info/alterAddress',user.showChangeAddress);
-router.post('/person/info/alterAddress',auth.UserRequired, user.changeCity);
+router.post('/person/info/alterAddress',auth.UserRequired, user.changeAddress);
 router.get('/person/myOrder', auth.UserRequired, user.showMyOrder);
 router.get('/person/myFavourite',auth.UserRequired,user.showFavorite);
 router.get('/person/feedback',auth.UserRequired,user.showFeedback);
@@ -103,7 +104,6 @@ router.get('/book/confirmbook', mobileBook.confirmBook);
 router.get('/book/finishbook', mobileBook.finishBook);
 router.get('/book/diseases', mobileBook.showDiseases);
 router.get('/book/departmentlist', mobileBook.showDepartmentList);
-router.get('/mobile/book/disease/result',mobileBook.showDiseaseResult);
 /**
  * Administrator pages
  */

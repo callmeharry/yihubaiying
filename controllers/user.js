@@ -83,20 +83,29 @@ exports.changepassword = function (req, res, next) {
 
 exports.showChangeAddress = function(req, res, next){
     var user = req.session.user;
-    res.render('pc/modify_address',{
+
+    if(tool.getDeviceType(req.url))
+        res.render('mobile/mCityChange',{user:user});
+    else
+        res.render('pc/modify_address',{
         user:user
     });
 };
-exports.changeCity = function (req, res, next) {
-    var current_user = res.session.user;
-    var newCity = validator.trim(req.body.newAddress);
+exports.changeAddress = function (req, res, next) {
+    var current_user = req.session.user;
+    var newCity = validator.trim(req.body.newAddress)||'';
 
-    User.getUserById(current_user._id, function (user) {
+    if(newCity == '')
+        newCity = "北京";
+    console.log('test!');
+    User.getUserById(current_user._id, function (err, user) {
         user.address = newCity;
         user.save(function (err) {
             if (err) return next(err);
-
-            return res.redirect('/person/info');
+            if(tool.getDeviceType(req.url))
+                return res.redirect('/mobile/person/info');
+            else
+                return res.redirect('/person/info');
         });
     });
 };
@@ -116,15 +125,29 @@ exports.changePhoneNumber = function (req, res, next) {
     var current_user = req.session.user;
     var newPhoneNumber = req.body.newPhoneNumber || '';
 
-    if (newPhoneNumber !== '')
-        return res.send({status: -1, msg: "failed"});
+    if (newPhoneNumber == '')
+    {
+        if(tool.getDeviceType(req.url))
+            return res.render('mobile/mPhoneNumberChange',{
+                user:req.session.user,error:"the new phone number should not be none"});
+        else
+            return res.render('pc/modify_phonenumber',{
+                user:req.session.user,error:"the new phone number should not be none"
+            });
 
-    User.getUserById(current_user._id, function (user) {
+    }
+
+
+    User.getUserById(current_user._id, function (err,user) {
         user.phone_number = newPhoneNumber;
         user.save(function (err) {
-            if (err) return res.send({status: -1, msg: "failed"});
+            if (err) next(err);
 
-            return res.send({status: 0});
+            if(tool.getDeviceType(req.url))
+                res.redirect('/mobile/person/info');
+            else
+                res.redirect('/person/info');
+
         });
     });
 

@@ -144,16 +144,17 @@ function commit()
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
 
-        <div class="large-4 medium-4 small-4 columns" align="left" style="margin-top:20px;">
-            <input type="text" placeholder="验证码" name="auth_code">
+        <div   style="float: left; margin-left: 12px; width: 120px;" align="left">
+            <input type="text" name="auth_code"  placeholder="输入验证码">
             <span id="id_authcode_no_phone" name="authcode_warning" style="display:none; color:#DD2427;">请输入正确的手机号,再请求验证码</span>
 
         </div>
-        <div   style="float:right; width:30%; margin-right:70px;" >
-            <button type="button"  style="background-color:#587eac;border-radius:5px; font-size:12px; width:130px;" onclick="requestAuthCode(this)">获取验证码
-        </button>
+        <div style="float:right; width:30%; margin-right:80px;">
+            <button type="button" style="background-color:#587eac;border-radius:5px; font-size:12px; width:130px; height:30px;line-height:10px; "
+                    onclick="requestAuthCode(this)">获取验证码
+            </button>
         </div>
 
     </div>

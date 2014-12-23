@@ -45,14 +45,23 @@
             </div>
             <div class="panel-body panel-body-center">
                <% for(var i = 0; i < list.length; i++) { %>
-               <div class="gallery-item big-item">
+               <div class="gallery-item big-item col-sm-6" style="border:solid 1px;border-color:#BDBDBD;">
                   <a href="/book/confirmbook?hospitalid=<%= hospitalid%>&departmentid=<%= departmentid %>&doctorid=<%= doctorid %>&time=<%= list[i].time %>&datenum=<%= list[i].datenum %>">
-                     <div class="dateWindow <%= list[i].available %>">
-                        <span>时间:<%= list[i].time %></span>
-                        <br/>
-                        <span>费用:<%= list[i].fee %></span>
-                        <br/>
-                        <span>剩余号源:<%= list[i].source %></span>
+                     <div style="margin-top:15px;margin-bottom:15px;" class="dateWindow <%= list[i].available %>">
+                        <table>
+                        	<tr>
+                        		<td>时间:</td>
+                        		<td><%= list[i].time %></td>
+                        	</tr>
+                        	<tr>
+                        		<td>费用:</td>
+                        		<td><%= list[i].fee %></td>
+                        	</tr>
+                        	<tr>
+                        		<td>剩余号源:</td>
+                        		<td><%= list[i].source %></td>
+                        	</tr>
+                        </table>
                      </div>
                   </a>
                </div>
