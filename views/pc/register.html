@@ -138,6 +138,7 @@
          var xmlHttp;
          var remainingTime = 60;
          function requestAuthCode(button) {
+            time(button);
             xmlHttp = GetXmlHttpObject();
             if (xmlHttp == null) {
                alert('您的浏览器不支持AJAX！');
@@ -181,15 +182,15 @@
          }
          function showAuthCode(button)
          {
-            requestAuthCode(button);
-//         	if (showPhoneWarning())
-//         	{
-//         		requestAuthCode(button);
-//         	}
-//         	else
-//         	{
-//         		alert("请先修改手机号格式！");
-//         	}
+
+         	if (showPhoneWarning())
+         	{
+         		requestAuthCode(button);
+         	}
+         	else
+         	{
+         		alert("请先修改手机号格式！");
+         	}
          }
       </script>
 

@@ -18,14 +18,24 @@ exports.showPersonInfo = function (req, res, next) {
 
     User.getUserById(user._id, function (err,user) {
         if(err) return next(err);
-        res.render('pc/personal_info', {user: user,
-            register_time:tool.formatDate(user.register_time)});
+        var register_time = tool.formatDate(user.register_time);
+
+        if(tool.getDeviceType(req.url))
+            res.render('mobile/mAbout', {user: user,
+                  register_time:register_time});
+        else
+            res.render('pc/personal_info', {user: user,
+                register_time:register_time});
     });
 };
 
 exports.showchangePass = function(req,res,next){
     var user = req.session.user;
-    return res.render('pc/modify_password',{user:user});
+    if(tool.getDeviceType(req.url))
+        return res.render('mobile/mPassWordChange',{user:user});
+    else
+        return res.render('pc/modify_password',{user:user});
+
 };
 
 exports.changepassword = function (req, res, next) {
@@ -37,21 +47,32 @@ exports.changepassword = function (req, res, next) {
     if(confirm_password != new_password)
     {
         console.log('test!');
+
+        if(tool.getDeviceType(req.url))
+            res.render('mobile/mPassWordChange',{error:"the new password is not the same!",
+                user:current_user});
+        else
         return res.render('pc/modify_password',{error:"the new password is not the same!",
             user:current_user});
     }
 
-
-
-
     User.getUserById(current_user._id, function (err,user) {
         if (user.password !== old_password)
-            return res.render('pc/modify_password', {error: "old password is not correct!",
+        {
+            if(tool.getDeviceType(req.url))
+                return res.render('mobile/mPassWordChange',{error: "old password is not correct!",
+                    user:current_user});
+            else
+                return res.render('pc/modify_password', {error: "old password is not correct!",
                 user:current_user});
+        }
+
+
         user.password = new_password;
         user.save(function (err) {
             if (err) return next(err);
-            return res.redirect('/person/info');
+
+            return tool.getDeviceType(req.url)==true ? res.redirect('/mobile/person/info'):res.redirect('/person/info');
         });
 
     });
@@ -78,7 +99,12 @@ exports.changeCity = function (req, res, next) {
 };
 
 exports.showChangePhone = function(req, res, next){
-    res.render('pc/modify_phonenumber',{
+
+    if(tool.getDeviceType(req.url))
+        res.render('mobile/mPhoneNumberChange',{
+            user:req.session.user});
+    else
+        res.render('pc/modify_phonenumber',{
         user:req.session.user
     });
 };
