@@ -29,8 +29,7 @@ var getFeedback = function (req, res, next) {
                     if(feedbacks[i].if_check == false)
                         feedbacks.push({
                             name: user.real_name, date: tools.formatDate(feedback[i].date, true),
-                            content: feedbacks[i].content, _id: feedback[i]._id, if_check: feedback[i].if_check,
-                            check_message: feedbacks[i].check_message ? feedback[i].check_message : ''
+                            content: feedbacks[i].content, _id: feedback[i]._id
                         });
                     console.log(feedbacks[i]);
                 });
