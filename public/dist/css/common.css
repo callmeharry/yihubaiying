@@ -175,10 +175,6 @@ a:hover {
     text-decoration: none;
 }
 
-.navArea {
-    background-color:;
-}
-
 .myhr {
     border-top: 1px solid #bce8f1;
 }
@@ -194,4 +190,12 @@ a:hover {
 
 .panel-right {
     min-height: 300px;
+}
+
+.base_info img {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 180px;
+    height: 135px;
+    background-color: #fff;
 }

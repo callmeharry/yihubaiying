@@ -41,48 +41,46 @@
                我的收藏
             </div>
             <div class="panel-body panel-body-center">
+               <span>医院收藏</span>
                <table class="table table-striped">
                   <tbody>
                   <% for(var i=0; i<user.favourite_hospital.length; i++) {%>
                   <tr>
-                     <td><img src="img/hos_picture.jpg" class="img-responsive" alt="Responsive" style="height:70px"></td>
+                     <td><img src="<%=favourite_hospital[i].hospital_imgsrc%>" class="img-responsive" alt="Responsive" style="height:70px"></td>
                      <td colspan="3" class="text-left">
-                        <a href="#"><%= favourites[i].hos_name %></a>
-                        <p>地址：<%= favourites[i].hos_address %></p>
-                        <p>联系方式：<%= favourites[i].hos_tel %></p>
+                        <a href="#"><%= user.favourite_hospital[i].hospital_name %></a>
+                        <p>地址：<%= user.favourite_hospital[i].hospital_location %></p>
+                        <p>联系方式：<%= user.favourite_hospital[i].hospital_tel %></p>
                      </td>
-                     <td>
-                        <button type="button" class="btn btn-info del" id="<%= favourites[i].favourite_id %>" style="margin-top:20px">删除</button>
-                     </td>
+
                   </tr>
                   <% } %>
                   </tbody>
                </table>
+            </div>
+            <div class="panel-body panel-body-center">
+               <span>医生收藏</span>
+               <table class="table table-striped">
+                  <tbody>
+                  <% for(var i=0; i<user.favourite_doctor.length; i++) {%>
+                  <tr>
+                     <td><img src="<%= user.favourite_doctor[i].doc_imgsrc %>" class="img-responsive" alt="Responsive" style="height:70px"></td>
+                     <td colspan="3" class="text-left">
+                        <a href="#"><%= user.favourite_doctor[i].doc_name %></a>
+                        <p>擅长：<%= user.favourite_doctor[i].doc_goods %></p>
+                        <p>所属医院：<%= user.favourite_doctor[i].doc_hospital %></p>
+                     </td>
 
+                  </tr>
+                  <% } %>
+                  </tbody>
+               </table>
             </div>
          </div>
       </div>
    </div>
 </div>
-<script>
-   $(document).ready(function() {
-      $('button.del').click(function(){
-         var favourite_id = $(this).attr("id");
-         $.post("/person/dropFavourite",{"favourite_id":favourite_id},function(result)  {
-            if (result.status == 0) {
-               window.location.reload();
-            } else {
-               if (result.msg) {
-                  alert(result.msg);
-               } else {
-                  alert('服务器异常');
-               }
-            }
-         },'json');
-         return false;
-      });
-   });
-</script>
+
 <% include footer.html %>
 </body>
 </html>

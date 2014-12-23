@@ -49,8 +49,8 @@
                   <% for(var i = 0; i < hospital.length; i++) {%>
                   <a href="/book/departments?hospitalid=<%= hospital[i]._id %>" class="list-group_item">
                      <div class="row">
-                        <div class="col-md-4">
-                           <img src="img/hos_picture.jpg" class="img-responsive" alt="Respinsive image">
+                        <div class="col-md-4 base_info">
+                           <img src="<%=hospital[i].hospital_imgsrc%>" height="202px" width="157px" class="img-responsive" alt="Respinsive image">
                         </div>
                         <div class="col-md-8" style="text-align:left">
                            <h4 class="list-group-item-heading"><%= hospital[i].hospital_name %></h4>

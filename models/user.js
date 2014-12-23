@@ -27,7 +27,7 @@ var UserSchema = new Schema({
     favourite_hospital: [{type: ObjectId}],
     favourite_doctor: [
         {
-            doctor_id: { type: String },
+            doctor_id: { type: ObjectId },
             hospital: { type: String }
         }
     ],

@@ -231,11 +231,12 @@ exports.showMyOrder = function (req, res, next) {
  */
 
 exports.showFavorite = function (req, res, next) {
+
     var user = req.session.user;
     var proxy = new eventproxy;
     proxy.fail(next);
 
-    User.getUserById(user._id, proxy.done('user', function (user) {
+    User.getFavoritesByQuery(user._id, proxy.done('user', function (user) {
         return user;
     }));
 

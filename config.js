@@ -24,7 +24,7 @@ var config = {
     // 程序运行的端口
     port: 23333,
 
-    page_limit: 5
+    page_limit: 20
 };
 
 module.exports = config;

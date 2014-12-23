@@ -256,6 +256,7 @@ exports.docInfo = function (req, res, next) {
 
 
     proxy.all('hospital', function (hospital) {
+        console.log(hospital);
         res.render('administrator/docInfo', {
             page: 1,
             pages: 1,
@@ -583,14 +584,15 @@ exports.dropDoctorInter = function(req, res, next){
 
 //change userInfo
 exports.modifyUser = function (req, res, next) {
+    console.log('test!');
     var user_id = req.body.user_id;
     var user_status = req.body.user_status;
-    var credit = req.body.credit;
-
+    var credit = req.body.credit||10;
+    console.log(req.body);
     var query = {"_id": user_id};
     var ups = {"user_status": user_status,"credit_level":credit};
 
-    User.update(query, ups, function (err) {
+    User.updateByQuery(query, ups, function (err) {
         if (err) return next(err);
         res.send({"status": 0});
     })
