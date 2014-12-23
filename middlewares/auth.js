@@ -8,6 +8,7 @@ var UserModel = mongoose.model('User');
 var config = require('../config');
 var eventproxy = require('eventproxy');
 var UserProxy = require('../proxy/user');
+var tool =require('../middlewares/tool');
 
 
 /**
@@ -20,7 +21,10 @@ var UserProxy = require('../proxy/user');
  */
 exports.UserRequired = function (req, res, next) {
     if (!req.session || !req.session.user) {
-        return res.status(403).send('您还未登录');
+        if(tool.getDeviceType(req.url))
+        return res.redirect('/mobile/login');
+        else
+        return res.redirect('/login');
     }
     next();
 };
