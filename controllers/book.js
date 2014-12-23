@@ -24,6 +24,7 @@ exports.showHospital = function (req, res, next) {
     var username = req.cookies.username;
     var department = req.query.department;
     var query = {hospital_city: city};
+    console.log(city);
     if(department)
     query = {hospital_city:city,"hospital_dept.dept_name":department};
     var proxy = new eventproxy();

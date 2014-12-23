@@ -18,7 +18,7 @@ exports.handleSearch = function(req,res,next) {
         console.log(doctor);
         console.log(hospital);
         if (tool.getDeviceType(req.url))
-            res.render('mobile/mSearchResult',{username:username,doctor:doctor,hospital:hospital,searchtext:searchText});
+            res.render('mobile/mSearchResult',{username:username,doctor:doctor,hospital:hospital,searchtext:searchText,title:"\"" + searchText + "\"的搜索结果"});
         else
             res.render('pc/search_hospital',{username:username,doctor:doctor,hospital:hospital,searchtext:searchText});
     });
@@ -34,16 +34,13 @@ exports.handleSearch = function(req,res,next) {
             var m = i;
             Hospital.getHospitalsByQuery({"hospital_dept.dept_doc":doctors[m]._id},{},function(err, hospitals2){
             var hospital_id = hospitals2[0]._id;
+                var hospital_name = hospitals2[0].hospital_name;
                 var department_id;
 
                 for(var n = 0;n < hospitals2[0].hospital_dept.length;n++){
-                    console.log(hospitals2[0].hospital_dept[n]);
                     for(var o = 0; o < hospitals2[0].hospital_dept[n].dept_doc.length; o++){
-                        console.log(hospitals2[0].hospital_dept[n].dept_doc[o]);
-                        console.log(doctors[m]._id);
                         if(hospitals2[0].hospital_dept[n].dept_doc[o].toString() == doctors[m]._id.toString()){
                             department_id = hospitals2[0].hospital_dept[n]._id;
-                            console.log(hospitals2[0].hospital_dept[n].dept_name + " " + hospitals2[0].hospital_dept[n].father_dept_name);
                         }
                     }
                 }
@@ -65,17 +62,19 @@ exports.handleSearch = function(req,res,next) {
                         time:'无',
                         source:''
                     };
+                console.log(m+" " + doctors[m]);
                 doctor[m] = {
-                    name:doctors[m].doc_name,
+                    name:doctors[m].doctor_name,
                     imgsrc:null, //TODO
                     isOnDuty:flag,
                     timeAndSource:timeAndSource,
-                    goodReputation:doctors[m].doc_rep,
-                    intro:doctors[m].doc_intro,
-                    advancedDisease:doctors[m].good_illness,
+                    goodReputation:doctors[m].doctor_good_reputation,
+                    intro:doctors[m].doctor_intro,
+                    advancedDisease:doctors[m].doctor_advanced_illness_name,
                     _id:doctors[m]._id,
                     hospitalid:hospital_id,
-                    departmentid:department_id
+                    departmentid:department_id,
+                    hospital_name:hospital_name
                 };
 
         });
