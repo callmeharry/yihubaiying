@@ -88,10 +88,17 @@ exports.getOrderByQuery = function (query, opt, callback) {
                 var dept_id = orders[i].dept_id;
                 var doctor_id = orders[i].doctor_id;
                 var user_id = orders[i].user_id;
+                var hospital_id = orders[i].hospital_id;
+
                 fit_orders.push(orders[i]);
 
+                Hospital.getHospitalByHospitalId(hospital_id,proxy.done(function(cHospital){
+
+                    fit_orders[i].hospital_name = cHospital.hospital_name;
+
+                }));
+
                 Hospital.getDeptDoctors(dept_id, proxy.done(function (hospital) {
-                    fit_orders[i].hospital_name = hospital.hospital_name;
                     fit_orders[i].dept_name = hospital.dept_name;
                     proxy.emit('updates');
                 }));

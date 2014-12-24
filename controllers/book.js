@@ -89,7 +89,12 @@ exports.showHospital = function (req, res, next) {
 exports.showDepartment = function (req, res, next) {
     var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
-    var userId = req.session.user._id||'' ;
+    var userId;
+    if(req.session.user)
+         userId = req.session.user._id;
+    else
+        userId = ' ';
+    console.log(userId);
     var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
     proxy.fail(next);
@@ -126,6 +131,7 @@ exports.showDepartment = function (req, res, next) {
         var collection = "收藏";
         User.getUserByQuery({"_id":userId},{},function(err,currUser){
             console.log(currUser);
+            if(currUser)
             for(var r = 0; r < currUser[0].favourite_hospital.length ; r++){
                 console.log(currUser[0].favourite_hospital[r] + " " + hospitalId);
                 if(currUser[0].favourite_hospital[r] == hospitalId)
@@ -143,16 +149,18 @@ exports.showDepartment = function (req, res, next) {
                 dateList[i + 1] = (new_date.getMonth() + 1) + '月' + (new_date.getDate()) + '日下午';
             }
             console.log(collection);
+            console.log(hospital.hospital_intro);
             var hospitala = {
                 hospital_name: hospital.hospital_name,
                 hospital_address: hospital.hospital_location,
                 hospital_tel: hospital.hospital_tel,
                 _id: hospital._id,
                 hospital_order_count: hospital.hospital_order_count,
-                imgsrc: hospital.hospital_imgsrc,
+                hospital_imgsrc: hospital.hospital_imgsrc,
                 departments: departments,
                 dateList: dateList,
-                collection:collection
+                collection:collection,
+                hospital_intro: hospital.hospital_intro
             };
             if (!tool.getDeviceType(req.url)) {
                 return res.render('pc/choose_department', {username: username, hospital: hospitala, title: '选择科室和时间'});
@@ -194,7 +202,9 @@ exports.showDoctor = function (req, res, next) {
     var dateNum = req.query.datenum;
     var hospitalName = req.query.hospitalname;
     var url = req.query.previouspage;
-    var userId = req.session.user._id;
+    var userId;
+    if(req.session.user);
+    userId = req.session.user._id;
     var today = new Date();
     var weekOfTomorrow = today.getDay() + 1;
 
@@ -235,6 +245,7 @@ exports.showDoctor = function (req, res, next) {
                             source:''
                         };
                     var collection = "收藏";
+                    if(req.session.user);
                     for(var p = 0 ; p < user[0].favourite_doctor.length ; p++){
                         console.log(user[0].favourite_doctor[p].doctor_id + " " + hospital.doctors[i]._id)
                         if(user[0].favourite_doctor[p].doctor_id == hospital.doctors[i]._id){
@@ -244,7 +255,7 @@ exports.showDoctor = function (req, res, next) {
                     }
                     doctor[i] = {
                         name:hospital.doctors[i].doc_name,
-                        imgsrc:hospital.doctors[i].doctor_imgsrc,
+                        doctor_imgsrc:hospital.doctors[i].doctor_imgsrc,
                         isOnDuty:flag,
                         timeAndSource:timeAndSource,
                         goodReputation:hospital.doctors[i].doc_rep,

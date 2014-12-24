@@ -56,10 +56,11 @@
                   <tbody>
                   <% for(var i=0; i<orders.length; i++) {%>
                   <tr>
-                     <td><%= orders[i].order_number %></td>
+                     <td><%= orders[i]._id %></td>
                      <td><%= orders[i].hospital_name %></td>
                      <td><%= orders[i].dept_name %></td>
                      <td><%= orders[i].doctor_name %></td>
+                     <td><%= orders[i].order_see_time %></td>
                      <td>
                         <% var comment = orders[i].comment  %>
                         <% if (typeof(comment) !== 'undefined' && comment) { %>
@@ -70,7 +71,7 @@
                         <a title="点击完成支付" href="/person/order/pay" style="display:block">未支付</a>
                         <% } %>
                      </td>
-                     <td><%= orders[i].order_see_time %></td>
+
                      <td>
                         <button type="button" class="btn btn-default btn-xs">打印</button>
                         <button type="button" data-toggle="modal" data-target="#deleteModal<%= i%>" class="btn btn-default btn-xs">删除</button>

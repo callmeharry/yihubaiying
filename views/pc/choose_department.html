@@ -51,7 +51,7 @@
                <br>
                <div class="row">
                   <div class="col-md-4">
-                     <img src="<%=hospital.hospital_imgsrc%>" class="img-responsive" alt="Responsive image">
+                     <img src="<%=hospital.hospital_imgsrc%>" height="202px" width="157px" class="img-responsive" alt="/images/defaultHos.jpg">
                   </div>
                   <div class="col-md-8" style="text-align:left">
                      <p class="text-muted">医院地址：<%= hospital.hospital_address%></p>
@@ -168,22 +168,30 @@
    function changeCollectionState(){
       var user_id = getCookie('user_id');
       var hospital_id = document.getElementById("id_hospitalId").innerHTML;
-      $.post("/changehospitalcollectionstate",{"user_id":user_id,"hospital_id":hospital_id,"todo":document.getElementById("collection").innerHTML},function(result) {
-         if (result.status == 0) {
-            if(document.getElementById("collection").innerHTML == "收藏"){
-               document.getElementById("collection").innerHTML = "取消收藏";
-            }else{
-               document.getElementById("collection").innerHTML = "收藏"
-            }
+      if(user_id) {
+         $.post("/changehospitalcollectionstate", {
+            "user_id": user_id,
+            "hospital_id": hospital_id,
+            "todo": document.getElementById("collection").innerHTML
+         }, function (result) {
+            if (result.status == 0) {
+               if (document.getElementById("collection").innerHTML == "收藏") {
+                  document.getElementById("collection").innerHTML = "取消收藏";
+               } else {
+                  document.getElementById("collection").innerHTML = "收藏"
+               }
 
-         } else {
-            if (result.msg) {
-               alert(result.msg);
             } else {
-               alert('服务器异常');
+               if (result.msg) {
+                  alert(result.msg);
+               } else {
+                  alert('服务器异常');
+               }
             }
-         }
-      },'json');
+         }, 'json');
+      }else{
+         window.location.href = '/login';
+      }
    }
    function getCookie(objName){//获取指定名称的cookie的值
       var arrStr = document.cookie.split("; ");

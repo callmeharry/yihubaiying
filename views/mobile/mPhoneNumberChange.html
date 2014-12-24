@@ -25,6 +25,21 @@
         </div>
         <div  align="center" style="padding-left:20px; padding-right:20px;">
             <input id="id_new_phone" name="newPhoneNumber" type="text" placeholder="新手机号码"/>
+            <span id="id_phone_warning" name="phone_warning" style="display:none; color:#DD2427;">手机输入有误</span>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+
+            <div   style="float: left; margin-left: 20px; width: 120px;" align="left">
+                <input type="text" name="auth_code"  placeholder="输入验证码">
+                <span id="id_authcode_no_phone" name="authcode_warning" style="display:none; color:#DD2427;">请输入正确的手机号,再请求验证码</span>
+
+            </div>
+            <div style="float:right; width:30%; margin-right:80px;">
+                <button type="button" style="background-color:#587eac;border-radius:5px; font-size:12px; width:130px; height:30px;line-height:10px; "
+                        onclick="requestAuthCode(this)">获取验证码
+                </button>
+            </div>
+
         </div>
         <div align="center" style="margin-top:40px;">
             <button type="submit" name="post" value="true" style="background-color:#587eac; width:100px; border-radius:5px; font-size:12px; height: 38px;line-height: 5px;">确定
@@ -34,6 +49,82 @@
     </form>
     <script>
         $(document).foundation();
+    </script>
+    <script>
+        var xmlHttp;
+        var remainingTime = 60;
+        function requestAuthCode(button) {
+            alert(1);
+            showWarning2();
+            alert(1);
+            if (document.getElementById('id_phone_warning').style.display == "") {
+                document.getElementById('id_authcode_no_phone').style.display = "";
+            } else {
+                alert(1);
+                document.getElementById('id_authcode_no_phone').style.display = "none";
+                time(button);
+                xmlHttp = GetXmlHttpObject();
+                if (xmlHttp == null) {
+                    alert('您的浏览器不支持AJAX！');
+                    return;
+                }
+                var url = "/mobile/generateAuthCode";
+                xmlhttp.open("POST", url, true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send();
+                xmlHttp.onreadystatechange = getOkPost;//发送事件后，收到信息了调用函数
+            }
+        }
+
+        function time(button) {
+            if (remainingTime == 0) {
+                button.removeAttribute("disabled");
+                button.innerHTML = "获取验证码";
+                remainingTime = 60;
+            } else {
+                button.setAttribute("disabled", true);
+                button.innerHTML = remainingTime + "秒后重新发送";
+                remainingTime--;
+                setTimeout(function () {
+                            time(button)
+                        },
+                        1000);
+            }
+        }
+
+        function GetXmlHttpObject() {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+
+        function getOkPost() {
+            if (xmlHttp.readyState == 1 || xmlHttp.readyState == 2 || xmlHttp.readyState == 3) {
+                // 本地提示：加载中/处理中
+
+            }
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                var d = xmlHttp.responseText; // 返回值
+                // 处理返回值
+                alert(d);
+            }
+        }
+        function showWarning2() {
+            element = document.getElementById('id_new_phone').value;
+            l = element.length;
+
+            if (l != 11) {
+                //alert(document.getElementById("id_warning").innerHTML);
+                document.getElementById('id_phone_warning').style.display = "";
+            }
+            else {
+                document.getElementById('id_phone_warning').style.display = "none";
+            }
+        }
     </script>
 </div>
 </body>

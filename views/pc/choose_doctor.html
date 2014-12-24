@@ -66,7 +66,7 @@
                         <div class="list-group_item">
                            <div class="row">
                                  <div class="col-md-2">
-                                 	<img src="<%=hospital[i].hospital_imgsrc%>doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
+                                 	<img src="<%=doctor[i].doctor_imgsrc%>" class="img-responsive" height="60" width="60" >
                                  </div>
                                  <div class="col-md-10">
                                  	<table>
@@ -132,26 +132,30 @@
             var hospital_name = document.getElementById("id_hospitalName").innerHTML;
             var doctor_id = button.id.split("_")[1];
             var todo = button.innerHTML;
-            $.post("/changedoctorcollectionstate", {
-               "user_id": user_id,
-               "hospital_name": hospital_name,
-               "doctor_id":doctor_id,
-               "todo":todo
-            }, function (result) {
-               if (result.status == 0) {
-                  if(document.getElementById("collection_"+doctor_id).innerHTML == "收藏"){
-                     document.getElementById("collection_"+doctor_id).innerHTML = "取消收藏";
-                  }else{
-                     document.getElementById("collection_"+doctor_id).innerHTML = "收藏"
-                  }
-               } else {
-                  if (result.msg) {
-                     alert(result.msg);
+            if(user_id) {
+               $.post("/changedoctorcollectionstate", {
+                  "user_id": user_id,
+                  "hospital_name": hospital_name,
+                  "doctor_id": doctor_id,
+                  "todo": todo
+               }, function (result) {
+                  if (result.status == 0) {
+                     if (document.getElementById("collection_" + doctor_id).innerHTML == "收藏") {
+                        document.getElementById("collection_" + doctor_id).innerHTML = "取消收藏";
+                     } else {
+                        document.getElementById("collection_" + doctor_id).innerHTML = "收藏"
+                     }
                   } else {
-                     alert('服务器异常');
+                     if (result.msg) {
+                        alert(result.msg);
+                     } else {
+                        alert('服务器异常');
+                     }
                   }
-               }
-            }, 'json');
+               }, 'json');
+            }else{
+               window.location.href = '/login';
+            }
          }
          function getCookie(objName){//获取指定名称的cookie的值
             var arrStr = document.cookie.split("; ");
