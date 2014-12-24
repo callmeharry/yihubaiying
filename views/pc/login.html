@@ -3,22 +3,27 @@
 	<head>
 		<title>医呼百应网上预约挂号平台</title>
 		<!-- 引入 Bootstrap -->
-       <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-       <link href="/stylesheets/pc/pcViewHead.css" rel="stylesheet">
-       <script src="/javascripts/pc/login.js"></script>
-       <script src="/javascripts/jquery.min.js"></script>
-       <script src="/javascripts/bootstrap.min.js"></script>
+       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+       <meta name="description" content="" />
+       <meta name="keywords" content="" />
+       <!-- 移动设备优先 -->
+       <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!-- 移动设备优先 -->
-		<!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!--<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">-->
+       <!--<link href="/stylesheets/pc/pcViewHead.css" rel="stylesheet">-->
+       <script src="/javascripts/pc/login.js"></script>
+       <!--<script src="/javascripts/jquery.min.js"></script>-->
+       <!--<script src="/javascripts/bootstrap.min.js"></script>-->
+
 
 
        <link href="/stylesheets/pc/login.css" rel="stylesheet">
-
+       <script src="/dist/scripts/jquery.min.js"></script>
+       <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+       <link href="/css/common.css" rel="stylesheet">
+       <link href="/css/index_tourist.css" rel="stylesheet">
+       <script src="/dist/bootstrap/bootstrap.min.js"></script>
 
    </head>
    <body>
@@ -57,7 +62,7 @@
          	<div class="col-sm-4">
          		<input type="text" class="form-control" id="auth_code" name="auth_code" value="" placeholder="" required="required">
          	</div>
-         	<button class="col-sm-3 col-sm-offset-1 btn btn-primary" onclick="showAuthCode(this)">获取注册码</button>
+         	<button class="col-sm-3 col-sm-offset-1 btn btn-primary" onclick="showAuthCode(this)">获取验证码</button>
          </div>
          <br/><br/>
          <div class="form-group">

@@ -23,7 +23,7 @@ var OrderSchema = new Schema({
     order_if_finished:{type:Boolean, default: false},
     order_fee:{type:Number},
     comment:{
-        time: {type: Date, default: Date.now},
+        time: {type: Date},
         good_or_bad:{type:Boolean},
         content:{type:String}
     }

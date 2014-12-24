@@ -2,6 +2,10 @@
 <head>
     <title>医呼百应网上预约挂号平台</title>
     <!-- 引入 Bootstrap -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <!-- 移动设备优先 -->
+    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
     <script type="text/javascript">uaredirect("/mobile");</script>
     <script src="/dist/scripts/jquery.min.js"></script>
@@ -9,12 +13,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/index_tourist.css" rel="stylesheet">
     <script src="/dist/bootstrap/bootstrap.min.js"></script>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <!-- 移动设备优先 -->
-    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body onload="setCity()">
 <div style="background:url(/images/header.jpg)">
@@ -26,12 +25,12 @@
                 <span class="caret"></span>
             </label>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="北京" onclick="changeCity(this)">北京</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="上海" onclick="changeCity(this)">上海</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="天津" onclick="changeCity(this)">天津</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="重庆" onclick="changeCity(this)">重庆</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="广东" onclick="changeCity(this)">广东</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" name="湖北" onclick="changeCity(this)">湖北</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="北京" id="1" onclick="changeCity(this)">北京</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="上海" id="2" onclick="changeCity(this)">上海</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="天津" id="3" onclick="changeCity(this)">天津</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="重庆" id="4" onclick="changeCity(this)">重庆</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="广东" id="5" onclick="changeCity(this)">广东</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" name="湖北" id="6" onclick="changeCity(this)">湖北</a></li>
             </ul>
         </div>
     </div>
@@ -78,7 +77,7 @@
         var Days = 30;
         var exp = new Date();
         exp.setTime(exp.getTime() + Days*24*60*60*1000);
-        document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
+        document.cookie = name + "="+ value + ";expires=" + exp.toGMTString() + ";path='/";
     }
     function delCookie(name)
     {
@@ -93,18 +92,16 @@
         if(arr=document.cookie.match(reg)) return unescape(arr[2]);
         else return null;
     }
-    function setCity()
-    {
-        var city = getCookie("city");
-        alert(city);
-        if(city)
-            document.getElementById("currCity").innerHTML = city;
-        else
-            document.getElementById("currCity").innerHTML = '北京';
-    }
+//    function setCity()
+//    {
+//        var city = getCookie("city");
+//        if(city)
+//            document.getElementById("currCity").innerHTML = city;
+//        else
+//            document.getElementById("currCity").innerHTML = '北京';
+//    }
     $(document).ready(function(){
         var city = getCookie("city");
-        alert(city);
         if(city)
         document.getElementById("currCity").innerHTML = city;
         else

@@ -45,11 +45,15 @@
                     <td><%= orders[i].doctor_name %></td>
                 </tr>
                 <tr>
+                    <td>就诊日期</td>
+                    <td><%= orders[i].order_see_time %><</td>
+                </tr>
+                <tr>
                     <td>状态</td>
                     <td>
-                        <% if (order_if_finished == true ) %>
+                        <% if (orders[i].order_if_finished === true ) { %>
                         已完成
-                        <% } else if (order_if_pay == true ) {%>
+                        <% } else if (orders[i].order_if_pay === true ) {%>
                         已支付
                         <% } else {%>
                         未支付

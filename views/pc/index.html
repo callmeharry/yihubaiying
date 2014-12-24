@@ -2,6 +2,15 @@
 <html>
 <head>
     <title>医呼百应网上预约挂号平台</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <!-- 移动设备优先 -->
+    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <!-- 引入 Bootstrap -->
     <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
     <script type="text/javascript">uaredirect("/mobile");</script>
@@ -11,12 +20,6 @@
     <link href="/css/index_tourist.css" rel="stylesheet">
     <script src="/dist/bootstrap/bootstrap.min.js"></script>
     <script src="/javascripts/pc/fastbook.js"></script>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <!-- 移动设备优先 -->
-    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 </head>
@@ -79,13 +82,13 @@
                     <div class="area-div">
                         <label class="right-panel-div">地区：</label>
                         <select class="province js-province" id="select_region" name="selectp" onChange="selectcityarea('selectp','selectc','form1');">
-                            <option value="0" selected>北京</option>
+                            <option value="0" selected>请选择</option>
                         </select>
                     </div>
                     <div class="hospital-div">
                         <label class="right-panel-div">医院：</label>
                         <select class="js-hospital" name="selectc" id="select_hospital">
-                            <option value="5498007cc66e4e4c45f092cb" selected>中国人民解放军海军总医院</option>
+                            <option value="0" selected>请选择</option>
                         </select>
                     </div>
                     <div>

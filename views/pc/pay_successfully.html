@@ -1,67 +1,73 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>医呼百应网上预约挂号平台</title>
-      <!-- 引入 Bootstrap -->
-      <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="/css/common.css" rel="stylesheet">
-      <script src="/dist/scripts/jquery.min.js"></script>
-      <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
-      <link href="/css/index_tourist.css" rel="stylesheet">
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <meta name="description" content="" />
-      <meta name="keywords" content="" />
-      <!-- 移动设备优先 -->
-      <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">     
-   </head>
-   
+<head>
+    <title>医呼百应网上预约挂号平台</title>
+    <!-- 引入 Bootstrap -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/dist/scripts/jquery.min.js"></script>
+    <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/css/index_tourist.css" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <!-- 移动设备优先 -->
+    <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-   <body>
-      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
-      <!-- 包括所有已编译的插件 -->
-      <script src="dist/js/bootstrap.min.js"></script>
 
-      <!--网页头部-->
-      <%- include header.html %>
+<body>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="dist/js/bootstrap.min.js"></script>
 
-      <!--中间部分-->
-      <!--左侧导航栏面板-->
-      <div class="panel panel-primary panel-left">
-         <% if(!username) { %>
-         <%- include user_notloggedin.html %>
-         <% } else {%>
-         <%- include user_loggedin.html %>
-         <% } %>
-      </div>
+<!--网页头部-->
+<%- include header.html %>
 
-      <!--右侧面板--> 
-         <div class="panel panel-primary panel-right">
-            <div class="panel-heading panel-head-center">
-               <!--上方名字-->
-               订单已生成
+<!--中间部分-->
+<!--左侧导航栏面板-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <% if(!username) { %>
+            <%- include user_notloggedin.html %>
+            <% } else {%>
+            <%- include user_loggedin.html %>
+            <% } %>
+        </div>
+
+        <!--右侧面板-->
+        <div class="col-xs-9">
+            <div class="panel panel-primary panel-right">
+                <div class="panel-heading panel-head-center">
+                    <!--上方名字-->
+                    订单已生成
+                </div>
+                <div class="panel-body panel-body-center">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <img src="/images/gou.jpg" class="img-responsive" alt="Responsive image" style="height:50px">
+                        </div>
+                        <div class="col-md-4">
+                            <h3>您的订单已生成！</h3>
+                        </div>
+                        <div class="col-md-4"></div>
+
+                    </div>
+                    <div>
+                        <a href="/person/myOrder">查看本次订单详情</a>
+                        <a href="/">返回首页</a>
+                    </div>
+                    <hr>
+                </div>
             </div>
-            <div class="panel-body panel-body-center">
-               <div class="row">
-                  <div class="col-md-2"></div>
-                  <div class="col-md-3">
-                     <img src="img/gou.jpg" class="img-responsive" alt="Responsive image" style="height:50px">                      
-                  </div>
-                  <div class="col-md-2">
-                     <h3>您的订单已生成！</h3>
-                  </div>                  
-                  <div class="col-md-5"></div>
+        </div>
+    </div>
+</div>
 
-               </div>
-               <div>
-                  <a href="#">查看本次订单详情</a>
-                  <a href="/">返回首页</a>
-               </div>
-               <hr>
-               
-            </div>
-         </div>
-      <% include footer.html %>
-   </body>
+<% include footer.html %>
+</body>
 </html>

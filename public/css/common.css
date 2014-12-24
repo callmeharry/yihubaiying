@@ -180,3 +180,6 @@ td.th-right{
 	line-height: 29px;
 }
 
+.table th{
+	text-align: center;
+}

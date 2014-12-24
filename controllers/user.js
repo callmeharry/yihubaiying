@@ -214,6 +214,14 @@ exports.showMyOrder = function (req, res, next) {
     }));
 
     proxy.all('orders', function (orders) {
+
+        console.log(orders);
+        if(tool.getDeviceType(req.url))
+            return res.render('mobile/mBlog',{
+                user:user,
+                orders:orders
+            })
+
         return res.render('pc/my_order', {
             orders:orders,
             user:user

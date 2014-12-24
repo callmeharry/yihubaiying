@@ -14,9 +14,9 @@ exports.showIndex = function (req, res) {
     var url = req.url;
     var username = req.cookies.username;
     console.log("logged " + req.cookies.username);
-    res.cookie(config.auth_cookie_city, '北京',
-        // cookie有效期30天
-        {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
+    //res.cookie(config.auth_cookie_city, '北京',
+    //    // cookie有效期30天
+    //    {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30});
     if (url.indexOf('mobile') > 0)
         res.render('mobile/mIndex', {username: username, title: '医呼百应:首页'});
     else
@@ -25,6 +25,11 @@ exports.showIndex = function (req, res) {
 
 exports.handleQuickBook = function(req,res) {
     var hospital_id = req.body.selectc;
-    console.log(hospital_id)
+    var city = req.body.selectp;
+    if(hospital_id != 0)
     res.redirect('/book/departments?hospitalid=' + hospital_id);
+    else if(city != 0) {
+        res.redirect('/');
+    }
+
 };
