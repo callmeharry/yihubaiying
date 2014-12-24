@@ -74,18 +74,18 @@
                 <div class="panel-heading">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快&nbsp;&nbsp;速&nbsp;&nbsp;预&nbsp;&nbsp;约
                 </div>
-                <form name="form1">
+                <form name="form1" action="/quickbook" method="post">
                 <div class="panel-body">
                     <div class="area-div">
                         <label class="right-panel-div">地区：</label>
                         <select class="province js-province" id="select_region" name="selectp" onChange="selectcityarea('selectp','selectc','form1');">
-                            <option value="0" selected>不限--</option>
+                            <option value="0" selected>北京</option>
                         </select>
                     </div>
                     <div class="hospital-div">
                         <label class="right-panel-div">医院：</label>
                         <select class="js-hospital" name="selectc" id="select_hospital">
-                            <option value="0" selected>不限--</option>
+                            <option value="5498007cc66e4e4c45f092cb" selected>中国人民解放军海军总医院</option>
                         </select>
                     </div>
                     <div>
@@ -343,84 +343,84 @@
 			            <table class="table table-bordered col-sm-12">
 		                    <tr>
 		                    	<th rowspan="3"><a href="#">内科</a></th>
-		                    	<td><a href="/book/disease/result?department=内科&disease=糖尿病">糖尿病</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=高血压">高血压</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=胃炎">胃炎</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=糖尿病">糖尿病</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=高血压">高血压</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=胃炎">胃炎</a></td>
 		                    	<th rowspan="3"><a href="#">外科</a></th>
-		                    	<td><a href="/book/disease/result?department=外科&disease=前列腺炎">前列腺炎</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=乳腺增生">乳腺增生</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=甲状腺瘤">甲状腺瘤</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=前列腺炎">前列腺炎</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=乳腺增生">乳腺增生</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=甲状腺瘤">甲状腺瘤</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/disease/result?department=内科&disease=甲亢">甲亢</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=乙肝">乙肝</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=冠心病">冠心病</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=血管瘤">血管瘤</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=早泄">早泄</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=静脉曲张">静脉曲张</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=甲亢">甲亢</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=乙肝">乙肝</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=冠心病">冠心病</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=血管瘤">血管瘤</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=早泄">早泄</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=静脉曲张">静脉曲张</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/disease/result?department=内科&disease=肝硬化">肝硬化</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=癫痫">癫痫</a></td>
-		                    	<td><a href="/book/disease/result?department=内科&disease=失眠">失眠</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=颈椎病">颈椎病</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=腰椎间盘突出症">腰椎间盘突出症</a></td>
-		                    	<td><a href="/book/disease/result?department=外科&disease=痔疮">痔疮</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=肝硬化">肝硬化</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=癫痫">癫痫</a></td>
+		                    	<td><a href="/book/hospitals?department=内科&disease=失眠">失眠</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=颈椎病">颈椎病</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=腰椎间盘突出症">腰椎间盘突出症</a></td>
+		                    	<td><a href="/book/hospitals?department=外科&disease=痔疮">痔疮</a></td>
 		                    </tr>
 		                    <tr>
 		                    	<th rowspan="3"><a href="#">妇科</a></th>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=月经不调">月经不调</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=不孕不育">不孕不育</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=子宫肌瘤">子宫肌瘤</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=月经不调">月经不调</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=不孕不育">不孕不育</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=子宫肌瘤">子宫肌瘤</a></td>
 		                    	<th rowspan="3"><a href="#">肿瘤科</a></th>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=乳腺癌">乳腺癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=肺癌">肺癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=胃癌">胃癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=乳腺癌">乳腺癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=肺癌">肺癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=胃癌">胃癌</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=多囊卵巢综合症">多囊卵巢综合症</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=卵巢囊肿">卵巢囊肿</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=阴道炎">阴道炎</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=肝癌">肝癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=直肠癌">直肠癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=甲状腺癌">甲状腺癌</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=多囊卵巢综合症">多囊卵巢综合症</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=卵巢囊肿">卵巢囊肿</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=阴道炎">阴道炎</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=肝癌">肝癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=直肠癌">直肠癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=甲状腺癌">甲状腺癌</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=宫颈糜烂">宫颈糜烂</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=内分泌失调">内分泌失调</a></td>
-		                    	<td><a href="/book/disease/result?department=妇科&disease=宫颈癌">宫颈癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=胰腺癌">胰腺癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=淋巴癌">淋巴癌</a></td>
-		                    	<td><a href="/book/disease/result?department=肿瘤科&disease=食道癌">食道癌</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=宫颈糜烂">宫颈糜烂</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=内分泌失调">内分泌失调</a></td>
+		                    	<td><a href="/book/hospitals?department=妇科&disease=宫颈癌">宫颈癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=胰腺癌">胰腺癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=淋巴癌">淋巴癌</a></td>
+		                    	<td><a href="/book/hospitals?department=肿瘤科&disease=食道癌">食道癌</a></td>
 		                    </tr>
 		                    <tr>
 		                    	<th rowspan="2"><a href="#">儿科</a></th>
-		                    	<td><a href="/book/disease/result?department=儿科&disease=小儿哮喘">小儿哮喘</a></td>
-		                    	<td><a href="/book/disease/result?department=儿科&disease=小儿癫痫">小儿癫痫</a></td>
-		                    	<td><a href="/book/disease/result?department=儿科&disease=小儿肺炎">小儿肺炎</a></td>
+		                    	<td><a href="/book/hospitals?department=儿科&disease=小儿哮喘">小儿哮喘</a></td>
+		                    	<td><a href="/book/hospitals?department=儿科&disease=小儿癫痫">小儿癫痫</a></td>
+		                    	<td><a href="/book/hospitals?department=儿科&disease=小儿肺炎">小儿肺炎</a></td>
 		                    	<th rowspan="2"><a href="#">五官科</a></th>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=鼻炎">鼻炎</a></td>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=耳鸣">耳鸣</a></td>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=白内障">白内障</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=鼻炎">鼻炎</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=耳鸣">耳鸣</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=白内障">白内障</a></td>
 		                    </tr>
 	                    	<tr>
-	                    		<td><a href="/book/disease/result?department=儿科&disease=小儿抽动症">小儿抽动症</a></td>
-		                    	<td><a href="/book/disease/result?department=儿科&disease=性早熟">性早熟</a></td>
-		                    	<td><a href="/book/disease/result?department=儿科&disease=小儿多动症">小儿多动症</a></td>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=青光眼">青光眼</a></td>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=牙周炎">牙周炎</a></td>
-		                    	<td><a href="/book/disease/result?department=五官科&disease=近视">近视</a></td>
+	                    		<td><a href="/book/hospitals?department=儿科&disease=小儿抽动症">小儿抽动症</a></td>
+		                    	<td><a href="/book/hospitals?department=儿科&disease=性早熟">性早熟</a></td>
+		                    	<td><a href="/book/hospitals?department=儿科&disease=小儿多动症">小儿多动症</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=青光眼">青光眼</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=牙周炎">牙周炎</a></td>
+		                    	<td><a href="/book/hospitals?department=五官科&disease=近视">近视</a></td>
 		                    </tr>
 		                    <tr>
 		                    	<th rowspan="2"><a href="#">皮肤科</a></th>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=湿疹">湿疹</a></td>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=白癜风">白癜风</a></td>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=牛皮癣">牛皮癣</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=湿疹">湿疹</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=白癜风">白癜风</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=牛皮癣">牛皮癣</a></td>
 		                    </tr>
 		                    <tr>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=荨麻疹">荨麻疹</a></td>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=脱发">脱发</a></td>
-		                    	<td><a href="/book/disease/result?department=皮肤科&disease=痤疮">痤疮</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=荨麻疹">荨麻疹</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=脱发">脱发</a></td>
+		                    	<td><a href="/book/hospitals?department=皮肤科&disease=痤疮">痤疮</a></td>
 		                    </tr>
 		                </table>
 	            	</div>

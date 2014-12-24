@@ -65,31 +65,6 @@
                         <% for(var i = 0; i < doctor.length; i++) {%>
                         <div class="list-group_item">
                            <div class="row">
-                              <!-- <div class="col-md-2">
-                                 <img src="doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
-                              </div> -->
-                              <!--<div class="col-md-12" style="text-align:left">-->
-                                 <!-- <table class="table">
-                                    <tbody>
-                                       <tr>
-                                          <td>医生姓名：<%= doctor[i].name%></td>
-                                          <td>医生专长：<%= doctor[i].advancedDisease%></td>
-                                          <td>医生简介：<%= doctor[i].intro%></td>
-                                       </tr>                                
-                                       <tr>
-                                          <td>是否出诊：<%= doctor[i].isOnDuty%></td>
-                                          <td>出诊时段，号源：
-                                             <% for (var j = 0; j < doctor[i].timeAndSource.length; j++) {%>
-                                             <%= doctor[i].timeAndSource[j].time %> &nbsp; <%= doctor[i].timeAndSource[j].source %>
-                                             <br/>
-                                             <% } %>
-                                          </td>
-                                       </tr>                                    
-                                       <tr>
-                                          <td>好评数  ：<%= doctor[i].goodReputation%></td>
-                                       </tr>               
-                                    </tbody>
-                                 </table> -->
                                  <div class="col-md-2">
                                  	<img src="<%=hospital[i].hospital_imgsrc%>doctor[i].imgsrc" class="img-responsive" alt="Respinsive image">
                                  </div>

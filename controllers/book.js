@@ -89,7 +89,7 @@ exports.showHospital = function (req, res, next) {
 exports.showDepartment = function (req, res, next) {
     var username = req.cookies.username;
     var hospitalId = req.query.hospitalid;
-    var userId = req.session.user._id;
+    var userId = req.session.user._id||'' ;
     var proxy = new eventproxy();
     //下面的数据要替换成数据库中的信息
     proxy.fail(next);

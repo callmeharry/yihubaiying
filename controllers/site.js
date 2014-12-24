@@ -22,3 +22,9 @@ exports.showIndex = function (req, res) {
     else
         res.render('pc/index', {username: username});
 };
+
+exports.handleQuickBook = function(req,res) {
+    var hospital_id = req.body.selectc;
+    console.log(hospital_id)
+    res.redirect('/book/departments?hospitalid=' + hospital_id);
+};

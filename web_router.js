@@ -68,6 +68,7 @@ router.post('/mobile/person/submitFeedback',user.submitFeedback);
 
 //PC Home page
 router.get('/', mobileIndex.showIndex);
+router.post('/quickbook',mobileIndex.handleQuickBook);
 
 //PC register page
 router.get('/register', mobileRegister.showRegister);//show pc register page

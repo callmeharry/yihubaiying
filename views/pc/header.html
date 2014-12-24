@@ -16,7 +16,7 @@
     <!-- device-width 可以确保它能正确呈现在不同设备上,initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body onload="setCity()">
 <div style="background:url(/images/header.jpg)">
     <div align="right" style="mergin-right:20px" class="col-sm-2 col-sm-offset-10">
         <label style="color:#ffffff" class="col-sm-4" ><span id="currCity">北京</span></label>
@@ -43,7 +43,7 @@
             <!--搜索框-->
             <form method="post" action="/searchresult">
                 <div class="input-group col-xs-6">
-                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText">
+                    <input type="text" class="form-control" placeholder="输入医院、科室、疾病名称,找到合适的医院和医生" name="searchText" required="required">
 	                  <span class="input-group-btn">
 	                     <input class="btn search-button" type="submit" value="搜索">
 	                         &nbsp;&nbsp;搜&nbsp;索&nbsp;&nbsp;
@@ -93,6 +93,23 @@
         if(arr=document.cookie.match(reg)) return unescape(arr[2]);
         else return null;
     }
+    function setCity()
+    {
+        var city = getCookie("city");
+        alert(city);
+        if(city)
+            document.getElementById("currCity").innerHTML = city;
+        else
+            document.getElementById("currCity").innerHTML = '北京';
+    }
+    $(document).ready(function(){
+        var city = getCookie("city");
+        alert(city);
+        if(city)
+        document.getElementById("currCity").innerHTML = city;
+        else
+            document.getElementById("currCity").innerHTML = '北京';
+    });
 </script>
 </body>
 </html>
