@@ -39,20 +39,20 @@
             <article>
             <a href="/mobile/book/departments?hospitalid=<%= hospital[i]._id %>">
                 <div>
-                    <!-- <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">-->
+                    <img class="hospitalPic" src="<%= hospital[i].hospital_imgsrc %>">
                     <img class="hospitalPic" src="../../public/images/hospital1.png">
                 </div>
                 <div>
-                    <h2>医院名称<!-- <%= hospital[i].name %>--></h2>
+                    <h2><%= hospital[i].name %></h2>
 
                     <div class="hospitalInfoSytle">
-                        地址：医院地址<!-- <%= hospital[i].address %>-->
+                        地址： <%= hospital[i].address %>
                     </div>
                     <div class="hospitalInfoSytle">
-                        电话：68976593847<!-- <%= hospital[i].phoneNumber %>-->
+                        电话： <%= hospital[i].phoneNumber %>
                     </div>
                     <div class="hospitalInfoDiv a-meta hospitalInfoSytle">
-                        成功预约量：230 <!-- <%= hospital[i].orderCount %>-->
+                        成功预约量： <%= hospital[i].orderCount %>
                     </div>
                 </div>
             </a>

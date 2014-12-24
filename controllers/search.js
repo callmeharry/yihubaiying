@@ -23,6 +23,7 @@ exports.handleSearch = function(req,res,next) {
     var doctorQuery = {};
     doctorQuery['doctor_advanced_illness_name'] = new RegExp(searchText.toString());
     Doctor.getDoctorByQuery(doctorQuery,{},function(err,doctors){
+        console.log(doctors);
         var doctor = new Array();
         var today = new Date();
         var weekOfTomorrow = today.getDay() + 1;
@@ -61,7 +62,7 @@ exports.handleSearch = function(req,res,next) {
                     };
                 doctor[m] = {
                     name:doctors[m].doctor_name,
-                    imgsrc:null, //TODO
+                    imgsrc:doctor[m].doctor_imgsrc,
                     isOnDuty:flag,
                     timeAndSource:timeAndSource,
                     goodReputation:doctors[m].doctor_good_reputation,
