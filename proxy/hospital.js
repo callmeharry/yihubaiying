@@ -193,6 +193,7 @@ exports.getDoctorsByDeptAndDate = function(dept_id, datenum, callback) {
                             doc_intro: doctor.doctor_intro,
                             good_illness: doctor.doctor_advanced_illness_name,
                             _id: doc_id,
+                            doctor_imgsrc:doctor.doctor_imgsrc,
                             doc_rep: doctor.doctor_good_reputation,
                             doc_visit: doctor.doctor_visit
                         });
